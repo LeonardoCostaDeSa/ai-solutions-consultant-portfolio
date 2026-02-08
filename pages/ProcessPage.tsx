@@ -228,12 +228,10 @@ const ProcessPage: React.FC = () => {
                 This page traces my professional path — from linguistics to AI engineering. If you need a concise version for your records, download my CV below.
               </p>
             </div>
-            {/* TODO: Replace href with your actual CV URL */}
             <a
-              href="https://drive.google.com/file/d/1i0gVROIP1GOhoplsAStcP933FwFYMiQe/view?usp=sharing"
+              href="https://drive.google.com/uc?export=download&id=1i0gVROIP1GOhoplsAStcP933FwFYMiQe"
               target="_blank"
               rel="noopener noreferrer"
-              download
               className="group flex items-center gap-3 px-8 py-4 bg-indigo hover:bg-indigo/90 text-white rounded-full font-bold transition-all shadow-lg shadow-indigo/20 active:scale-95 whitespace-nowrap"
             >
               <Download size={18} />
