@@ -1,0 +1,10 @@
+services:
+  portfolio:
+    image: ghcr.io/leonardocostadesa/ai-solutions-consultant-portfolio:latest
+    container_name: portfolio
+    restart: unless-stopped
+    ports:
+      - "3000:80"
+    # Uncomment and set if you need the API key at runtime
+    # environment:
+    #   - GEMINI_API_KEY=${GEMINI_API_KEY}
