@@ -230,7 +230,7 @@ const ProcessPage: React.FC = () => {
             </div>
             {/* TODO: Replace href with your actual CV URL */}
             <a
-              href="https://example.com/cv.pdf"
+              href="https://drive.google.com/file/d/1i0gVROIP1GOhoplsAStcP933FwFYMiQe/view?usp=sharing"
               target="_blank"
               rel="noopener noreferrer"
               download
