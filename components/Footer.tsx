@@ -26,7 +26,7 @@ const Footer: React.FC = () => {
         
         <motion.a 
           href="mailto:leonardo@leonardosa.pro"
-          className="text-4xl md:text-6xl font-bold text-white relative inline-block group"
+          className="text-2xl sm:text-4xl md:text-6xl font-bold text-white relative inline-block group break-all"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
           transition={{ type: "spring", damping: 15 }}
