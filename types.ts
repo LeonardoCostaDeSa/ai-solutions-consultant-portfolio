@@ -10,7 +10,7 @@ export interface ProcessStep {
 export interface Solution {
   id: string;
   title: string;
-  category: 'engineering' | 'strategy';
+  category: 'engineering' | 'AI Adoption';
   techTags: string[];
   impactMetric: string;
   image: string;

@@ -180,7 +180,7 @@ const Home: React.FC = () => {
             {[
               { title: 'Process Architecture', desc: 'Mapping business complexity into executable logic.', icon: Shrink, color: 'teal', hex: '#06B6D4' },
               { title: 'Agentic Systems', desc: 'Building multi-agent workflows that run autonomously.', icon: Code, color: 'indigo', hex: '#4F46E5' },
-              { title: 'Human-Centric Design', desc: 'Tech that solves real problems, not just technical ones.', icon: BrainCircuit, color: 'coral', hex: '#F97316' },
+              { title: 'AI Adoption', desc: 'AI that leaves the slide deck and enters real workflows.', icon: BrainCircuit, color: 'coral', hex: '#F97316' },
               { title: 'Delivery at Scale', desc: 'From proof-of-concept to production.', icon: ChartNoAxesColumnIncreasing, color: 'teal', hex: '#06B6D4' }
             ].map((trait, i) => (
               <div key={i} className="relative p-6 md:p-8 bg-white/[0.02] border border-white/10 rounded-2xl md:rounded-3xl hover:border-white/20 transition-all group backdrop-blur-sm">

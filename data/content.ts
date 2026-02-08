@@ -35,11 +35,11 @@ export const processSteps: ProcessStep[] = [
 export const solutions: Solution[] = [
   {
     id: 'kbse',
-    title: 'KBSE: Legal & Tax AI',
+    title: 'KBSE: Knoweledge Base Search Engine',
     category: 'engineering',
     techTags: ['Python', 'CrewAI', 'RAG', 'Azure'],
     impactMetric: '94% Answer Accuracy',
-    image: 'https://images.unsplash.com/photo-1589254065878-42c9da997008?q=80&w=2070&auto=format&fit=crop',
+    image: 'img/CardKBSE.png',
     quote: "In regulated environments, accuracy alone is insufficient — trust emerges from traceability. Designing AI systems that can justify themselves is what turns experimentation into adoption.",
     context: "Corporate tax and legal teams operate on massive, fragmented knowledge bases: legislation, regulatory guidance, internal memos, and technical opinions spread across dozens of documents.",
     problem: "Traditional keyword search fails in this context — it lacks semantic understanding, provides no reasoning trace, and offers poor traceability. The core challenge was retrieving accurate legal-tax answers while preserving explainability and source traceability — not just 'what is the answer,' but where it comes from and why it is valid.",
@@ -58,7 +58,7 @@ export const solutions: Solution[] = [
     category: 'engineering',
     techTags: ['Python', 'Django', 'CrewAI', 'Postgres'],
     impactMetric: '80% Less Analysis Time',
-    image: 'https://images.unsplash.com/photo-1456324504439-367cee101252?q=80&w=2070&auto=format&fit=crop',
+    image: 'img/CardRevisaExpress.jpg',
     quote: "High-quality academic evaluation is not intuition — it’s structure. Once expert judgment is made explicit, it can be scaled.",
     context: "Academic consulting teams spend a disproportionate amount of time on first-level readings: understanding a client’s paper, diagnosing structural/methodological issues, and assessing quality before deep revision begins.",
     problem: "This initial diagnostic phase was time-consuming, costly, and highly dependent on senior reviewers’ availability. The problem wasn’t writing alone — it was the lack of a fast, structured, and repeatable way to apply academic judgment at scale.",
@@ -93,10 +93,10 @@ export const solutions: Solution[] = [
   {
     id: 'sdm-rt',
     title: 'Tax Reform Delivery Model',
-    category: 'strategy',
+    category: 'AI Adoption',
     techTags: ['Service Design', 'AI Personas', 'Ops'],
     impactMetric: 'Scalable AI Adoption',
-    image: 'https://images.unsplash.com/photo-1554224155-8d04cb21cd6c?q=80&w=2070&auto=format&fit=crop',
+    image: 'img/CardTaxReform.png',
     quote: "AI creates value in consulting only when it is embedded into the delivery model. Without structure, intelligence doesn’t scale.",
     context: "Brazil’s Tax Reform represents one of the most complex regulatory transformations in history, creating an exponential increase in client demand for KPMG.",
     problem: "The existing delivery approach was not designed to scale under this pressure. Teams needed to deliver complex projects with efficiency and consistency, while effectively adopting AI as an accelerator, not a parallel experiment.",
@@ -112,7 +112,7 @@ export const solutions: Solution[] = [
   {
     id: 'workshop',
     title: 'AI Opportunity Mapping',
-    category: 'strategy',
+    category: 'AI Adoption',
     techTags: ['Facilitation', 'Miro', 'Process Mapping'],
     impactMetric: '6+ Deployed Solutions',
     image: 'https://images.unsplash.com/photo-1531403009284-440f080d1e12?q=80&w=2070&auto=format&fit=crop',
@@ -131,7 +131,7 @@ export const solutions: Solution[] = [
   {
     id: 'training',
     title: 'AI Training for ALL',
-    category: 'strategy',
+    category: 'AI Adoption',
     techTags: ['Education', 'Change Mgmt', 'CARTS'],
     impactMetric: '1,600+ Professionals',
     image: 'https://images.unsplash.com/photo-1524178232363-1fb2b075b655?q=80&w=2070&auto=format&fit=crop',

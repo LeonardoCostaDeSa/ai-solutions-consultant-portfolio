@@ -37,13 +37,14 @@ const Footer: React.FC = () => {
 
         <div className="flex justify-center gap-8 mt-16">
           {[
-            { Icon: Linkedin, href: "#" },
-            { Icon: Github, href: "#" },
-            { Icon: Twitter, href: "#" }
+            { Icon: Linkedin, href: "https://www.linkedin.com/in/leonardocostadesa/" },
+            { Icon: Github, href: "https://github.com/leonardocostadesa" },
           ].map((social, idx) => (
             <motion.a
               key={idx}
               href={social.href}
+              target="_blank"
+              rel="noopener noreferrer"
               whileHover={{ scale: 1.2, rotate: 5 }}
               whileTap={{ scale: 0.9 }}
               className="p-3 bg-white/10 rounded-full text-white hover:bg-white/20 transition-colors"

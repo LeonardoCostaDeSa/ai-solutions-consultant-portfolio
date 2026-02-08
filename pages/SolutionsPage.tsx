@@ -28,7 +28,7 @@ const SolutionsPage: React.FC = () => {
         </button>
         
         <div className="flex bg-white/5 p-1 rounded-full border border-white/10 backdrop-blur-md">
-          {(['all', 'engineering', 'strategy'] as const).map((type) => (
+          {(['all', 'engineering', 'AI Adoption'] as const).map((type) => (
             <button
               key={type}
               onClick={() => setFilter(type)}
