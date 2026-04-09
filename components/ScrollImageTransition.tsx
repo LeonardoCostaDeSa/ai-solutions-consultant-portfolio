@@ -22,8 +22,8 @@ const ScrollImageTransition: React.FC = () => {
   // Scale: subtle growth as you scroll
   const scale = useTransform(smoothProgress, [0.1, 0.9], [0.85, 1.05]);
   
-  // Horizontal movement: "walks" from left to right - reduced range for better mobile containment
-  const x = useTransform(smoothProgress, [0, 1], ["-40vw", "40vw"]);
+  // Horizontal movement: "walks" from left to right - constrained for mobile
+  const x = useTransform(smoothProgress, [0, 1], ["-15vw", "15vw"]);
   
   // Subtle vertical float
   const y = useTransform(smoothProgress, [0, 1], [30, -30]);
@@ -35,7 +35,7 @@ const ScrollImageTransition: React.FC = () => {
     <div ref={containerRef} className="h-[80vh] md:h-[100vh] relative flex items-center justify-center overflow-hidden pointer-events-none -my-10 md:-my-20">
       <motion.div 
         style={{ opacity, scale, x, y, rotate }}
-        className="relative w-[70vw] max-w-sm md:max-w-md lg:max-w-lg aspect-[4/5] overflow-hidden rounded-[2rem] md:rounded-[2.5rem] border border-white/20 shadow-[0_0_100px_rgba(0,0,0,0.8)] z-20"
+        className="relative w-[60vw] max-w-sm md:max-w-md lg:max-w-lg aspect-[4/5] overflow-hidden rounded-[2rem] md:rounded-[2.5rem] border border-white/20 shadow-[0_0_100px_rgba(0,0,0,0.8)] z-20"
       >
         <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-transparent to-charcoal z-10 opacity-60" />
         
@@ -62,7 +62,7 @@ const ScrollImageTransition: React.FC = () => {
       <motion.div 
         style={{ 
           opacity: useTransform(smoothProgress, [0.3, 0.5, 0.7], [0, 0.4, 0]),
-          x: useTransform(smoothProgress, [0, 1], ["-15vw", "15vw"]) 
+          x: useTransform(smoothProgress, [0, 1], ["-5vw", "5vw"])
         }}
         className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] md:w-[600px] h-[300px] md:h-[600px] bg-indigo/10 blur-[80px] md:blur-[120px] rounded-full -z-10"
       />

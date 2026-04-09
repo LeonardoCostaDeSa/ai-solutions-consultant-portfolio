@@ -146,5 +146,45 @@ export const solutions: Solution[] = [
       "CARTS framework for professional prompting",
       "Real business cases transformed into workflows"
     ]
+  },
+  {
+    id: 'doc-analysis',
+    title: 'Document Analysis Automation',
+    category: 'engineering',
+    techTags: ['Copilot Studio', 'Power Automate', 'AI Builder', 'Python'],
+    impactMetric: '50,000 Docs in 6 Hours',
+    image: 'https://images.unsplash.com/photo-1568667256549-094345857637?q=80&w=2070&auto=format&fit=crop',
+    quote: "When the stakes are measured in billions, AI must do more than assist — it must deliver certainty at scale. Turning 50,000 legacy documents into structured evidence is where automation meets accountability.",
+    context: "A major legal dispute worth $8 billion was running in parallel between the US and Brazil. The case involved retroactive tax exemptions with significant financial impact for the end client. The analysis required searching through 50,000 scanned documents — dating back to 1958 — of various types (board minutes, commercial registry records) for terms indicating profit and dividend distributions to shareholders.",
+    problem: "The initial estimate required a team of 5 consultants working for 10 days, and even then, only a sample-based review would be feasible. The volume, variety, and age of documents made comprehensive manual analysis impractical, leaving critical evidence potentially undiscovered.",
+    solution: "Built an end-to-end automation pipeline: a Python script split documents into individual pages (dramatically improving analysis quality), which were then routed to a SharePoint processing folder. A Power Automate flow orchestrated the analysis using AI Builder and Copilot Studio. The deliverable was a spreadsheet with one row per page, including a column indicating whether the page mentioned dividends.",
+    role: "Called in after multiple failed attempts by the business team to solve this with existing AI platforms. Designed the full solution architecture: Python page-splitting script, SharePoint integration, Power Automate orchestration with AI Builder and Copilot Studio. Delivered the end-to-end pipeline that produced auditable, page-level results.",
+    insight: "Processed 50,000 documents in 6 hours with 98% accuracy (validated by the business team's sample audit). What would have taken 5 consultants 10 days — and still only covered a sample — became a complete, page-level analysis. The key was decomposing documents into pages before AI processing, which dramatically improved granularity and accuracy.",
+    highlights: [
+      "50,000 documents analyzed in 6 hours",
+      "+400 hours of manual work saved",
+      "98% accuracy validated by business team"
+    ]
+  },
+  {
+    id: 'lei-do-bem',
+    title: 'Tax Incentive Form Analysis — Lei do Bem',
+    category: 'engineering',
+    techTags: ['Copilot Studio', 'Power Automate', 'Power Apps'],
+    impactMetric: 'From Sample to Full Analysis',
+    image: 'https://images.unsplash.com/photo-1554224155-6726b3ff858f?q=80&w=2070&auto=format&fit=crop',
+    quote: "When regulatory complexity meets limited capacity, AI doesn't replace expertise — it extends its reach. Turning sample-based review into full-scope analysis is how you protect clients at scale.",
+    context: "The project supports the analysis of Lei do Bem (Brazil's R&D tax incentive law) forms linked to Research, Development, and Innovation (RD&I) initiatives. These forms are lengthy, highly detailed, and require specialized technical evaluation — covering innovative projects, R&D staffing, material procurement, and third-party service contracts.",
+    problem: "With growing form volume and the Ministry of Science and Technology adopting AI to support responses, a significant bottleneck emerged. The small, highly specialized review team could only perform sample-based analysis rather than comprehensive review, increasing the risk of financial losses from undetected inconsistencies.",
+    solution: "Designed and developed an automation solution using Copilot Studio and Power Automate to transform the review process from sample-based to full-scope analysis. The system enables faster, more consistent evaluation of every submitted form, reducing risk and expanding the team's review capacity across the entire client portfolio.",
+    role: "Acted as the solution developer, participating in both requirements analysis with the business team and the design and development of the automation. Delivered end-to-end, connecting business understanding with technical implementation.",
+    insight: "Transformed a bottleneck into a scalable process. By automating what was previously a manual, sample-based review, we enabled full-form analysis — giving consultants complete visibility into client submissions and significantly reducing the risk of financial impact from overlooked inconsistencies.",
+    highlights: [
+      "Transformed sample-based into full-form analysis",
+      "Reduced operational bottlenecks in specialized review",
+      "Expanded consultant visibility over entire client scope",
+      "Mitigated financial risks from analysis gaps",
+      "End-to-end delivery connecting business and technical layers"
+    ]
   }
 ];
