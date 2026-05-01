@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { 
   GitPullRequest, 
   Boxes, 
@@ -80,9 +80,10 @@ const NodesSVG = ({ color }: { color: string }) => (
 
 const Home: React.FC = () => {
   const navigate = useNavigate();
+  const location = useLocation();
   const aboutRef = useRef(null);
   const isAboutInView = useInView(aboutRef, { amount: 0.3, once: false });
-  
+
   const [popupState, setPopupState] = useState<'hidden' | 'visible' | 'minimized'>('hidden');
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [hasTriggeredOnce, setHasTriggeredOnce] = useState(false);
@@ -97,6 +98,16 @@ const Home: React.FC = () => {
     }
     return () => clearTimeout(timer);
   }, [isAboutInView, hasTriggeredOnce]);
+
+  // Handle "About" clicks from other pages
+  useEffect(() => {
+    if ((location.state as any)?.scrollTo === 'about') {
+      const t = setTimeout(() => {
+        document.getElementById('about')?.scrollIntoView({ behavior: 'smooth' });
+      }, 200);
+      return () => clearTimeout(t);
+    }
+  }, [location]);
 
   const portals = [
     {
@@ -122,7 +133,7 @@ const Home: React.FC = () => {
   ];
 
   return (
-    <div className="bg-charcoal min-h-screen relative">
+    <div className="bg-charcoal min-h-screen relative overflow-x-clip">
       <Navbar />
       <Hero />
       
@@ -131,68 +142,132 @@ const Home: React.FC = () => {
       </div>
 
       <ScrollImageTransition />
-      
-      <section 
-        id="about" 
-        ref={aboutRef}
-        className="py-16 md:py-32 px-6 max-w-7xl mx-auto relative"
-      >
-        <div className="grid md:grid-cols-12 gap-10 md:gap-16 items-start">
-          <motion.div 
-            initial={{ opacity: 0, x: -30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8 }}
+
+      {/* Career Highlights */}
+      <section className="py-16 md:py-24 px-6 border-b border-white/5">
+        <div className="max-w-7xl mx-auto">
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
-            className="md:col-span-5"
+            className="flex items-center gap-4 mb-10 md:mb-14"
           >
-            <span className="text-indigo font-black uppercase tracking-[0.4em] text-xs mb-4 md:mb-6 block">Leonardo de Sá</span>
-            <h2 className="text-4xl md:text-7xl font-black mb-6 md:mb-8 leading-tight tracking-tighter text-white">Who am I?</h2>
-            <div className="w-16 md:w-20 h-1 bg-indigo mb-8 md:mb-10" />
-            
-            <div className="space-y-6 md:space-y-8 text-white/60 text-base md:text-lg font-medium leading-relaxed">
-              <div className="space-y-4 md:space-y-6">
-                <p>
-                  I'm the person teams call when a process is too slow, too manual, or too fragile to scale. 
-                </p>
-                <p>
-                  I design agentic workflows, multi-agent systems, chatbots, automation pipelines, that routinely cut execution time by 30–80%. At KPMG Brazil, I build these solutions for tax transformation and train cross-functional teams to own them. 
-                </p>
-              </div>
-              
-              <motion.button 
-                whileHover={{ x: 5 }}
-                onClick={() => document.getElementById('navigation')?.scrollIntoView({ behavior: 'smooth' })}
-                className="group flex items-center gap-3 text-white font-black uppercase tracking-widest text-[10px] md:text-xs py-4 px-0 hover:text-indigo transition-colors"
-              >
-                <span>More about me</span>
-                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-              </motion.button>
-            </div>
+            <span className="text-white/20 font-black uppercase tracking-[0.4em] text-[10px]">Impact Metrics</span>
+            <div className="flex-1 h-[1px] bg-white/5" />
+            <a
+              href="https://www.linkedin.com/in/leonardocostadesa/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="flex items-center gap-2 px-5 py-2 bg-indigo hover:bg-indigo/90 text-white rounded-full font-black text-[11px] uppercase tracking-widest transition-all shadow-md shadow-indigo/30 active:scale-95"
+            >
+              <span>Hire Me</span>
+              <ArrowRight size={13} />
+            </a>
           </motion.div>
 
-          <motion.div 
-            initial={{ opacity: 0, x: 30 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
+          <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
+            {[
+              { value: '1,600+', label: 'Professionals trained', sub: 'on responsible AI adoption', color: 'indigo' },
+              { value: '50,000', label: 'Docs analyzed', sub: 'in 6 hours — from sample to full', color: 'teal' },
+              { value: '30–80%', label: 'Efficiency gains', sub: 'across AI workflow automation', color: 'coral' },
+              { value: '94%', label: 'Validated accuracy', sub: 'on regulated AI systems', color: 'indigo' },
+            ].map((stat, i) => (
+              <motion.div
+                key={i}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: i * 0.08 }}
+                className="p-6 md:p-8 border border-white/5 rounded-2xl md:rounded-3xl bg-white/[0.02] hover:bg-white/[0.04] transition-colors group"
+              >
+                <div className={`text-3xl md:text-5xl font-black mb-2 text-${stat.color} group-hover:scale-105 transition-transform inline-block`}>{stat.value}</div>
+                <div className="text-white font-bold text-sm mb-1">{stat.label}</div>
+                <div className="text-white/30 text-xs leading-relaxed">{stat.sub}</div>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section
+        id="about"
+        ref={aboutRef}
+        className="relative bg-offwhite"
+      >
+        {/* Top edge: hard cut from dark to light */}
+        <div className="w-full h-1 bg-gradient-to-r from-indigo via-teal to-coral" />
+
+        <div className="py-20 md:py-32 px-6 max-w-5xl mx-auto">
+          {/* Header */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7 }}
             viewport={{ once: true }}
-            className="md:col-span-7 grid grid-cols-1 sm:grid-cols-2 gap-4 md:gap-6"
+            className="mb-10 md:mb-14"
+          >
+            <div className="flex items-center gap-4 mb-6 md:mb-8">
+              <div className="w-14 h-14 md:w-16 md:h-16 rounded-full overflow-hidden border-2 border-indigo shadow-lg shadow-indigo/20 flex-shrink-0">
+                <img
+                  src="/img/foto%20de%20perfil.webp"
+                  alt="Leonardo de Sá"
+                  className="w-full h-full object-cover"
+                />
+              </div>
+              <span className="text-indigo font-black uppercase tracking-[0.4em] text-xs">Leonardo Sá</span>
+            </div>
+            <h2 className="text-4xl md:text-7xl font-black mb-4 md:mb-6 leading-tight tracking-tighter text-charcoal">
+              What I do.
+            </h2>
+            <div className="w-16 md:w-20 h-1 bg-indigo" />
+          </motion.div>
+
+          {/* Pitch + CTA */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.1 }}
+            viewport={{ once: true }}
+            className="max-w-3xl mb-12 md:mb-16"
+          >
+            <p className="text-charcoal/70 text-lg md:text-2xl font-medium leading-relaxed mb-8">
+              I design and ship production GenAI systems in regulated environments — <span className="text-charcoal font-bold">RAG pipelines</span>, multi-agent orchestration with <span className="text-charcoal font-bold">CrewAI</span>, and enterprise integrations across Azure, Power Platform, and Copilot Studio. At KPMG Brazil's Tax Transformation team, my work cuts execution time by <span className="text-charcoal font-bold">30–80%</span> across tax and compliance workflows.
+            </p>
+            <button
+              onClick={() => navigate('/about')}
+              className="group inline-flex items-center gap-3 text-charcoal font-black uppercase tracking-widest text-[10px] md:text-xs py-3 hover:text-indigo transition-colors"
+            >
+              <span>Read my full story</span>
+              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
+            </button>
+          </motion.div>
+
+          {/* 4 trait cards — horizontal row */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, delay: 0.2 }}
+            viewport={{ once: true }}
+            className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5"
           >
             {[
-              { title: 'Process Architecture', desc: 'Mapping business complexity into executable logic.', icon: Shrink, color: 'teal', hex: '#06B6D4' },
-              { title: 'Agentic Systems', desc: 'Building multi-agent workflows that run autonomously.', icon: Code, color: 'indigo', hex: '#4F46E5' },
-              { title: 'AI Adoption', desc: 'AI that leaves the slide deck and enters real workflows.', icon: BrainCircuit, color: 'coral', hex: '#F97316' },
-              { title: 'Delivery at Scale', desc: 'From proof-of-concept to production.', icon: ChartNoAxesColumnIncreasing, color: 'teal', hex: '#06B6D4' }
+              { title: 'Process Architecture', desc: 'Mapping messy workflows into reliable system logic.', icon: Shrink, color: 'teal', hex: '#06B6D4' },
+              { title: 'Multi-Agent Systems', desc: 'CrewAI orchestration with retrieval, validation, citations.', icon: Code, color: 'indigo', hex: '#4F46E5' },
+              { title: 'AI Adoption', desc: 'Training teams to ship AI in their real work — not slide decks.', icon: BrainCircuit, color: 'coral', hex: '#F97316' },
+              { title: 'Production Delivery', desc: 'POC to production with traceability and governance.', icon: ChartNoAxesColumnIncreasing, color: 'teal', hex: '#06B6D4' }
             ].map((trait, i) => (
-              <div key={i} className="relative p-6 md:p-8 bg-white/[0.02] border border-white/10 rounded-2xl md:rounded-3xl hover:border-white/20 transition-all group backdrop-blur-sm">
+              <div key={i} className="relative p-5 md:p-6 bg-charcoal border border-charcoal/80 rounded-2xl hover:border-white/20 transition-all group overflow-hidden">
                 <BorderBeam color={trait.hex} duration={5} />
-                <trait.icon className={`text-${trait.color} mb-4 md:mb-6 group-hover:scale-110 transition-transform`} size={28} />
-                <h4 className="text-lg md:text-xl font-bold mb-2 md:mb-3 text-white">{trait.title}</h4>
-                <p className="text-white/40 text-xs md:text-sm leading-relaxed">{trait.desc}</p>
+                <trait.icon className={`text-${trait.color} mb-3 md:mb-4 group-hover:scale-110 transition-transform`} size={24} />
+                <h4 className="text-sm md:text-base font-bold mb-1 md:mb-2 text-white leading-snug">{trait.title}</h4>
+                <p className="text-white/40 text-xs leading-relaxed">{trait.desc}</p>
               </div>
             ))}
           </motion.div>
         </div>
 
+        {/* Bottom edge: hard cut back to dark */}
+        <div className="w-full h-1 bg-gradient-to-r from-coral via-teal to-indigo" />
       </section>
 
       <TechCarousel />
@@ -217,30 +292,30 @@ const Home: React.FC = () => {
               onClick={() => navigate(portal.path)}
               whileHover={{ y: -10, scale: 1.01 }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
-              className={`group relative cursor-pointer overflow-hidden rounded-[2rem] md:rounded-[2.5rem] bg-white/[0.03] border border-white/10 aspect-video md:aspect-[1.3/1] p-6 md:p-12 flex flex-col justify-end transition-colors hover:border-${portal.twColor}/40 backdrop-blur-sm`}
+              className={`group relative cursor-pointer overflow-hidden rounded-[1.75rem] md:rounded-[2.5rem] bg-white/[0.03] border border-white/10 aspect-[4/3] md:aspect-[1.3/1] p-5 md:p-12 flex flex-col justify-end transition-colors hover:border-${portal.twColor}/40 backdrop-blur-sm`}
             >
               <BorderBeam color={portal.color} duration={6} />
               <portal.Background color={portal.color} />
 
               <div className={`absolute inset-0 bg-gradient-to-tr from-${portal.twColor}/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700`} />
 
-              <div className="relative z-10 w-full">
-                <div className="flex items-center gap-4 md:gap-6 mb-4 md:mb-6">
-                  <motion.div 
+              <div className="relative z-10 w-full min-w-0">
+                <div className="flex items-center gap-3 md:gap-6 mb-3 md:mb-6 min-w-0">
+                  <motion.div
                     whileHover={{ scale: 1.1, rotate: 5 }}
-                    className={`w-12 h-12 md:w-16 md:h-16 rounded-xl md:rounded-2xl bg-${portal.twColor}/10 flex items-center justify-center border border-${portal.twColor}/20 backdrop-blur-xl group-hover:bg-${portal.twColor}/20 group-hover:shadow-2xl group-hover:shadow-${portal.twColor}/20 transition-all flex-shrink-0`}
+                    className={`w-10 h-10 md:w-16 md:h-16 rounded-lg md:rounded-2xl bg-${portal.twColor}/10 flex items-center justify-center border border-${portal.twColor}/20 backdrop-blur-xl group-hover:bg-${portal.twColor}/20 group-hover:shadow-2xl group-hover:shadow-${portal.twColor}/20 transition-all flex-shrink-0`}
                   >
-                    <portal.icon className={`text-${portal.twColor}`} size={24} />
+                    <portal.icon className={`text-${portal.twColor}`} size={20} />
                   </motion.div>
-                  <h3 className="text-2xl md:text-5xl font-black tracking-tight leading-tight text-white">{portal.title}</h3>
+                  <h3 className="text-xl md:text-5xl font-black tracking-tight leading-tight text-white truncate">{portal.title}</h3>
                 </div>
-                
-                <p className="text-white/50 text-sm md:text-lg mb-6 md:mb-10 max-w-sm font-medium leading-relaxed">{portal.sub}</p>
-                
-                <div className="flex items-center gap-3 md:gap-4 font-black uppercase tracking-widest text-[8px] md:text-xs group-hover:gap-6 transition-all text-white">
-                  <span>Infiltrate Route</span>
+
+                <p className="text-white/50 text-xs md:text-lg mb-5 md:mb-10 max-w-sm font-medium leading-relaxed">{portal.sub}</p>
+
+                <div className="flex items-center gap-3 md:gap-4 font-black uppercase tracking-widest text-[9px] md:text-xs group-hover:gap-6 transition-all text-white">
+                  <span>Open</span>
                   <div className={`w-6 md:w-10 h-[1px] bg-${portal.twColor}`} />
-                  <ArrowRight size={18} className={`text-${portal.twColor}`} />
+                  <ArrowRight size={16} className={`text-${portal.twColor}`} />
                 </div>
               </div>
             </motion.div>

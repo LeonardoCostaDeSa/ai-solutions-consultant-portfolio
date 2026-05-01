@@ -39,20 +39,20 @@ const ScrollImageTransition: React.FC = () => {
       >
         <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-transparent to-charcoal z-10 opacity-60" />
         
-        <img 
-          src="/img/foto_principal.jpg" 
-          alt="Architect of Systems" 
+        <img
+          src="/img/foto%20de%20perfil.webp"
+          alt="Leonardo de Sá"
           className="w-full h-full object-cover grayscale brightness-90 hover:grayscale-0 transition-all duration-700"
         />
-        
+
         {/* Floating label overlay inside the card */}
-        <motion.div 
+        <motion.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           transition={{ delay: 0.5 }}
           className="absolute bottom-6 left-6 md:bottom-10 md:left-10 z-20"
         >
-          <span className="text-teal font-black uppercase tracking-[0.5em] text-[7px] md:text-[14px] mb-2 block">AI Solutions Consultant</span>
+          <span className="text-teal font-black uppercase tracking-[0.5em] text-[7px] md:text-[14px] mb-2 block">AI Engineer</span>
           <div className="h-[1px] w-8 md:w-12 bg-teal mb-3 md:mb-4" />
           <p className="text-white/40 text-[8px] md:text-[16px] font-bold uppercase tracking-widest">Leonardo Sá</p>
         </motion.div>

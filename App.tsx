@@ -5,6 +5,7 @@ import { AnimatePresence } from 'framer-motion';
 import Home from './pages/Home';
 import ProcessPage from './pages/ProcessPage';
 import SolutionsPage from './pages/SolutionsPage';
+import AboutPage from './pages/AboutPage';
 import Footer from './components/Footer';
 
 // Scroll to top on route change
@@ -23,6 +24,7 @@ const AnimatedRoutes = () => {
     <AnimatePresence mode="wait">
       <Routes location={location} key={location.pathname}>
         <Route path="/" element={<Home />} />
+        <Route path="/about" element={<AboutPage />} />
         <Route path="/process" element={<ProcessPage />} />
         <Route path="/solutions" element={<SolutionsPage />} />
       </Routes>
@@ -34,8 +36,8 @@ const App: React.FC = () => {
   return (
     <HashRouter>
       <ScrollToTop />
-      <div className="font-sans antialiased text-offwhite selection:bg-indigo selection:text-white">
-        <main className="min-h-screen">
+      <div className="font-sans antialiased text-offwhite selection:bg-indigo selection:text-white overflow-x-clip">
+        <main className="min-h-screen overflow-x-clip">
           <AnimatedRoutes />
         </main>
         <Footer />

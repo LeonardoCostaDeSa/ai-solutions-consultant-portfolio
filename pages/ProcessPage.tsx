@@ -16,34 +16,58 @@ import {
 } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import BorderBeam from '../components/BorderBeam';
+import Navbar from '../components/Navbar';
 
 // --- DATA ---
 const experience = [
   {
     company: "KPMG Brazil",
-    role: "AI Solutions Consultant",
+    role: "AI Engineer",
     period: "May 2025 – Present",
-    desc: "I develop and implement AI and automation solutions for tax transformation, working with Power Platform, Copilot Studio, and custom Python development (CrewAI, multi-agent systems). Key deliverables include agentic workflows for Brazilian Tax Reform, AI chatbots, and automation pipelines that drive 30–80% efficiency gains. I also design and deliver training sessions on AI adoption for cross-functional teams across 5+ areas."
+    tag: "Current",
+    accentColor: "indigo",
+    accentHex: "#4F46E5",
+    desc: "Designing production-oriented GenAI workflows in a highly regulated tax/compliance environment — with focus on RAG, multi-agent orchestration, traceability, auditability, and secure AI adoption.",
+    highlights: [
+      "Built a legal/tax semantic search engine with 94% validated accuracy using agentic orchestration",
+      "Delivered 30–80% execution-time reductions across AI and automation initiatives",
+      "Trained 1,600+ professionals on responsible AI adoption across KPMG's Tax practice"
+    ]
+  },
+  {
+    company: "Revisa Master",
+    role: "Software Engineer (AI-Focused)",
+    period: "Feb 2024 – Present",
+    tag: "Side Project",
+    accentColor: "coral",
+    accentHex: "#F97316",
+    desc: "Designing and implementing GenAI systems for academic consulting workflows — focused on reliability, explainability, structured evaluation, and controlled data exposure.",
+    highlights: [
+      "Built a multi-agent academic analysis system using Python, Django, CrewAI, and PostgreSQL/pgvector",
+      "Reduced first-pass academic document analysis from ~6 hours to ~15 minutes",
+      "Automated PDF diagnostic report generation across 5 evaluation pillars with citation grounding"
+    ]
   },
   {
     company: "Caju GameLabs",
     role: "Software Engineer",
     period: "Jul 2024 – Apr 2025",
-    desc: "Led a team of three developers building 2D games in Unity/C#. Managed task assignments, delivery schedules, and applied OOP principles for modular architecture. Improved sprint velocity by ~25% through agile implementation (Scrum/Trello)."
-  },
-  {
-    company: "Legislative Assembly of São Paulo",
-    role: "Communication Strategist",
-    period: "Mar 2023 – Jul 2024",
-    desc: "Managed public image and content strategy for Congressman Ricardo França. Produced scripts, social media content, and strategic materials, resulting in 27,000+ new followers in just over a year. Handled crisis management and performance analytics."
+    tag: null,
+    accentColor: "teal",
+    accentHex: "#06B6D4",
+    desc: "Led a team of three developers building 2D games in Unity/C#. Applied OOP principles for modular architecture.",
+    highlights: [
+      "Managed task assignments and delivery schedules for a 3-person dev team",
+      "Improved sprint velocity by ~25% through Scrum/Trello implementation"
+    ]
   }
 ];
 
 const education = [
   {
-    school: "FATEC Praia Grande",
+    school: "Faculty of Technology of Praia Grande",
     degree: "Systems Analysis & Development",
-    period: "2023 – 2026 (in progress)",
+    period: "2023 – 2026",
     desc: "Programming logic, data structures, databases, operating systems, and web development."
   },
   {
@@ -56,10 +80,10 @@ const education = [
 
 const skills = [
   { category: "AI & Automation", items: ["Multi-Agent Systems", "RPA", "Digital Transformation"], color: "indigo" },
-  { category: "Cloud & Platforms", items: ["Azure", "Power Automate", "Copilot Studio", "Excel / VBA"], color: "teal" },
-  { category: "Programming", items: ["Python (Django/Flask)", "JavaScript (Node)", "HTML/CSS"], color: "coral" },
+  { category: "Cloud & Platforms", items: ["Azure", "Power Automate", "Copilot Studio"], color: "teal" },
+  { category: "Programming", items: ["Python (Django/FastAPI)", "JavaScript (React, Next, Node)"], color: "coral" },
   { category: "Data Engineering", items: ["SQL / MySQL", "Data Modeling", "Pandas / NumPy", "Visualization"], color: "indigo" },
-  { category: "DevOps", items: ["Git / GitHub", "Linux / Ubuntu", "API REST", "Vercel"], color: "teal" },
+  { category: "DevOps", items: ["Git / GitHub", "Docker", "Linux / Ubuntu", "API REST"], color: "teal" },
   { category: "Soft Skills", items: ["Communication", "Critical Thinking", "Problem Solving", "Leadership"], color: "coral" }
 ];
 
@@ -157,33 +181,16 @@ const ProcessPage: React.FC = () => {
   };
 
   return (
-    <div className="bg-charcoal min-h-screen text-offwhite selection:bg-indigo selection:text-white pb-32">
+    <div className="bg-charcoal min-h-screen text-offwhite selection:bg-indigo selection:text-white pb-32 overflow-x-clip">
       {/* Background Elements */}
       <div className="fixed inset-0 pointer-events-none opacity-[0.03]">
         <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
       </div>
 
-      {/* Navigation Bar (Top) */}
-      <nav className="sticky top-0 z-50 p-6 flex justify-between items-center backdrop-blur-xl bg-charcoal/80 border-b border-white/5">
-        <div className="flex items-center gap-8">
-          <div className="font-black text-lg tracking-tighter">LEONARDO<span className="text-indigo">.SA</span></div>
-          <div className="hidden md:flex gap-6">
-            <button onClick={() => navigate('/')} className="text-xs font-bold text-white/60 hover:text-white uppercase tracking-widest transition-colors">Who am I?</button>
-            <button onClick={() => navigate('/solutions')} className="text-xs font-bold text-white/60 hover:text-white uppercase tracking-widest transition-colors">Projects</button>
-            <button className="text-xs font-bold text-white bg-white/10 px-3 py-1 rounded-full uppercase tracking-widest border border-white/10">Resume</button>
-          </div>
-        </div>
-        <button 
-          onClick={() => navigate('/')}
-          className="group flex items-center gap-2 font-bold text-sm text-white/60 hover:text-white transition-colors"
-        >
-          <ArrowLeft size={16} className="group-hover:-translate-x-1 transition-transform" />
-          <span className="hidden sm:inline">Back Home</span>
-        </button>
-      </nav>
+      <Navbar />
 
       {/* Left Sidebar Navigation (Desktop Only) */}
-      <div className="fixed left-8 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col gap-6">
+      <div className="fixed left-8 top-1/2 -translate-y-1/2 z-40 hidden xl:flex flex-col gap-6 mix-blend-difference">
         {navItems.map((item) => {
           const isActive = activeSection === item.id;
           return (
@@ -243,62 +250,101 @@ const ProcessPage: React.FC = () => {
         {/* SECTION 2: EXPERIENCE */}
         <section id="experience" className="mb-24 scroll-mt-32">
           <SectionLabel icon={Briefcase} label="Trajectory // Experience" color="indigo" />
-          
-          <div className="relative border-l border-white/10 ml-3 md:ml-6 space-y-16 pl-8 md:pl-12">
-            {experience.map((job, idx) => (
-              <motion.div 
-                key={idx}
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: idx * 0.1 }}
-                className="relative"
-              >
-                {/* Timeline Dot */}
-                <div className="absolute -left-[41px] md:-left-[59px] top-2 w-5 h-5 rounded-full bg-charcoal border-2 border-indigo shadow-[0_0_10px_rgba(79,70,229,0.4)]" />
-                
-                <h3 className="text-2xl font-black text-white mb-1">{job.role}</h3>
-                <div className="flex flex-wrap gap-2 md:gap-4 items-center text-sm font-bold text-white/40 mb-4 uppercase tracking-wider">
-                  <span className="text-indigo">{job.company}</span>
-                  <span className="w-1 h-1 bg-white/20 rounded-full" />
-                  <span>{job.period}</span>
-                </div>
-                <p className="text-white/60 leading-relaxed max-w-3xl border-l-2 border-white/5 pl-4">
-                  {job.desc}
-                </p>
-              </motion.div>
-            ))}
-          </div>
-        </section>
 
-        {/* SECTION 3: EDUCATION */}
-        <section id="education" className="mb-24 scroll-mt-32">
-          <SectionLabel icon={GraduationCap} label="Foundation // Education" color="teal" />
-          
-          <div className="grid md:grid-cols-2 gap-6">
-            {education.map((edu, idx) => (
+          <div className="space-y-6">
+            {experience.map((job, idx) => (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="group p-8 bg-white/[0.02] border border-white/10 hover:border-teal/30 rounded-3xl transition-all"
+                transition={{ delay: idx * 0.1 }}
+                className={`relative p-8 bg-white/[0.02] rounded-3xl border-l-4 border border-white/5 hover:bg-white/[0.04] transition-all`}
+                style={{ borderLeftColor: job.accentHex }}
               >
-                <h3 className="text-xl font-black text-white mb-2 group-hover:text-teal transition-colors">{edu.school}</h3>
-                <p className="text-white/60 font-bold text-sm mb-4">{edu.degree}</p>
-                <div className="text-xs font-black uppercase tracking-widest text-teal/80 mb-6 bg-teal/10 inline-block px-3 py-1 rounded-lg">
-                  {edu.period}
+                {/* Header row */}
+                <div className="flex flex-wrap items-start justify-between gap-4 mb-4">
+                  <div>
+                    <div className="flex items-center gap-3 mb-1 flex-wrap">
+                      <h3 className="text-2xl font-black text-white">{job.role}</h3>
+                      {job.tag && (
+                        <span
+                          className="px-3 py-0.5 rounded-full text-[9px] font-black uppercase tracking-widest border"
+                          style={{
+                            color: job.accentHex,
+                            backgroundColor: `${job.accentHex}1A`,
+                            borderColor: `${job.accentHex}40`,
+                          }}
+                        >
+                          {job.tag}
+                        </span>
+                      )}
+                    </div>
+                    <div className="flex items-center gap-3 text-sm font-bold uppercase tracking-wider flex-wrap">
+                      <span style={{ color: job.accentHex }}>{job.company}</span>
+                      <span className="w-1 h-1 bg-white/20 rounded-full" />
+                      <span className="text-white/40">{job.period}</span>
+                    </div>
+                  </div>
                 </div>
-                <p className="text-sm text-white/40 leading-relaxed">
-                  {edu.desc}
+
+                <p className="text-white/50 leading-relaxed mb-5 max-w-3xl text-sm">
+                  {job.desc}
                 </p>
+
+                {/* Highlights */}
+                <div className="space-y-2">
+                  {job.highlights.map((h, i) => (
+                    <div key={i} className="flex items-start gap-3">
+                      <span className="mt-1.5 w-1.5 h-1.5 rounded-full flex-shrink-0" style={{ backgroundColor: job.accentHex }} />
+                      <span className="text-sm text-white/70 font-medium leading-relaxed">{h}</span>
+                    </div>
+                  ))}
+                </div>
               </motion.div>
             ))}
           </div>
         </section>
 
+        {/* SECTION 3: EDUCATION — LIGHT */}
+        <section id="education" className="relative isolate scroll-mt-32 py-20 md:py-28 mb-0">
+          {/* Full-width light background */}
+          <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-screen bg-offwhite -z-10" />
+
+          <SectionLabel icon={GraduationCap} label="Foundation // Education" color="teal" />
+
+          <div className="grid md:grid-cols-2 gap-6">
+            {education.map((edu, idx) => {
+              const accent = idx === 0 ? { hex: '#06B6D4', name: 'teal' } : { hex: '#4F46E5', name: 'indigo' };
+              return (
+              <motion.div
+                key={idx}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                className="group relative p-8 rounded-3xl border border-white/5 hover:border-white/15 transition-all overflow-hidden bg-[#1a1a1a]"
+              >
+                {/* Subtle accent line on the left edge */}
+                <div className="absolute left-0 top-8 bottom-8 w-[3px] rounded-r" style={{ backgroundColor: accent.hex }} />
+
+                <h3 className={`text-xl font-black text-white mb-2 group-hover:text-${accent.name} transition-colors`}>{edu.school}</h3>
+                <p className="text-white/60 font-bold text-sm mb-4">{edu.degree}</p>
+                <div
+                  className="text-xs font-black uppercase tracking-widest mb-6 inline-block px-3 py-1 rounded-lg"
+                  style={{ color: accent.hex, backgroundColor: `${accent.hex}1A` }}
+                >
+                  {edu.period}
+                </div>
+                <p className="text-sm text-white/50 leading-relaxed">
+                  {edu.desc}
+                </p>
+              </motion.div>
+            )})}
+          </div>
+        </section>
+
         {/* SECTION 4: INTERNATIONAL */}
-        <section id="global" className="mb-24 scroll-mt-32">
+        <section id="global" className="pt-20 md:pt-28 mb-24 scroll-mt-32">
           <SectionLabel icon={Globe} label="Global // Exchange" color="white" />
           
           <motion.div 
@@ -343,37 +389,44 @@ const ProcessPage: React.FC = () => {
           </motion.div>
         </section>
 
-        {/* SECTION 5: SKILLS */}
-        <section id="skills" className="mb-24 scroll-mt-32">
+        {/* SECTION 5: SKILLS — LIGHT */}
+        <section id="skills" className="relative isolate scroll-mt-32 py-20 md:py-28 mb-0">
+          <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-screen bg-offwhite -z-10" />
+
           <SectionLabel icon={Cpu} label="Arsenal // Skills" color="coral" />
-          
+
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {skills.map((skillGroup, idx) => (
+            {skills.map((skillGroup, idx) => {
+              const hex = skillGroup.color === 'indigo' ? '#4F46E5' : skillGroup.color === 'teal' ? '#06B6D4' : '#F97316';
+              return (
               <motion.div
                 key={idx}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: idx * 0.05 }}
-                className="p-6 bg-white/[0.02] border border-white/5 rounded-2xl hover:bg-white/[0.04] transition-colors"
+                className="relative p-6 rounded-2xl border border-white/5 hover:border-white/15 transition-colors overflow-hidden bg-[#1a1a1a]"
               >
-                <h4 className={`text-${skillGroup.color} font-black uppercase tracking-widest text-xs mb-4 pb-4 border-b border-white/5`}>
+                {/* Subtle accent line at the top */}
+                <div className="absolute top-0 left-6 right-6 h-[2px] rounded-b" style={{ backgroundColor: hex }} />
+
+                <h4 className={`text-${skillGroup.color} font-black uppercase tracking-widest text-xs mb-4 pb-4 border-b border-white/10`}>
                   {skillGroup.category}
                 </h4>
                 <div className="flex flex-wrap gap-2">
                   {skillGroup.items.map((item, i) => (
-                    <span key={i} className="px-3 py-1.5 bg-white/5 text-white/70 text-xs font-bold rounded-lg border border-white/5 hover:border-white/20 hover:text-white transition-all">
+                    <span key={i} className="px-3 py-1.5 bg-white/5 text-white/80 text-xs font-bold rounded-lg border border-white/10 hover:border-white/30 hover:text-white transition-all">
                       {item}
                     </span>
                   ))}
                 </div>
               </motion.div>
-            ))}
+            )})}
           </div>
         </section>
 
         {/* SECTION 6 & 7: CERTS & LANGUAGES */}
-        <div id="credentials" className="grid md:grid-cols-12 gap-10 mb-24 scroll-mt-32">
+        <div id="credentials" className="grid md:grid-cols-12 gap-10 pt-20 md:pt-28 mb-24 scroll-mt-32">
           <section className="md:col-span-8">
             <SectionLabel icon={CheckCircle2} label="Credentials // Certifications" color="indigo" />
             <div className="bg-white/[0.02] border border-white/10 rounded-3xl overflow-hidden">
@@ -398,7 +451,8 @@ const ProcessPage: React.FC = () => {
               {[
                 { lang: "Portuguese", level: "Native", code: "PT" },
                 { lang: "English", level: "Fluent", code: "EN" },
-                { lang: "French", level: "Fluent", code: "FR" }
+                { lang: "French", level: "Fluent", code: "FR" },
+                { lang: "Spanish", level: "Intermediate", code: "ES" }
               ].map((l, idx) => (
                 <div key={idx} className="flex items-center justify-between p-4 bg-white/[0.02] border border-white/10 rounded-2xl">
                   <div className="flex items-center gap-3">
