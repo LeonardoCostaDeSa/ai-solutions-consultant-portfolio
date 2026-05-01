@@ -48,7 +48,7 @@ const Hero: React.FC = () => {
   };
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6 pt-28 md:pt-36 pb-12">
+    <section className="relative min-h-screen flex flex-col items-center justify-center overflow-hidden px-6 py-20 md:py-24">
       {/* Background Stack */}
       <div className="absolute inset-0 -z-10 bg-charcoal overflow-hidden">
         {/* Base Layer: Ambient Blobs (Lower Opacity to not drown out pulses) */}
