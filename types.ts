@@ -13,6 +13,7 @@ export interface Solution {
   category: 'engineering' | 'AI Adoption';
   techTags: string[];
   impactMetric: string;
+  painPoint: string;
   image: string;
   quote: string;
   context: string;

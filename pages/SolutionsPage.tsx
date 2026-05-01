@@ -1,58 +1,37 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowLeft, X, Target, Zap, ChevronRight, Activity, Layers, Brain, Lightbulb, Users } from 'lucide-react';
+import { ArrowRight, X, Target, Zap, ChevronRight, Activity, Layers, Brain, Lightbulb, Users } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 import { solutions } from '../data/content';
 import { Solution } from '../types';
 import BorderBeam from '../components/BorderBeam';
+import Navbar from '../components/Navbar';
 
 const SolutionsPage: React.FC = () => {
   const navigate = useNavigate();
-  const [filter, setFilter] = useState<'all' | 'engineering' | 'strategy'>('all');
+  const [filter, setFilter] = useState<'all' | 'engineering' | 'AI Adoption'>('all');
   const [selectedSolution, setSelectedSolution] = useState<Solution | null>(null);
 
-  const filteredSolutions = filter === 'all' 
-    ? solutions 
+  const filteredSolutions = filter === 'all'
+    ? solutions
     : solutions.filter(s => s.category === filter);
 
-  return (
-    <div className="bg-charcoal min-h-screen text-offwhite pb-40">
-      <nav className="sticky top-0 z-50 p-6 flex justify-between items-center backdrop-blur-xl bg-charcoal/80 border-b border-white/5">
-        <button 
-          onClick={() => navigate('/')}
-          className="group flex items-center gap-3 font-black text-sm uppercase tracking-widest hover:text-coral transition-colors"
-        >
-          <ArrowLeft size={18} className="group-hover:-translate-x-1 transition-transform text-coral" />
-          <span>Hub</span>
-        </button>
-        
-        <div className="flex bg-white/5 p-1 rounded-full border border-white/10 backdrop-blur-md">
-          {(['all', 'engineering', 'AI Adoption'] as const).map((type) => (
-            <button
-              key={type}
-              onClick={() => setFilter(type)}
-              className={`px-5 py-2 rounded-full text-[10px] font-black uppercase tracking-[0.2em] transition-all relative ${
-                filter === type ? 'text-white' : 'text-white/40 hover:text-white'
-              }`}
-            >
-              {filter === type && (
-                <motion.div 
-                  layoutId="activeFilter" 
-                  className="absolute inset-0 bg-coral rounded-full -z-10 shadow-lg shadow-coral/30"
-                />
-              )}
-              {type}
-            </button>
-          ))}
-        </div>
-      </nav>
+  const counts = {
+    all: solutions.length,
+    engineering: solutions.filter(s => s.category === 'engineering').length,
+    'AI Adoption': solutions.filter(s => s.category === 'AI Adoption').length,
+  };
 
-      <div className="max-w-7xl mx-auto px-6 pt-24">
-        <motion.div 
+  return (
+    <div className="bg-charcoal min-h-screen text-offwhite overflow-x-clip">
+      <Navbar />
+
+      <div className="max-w-7xl mx-auto px-6 pt-32 pb-20">
+        <motion.div
           initial={{ opacity: 0, x: -20 }}
           animate={{ opacity: 1, x: 0 }}
-          className="mb-24 flex flex-col md:flex-row md:items-end justify-between gap-8"
+          className="flex flex-col md:flex-row md:items-end justify-between gap-8"
         >
           <div className="max-w-2xl">
             <span className="text-coral font-black uppercase tracking-[0.4em] text-[10px] mb-6 block">Operational Portfolio // 2024-2025</span>
@@ -68,32 +47,71 @@ const SolutionsPage: React.FC = () => {
             <span>Systems Online</span>
           </div>
         </motion.div>
+      </div>
 
-        <motion.div 
-          layout
-          className="grid sm:grid-cols-2 lg:grid-cols-3 gap-10"
-        >
-          <AnimatePresence mode="popLayout">
-            {filteredSolutions.map((sol) => (
-              <motion.div
-                key={sol.id}
-                layoutId={sol.id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                exit={{ opacity: 0, scale: 0.95 }}
-                onClick={() => setSelectedSolution(sol)}
-                whileHover={{ y: -8 }}
-                className="group relative cursor-pointer bg-white/[0.02] border border-white/5 rounded-[2rem] overflow-hidden hover:border-coral/40 transition-all duration-500"
-              >
+      {/* LIGHT SECTION — cards grid */}
+      <section className="relative bg-offwhite py-20 md:py-28 px-6">
+        <div className="w-full h-1 bg-gradient-to-r from-coral via-indigo to-teal absolute top-0 left-0" />
+
+        <div className="max-w-7xl mx-auto">
+          <div className="flex flex-col md:flex-row md:items-center gap-4 mb-10 md:mb-14">
+            <span className="text-charcoal/40 font-black uppercase tracking-[0.4em] text-[10px]">Case Studies</span>
+            <div className="hidden md:block flex-1 h-[1px] bg-charcoal/10" />
+            <div className="flex bg-charcoal/10 p-1 rounded-full border border-charcoal/15 self-start md:self-auto isolate">
+              {(['all', 'engineering', 'AI Adoption'] as const).map((type) => (
+                <button
+                  key={type}
+                  onClick={() => setFilter(type)}
+                  className={`relative isolate px-3 md:px-4 py-1.5 rounded-full text-[9px] md:text-[10px] font-black uppercase tracking-[0.18em] transition-all flex items-center gap-1 md:gap-1.5 whitespace-nowrap ${
+                    filter === type ? 'text-white' : 'text-charcoal/80 hover:text-charcoal'
+                  }`}
+                >
+                  {filter === type && (
+                    <motion.div
+                      layoutId="activeFilter"
+                      className="absolute inset-0 bg-charcoal rounded-full -z-10 shadow-md"
+                    />
+                  )}
+                  <span>{type}</span>
+                  <span className={`text-[8px] md:text-[9px] font-black tabular-nums ${filter === type ? 'text-white/60' : 'text-charcoal/50'}`}>
+                    {counts[type]}
+                  </span>
+                </button>
+              ))}
+            </div>
+          </div>
+
+          <motion.div
+            layout
+            className="grid sm:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10"
+          >
+            <AnimatePresence mode="popLayout">
+              {filteredSolutions.map((sol) => (
+                <motion.div
+                  key={sol.id}
+                  layoutId={sol.id}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  onClick={() => setSelectedSolution(sol)}
+                  whileHover={{ y: -8 }}
+                  className="group relative cursor-pointer bg-charcoal rounded-[2rem] overflow-hidden hover:shadow-2xl hover:shadow-charcoal/20 transition-all duration-500"
+                >
                 <BorderBeam color={sol.category === 'engineering' ? '#06B6D4' : '#F97316'} duration={4} />
                 
                 <div className="aspect-[16/10] relative overflow-hidden">
-                  <motion.img 
-                    src={sol.image} 
-                    alt={sol.title} 
-                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105" 
+                  <motion.img
+                    src={sol.image}
+                    alt={sol.title}
+                    className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-transparent to-transparent opacity-60" />
+                  {/* Click affordance — visible on hover */}
+                  <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                    <span className="px-5 py-2 bg-charcoal/80 backdrop-blur-md rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-white border border-white/20">
+                      Click to expand
+                    </span>
+                  </div>
                   <div className={`absolute top-6 right-6 backdrop-blur-xl px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest border border-white/10 ${
                     sol.category === 'engineering' ? 'bg-teal/10 text-teal' : 'bg-coral/10 text-coral'
                   }`}>
@@ -107,16 +125,24 @@ const SolutionsPage: React.FC = () => {
                       <span key={tag} className="text-[9px] font-black uppercase tracking-widest text-white/30 border border-white/10 px-2 py-1 rounded-lg bg-white/5">{tag}</span>
                     ))}
                   </div>
-                  <h3 className="text-3xl font-black mb-6 group-hover:text-white transition-colors leading-tight">{sol.title}</h3>
-                  <div className={`flex items-center gap-3 font-black text-[11px] uppercase tracking-widest bg-white/5 self-start px-4 py-2 rounded-full border border-white/10 ${
+                  <h3 className="text-3xl font-black mb-3 group-hover:text-white transition-colors leading-tight">{sol.title}</h3>
+                  <p className="text-white/50 text-sm leading-relaxed mb-5 italic">{sol.painPoint}</p>
+                  <div className={`flex items-center gap-3 font-black text-[11px] uppercase tracking-widest bg-white/5 self-start px-4 py-2 rounded-full border border-white/10 mb-6 ${
                      sol.category === 'engineering' ? 'text-teal' : 'text-coral'
                   }`}>
                     <Target size={14} />
                     <span>{sol.impactMetric}</span>
                   </div>
+                  {/* CTA */}
+                  <div className={`flex items-center gap-3 font-black text-[10px] uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
+                    sol.category === 'engineering' ? 'text-teal' : 'text-coral'
+                  }`}>
+                    <span>View Case Study</span>
+                    <ArrowRight size={14} />
+                  </div>
                 </div>
 
-                {/* Aesthetic accent line */}
+                {/* Accent line */}
                 <div className={`absolute bottom-0 left-0 w-full h-1.5 scale-x-0 group-hover:scale-x-100 transition-transform origin-left duration-700 ease-out ${
                    sol.category === 'engineering' ? 'bg-gradient-to-r from-teal to-indigo' : 'bg-gradient-to-r from-coral to-indigo'
                 }`} />
@@ -124,7 +150,8 @@ const SolutionsPage: React.FC = () => {
             ))}
           </AnimatePresence>
         </motion.div>
-      </div>
+        </div>
+      </section>
 
       {/* Expanded System Modal */}
       <AnimatePresence>
@@ -169,7 +196,9 @@ const SolutionsPage: React.FC = () => {
                   selectedSolution.category === 'engineering' ? 'text-teal' : 'text-coral'
                 }`}>
                   <Zap size={14} fill="currentColor" />
-                  <span>Project Specification</span>
+                  <span>Case Study</span>
+                  <span className="text-white/20">·</span>
+                  <span className="text-white/40">{selectedSolution.category}</span>
                 </div>
                 
                 <h2 className="text-4xl md:text-5xl font-black mb-8 leading-[1.1] tracking-tighter shrink-0">

@@ -1,6 +1,6 @@
 
 import React, { useState, useEffect } from 'react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import DataStreams from './DataStreams';
 
@@ -17,6 +17,7 @@ const Hero: React.FC = () => {
   useEffect(() => {
     let current = "";
     let i = 0;
+    const stepMs = Math.max(1, Math.floor(1000 / text.length));
     const interval = setInterval(() => {
       if (i < text.length) {
         current += text[i];
@@ -26,7 +27,7 @@ const Hero: React.FC = () => {
         clearInterval(interval);
         setComplete(true);
       }
-    }, 35);
+    }, stepMs);
     return () => clearInterval(interval);
   }, []);
 
@@ -77,99 +78,113 @@ const Hero: React.FC = () => {
       </div>
 
       <div className="max-w-5xl text-center relative z-10">
-        <motion.h1 
-          className="text-4xl md:text-7xl lg:text-8xl font-black leading-[1.05] mb-12 tracking-tight text-white selection:bg-teal selection:text-charcoal"
+        {/* Eyebrow */}
+        <motion.div
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6, delay: 0.2 }}
+          className="flex items-center justify-center gap-3 mb-8"
         >
-          <span>{displayText.slice(0, beforeText.length)}</span>
-          <motion.span
-            animate={{ 
-              color: complete ? '#4F46E5' : '#FFFFFF',
-              textShadow: complete ? '0 0 20px rgba(79,70,229,0.4)' : '0 0 0px rgba(0,0,0,0)'
-            }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
+          <span className="w-8 h-[1px] bg-indigo" />
+          <span className="text-[11px] font-black uppercase tracking-[0.4em] text-white/60">
+            AI Engineer
+          </span>
+          <span className="w-8 h-[1px] bg-indigo" />
+        </motion.div>
+
+        <div className="grid mb-12">
+          {/* Layout sizer — invisible full text reserves the final dimensions */}
+          <h1
+            aria-hidden
+            className="text-4xl md:text-7xl lg:text-8xl font-black leading-[1.05] tracking-tight invisible col-start-1 row-start-1 select-none pointer-events-none"
           >
-            {displayText.slice(beforeText.length, beforeText.length + highlightText.length)}
-          </motion.span>
-          <span>{displayText.slice(beforeText.length + highlightText.length)}</span>
-          
-          <motion.span 
-            animate={{ opacity: [1, 0] }} 
-            transition={{ repeat: Infinity, duration: 0.8 }}
-            className="inline-block w-1.5 h-12 md:h-20 bg-indigo ml-2 align-middle"
-          />
-        </motion.h1>
+            {beforeText}{highlightText}{afterText}
+          </h1>
+
+          {/* Visible typing animation — overlays in the same grid cell */}
+          <motion.h1
+            className="text-4xl md:text-7xl lg:text-8xl font-black leading-[1.05] tracking-tight text-white selection:bg-teal selection:text-charcoal col-start-1 row-start-1"
+          >
+            <span>{displayText.slice(0, beforeText.length)}</span>
+            <motion.span
+              animate={{
+                color: complete ? '#4F46E5' : '#FFFFFF',
+                textShadow: complete ? '0 0 20px rgba(79,70,229,0.4)' : '0 0 0px rgba(0,0,0,0)'
+              }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+            >
+              {displayText.slice(beforeText.length, beforeText.length + highlightText.length)}
+            </motion.span>
+            <span>{displayText.slice(beforeText.length + highlightText.length)}</span>
+
+            <motion.span
+              animate={{ opacity: [1, 0] }}
+              transition={{ repeat: Infinity, duration: 0.8 }}
+              className="inline-block w-1.5 h-12 md:h-20 bg-indigo ml-2 align-middle"
+            />
+          </motion.h1>
+        </div>
 
         <div className="flex flex-wrap items-center justify-center gap-4 md:gap-8 min-h-[100px]">
-          <AnimatePresence>
-            {complete && (
-              <>
-                <motion.button 
-                  key="who-am-i"
-                  initial={{ opacity: 0, x: -120 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={springConfig}
-                  whileHover={{ 
-                    y: -5, 
-                    boxShadow: "0 0 30px rgba(79,70,229,0.5)",
-                    borderColor: "rgba(79,70,229,1)"
-                  }}
-                  onClick={scrollToAbout}
-                  className={buttonClass}
-                >
-                  Who am I?
-                </motion.button>
-                
-                <motion.button 
-                  key="resume"
-                  initial={{ opacity: 0, scale: 0.8 }}
-                  animate={{ opacity: 1, scale: 1 }}
-                  transition={{ ...springConfig, delay: 0.15 }}
-                  whileHover={{ 
-                    y: -5, 
-                    boxShadow: "0 0 30px rgba(79,70,229,0.5)",
-                    borderColor: "rgba(79,70,229,1)"
-                  }}
-                  onClick={() => navigate('/process')}
-                  className={buttonClass}
-                >
-                  Resume
-                </motion.button>
+          <motion.button
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.6 }}
+            whileHover={{
+              boxShadow: "0 0 30px rgba(79,70,229,0.5)",
+              borderColor: "rgba(79,70,229,1)"
+            }}
+            onClick={scrollToAbout}
+            className={buttonClass}
+          >
+            Who am I?
+          </motion.button>
 
-                <motion.button 
-                  key="projects"
-                  initial={{ opacity: 0, x: 120 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={springConfig}
-                  whileHover={{ 
-                    y: -5, 
-                    boxShadow: "0 0 30px rgba(79,70,229,0.5)",
-                    borderColor: "rgba(79,70,229,1)"
-                  }}
-                  onClick={() => navigate('/solutions')}
-                  className={buttonClass}
-                >
-                  Projects
-                </motion.button>
-              </>
-            )}
-          </AnimatePresence>
+          <motion.button
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.7 }}
+            whileHover={{
+              boxShadow: "0 0 30px rgba(79,70,229,0.5)",
+              borderColor: "rgba(79,70,229,1)"
+            }}
+            onClick={() => navigate('/process')}
+            className={buttonClass}
+          >
+            Resume
+          </motion.button>
+
+          <motion.button
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.8 }}
+            whileHover={{
+              boxShadow: "0 0 30px rgba(79,70,229,0.5)",
+              borderColor: "rgba(79,70,229,1)"
+            }}
+            onClick={() => navigate('/solutions')}
+            className={buttonClass}
+          >
+            Projects
+          </motion.button>
+
+          <motion.a
+            href="https://www.linkedin.com/in/leonardocostadesa/"
+            target="_blank"
+            rel="noopener noreferrer"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 0.8, delay: 0.9 }}
+            whileHover={{
+              boxShadow: "0 0 40px rgba(79,70,229,0.7)",
+            }}
+            className="px-8 md:px-10 py-4 md:py-5 bg-indigo hover:bg-indigo/90 text-white rounded-full font-black text-base md:text-lg transition-all duration-300 flex-grow sm:flex-grow-0 active:scale-95 z-10 tracking-wide shadow-lg shadow-indigo/30"
+          >
+            Hire Me
+          </motion.a>
         </div>
       </div>
 
-      <motion.div 
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        transition={{ delay: 1.5, duration: 1.5 }}
-        className="absolute bottom-12 left-1/2 -translate-x-1/2 flex flex-col items-center gap-4"
-      >
-        <div className="w-[1px] h-16 relative overflow-hidden">
-          <motion.div 
-            animate={{ y: ['-100%', '100%'] }}
-            transition={{ repeat: Infinity, duration: 2, ease: "linear" }}
-            className="w-full h-full bg-gradient-to-b from-transparent via-teal to-transparent"
-          />
-        </div>
-      </motion.div>
     </section>
   );
 };
