@@ -37,7 +37,7 @@ const experience = [
   {
     company: "Revisa Master",
     role: "Software Engineer (AI-Focused)",
-    period: "Feb 2024 – Present",
+    period: "Dec 2023 – Present",
     tag: "Side Project",
     accentColor: "coral",
     accentHex: "#F97316",

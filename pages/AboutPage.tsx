@@ -43,7 +43,7 @@ const trajectory = [
     ],
   },
   {
-    period: '2024 – Present',
+    period: '2023 – Present',
     role: 'Software Engineer (AI-Focused)',
     company: 'Revisa Master — Side Project',
     icon: Bot,
