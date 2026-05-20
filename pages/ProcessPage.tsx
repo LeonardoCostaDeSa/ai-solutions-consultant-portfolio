@@ -49,16 +49,17 @@ const experience = [
     ]
   },
   {
-    company: "Caju GameLabs",
-    role: "Software Engineer",
-    period: "Jul 2024 – Apr 2025",
+    company: "Garden São Paulo",
+    role: "Web and Operations Developer",
+    period: "Dec 2021 – Mar 2023",
     tag: null,
     accentColor: "teal",
     accentHex: "#06B6D4",
-    desc: "Led a team of three developers building 2D games in Unity/C#. Applied OOP principles for modular architecture.",
+    desc: "Supported the company's digital structuring with web solutions, operational automation, and internal tools for commercial and administrative processes.",
     highlights: [
-      "Managed task assignments and delivery schedules for a 3-person dev team",
-      "Improved sprint velocity by ~25% through Scrum/Trello implementation"
+      "Built the company's first institutional website and digital presence, supporting 120%+ revenue growth",
+      "Implemented CRM integrations and automated quotation and inventory control workflows",
+      "Developed customer service automation flows"
     ]
   }
 ];

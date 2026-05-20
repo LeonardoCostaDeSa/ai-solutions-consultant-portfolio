@@ -29,20 +29,6 @@ const trajectory = [
     ],
   },
   {
-    period: '2024 – 2025',
-    role: 'Software Engineer',
-    company: 'Caju GameLabs',
-    icon: Code,
-    color: 'teal',
-    hex: '#06B6D4',
-    desc: 'Technical lead for a 3-person Unity/C# team building 2D games. Owned architecture, code review, and delivery cadence end-to-end.',
-    highlights: [
-      'Enforced OOP architecture so the codebase could scale beyond founders',
-      'Implemented Scrum/Trello workflow — raised sprint velocity ~25%',
-      'Cross-functional collaboration with design and playtesting',
-    ],
-  },
-  {
     period: '2023 – Present',
     role: 'Software Engineer (AI-Focused)',
     company: 'Revisa Master — Side Project',
@@ -54,6 +40,20 @@ const trajectory = [
       'Multi-agent academic analysis system around 5 evaluation pillars',
       'Reduced first-pass document analysis from ~6 hours to ~15 minutes',
       'Automated PDF report generation with citation grounding',
+    ],
+  },
+  {
+    period: '2021 – 2023',
+    role: 'Web and Operations Developer',
+    company: 'Garden São Paulo',
+    icon: Wrench,
+    color: 'teal',
+    hex: '#06B6D4',
+    desc: "Supported the company's digital structuring through web solutions, operational automation, and internal tools for commercial and administrative processes.",
+    highlights: [
+      "Built the company's first institutional website — supported 120%+ revenue growth",
+      'Implemented CRM integrations and automated quotation and inventory control workflows',
+      'Developed customer service automation flows',
     ],
   },
   {
