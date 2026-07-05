@@ -193,7 +193,7 @@ const Home: React.FC = () => {
               >
                 <div className={`text-3xl md:text-5xl font-black mb-2 ${accentText[stat.color]} group-hover:scale-105 transition-transform inline-block`}>{stat.value}</div>
                 <div className="text-white font-bold text-sm mb-1">{stat.label}</div>
-                <div className="text-white/30 text-xs leading-relaxed">{stat.sub}</div>
+                <div className="text-white/60 text-xs leading-relaxed">{stat.sub}</div>
               </motion.div>
             ))}
           </div>
@@ -249,7 +249,7 @@ const Home: React.FC = () => {
             </p>
             <Link
               to="/about"
-              className="group inline-flex items-center gap-3 text-charcoal font-black uppercase tracking-widest text-[10px] md:text-xs py-3 hover:text-indigo transition-colors"
+              className="group inline-flex items-center gap-3 text-charcoal font-black uppercase tracking-widest text-xs py-3 hover:text-indigo transition-colors"
             >
               <span>Read my full story</span>
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
@@ -274,7 +274,7 @@ const Home: React.FC = () => {
                 <BorderBeam color={trait.hex} duration={5} />
                 <trait.icon className={`${accentText[trait.color]} mb-3 md:mb-4 group-hover:scale-110 transition-transform`} size={24} />
                 <h4 className="text-sm md:text-base font-bold mb-1 md:mb-2 text-white leading-snug">{trait.title}</h4>
-                <p className="text-white/40 text-xs leading-relaxed">{trait.desc}</p>
+                <p className="text-white/60 text-xs leading-relaxed">{trait.desc}</p>
               </div>
             ))}
           </motion.div>

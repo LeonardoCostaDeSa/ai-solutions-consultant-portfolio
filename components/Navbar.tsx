@@ -15,7 +15,7 @@ const Navbar: React.FC = () => {
   };
 
   const linkClass = (active: boolean) =>
-    `text-[10px] md:text-xs font-black uppercase tracking-widest transition-colors whitespace-nowrap ${active ? 'text-white' : 'text-white/60 hover:text-white'}`;
+    `text-xs font-black uppercase tracking-widest transition-colors whitespace-nowrap ${active ? 'text-white' : 'text-white/60 hover:text-white'}`;
 
   return (
     <motion.nav
@@ -46,7 +46,7 @@ const Navbar: React.FC = () => {
             href="mailto:leonardo@leonardosa.pro"
             data-umami-event="contact-click"
             data-umami-event-location="navbar"
-            className="text-[10px] md:text-xs font-black uppercase tracking-widest px-3 md:px-5 py-2 md:py-2.5 bg-indigo rounded-full text-white hover:bg-indigo/80 transition-all shadow-lg shadow-indigo/20 whitespace-nowrap"
+            className="text-xs font-black uppercase tracking-widest px-3 md:px-5 py-2 md:py-2.5 bg-indigo rounded-full text-white hover:bg-indigo/80 transition-all shadow-lg shadow-indigo/20 whitespace-nowrap"
           >
             Let's talk
           </a>

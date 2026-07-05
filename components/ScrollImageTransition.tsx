@@ -56,9 +56,9 @@ const ScrollImageTransition: React.FC = () => {
           transition={{ delay: 0.5 }}
           className="absolute bottom-6 left-6 md:bottom-10 md:left-10 z-20"
         >
-          <span className="text-teal font-black uppercase tracking-[0.5em] text-[7px] md:text-[14px] mb-2 block">AI Engineer</span>
+          <span className="text-teal font-black uppercase tracking-[0.5em] text-xs md:text-[14px] mb-2 block">AI Engineer</span>
           <div className="h-[1px] w-8 md:w-12 bg-teal mb-3 md:mb-4" />
-          <p className="text-white/40 text-[8px] md:text-[16px] font-bold uppercase tracking-widest">Leonardo Sá</p>
+          <p className="text-white/40 text-xs md:text-[16px] font-bold uppercase tracking-widest">Leonardo Sá</p>
         </motion.div>
       </motion.div>
 

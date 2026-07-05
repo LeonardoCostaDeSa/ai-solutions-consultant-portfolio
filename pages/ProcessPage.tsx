@@ -225,7 +225,7 @@ const ProcessPage: React.FC = () => {
                 className={`h-[1px] transition-all duration-300 ${isActive ? 'w-8 bg-indigo' : 'w-4 bg-white/20 group-hover:bg-white/40'}`} 
               />
               <span 
-                className={`text-[10px] font-black uppercase tracking-widest transition-all duration-300 ${
+                className={`text-xs font-black uppercase tracking-widest transition-all duration-300 ${
                   isActive ? 'text-indigo translate-x-1' : 'text-white/20 group-hover:text-white/60'
                 }`}
               >
@@ -252,7 +252,7 @@ const ProcessPage: React.FC = () => {
               <h1 className="text-6xl md:text-8xl font-black mb-6 leading-[0.9] tracking-tighter">
                 Resume
               </h1>
-              <p className="text-xl text-white/40 max-w-xl leading-relaxed">
+              <p className="text-xl text-white/60 max-w-xl leading-relaxed">
                 This page traces my professional path — from linguistics to AI engineering.
               </p>
             </div>
@@ -281,7 +281,7 @@ const ProcessPage: React.FC = () => {
                       <h3 className="text-2xl font-black text-white">{job.role}</h3>
                       {job.tag && (
                         <span
-                          className="px-3 py-0.5 rounded-full text-[9px] font-black uppercase tracking-widest border"
+                          className="px-3 py-0.5 rounded-full text-xs font-black uppercase tracking-widest border"
                           style={{
                             color: job.accentHex,
                             backgroundColor: `${job.accentHex}1A`,
@@ -300,7 +300,7 @@ const ProcessPage: React.FC = () => {
                   </div>
                 </div>
 
-                <p className="text-white/50 leading-relaxed mb-5 max-w-3xl text-sm">
+                <p className="text-white/70 leading-relaxed mb-5 max-w-3xl text-sm">
                   {job.desc}
                 </p>
 
@@ -347,7 +347,7 @@ const ProcessPage: React.FC = () => {
                 >
                   {edu.period}
                 </div>
-                <p className="text-sm text-white/50 leading-relaxed">
+                <p className="text-sm text-white/70 leading-relaxed">
                   {edu.desc}
                 </p>
               </motion.div>
@@ -442,7 +442,7 @@ const ProcessPage: React.FC = () => {
           <section className="md:col-span-8">
             <SectionLabel icon={CheckCircle2} label="Certifications & Publications" color="indigo" />
             <div className="bg-white/[0.02] border border-white/10 rounded-3xl overflow-hidden">
-              <div className="grid grid-cols-12 px-6 py-4 border-b border-white/10 bg-white/[0.02] text-[10px] font-black uppercase tracking-widest text-white/30">
+              <div className="grid grid-cols-12 px-6 py-4 border-b border-white/10 bg-white/[0.02] text-xs font-black uppercase tracking-widest text-white/30">
                 <div className="col-span-6">Course</div>
                 <div className="col-span-4">Institution</div>
                 <div className="col-span-2 text-right">Year</div>
@@ -491,12 +491,12 @@ const ProcessPage: React.FC = () => {
               ].map((l, idx) => (
                 <div key={idx} className="flex items-center justify-between p-4 bg-white/[0.02] border border-white/10 rounded-2xl">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-teal/10 flex items-center justify-center text-[10px] font-black text-teal">
+                    <div className="w-8 h-8 rounded-lg bg-teal/10 flex items-center justify-center text-xs font-black text-teal">
                       {l.code}
                     </div>
                     <span className="font-bold text-white">{l.lang}</span>
                   </div>
-                  <span className="text-xs font-bold text-white/40 uppercase tracking-wider">{l.level}</span>
+                  <span className="text-xs font-bold text-white/60 uppercase tracking-wider">{l.level}</span>
                 </div>
               ))}
             </div>
@@ -516,10 +516,10 @@ const ProcessPage: React.FC = () => {
                 viewport={{ once: true }}
                 className="relative p-6 border-l-2 border-white/10 hover:border-coral transition-colors bg-gradient-to-r from-white/[0.02] to-transparent"
               >
-                <div className="text-coral font-black uppercase tracking-widest text-[10px] mb-2">{vol.period}</div>
+                <div className="text-coral font-black uppercase tracking-widest text-xs mb-2">{vol.period}</div>
                 <h3 className="text-lg font-bold text-white mb-1">{vol.role}</h3>
-                <div className="text-sm font-bold text-white/40 mb-4">{vol.org}</div>
-                <p className="text-xs leading-relaxed text-white/60">
+                <div className="text-sm font-bold text-white/60 mb-4">{vol.org}</div>
+                <p className="text-xs leading-relaxed text-white/70">
                   {vol.desc}
                 </p>
               </motion.div>

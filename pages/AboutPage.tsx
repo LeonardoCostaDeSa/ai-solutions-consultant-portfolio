@@ -124,14 +124,14 @@ const AboutPage: React.FC = () => {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <span className="text-indigo font-black uppercase tracking-[0.4em] text-[10px] block">
+              <span className="text-indigo font-black uppercase tracking-[0.4em] text-xs block">
                 Leonardo Sá
               </span>
             </div>
 
             {/* Headline */}
             <div className="flex-1">
-              <span className="text-teal font-black uppercase tracking-[0.4em] text-[10px] md:text-xs mb-4 md:mb-6 block">
+              <span className="text-teal font-black uppercase tracking-[0.4em] text-xs mb-4 md:mb-6 block">
                 AI Engineer · Production Systems
               </span>
               <h1 className="text-4xl md:text-7xl font-black leading-[1.05] tracking-tighter mb-6">
@@ -143,7 +143,7 @@ const AboutPage: React.FC = () => {
               <p className="text-base md:text-xl text-white/60 leading-relaxed max-w-xl">
                 I design, ship and operate production GenAI systems for regulated environments — RAG pipelines, multi-agent orchestration, enterprise integrations — with the engineering rigor that compliance demands.
               </p>
-              <p className="mt-6 text-xs md:text-sm text-white/40 font-bold uppercase tracking-widest">
+              <p className="mt-6 text-xs md:text-sm text-white/60 font-bold uppercase tracking-widest">
                 Madrid, Spain · from August 2026 · EN / FR / PT / ES
               </p>
             </div>
@@ -157,7 +157,7 @@ const AboutPage: React.FC = () => {
 
         <div className="max-w-5xl mx-auto">
           <div className="mb-12 md:mb-16">
-            <span className="text-indigo font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">
+            <span className="text-indigo font-black uppercase tracking-[0.4em] text-xs mb-4 block">
               Engineering Trajectory
             </span>
             <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-charcoal leading-tight">
@@ -191,7 +191,7 @@ const AboutPage: React.FC = () => {
                   </div>
                   <div>
                     <div
-                      className="text-[10px] font-black uppercase tracking-widest mb-2 inline-block px-3 py-1 rounded-lg"
+                      className="text-xs font-black uppercase tracking-widest mb-2 inline-block px-3 py-1 rounded-lg"
                       style={{ color: step.hex, backgroundColor: `${step.hex}1A` }}
                     >
                       {step.period}
@@ -228,7 +228,7 @@ const AboutPage: React.FC = () => {
       {/* WHY THE TECH FOUNDATION MATTERS */}
       <section className="py-20 md:py-28 px-6">
         <div className="max-w-3xl mx-auto">
-          <span className="text-coral font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">
+          <span className="text-coral font-black uppercase tracking-[0.4em] text-xs mb-4 block">
             Why the foundation matters
           </span>
           <h2 className="text-3xl md:text-5xl font-black tracking-tighter mb-8 leading-tight">
@@ -280,7 +280,7 @@ const AboutPage: React.FC = () => {
 
         <div className="max-w-5xl mx-auto">
           <div className="mb-12 md:mb-16">
-            <span className="text-teal font-black uppercase tracking-[0.4em] text-[10px] mb-4 block">
+            <span className="text-teal font-black uppercase tracking-[0.4em] text-xs mb-4 block">
               How I work
             </span>
             <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-charcoal leading-tight">
@@ -299,7 +299,7 @@ const AboutPage: React.FC = () => {
                 className="p-6 md:p-8 bg-[#1a1a1a] rounded-2xl border border-white/5 hover:border-white/15 transition-all"
               >
                 <h3 className="text-lg md:text-xl font-black text-white mb-2">{p.title}</h3>
-                <p className="text-white/50 text-sm md:text-base leading-relaxed">{p.desc}</p>
+                <p className="text-white/70 text-sm md:text-base leading-relaxed">{p.desc}</p>
               </motion.div>
             ))}
           </div>

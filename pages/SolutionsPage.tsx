@@ -1,5 +1,5 @@
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { ArrowRight, X, Target, Zap, ChevronRight, Layers, Brain, Lightbulb, Users } from 'lucide-react';
 import { solutions } from '../data/content';
@@ -12,6 +12,45 @@ import { track } from '../lib/analytics';
 const SolutionsPage: React.FC = () => {
   const [filter, setFilter] = useState<'all' | 'engineering' | 'AI Adoption'>('all');
   const [selectedSolution, setSelectedSolution] = useState<Solution | null>(null);
+  const closeButtonRef = useRef<HTMLButtonElement>(null);
+  const modalRef = useRef<HTMLDivElement>(null);
+  const triggerRef = useRef<HTMLElement | null>(null);
+
+  // Modal a11y: Esc closes, focus moves in on open and back to the card on close
+  useEffect(() => {
+    if (!selectedSolution) {
+      triggerRef.current?.focus();
+      triggerRef.current = null;
+      return;
+    }
+    triggerRef.current = document.activeElement as HTMLElement;
+    closeButtonRef.current?.focus();
+
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        setSelectedSolution(null);
+        return;
+      }
+      // Keep Tab focus inside the dialog
+      if (e.key === 'Tab' && modalRef.current) {
+        const focusables = modalRef.current.querySelectorAll<HTMLElement>(
+          'button, a[href], [tabindex]:not([tabindex="-1"])'
+        );
+        if (focusables.length === 0) return;
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    };
+    document.addEventListener('keydown', onKeyDown);
+    return () => document.removeEventListener('keydown', onKeyDown);
+  }, [selectedSolution]);
 
   const filteredSolutions = filter === 'all'
     ? solutions
@@ -56,14 +95,14 @@ const SolutionsPage: React.FC = () => {
 
         <div className="max-w-7xl mx-auto">
           <div className="flex flex-col md:flex-row md:items-center gap-4 mb-10 md:mb-14">
-            <span className="text-charcoal/40 font-black uppercase tracking-[0.4em] text-[10px]">Case Studies</span>
+            <span className="text-charcoal/40 font-black uppercase tracking-[0.4em] text-xs">Case Studies</span>
             <div className="hidden md:block flex-1 h-[1px] bg-charcoal/10" />
             <div className="flex bg-charcoal/10 p-1 rounded-full border border-charcoal/15 self-start md:self-auto isolate">
               {(['all', 'engineering', 'AI Adoption'] as const).map((type) => (
                 <button
                   key={type}
                   onClick={() => { setFilter(type); track('case-filter', { filter: type }); }}
-                  className={`relative isolate px-3 md:px-4 py-1.5 rounded-full text-[9px] md:text-[10px] font-black uppercase tracking-[0.18em] transition-all flex items-center gap-1 md:gap-1.5 whitespace-nowrap ${
+                  className={`relative isolate px-3 md:px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-[0.18em] transition-all flex items-center gap-1 md:gap-1.5 whitespace-nowrap ${
                     filter === type ? 'text-white' : 'text-charcoal/80 hover:text-charcoal'
                   }`}
                 >
@@ -74,7 +113,7 @@ const SolutionsPage: React.FC = () => {
                     />
                   )}
                   <span>{type}</span>
-                  <span className={`text-[8px] md:text-[9px] font-black tabular-nums ${filter === type ? 'text-white/60' : 'text-charcoal/50'}`}>
+                  <span className={`text-xs font-black tabular-nums ${filter === type ? 'text-white/60' : 'text-charcoal/50'}`}>
                     {counts[type]}
                   </span>
                 </button>
@@ -94,7 +133,17 @@ const SolutionsPage: React.FC = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95 }}
+                  role="button"
+                  tabIndex={0}
+                  aria-label={`Open case study: ${sol.title}`}
                   onClick={() => { setSelectedSolution(sol); track('project-open', { project: sol.id }); }}
+                  onKeyDown={(e: React.KeyboardEvent) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      setSelectedSolution(sol);
+                      track('project-open', { project: sol.id });
+                    }
+                  }}
                   whileHover={{ y: -8 }}
                   className="group relative cursor-pointer bg-charcoal rounded-[2rem] overflow-hidden hover:shadow-2xl hover:shadow-charcoal/20 transition-all duration-500"
                 >
@@ -115,11 +164,11 @@ const SolutionsPage: React.FC = () => {
                   <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-transparent to-transparent opacity-60" />
                   {/* Click affordance — visible on hover */}
                   <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                    <span className="px-5 py-2 bg-charcoal/80 backdrop-blur-md rounded-full text-[10px] font-black uppercase tracking-[0.2em] text-white border border-white/20">
+                    <span className="px-5 py-2 bg-charcoal/80 backdrop-blur-md rounded-full text-xs font-black uppercase tracking-[0.2em] text-white border border-white/20">
                       Click to expand
                     </span>
                   </div>
-                  <div className={`absolute top-6 right-6 backdrop-blur-xl px-4 py-2 rounded-xl text-[10px] font-black uppercase tracking-widest border border-white/10 ${
+                  <div className={`absolute top-6 right-6 backdrop-blur-xl px-4 py-2 rounded-xl text-xs font-black uppercase tracking-widest border border-white/10 ${
                     sol.category === 'engineering' ? 'bg-teal/10 text-teal' : 'bg-coral/10 text-coral'
                   }`}>
                     {sol.category}
@@ -129,19 +178,19 @@ const SolutionsPage: React.FC = () => {
                 <div className="p-10 relative">
                   <div className="flex flex-wrap gap-2 mb-6">
                     {sol.techTags.slice(0, 3).map(tag => (
-                      <span key={tag} className="text-[9px] font-black uppercase tracking-widest text-white/30 border border-white/10 px-2 py-1 rounded-lg bg-white/5">{tag}</span>
+                      <span key={tag} className="text-xs font-black uppercase tracking-widest text-white/50 border border-white/10 px-2 py-1 rounded-lg bg-white/5">{tag}</span>
                     ))}
                   </div>
                   <h3 className="text-3xl font-black mb-3 group-hover:text-white transition-colors leading-tight">{sol.title}</h3>
-                  <p className="text-white/50 text-sm leading-relaxed mb-5 italic">{sol.painPoint}</p>
-                  <div className={`flex items-center gap-3 font-black text-[11px] uppercase tracking-widest bg-white/5 self-start px-4 py-2 rounded-full border border-white/10 mb-6 ${
+                  <p className="text-white/70 text-sm leading-relaxed mb-5 italic">{sol.painPoint}</p>
+                  <div className={`flex items-center gap-3 font-black text-xs uppercase tracking-widest bg-white/5 self-start px-4 py-2 rounded-full border border-white/10 mb-6 ${
                      sol.category === 'engineering' ? 'text-teal' : 'text-coral'
                   }`}>
                     <Target size={14} />
                     <span>{sol.impactMetric}</span>
                   </div>
                   {/* CTA */}
-                  <div className={`flex items-center gap-3 font-black text-[10px] uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
+                  <div className={`flex items-center gap-3 font-black text-xs uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-opacity duration-300 ${
                     sol.category === 'engineering' ? 'text-teal' : 'text-coral'
                   }`}>
                     <span>View Case Study</span>
@@ -179,14 +228,20 @@ const SolutionsPage: React.FC = () => {
             />
             
             <motion.div
+              ref={modalRef}
+              role="dialog"
+              aria-modal="true"
+              aria-label={selectedSolution.title}
               initial={{ opacity: 0, scale: 0.9, y: 20 }}
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: 20 }}
               transition={{ type: "spring", duration: 0.5, bounce: 0.2 }}
               className="relative w-full max-w-6xl bg-[#1a1a1a] border border-white/10 rounded-[3rem] overflow-hidden shadow-[0_0_100px_rgba(0,0,0,0.5)] flex flex-col md:flex-row h-[90vh] md:h-auto md:max-h-[90vh]"
             >
-              <button 
+              <button
+                ref={closeButtonRef}
                 onClick={() => setSelectedSolution(null)}
+                aria-label="Close case study"
                 className="absolute top-8 right-8 z-20 p-4 bg-white/5 hover:bg-coral hover:text-white rounded-full border border-white/10 transition-all backdrop-blur-xl"
               >
                 <X size={24} />
@@ -209,7 +264,7 @@ const SolutionsPage: React.FC = () => {
               </div>
 
               <div className="w-full md:w-[60%] p-8 md:p-16 overflow-y-auto custom-scrollbar flex flex-col">
-                <div className={`flex items-center gap-3 font-black uppercase tracking-[0.3em] text-[10px] mb-8 shrink-0 ${
+                <div className={`flex items-center gap-3 font-black uppercase tracking-[0.3em] text-xs mb-8 shrink-0 ${
                   selectedSolution.category === 'engineering' ? 'text-teal' : 'text-coral'
                 }`}>
                   <Zap size={14} fill="currentColor" />
