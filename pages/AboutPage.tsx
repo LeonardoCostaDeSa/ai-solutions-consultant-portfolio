@@ -13,6 +13,7 @@ import {
   Linkedin,
 } from 'lucide-react';
 import Navbar from '../components/Navbar';
+import Seo from '../components/Seo';
 
 const trajectory = [
   {
@@ -95,6 +96,11 @@ const principles = [
 const AboutPage: React.FC = () => {
   return (
     <div className="bg-charcoal min-h-screen text-offwhite pb-24 overflow-x-clip">
+      <Seo
+        title="About — Leonardo Sá · AI Engineer"
+        description="From top-of-cohort linguist at USP to AI Engineer at KPMG and co-founder of a production multi-agent platform. Engineering AI that ships — with traceability, observability and governance built in."
+        path="/about"
+      />
       <Navbar />
 
       {/* HERO */}

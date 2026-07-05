@@ -6,6 +6,7 @@ import { solutions } from '../data/content';
 import { Solution } from '../types';
 import BorderBeam from '../components/BorderBeam';
 import Navbar from '../components/Navbar';
+import Seo from '../components/Seo';
 
 const SolutionsPage: React.FC = () => {
   const [filter, setFilter] = useState<'all' | 'engineering' | 'AI Adoption'>('all');
@@ -23,6 +24,11 @@ const SolutionsPage: React.FC = () => {
 
   return (
     <div className="bg-charcoal min-h-screen text-offwhite overflow-x-clip">
+      <Seo
+        title="Case Studies — Leonardo Sá · AI Engineer"
+        description="Production GenAI case studies with validated metrics: 94% accuracy legal/tax search, 50,000 documents analyzed in 6 hours, a production multi-agent review platform, and AI adoption at 1,600+ scale."
+        path="/solutions"
+      />
       <Navbar />
 
       <div className="max-w-7xl mx-auto px-6 pt-32 pb-20">

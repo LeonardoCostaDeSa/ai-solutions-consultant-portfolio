@@ -9,6 +9,9 @@ export default defineConfig({
     host: '0.0.0.0',
   },
   plugins: [react(), tailwindcss()],
+  ssgOptions: {
+    dirStyle: 'nested',
+  },
   resolve: {
     alias: {
       '@': path.resolve(__dirname, '.'),

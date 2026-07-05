@@ -13,6 +13,7 @@ import {
 } from 'lucide-react';
 import Hero from '../components/Hero';
 import Navbar from '../components/Navbar';
+import Seo from '../components/Seo';
 import DataStreams from '../components/DataStreams';
 import BorderBeam from '../components/BorderBeam';
 import TechCarousel from '../components/TechCarousel';
@@ -139,6 +140,11 @@ const Home: React.FC = () => {
 
   return (
     <div className="bg-charcoal min-h-screen relative overflow-x-clip">
+      <Seo
+        title="Leonardo Sá — AI Engineer · Production GenAI"
+        description="AI Engineer designing, shipping and operating production GenAI systems for regulated, document-heavy operations — RAG, multi-agent orchestration, enterprise integrations. 94% validated accuracy; 50,000 documents analyzed in 6 hours."
+        path="/"
+      />
       <Navbar />
       <Hero />
       

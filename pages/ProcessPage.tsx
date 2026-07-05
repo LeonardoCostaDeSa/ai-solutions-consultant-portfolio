@@ -14,6 +14,7 @@ import {
 } from 'lucide-react';
 import BorderBeam from '../components/BorderBeam';
 import Navbar from '../components/Navbar';
+import Seo from '../components/Seo';
 
 // --- DATA ---
 const experience = [
@@ -198,6 +199,11 @@ const ProcessPage: React.FC = () => {
 
   return (
     <div className="bg-charcoal min-h-screen text-offwhite selection:bg-indigo selection:text-white pb-32 overflow-x-clip">
+      <Seo
+        title="Resume — Leonardo Sá · AI Engineer"
+        description="AI Engineer at KPMG Brazil (promoted from AI Solutions Consultant), co-founder of Revisa Master. Systems Analysis & Development (GPA 8.8/10), BA Linguistics at USP, peer-reviewed author on multi-agent architecture."
+        path="/process"
+      />
       {/* Background Elements */}
       <div className="fixed inset-0 pointer-events-none opacity-[0.03]">
         <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
