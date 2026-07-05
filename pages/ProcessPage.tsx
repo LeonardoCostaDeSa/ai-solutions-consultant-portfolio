@@ -1,33 +1,31 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  ArrowLeft, 
-  Download, 
-  Briefcase, 
-  GraduationCap, 
-  Globe, 
-  Cpu, 
-  Award, 
-  Languages, 
+import {
+  Briefcase,
+  GraduationCap,
+  Globe,
+  Cpu,
+  Award,
+  Languages,
   HeartHandshake,
   CheckCircle2,
   ExternalLink
 } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
 import BorderBeam from '../components/BorderBeam';
 import Navbar from '../components/Navbar';
+import Seo from '../components/Seo';
 
 // --- DATA ---
 const experience = [
   {
     company: "KPMG Brazil",
-    role: "AI Engineer",
+    role: "AI Solutions Consultant → AI Engineer",
     period: "May 2025 – Present",
-    tag: "Current",
+    tag: "Promoted",
     accentColor: "indigo",
     accentHex: "#4F46E5",
-    desc: "Designing production-oriented GenAI workflows in a highly regulated tax/compliance environment — with focus on RAG, multi-agent orchestration, traceability, auditability, and secure AI adoption.",
+    desc: "Designing production GenAI workflows in a highly regulated tax/compliance environment — RAG, multi-agent orchestration, traceability, auditability, and secure AI adoption. Joined as an AI solutions consultant; promoted to AI Engineer.",
     highlights: [
       "Built a legal/tax semantic search engine with 94% validated accuracy using agentic orchestration",
       "Delivered 30–80% execution-time reductions across AI and automation initiatives",
@@ -36,30 +34,30 @@ const experience = [
   },
   {
     company: "Revisa Master",
-    role: "Software Engineer (AI-Focused)",
-    period: "Dec 2023 – Present",
-    tag: "Side Project",
+    role: "Co-founder & AI Engineer",
+    period: "2023 – Present",
+    tag: "Founder",
     accentColor: "coral",
     accentHex: "#F97316",
-    desc: "Designing and implementing GenAI systems for academic consulting workflows — focused on reliability, explainability, structured evaluation, and controlled data exposure.",
+    desc: "Academic-services company where I own engineering end-to-end: a production multi-agent review platform (Python, Django, CrewAI, PostgreSQL/pgvector, Celery, Docker) with Langfuse tracing and Sentry monitoring in production.",
     highlights: [
-      "Built a multi-agent academic analysis system using Python, Django, CrewAI, and PostgreSQL/pgvector",
-      "Reduced first-pass academic document analysis from ~6 hours to ~15 minutes",
-      "Automated PDF diagnostic report generation across 5 evaluation pillars with citation grounding"
+      "Cut first-pass expert document analysis from ~6 hours to ~15 minutes",
+      "Built the funnels and landing pages behind ~90% monthly revenue growth in one quarter",
+      "Automated PDF diagnostic reports across 5 evaluation pillars with citation grounding"
     ]
   },
   {
     company: "Garden São Paulo",
-    role: "Web and Operations Developer",
+    role: "Full Stack Developer",
     period: "Dec 2021 – Mar 2023",
     tag: null,
     accentColor: "teal",
     accentHex: "#06B6D4",
-    desc: "Supported the company's digital structuring with web solutions, operational automation, and internal tools for commercial and administrative processes.",
+    desc: "Built the company's digital foundation: first institutional website, CRM integrations, and operational automation for commercial and administrative processes.",
     highlights: [
-      "Built the company's first institutional website and digital presence, supporting 120%+ revenue growth",
-      "Implemented CRM integrations and automated quotation and inventory control workflows",
-      "Developed customer service automation flows"
+      "Developed the company's first institutional website and digital-presence strategy",
+      "Automated quotation generation and inventory-control workflows",
+      "Customer-service automation supporting 120%+ revenue growth in the period"
     ]
   }
 ];
@@ -69,13 +67,13 @@ const education = [
     school: "Faculty of Technology of Praia Grande",
     degree: "Systems Analysis & Development",
     period: "2023 – 2026",
-    desc: "Programming logic, data structures, databases, operating systems, and web development."
+    desc: "Completed with a final GPA of 8.8/10. Programming logic, data structures, databases, operating systems, and web development."
   },
   {
     school: "University of São Paulo",
     degree: "BA in Linguistics, Portuguese & French",
     period: "2017 – 2022",
-    desc: "Graduated with highest GPA. Published academic article \"The Critique of Reading.\" Awarded merit scholarship for academic exchange."
+    desc: "Graduated top of cohort with a 9.2/10 GPA. Published academic article \"The Critique of Reading.\" Awarded merit scholarship for academic exchange."
   }
 ];
 
@@ -104,13 +102,13 @@ const volunteering = [
     desc: "Guided an early-career AI researcher in healthcare technology through KPMG's affiliated program. Conducted 3-session structured mentorship covering career planning, values mapping, and professional branding."
   },
   {
-    org: "ETEC de Itaquera",
+    org: "ETEC de Itaquera — Itaquera State Technical School",
     role: "Film Club Project Lead",
     period: "Mar – Dec 2019",
     desc: "Led a project empowering high school students to create and manage film clubs. Provided training in film curation, event organization, critical discussion facilitation, and promotional campaigns."
   },
   {
-    org: "FFLCH-USP",
+    org: "FFLCH-USP — School of Philosophy, Languages and Human Sciences, University of São Paulo",
     role: "Volunteer Portuguese Teacher",
     period: "Mar – Dec 2018",
     desc: "Taught Portuguese to students preparing for university entrance exams at USP's community prep course. Developed lesson plans, provided individualized guidance, and created supplementary materials."
@@ -119,20 +117,40 @@ const volunteering = [
 
 // --- NAVIGATION SECTIONS ---
 const navItems = [
-  { id: 'intro', label: 'Discovery' },
-  { id: 'experience', label: 'Trajectory' },
-  { id: 'education', label: 'Foundation' },
-  { id: 'global', label: 'Global' },
-  { id: 'skills', label: 'Arsenal' },
+  { id: 'intro', label: 'Overview' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'education', label: 'Education' },
+  { id: 'global', label: 'International' },
+  { id: 'skills', label: 'Skills' },
   { id: 'credentials', label: 'Credentials' },
-  { id: 'impact', label: 'Impact' },
+  { id: 'impact', label: 'Volunteering' },
 ];
 
 // --- COMPONENTS ---
 
+// Static class lookup — build-time Tailwind can't see interpolated class names
+const sectionLabelClasses: Record<string, { text: string; box: string }> = {
+  white: { text: 'text-white/40', box: 'bg-white/10 border-white/20' },
+  indigo: { text: 'text-indigo', box: 'bg-indigo/10 border-indigo/20' },
+  teal: { text: 'text-teal', box: 'bg-teal/10 border-teal/20' },
+  coral: { text: 'text-coral', box: 'bg-coral/10 border-coral/20' },
+};
+
+const accentText: Record<string, string> = {
+  indigo: 'text-indigo',
+  teal: 'text-teal',
+  coral: 'text-coral',
+};
+
+const accentHoverText: Record<string, string> = {
+  indigo: 'group-hover:text-indigo',
+  teal: 'group-hover:text-teal',
+  coral: 'group-hover:text-coral',
+};
+
 const SectionLabel: React.FC<{ icon: any, label: string, color?: string }> = ({ icon: Icon, label, color = "white" }) => (
-  <div className={`flex items-center gap-3 mb-8 text-${color === 'white' ? 'white/40' : color}`}>
-    <div className={`p-2 rounded-lg bg-${color === 'white' ? 'white' : color}/10 border border-${color === 'white' ? 'white' : color}/20`}>
+  <div className={`flex items-center gap-3 mb-8 ${sectionLabelClasses[color].text}`}>
+    <div className={`p-2 rounded-lg border ${sectionLabelClasses[color].box}`}>
       <Icon size={16} />
     </div>
     <span className="font-black uppercase tracking-[0.2em] text-xs">{label}</span>
@@ -140,7 +158,6 @@ const SectionLabel: React.FC<{ icon: any, label: string, color?: string }> = ({ 
 );
 
 const ProcessPage: React.FC = () => {
-  const navigate = useNavigate();
   const [activeSection, setActiveSection] = useState('intro');
 
   // Scroll Spy Logic
@@ -183,6 +200,11 @@ const ProcessPage: React.FC = () => {
 
   return (
     <div className="bg-charcoal min-h-screen text-offwhite selection:bg-indigo selection:text-white pb-32 overflow-x-clip">
+      <Seo
+        title="Resume — Leonardo Sá · AI Engineer"
+        description="AI Engineer at KPMG Brazil (promoted from AI Solutions Consultant), co-founder of Revisa Master. Systems Analysis & Development (GPA 8.8/10), BA Linguistics at USP, peer-reviewed author on multi-agent architecture."
+        path="/process"
+      />
       {/* Background Elements */}
       <div className="fixed inset-0 pointer-events-none opacity-[0.03]">
         <div className="absolute inset-0" style={{ backgroundImage: 'radial-gradient(#ffffff 1px, transparent 1px)', backgroundSize: '40px 40px' }} />
@@ -204,7 +226,7 @@ const ProcessPage: React.FC = () => {
                 className={`h-[1px] transition-all duration-300 ${isActive ? 'w-8 bg-indigo' : 'w-4 bg-white/20 group-hover:bg-white/40'}`} 
               />
               <span 
-                className={`text-[10px] font-black uppercase tracking-widest transition-all duration-300 ${
+                className={`text-xs font-black uppercase tracking-widest transition-all duration-300 ${
                   isActive ? 'text-indigo translate-x-1' : 'text-white/20 group-hover:text-white/60'
                 }`}
               >
@@ -226,31 +248,21 @@ const ProcessPage: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           className="mb-24 border-b border-white/10 pb-16"
         >
-          <span className="text-indigo font-black uppercase tracking-[0.4em] text-[10px] mb-6 block">Discovery Protocol</span>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
             <div className="max-w-2xl">
               <h1 className="text-6xl md:text-8xl font-black mb-6 leading-[0.9] tracking-tighter">
                 Resume
               </h1>
-              <p className="text-xl text-white/40 max-w-xl leading-relaxed">
-                This page traces my professional path — from linguistics to AI engineering. If you need a concise version for your records, download my CV below.
+              <p className="text-xl text-white/60 max-w-xl leading-relaxed">
+                This page traces my professional path — from linguistics to AI engineering.
               </p>
             </div>
-            <a
-              href="https://drive.google.com/uc?export=download&id=1IVVvZKFooBo1a3HLQJvSaMILzIhP7oZL"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center gap-3 px-8 py-4 bg-indigo hover:bg-indigo/90 text-white rounded-full font-bold transition-all shadow-lg shadow-indigo/20 active:scale-95 whitespace-nowrap"
-            >
-              <Download size={18} />
-              <span>Download CV</span>
-            </a>
           </div>
         </motion.div>
 
         {/* SECTION 2: EXPERIENCE */}
         <section id="experience" className="mb-24 scroll-mt-32">
-          <SectionLabel icon={Briefcase} label="Trajectory // Experience" color="indigo" />
+          <SectionLabel icon={Briefcase} label="Experience" color="indigo" />
 
           <div className="space-y-6">
             {experience.map((job, idx) => (
@@ -270,7 +282,7 @@ const ProcessPage: React.FC = () => {
                       <h3 className="text-2xl font-black text-white">{job.role}</h3>
                       {job.tag && (
                         <span
-                          className="px-3 py-0.5 rounded-full text-[9px] font-black uppercase tracking-widest border"
+                          className="px-3 py-0.5 rounded-full text-xs font-black uppercase tracking-widest border"
                           style={{
                             color: job.accentHex,
                             backgroundColor: `${job.accentHex}1A`,
@@ -289,7 +301,7 @@ const ProcessPage: React.FC = () => {
                   </div>
                 </div>
 
-                <p className="text-white/50 leading-relaxed mb-5 max-w-3xl text-sm">
+                <p className="text-white/70 leading-relaxed mb-5 max-w-3xl text-sm">
                   {job.desc}
                 </p>
 
@@ -312,7 +324,7 @@ const ProcessPage: React.FC = () => {
           {/* Full-width light background */}
           <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-screen bg-offwhite -z-10" />
 
-          <SectionLabel icon={GraduationCap} label="Foundation // Education" color="teal" />
+          <SectionLabel icon={GraduationCap} label="Education" color="teal" />
 
           <div className="grid md:grid-cols-2 gap-6">
             {education.map((edu, idx) => {
@@ -328,7 +340,7 @@ const ProcessPage: React.FC = () => {
                 {/* Subtle accent line on the left edge */}
                 <div className="absolute left-0 top-8 bottom-8 w-[3px] rounded-r" style={{ backgroundColor: accent.hex }} />
 
-                <h3 className={`text-xl font-black text-white mb-2 group-hover:text-${accent.name} transition-colors`}>{edu.school}</h3>
+                <h3 className={`text-xl font-black text-white mb-2 ${accentHoverText[accent.name]} transition-colors`}>{edu.school}</h3>
                 <p className="text-white/60 font-bold text-sm mb-4">{edu.degree}</p>
                 <div
                   className="text-xs font-black uppercase tracking-widest mb-6 inline-block px-3 py-1 rounded-lg"
@@ -336,7 +348,7 @@ const ProcessPage: React.FC = () => {
                 >
                   {edu.period}
                 </div>
-                <p className="text-sm text-white/50 leading-relaxed">
+                <p className="text-sm text-white/70 leading-relaxed">
                   {edu.desc}
                 </p>
               </motion.div>
@@ -346,7 +358,7 @@ const ProcessPage: React.FC = () => {
 
         {/* SECTION 4: INTERNATIONAL */}
         <section id="global" className="pt-20 md:pt-28 mb-24 scroll-mt-32">
-          <SectionLabel icon={Globe} label="Global // Exchange" color="white" />
+          <SectionLabel icon={Globe} label="International Experience" color="white" />
           
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
@@ -394,7 +406,7 @@ const ProcessPage: React.FC = () => {
         <section id="skills" className="relative isolate scroll-mt-32 py-20 md:py-28 mb-0">
           <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-screen bg-offwhite -z-10" />
 
-          <SectionLabel icon={Cpu} label="Arsenal // Skills" color="coral" />
+          <SectionLabel icon={Cpu} label="Skills" color="coral" />
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {skills.map((skillGroup, idx) => {
@@ -411,7 +423,7 @@ const ProcessPage: React.FC = () => {
                 {/* Subtle accent line at the top */}
                 <div className="absolute top-0 left-6 right-6 h-[2px] rounded-b" style={{ backgroundColor: hex }} />
 
-                <h4 className={`text-${skillGroup.color} font-black uppercase tracking-widest text-xs mb-4 pb-4 border-b border-white/10`}>
+                <h4 className={`${accentText[skillGroup.color]} font-black uppercase tracking-widest text-xs mb-4 pb-4 border-b border-white/10`}>
                   {skillGroup.category}
                 </h4>
                 <div className="flex flex-wrap gap-2">
@@ -429,9 +441,9 @@ const ProcessPage: React.FC = () => {
         {/* SECTION 6 & 7: CERTS & LANGUAGES */}
         <div id="credentials" className="grid md:grid-cols-12 gap-10 pt-20 md:pt-28 mb-24 scroll-mt-32">
           <section className="md:col-span-8">
-            <SectionLabel icon={CheckCircle2} label="Credentials // Certifications" color="indigo" />
+            <SectionLabel icon={CheckCircle2} label="Certifications & Publications" color="indigo" />
             <div className="bg-white/[0.02] border border-white/10 rounded-3xl overflow-hidden">
-              <div className="grid grid-cols-12 px-6 py-4 border-b border-white/10 bg-white/[0.02] text-[10px] font-black uppercase tracking-widest text-white/30">
+              <div className="grid grid-cols-12 px-6 py-4 border-b border-white/10 bg-white/[0.02] text-xs font-black uppercase tracking-widest text-white/30">
                 <div className="col-span-6">Course</div>
                 <div className="col-span-4">Institution</div>
                 <div className="col-span-2 text-right">Year</div>
@@ -444,10 +456,33 @@ const ProcessPage: React.FC = () => {
                 </div>
               ))}
             </div>
+
+            {/* Publication */}
+            <a
+              href="https://doi.org/10.5281/zenodo.19930775"
+              target="_blank"
+              rel="noopener noreferrer"
+              data-umami-event="paper-click"
+              data-umami-event-location="resume"
+              className="group mt-6 flex items-start justify-between gap-6 p-6 bg-indigo/5 border border-indigo/20 hover:border-indigo/50 rounded-3xl transition-all"
+            >
+              <div>
+                <div className="text-indigo font-black uppercase tracking-widest text-xs mb-2">
+                  Peer-reviewed publication · 2026
+                </div>
+                <h3 className="text-white font-bold text-sm md:text-base leading-snug mb-1">
+                  "As arquiteturas distribuídas e integração de agentes inteligentes" — distributed architectures and intelligent-agent integration
+                </h3>
+                <p className="text-white/50 text-xs leading-relaxed">
+                  Multi-agent systems, LLM integration and the Model Context Protocol. Revista Processando o Saber (eISSN 2179-5150), Vol. 18, n. 01 — the same architecture I operate in production.
+                </p>
+              </div>
+              <ExternalLink size={18} className="text-white/30 group-hover:text-indigo transition-colors shrink-0 mt-1" />
+            </a>
           </section>
           
           <section className="md:col-span-4">
-            <SectionLabel icon={Languages} label="Fluency // Languages" color="teal" />
+            <SectionLabel icon={Languages} label="Languages" color="teal" />
             <div className="space-y-4">
               {[
                 { lang: "Portuguese", level: "Native", code: "PT" },
@@ -457,12 +492,12 @@ const ProcessPage: React.FC = () => {
               ].map((l, idx) => (
                 <div key={idx} className="flex items-center justify-between p-4 bg-white/[0.02] border border-white/10 rounded-2xl">
                   <div className="flex items-center gap-3">
-                    <div className="w-8 h-8 rounded-lg bg-teal/10 flex items-center justify-center text-[10px] font-black text-teal">
+                    <div className="w-8 h-8 rounded-lg bg-teal/10 flex items-center justify-center text-xs font-black text-teal">
                       {l.code}
                     </div>
                     <span className="font-bold text-white">{l.lang}</span>
                   </div>
-                  <span className="text-xs font-bold text-white/40 uppercase tracking-wider">{l.level}</span>
+                  <span className="text-xs font-bold text-white/60 uppercase tracking-wider">{l.level}</span>
                 </div>
               ))}
             </div>
@@ -471,7 +506,7 @@ const ProcessPage: React.FC = () => {
 
         {/* SECTION 8: VOLUNTEERING */}
         <section id="impact" className="mb-24 scroll-mt-32">
-          <SectionLabel icon={HeartHandshake} label="Impact // Volunteering" color="coral" />
+          <SectionLabel icon={HeartHandshake} label="Volunteering" color="coral" />
           
           <div className="grid md:grid-cols-3 gap-6">
             {volunteering.map((vol, idx) => (
@@ -482,10 +517,10 @@ const ProcessPage: React.FC = () => {
                 viewport={{ once: true }}
                 className="relative p-6 border-l-2 border-white/10 hover:border-coral transition-colors bg-gradient-to-r from-white/[0.02] to-transparent"
               >
-                <div className="text-coral font-black uppercase tracking-widest text-[10px] mb-2">{vol.period}</div>
+                <div className="text-coral font-black uppercase tracking-widest text-xs mb-2">{vol.period}</div>
                 <h3 className="text-lg font-bold text-white mb-1">{vol.role}</h3>
-                <div className="text-sm font-bold text-white/40 mb-4">{vol.org}</div>
-                <p className="text-xs leading-relaxed text-white/60">
+                <div className="text-sm font-bold text-white/60 mb-4">{vol.org}</div>
+                <p className="text-xs leading-relaxed text-white/70">
                   {vol.desc}
                 </p>
               </motion.div>

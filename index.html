@@ -4,67 +4,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Engineer — Leonardo Sá</title>
-    <meta name="description" content="AI Engineer building production GenAI systems — RAG pipelines, multi-agent orchestration, and enterprise integrations. Currently at KPMG Brazil." />
+    <title>Leonardo Sá — AI Engineer · Production GenAI</title>
+    <meta name="description" content="AI Engineer designing, shipping and operating production GenAI systems for regulated, document-heavy operations — RAG, multi-agent orchestration, enterprise integrations. 94% validated accuracy; 50,000 documents analyzed in 6 hours." />
     <link rel="icon" type="image/png" href="/img/logo-ls.png" />
     <link rel="apple-touch-icon" href="/img/logo-ls.png" />
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              charcoal: '#121212',
-              offwhite: '#F8F9FA',
-              indigo: '#4F46E5',
-              teal: '#06B6D4',
-              coral: '#F97316',
-            },
-            fontFamily: {
-              sans: ['Inter', 'sans-serif'],
-            },
-          }
-        }
+      // Back-compat: redirect legacy hash URLs (/#/about) to clean URLs (/about)
+      if (location.hash.startsWith('#/')) {
+        location.replace(location.hash.slice(1) + location.search);
       }
     </script>
-    <style>
-      html, body {
-        background-color: #121212;
-        color: #F8F9FA;
-        margin: 0;
-        overflow-x: hidden;
-      }
-      /* Custom scrollbar */
-      ::-webkit-scrollbar {
-        width: 8px;
-      }
-      ::-webkit-scrollbar-track {
-        background: #121212;
-      }
-      ::-webkit-scrollbar-thumb {
-        background: #4F46E5;
-        border-radius: 10px;
-      }
-      ::-webkit-scrollbar-thumb:hover {
-        background: #06B6D4;
-      }
-    </style>
-<script type="importmap">
-{
-  "imports": {
-    "react": "https://esm.sh/react@^19.2.3",
-    "react-dom/": "https://esm.sh/react-dom@^19.2.3/",
-    "react/": "https://esm.sh/react@^19.2.3/",
-    "framer-motion": "https://esm.sh/framer-motion@^12.23.26",
-    "lucide-react": "https://esm.sh/lucide-react@^0.562.0",
-    "react-router-dom": "https://esm.sh/react-router-dom@^7.11.0"
-  }
-}
-</script>
-<link rel="stylesheet" href="/index.css">
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Person",
+          "@id": "https://leonardosa.pro/#person",
+          "name": "Leonardo Costa de Sá",
+          "alternateName": "Leonardo Sá",
+          "jobTitle": "AI Engineer",
+          "description": "AI Engineer designing, shipping and operating production GenAI systems for regulated, document-heavy operations.",
+          "url": "https://leonardosa.pro",
+          "email": "mailto:leonardo@leonardosa.pro",
+          "image": "https://leonardosa.pro/img/profile.webp",
+          "sameAs": [
+            "https://www.linkedin.com/in/leonardocostadesa/",
+            "https://github.com/leonardocostadesa"
+          ],
+          "knowsLanguage": ["en", "fr", "pt", "es"],
+          "alumniOf": [
+            { "@type": "CollegeOrUniversity", "name": "University of São Paulo" },
+            { "@type": "CollegeOrUniversity", "name": "Université Lumière Lyon 2" },
+            { "@type": "CollegeOrUniversity", "name": "Faculty of Technology of Praia Grande" }
+          ],
+          "knowsAbout": ["Generative AI", "RAG", "Multi-agent systems", "LLM engineering", "AI governance", "Python", "Django"]
+        },
+        {
+          "@type": "WebSite",
+          "@id": "https://leonardosa.pro/#website",
+          "url": "https://leonardosa.pro",
+          "name": "Leonardo Sá — AI Engineer",
+          "publisher": { "@id": "https://leonardosa.pro/#person" }
+        }
+      ]
+    }
+    </script>
 </head>
 <body>
     <div id="root"></div>

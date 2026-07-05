@@ -1,27 +1,21 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
-  const navigate = useNavigate();
   const location = useLocation();
   const isHome = location.pathname === '/';
 
-  const handleLogo = () => {
+  const handleLogoClick = (e: React.MouseEvent) => {
     if (isHome) {
+      e.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else {
-      navigate('/');
     }
   };
 
-  const handleAbout = () => {
-    navigate('/about');
-  };
-
   const linkClass = (active: boolean) =>
-    `text-[10px] md:text-xs font-black uppercase tracking-widest transition-colors whitespace-nowrap ${active ? 'text-white' : 'text-white/60 hover:text-white'}`;
+    `text-xs font-black uppercase tracking-widest transition-colors whitespace-nowrap ${active ? 'text-white' : 'text-white/60 hover:text-white'}`;
 
   return (
     <motion.nav
@@ -31,29 +25,33 @@ const Navbar: React.FC = () => {
       className="fixed top-0 left-0 w-full z-[100] px-3 md:px-6 py-3 md:py-4"
     >
       <div className="max-w-5xl mx-auto bg-charcoal/70 backdrop-blur-xl border border-white/10 rounded-full pl-4 pr-1.5 md:pl-8 md:pr-3 py-1.5 md:py-2 flex justify-between items-center gap-2 md:gap-4 shadow-2xl">
-        <button
-          onClick={handleLogo}
-          className="text-white font-black tracking-tighter text-sm md:text-lg shrink-0"
+        <Link
+          to="/"
+          onClick={handleLogoClick}
+          aria-label="Leonardo Sá — home"
+          className="text-white font-black tracking-tighter text-base md:text-lg shrink-0"
         >
-          LEONARDO<span className="text-indigo">.SA</span>
-        </button>
+          {/* Compact monogram on mobile, full wordmark from sm up */}
+          <span className="sm:hidden">L<span className="text-indigo">S</span></span>
+          <span className="hidden sm:inline">LEONARDO<span className="text-indigo">.SA</span></span>
+        </Link>
         <div className="flex gap-2.5 md:gap-6 items-center">
-          <button onClick={handleAbout} className={linkClass(location.pathname === '/about') + ' hidden sm:block'}>
+          <Link to="/about" className={linkClass(location.pathname === '/about') + ' hidden sm:block'}>
             About
-          </button>
-          <button onClick={() => navigate('/solutions')} className={linkClass(location.pathname === '/solutions')}>
+          </Link>
+          <Link to="/solutions" className={linkClass(location.pathname === '/solutions')}>
             Projects
-          </button>
-          <button onClick={() => navigate('/process')} className={linkClass(location.pathname === '/process')}>
+          </Link>
+          <Link to="/process" className={linkClass(location.pathname === '/process')}>
             Resume
-          </button>
+          </Link>
           <a
-            href="https://www.linkedin.com/in/leonardocostadesa/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[9px] md:text-xs font-black uppercase tracking-widest px-3 md:px-5 py-2 md:py-2.5 bg-indigo rounded-full text-white hover:bg-indigo/80 transition-all shadow-lg shadow-indigo/20 whitespace-nowrap"
+            href="mailto:leonardo@leonardosa.pro"
+            data-umami-event="contact-click"
+            data-umami-event-location="navbar"
+            className="text-xs font-black uppercase tracking-widest px-3 md:px-5 py-2 md:py-2.5 bg-indigo rounded-full text-white hover:bg-indigo/80 transition-all shadow-lg shadow-indigo/20 whitespace-nowrap"
           >
-            Hire Me
+            Let's talk
           </a>
         </div>
       </div>

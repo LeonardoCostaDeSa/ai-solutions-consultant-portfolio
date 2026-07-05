@@ -1,0 +1,60 @@
+# Self-hosted Umami analytics for leonardosa.pro
+# Reference copy — the live file lives on the VPS at ~/umami/docker-compose.yml
+#
+# One-time setup (see infra/umami/README.md for the full walkthrough):
+#   1. DNS A record: analytics.leonardosa.pro -> VPS IP
+#   2. Set a strong DB password + random APP_SECRET below
+#   3. docker compose up -d
+#   4. Log in (admin / umami), change the password, add website, copy the ID
+#   5. Set repo variable UMAMI_WEBSITE_ID and re-run the deploy workflow
+
+services:
+  umami:
+    image: ghcr.io/umami-software/umami:postgresql-latest
+    container_name: umami
+    restart: unless-stopped
+    environment:
+      DATABASE_URL: postgresql://umami:CHANGE_ME_DB_PASSWORD@umami-db:5432/umami
+      DATABASE_TYPE: postgresql
+      APP_SECRET: CHANGE_ME_RANDOM_STRING
+      DISABLE_TELEMETRY: 1
+    depends_on:
+      umami-db:
+        condition: service_healthy
+    networks:
+      - traefik-public
+      - umami-net
+    labels:
+      - "traefik.enable=true"
+      - "traefik.http.routers.umami.rule=Host(`analytics.leonardosa.pro`)"
+      - "traefik.http.routers.umami.entrypoints=websecure"
+      - "traefik.http.routers.umami.tls.certresolver=letsencrypt"
+      - "traefik.http.routers.umami.middlewares=compress@file"
+      - "traefik.http.services.umami.loadbalancer.server.port=3000"
+
+  umami-db:
+    image: postgres:15-alpine
+    container_name: umami-db
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: umami
+      POSTGRES_USER: umami
+      POSTGRES_PASSWORD: CHANGE_ME_DB_PASSWORD
+    volumes:
+      - umami-db-data:/var/lib/postgresql/data
+    networks:
+      - umami-net
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U umami -d umami"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+volumes:
+  umami-db-data:
+
+networks:
+  traefik-public:
+    external: true
+  umami-net:
+    internal: true

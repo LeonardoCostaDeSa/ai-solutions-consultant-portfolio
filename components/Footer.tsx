@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Linkedin, Github, Twitter } from 'lucide-react';
+import { Linkedin, Github } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
@@ -16,16 +16,17 @@ const Footer: React.FC = () => {
       </div>
 
       <div className="max-w-4xl mx-auto text-center relative z-10">
-        <motion.h2 
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="text-white/60 text-sm font-semibold tracking-widest uppercase mb-4"
+          className="text-white/70 text-sm font-semibold tracking-widest uppercase mb-4"
         >
-          Ready to scale?
+          Building GenAI where reliability matters? Let's talk.
         </motion.h2>
         
-        <motion.a 
+        <motion.a
           href="mailto:leonardo@leonardosa.pro"
+          data-umami-event="email-click"
           className="text-2xl sm:text-4xl md:text-6xl font-bold text-white relative inline-block group break-all"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -37,14 +38,17 @@ const Footer: React.FC = () => {
 
         <div className="flex justify-center gap-8 mt-16">
           {[
-            { Icon: Linkedin, href: "https://www.linkedin.com/in/leonardocostadesa/" },
-            { Icon: Github, href: "https://github.com/leonardocostadesa" },
+            { Icon: Linkedin, href: "https://www.linkedin.com/in/leonardocostadesa/", event: "outbound-linkedin", label: "LinkedIn profile" },
+            { Icon: Github, href: "https://github.com/leonardocostadesa", event: "outbound-github", label: "GitHub profile" },
           ].map((social, idx) => (
             <motion.a
               key={idx}
               href={social.href}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={social.label}
+              data-umami-event={social.event}
+              data-umami-event-location="footer"
               whileHover={{ scale: 1.2, rotate: 5 }}
               whileTap={{ scale: 0.9 }}
               className="p-3 bg-white/10 rounded-full text-white hover:bg-white/20 transition-colors"
@@ -54,8 +58,11 @@ const Footer: React.FC = () => {
           ))}
         </div>
 
-        <p className="mt-20 text-white/40 text-sm font-medium">
-          &copy; {new Date().getFullYear()} AI Solutions Consultant. Built for the future.
+        <p className="mt-16 text-white/70 text-sm font-medium">
+          Madrid, Spain · from August 2026 · English / French / Portuguese / Spanish
+        </p>
+        <p className="mt-4 text-white/40 text-sm font-medium">
+          &copy; {new Date().getFullYear()} Leonardo Costa de Sá
         </p>
       </div>
     </footer>

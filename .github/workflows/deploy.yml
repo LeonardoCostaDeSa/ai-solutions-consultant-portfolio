@@ -45,7 +45,7 @@ jobs:
           tags: ${{ steps.meta.outputs.tags }}
           labels: ${{ steps.meta.outputs.labels }}
           build-args: |
-            GEMINI_API_KEY=${{ secrets.GEMINI_API_KEY }}
+            VITE_UMAMI_WEBSITE_ID=${{ vars.UMAMI_WEBSITE_ID }}
 
   deploy:
     needs: build-and-push

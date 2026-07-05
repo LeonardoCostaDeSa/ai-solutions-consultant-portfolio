@@ -1,0 +1,67 @@
+# Leonardo Costa de Sá — AI Engineer
+
+> Production GenAI for regulated and document-heavy operations. I design, ship and
+> operate GenAI systems where errors are expensive — tax, legal, compliance, education —
+> with evaluation, observability and audit trails built in.
+
+Site: https://leonardosa.pro
+Contact: leonardo@leonardosa.pro
+LinkedIn: https://www.linkedin.com/in/leonardocostadesa/
+GitHub: https://github.com/leonardocostadesa
+Location: Madrid, Spain (from August 2026) · CET
+Languages: English (fluent), French (fluent), Portuguese (native), Spanish (intermediate)
+
+## What I do
+
+- LLM document-intelligence pipelines (RAG on Azure OpenAI, Python) with validated accuracy
+- Multi-agent orchestration (CrewAI/LangChain) with retrieval, validation and citation grounding
+- Enterprise AI integration: Microsoft Copilot Studio, Power Platform, Azure
+- AI adoption programs: training, opportunity mapping, AI-enabled delivery models
+- Production discipline: Langfuse tracing, Sentry, DLP-aware design, auditability
+
+## Experience
+
+- **KPMG Brazil — Tax Transformation** (2025–present). Joined as AI Solutions Consultant,
+  promoted to AI Engineer. Built LLM document-intelligence pipelines reaching 94% validated
+  accuracy with corporate tax professionals; delivered 30–80% execution-time reductions;
+  trained 1,600+ professionals in responsible AI adoption.
+- **Revisa Master — Co-founder & AI Engineer** (2023–present). Academic-services company
+  where I own engineering end-to-end: production multi-agent review platform (Django,
+  PostgreSQL/pgvector, Celery, Docker, Langfuse, Sentry) that cut a six-hour expert task
+  to fifteen minutes. Built the funnels behind ~90% monthly revenue growth in one quarter.
+- **Caju GameLabs — Software Engineer** (2024–2025). Led a 3-person Unity/C# team.
+
+## Selected case studies
+
+- **KBSE — Knowledge Base Search Engine** (Python, CrewAI, RAG, Azure): multi-agent
+  semantic search for legal/tax knowledge bases. Decomposed reasoning into retrieval,
+  consolidation, validation and answer generation with explicit citations. 94% validated
+  answer accuracy. https://leonardosa.pro/solutions
+- **Document Analysis Automation** (Python, Power Automate, AI Builder, Copilot Studio):
+  end-to-end pipeline that analyzed 50,000 scanned documents (1958–present) in 6 hours
+  with 98% business-validated accuracy for an $8B legal dispute — replacing a sample-only
+  manual review estimated at 5 consultants × 10 days.
+- **Revisa Express** (Python, Django, CrewAI, pgvector): production multi-agent academic
+  review system structured around 5 evaluation pillars; cut first-pass expert analysis
+  from ~6 hours to ~15 minutes; runs with Langfuse tracing and Sentry monitoring.
+- **Tax Reform Delivery Model** (service design + AI accelerators): redesigned KPMG's
+  delivery model into a 6-phase AI-enabled lifecycle; 30–80% efficiency gains.
+- **AI Training for ALL**: designed and delivered AI enablement for 1,600+ tax
+  professionals (CARTS prompting framework, hands-on business cases).
+
+## Credentials
+
+- Technologist degree, Systems Analysis & Development — final GPA 8.8/10 (2023–2026)
+- BA in Linguistics, University of São Paulo — top of cohort; merit-scholarship exchange
+  at Université Lumière Lyon 2, France
+- Peer-reviewed paper: "As arquiteturas distribuídas e integração de agentes inteligentes"
+  (distributed architectures and intelligent-agent integration — multi-agent systems, LLM
+  integration, Model Context Protocol), Revista Processando o Saber, eISSN 2179-5150,
+  Vol. 18 n. 01, 2026. DOI: https://doi.org/10.5281/zenodo.19930775
+
+## Pages
+
+- https://leonardosa.pro/ — overview and impact metrics
+- https://leonardosa.pro/about — story, trajectory, principles
+- https://leonardosa.pro/solutions — case studies with validated metrics
+- https://leonardosa.pro/process — full resume: experience, education, skills, credentials

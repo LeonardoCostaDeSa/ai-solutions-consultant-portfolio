@@ -1,11 +1,9 @@
 
 import React, { useEffect } from 'react';
-import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
-import { AnimatePresence } from 'framer-motion';
+import { Navigate, Outlet, useLocation } from 'react-router-dom';
+import { MotionConfig } from 'framer-motion';
+import type { RouteRecord } from 'vite-react-ssg';
 import Home from './pages/Home';
-import ProcessPage from './pages/ProcessPage';
-import SolutionsPage from './pages/SolutionsPage';
-import AboutPage from './pages/AboutPage';
 import Footer from './components/Footer';
 
 // Scroll to top on route change
@@ -17,33 +15,34 @@ const ScrollToTop = () => {
   return null;
 };
 
-const AnimatedRoutes = () => {
-  const location = useLocation();
-  
-  return (
-    <AnimatePresence mode="wait">
-      <Routes location={location} key={location.pathname}>
-        <Route path="/" element={<Home />} />
-        <Route path="/about" element={<AboutPage />} />
-        <Route path="/process" element={<ProcessPage />} />
-        <Route path="/solutions" element={<SolutionsPage />} />
-      </Routes>
-    </AnimatePresence>
-  );
-};
+const Layout: React.FC = () => (
+  <MotionConfig reducedMotion="user">
+    <ScrollToTop />
+    <a
+      href="#main"
+      className="sr-only focus:not-sr-only focus:fixed focus:top-4 focus:left-4 focus:z-[200] focus:px-6 focus:py-3 focus:bg-indigo focus:text-white focus:rounded-full focus:font-bold"
+    >
+      Skip to content
+    </a>
+    <div className="font-sans antialiased text-offwhite selection:bg-indigo selection:text-white overflow-x-clip">
+      <main id="main" className="min-h-screen overflow-x-clip">
+        <Outlet />
+      </main>
+      <Footer />
+    </div>
+  </MotionConfig>
+);
 
-const App: React.FC = () => {
-  return (
-    <HashRouter>
-      <ScrollToTop />
-      <div className="font-sans antialiased text-offwhite selection:bg-indigo selection:text-white overflow-x-clip">
-        <main className="min-h-screen overflow-x-clip">
-          <AnimatedRoutes />
-        </main>
-        <Footer />
-      </div>
-    </HashRouter>
-  );
-};
-
-export default App;
+export const routes: RouteRecord[] = [
+  {
+    path: '/',
+    element: <Layout />,
+    children: [
+      { index: true, element: <Home /> },
+      { path: 'about', lazy: async () => ({ Component: (await import('./pages/AboutPage')).default }) },
+      { path: 'process', lazy: async () => ({ Component: (await import('./pages/ProcessPage')).default }) },
+      { path: 'solutions', lazy: async () => ({ Component: (await import('./pages/SolutionsPage')).default }) },
+      { path: '*', element: <Navigate to="/" replace /> },
+    ],
+  },
+];

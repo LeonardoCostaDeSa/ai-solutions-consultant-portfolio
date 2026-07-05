@@ -1,20 +1,37 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
+# leonardosa.pro
 
-# Run and deploy your AI Studio app
+Personal portfolio of **Leonardo Costa de Sá** — AI Engineer building production GenAI systems for regulated and document-heavy environments.
 
-This contains everything you need to run your app locally.
+**Live site:** [leonardosa.pro](https://leonardosa.pro)
 
-View your app in AI Studio: https://ai.studio/apps/drive/12mM-pgwgZa5w_nL2ExMCjsY41mdVsqUD
+## Stack
 
-## Run Locally
+- **Frontend:** React 19 + TypeScript, Vite, Tailwind CSS, Framer Motion
+- **Routing:** React Router v7
+- **Infrastructure:** Docker (multi-stage build → Nginx), deployed to a VPS behind Traefik with Let's Encrypt TLS
+- **CI/CD:** GitHub Actions — builds the image, pushes to GHCR, and deploys over SSH on every push to `main`
 
-**Prerequisites:**  Node.js
+## Local development
 
+```bash
+npm install
+npm run dev      # dev server at http://localhost:3000
+npm run build    # production build to dist/
+npm run preview  # serve the production build locally
+```
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## Deployment
+
+Pushing to `main` triggers `.github/workflows/deploy.yml`:
+
+1. Docker image is built (Node builder stage → Nginx Alpine runtime) and pushed to GitHub Container Registry.
+2. The VPS pulls the new image and restarts the container via `docker-compose`, with Traefik handling TLS and the `www` → apex redirect.
+
+## Project structure
+
+```
+components/   Reusable UI (navbar, hero, footer, animations)
+pages/        Route-level pages (Home, About, Solutions, Resume)
+data/         Case-study and process content
+public/       Static assets (images, favicon)
+```

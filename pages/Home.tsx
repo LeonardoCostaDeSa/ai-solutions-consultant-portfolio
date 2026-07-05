@@ -1,27 +1,19 @@
 
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence, useInView } from 'framer-motion';
-import { useNavigate, useLocation } from 'react-router-dom';
-import { 
-  GitPullRequest, 
-  Boxes, 
-  ArrowRight, 
-  User, 
-  Terminal, 
-  Code, 
-  Play, 
-  Video, 
-  X, 
+import React, { useEffect } from 'react';
+import { motion } from 'framer-motion';
+import { Link, useLocation } from 'react-router-dom';
+import {
+  ArrowRight,
+  Code,
   FileText,
   Briefcase,
-Shrink,
-Brain,
-BrainCircuit,
-Scale3d,
-ChartNoAxesColumnIncreasing
+  Shrink,
+  BrainCircuit,
+  ChartNoAxesColumnIncreasing
 } from 'lucide-react';
 import Hero from '../components/Hero';
 import Navbar from '../components/Navbar';
+import Seo from '../components/Seo';
 import DataStreams from '../components/DataStreams';
 import BorderBeam from '../components/BorderBeam';
 import TechCarousel from '../components/TechCarousel';
@@ -78,26 +70,40 @@ const NodesSVG = ({ color }: { color: string }) => (
   </svg>
 );
 
+const MotionLink = motion.create(Link);
+
+// Static class lookup — build-time Tailwind can't see interpolated class names
+const accentText: Record<string, string> = {
+  indigo: 'text-indigo',
+  teal: 'text-teal',
+  coral: 'text-coral',
+};
+
+const portalClasses: Record<string, {
+  hoverBorder: string;
+  gradientFrom: string;
+  iconBox: string;
+  text: string;
+  line: string;
+}> = {
+  coral: {
+    hoverBorder: 'hover:border-coral/40',
+    gradientFrom: 'from-coral/10',
+    iconBox: 'bg-coral/10 border-coral/20 group-hover:bg-coral/20 group-hover:shadow-coral/20',
+    text: 'text-coral',
+    line: 'bg-coral',
+  },
+  teal: {
+    hoverBorder: 'hover:border-teal/40',
+    gradientFrom: 'from-teal/10',
+    iconBox: 'bg-teal/10 border-teal/20 group-hover:bg-teal/20 group-hover:shadow-teal/20',
+    text: 'text-teal',
+    line: 'bg-teal',
+  },
+};
+
 const Home: React.FC = () => {
-  const navigate = useNavigate();
   const location = useLocation();
-  const aboutRef = useRef(null);
-  const isAboutInView = useInView(aboutRef, { amount: 0.3, once: false });
-
-  const [popupState, setPopupState] = useState<'hidden' | 'visible' | 'minimized'>('hidden');
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [hasTriggeredOnce, setHasTriggeredOnce] = useState(false);
-
-  useEffect(() => {
-    let timer: any;
-    if (isAboutInView && !hasTriggeredOnce) {
-      timer = setTimeout(() => {
-        setPopupState('visible');
-        setHasTriggeredOnce(true);
-      }, 1500);
-    }
-    return () => clearTimeout(timer);
-  }, [isAboutInView, hasTriggeredOnce]);
 
   // Handle "About" clicks from other pages
   useEffect(() => {
@@ -113,7 +119,7 @@ const Home: React.FC = () => {
     {
       id: 'projects',
       title: 'Projects',
-      sub: 'Explore architectural deployments, agentic systems, and technical solutions.',
+      sub: 'Case studies with validated metrics — from regulated document intelligence to production multi-agent platforms.',
       color: '#F97316', // coral
       twColor: 'coral',
       icon: Briefcase,
@@ -123,7 +129,7 @@ const Home: React.FC = () => {
     {
       id: 'resume',
       title: 'Resume',
-      sub: 'Trace my chronological journey and the methodology behind my success.',
+      sub: 'Experience, education, skills and credentials — the full track record in one page.',
       color: '#06B6D4', // teal
       twColor: 'teal',
       icon: FileText,
@@ -134,6 +140,11 @@ const Home: React.FC = () => {
 
   return (
     <div className="bg-charcoal min-h-screen relative overflow-x-clip">
+      <Seo
+        title="Leonardo Sá — AI Engineer · Production GenAI"
+        description="AI Engineer designing, shipping and operating production GenAI systems for regulated, document-heavy operations — RAG, multi-agent orchestration, enterprise integrations. 94% validated accuracy; 50,000 documents analyzed in 6 hours."
+        path="/"
+      />
       <Navbar />
       <Hero />
       
@@ -152,15 +163,15 @@ const Home: React.FC = () => {
             viewport={{ once: true }}
             className="flex items-center gap-4 mb-10 md:mb-14"
           >
-            <span className="text-white/20 font-black uppercase tracking-[0.4em] text-[10px]">Impact Metrics</span>
+            <span className="text-white/40 font-black uppercase tracking-[0.4em] text-xs">Measured impact</span>
             <div className="flex-1 h-[1px] bg-white/5" />
             <a
-              href="https://www.linkedin.com/in/leonardocostadesa/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-2 bg-indigo hover:bg-indigo/90 text-white rounded-full font-black text-[11px] uppercase tracking-widest transition-all shadow-md shadow-indigo/30 active:scale-95"
+              href="mailto:leonardo@leonardosa.pro"
+              data-umami-event="contact-click"
+              data-umami-event-location="home-metrics"
+              className="flex items-center gap-2 px-5 py-2 bg-indigo hover:bg-indigo/90 text-white rounded-full font-black text-xs uppercase tracking-widest transition-all shadow-md shadow-indigo/30 active:scale-95"
             >
-              <span>Hire Me</span>
+              <span>Let's talk</span>
               <ArrowRight size={13} />
             </a>
           </motion.div>
@@ -180,9 +191,9 @@ const Home: React.FC = () => {
                 transition={{ delay: i * 0.08 }}
                 className="p-6 md:p-8 border border-white/5 rounded-2xl md:rounded-3xl bg-white/[0.02] hover:bg-white/[0.04] transition-colors group"
               >
-                <div className={`text-3xl md:text-5xl font-black mb-2 text-${stat.color} group-hover:scale-105 transition-transform inline-block`}>{stat.value}</div>
+                <div className={`text-3xl md:text-5xl font-black mb-2 ${accentText[stat.color]} group-hover:scale-105 transition-transform inline-block`}>{stat.value}</div>
                 <div className="text-white font-bold text-sm mb-1">{stat.label}</div>
-                <div className="text-white/30 text-xs leading-relaxed">{stat.sub}</div>
+                <div className="text-white/60 text-xs leading-relaxed">{stat.sub}</div>
               </motion.div>
             ))}
           </div>
@@ -191,7 +202,6 @@ const Home: React.FC = () => {
 
       <section
         id="about"
-        ref={aboutRef}
         className="relative bg-offwhite"
       >
         {/* Top edge: hard cut from dark to light */}
@@ -209,8 +219,12 @@ const Home: React.FC = () => {
             <div className="flex items-center gap-4 mb-6 md:mb-8">
               <div className="w-14 h-14 md:w-16 md:h-16 rounded-full overflow-hidden border-2 border-indigo shadow-lg shadow-indigo/20 flex-shrink-0">
                 <img
-                  src="/img/foto%20de%20perfil.webp"
+                  src="/img/profile.webp"
                   alt="Leonardo de Sá"
+                  width={256}
+                  height={256}
+                  loading="lazy"
+                  decoding="async"
                   className="w-full h-full object-cover"
                 />
               </div>
@@ -231,15 +245,15 @@ const Home: React.FC = () => {
             className="max-w-3xl mb-12 md:mb-16"
           >
             <p className="text-charcoal/70 text-lg md:text-2xl font-medium leading-relaxed mb-8">
-              I design and ship production GenAI systems in regulated environments — <span className="text-charcoal font-bold">RAG pipelines</span>, multi-agent orchestration with <span className="text-charcoal font-bold">CrewAI</span>, and enterprise integrations across Azure, Power Platform, and Copilot Studio. At KPMG Brazil's Tax Transformation team, my work cuts execution time by <span className="text-charcoal font-bold">30–80%</span> across tax and compliance workflows.
+              I design, ship and operate production GenAI systems in regulated environments — <span className="text-charcoal font-bold">RAG pipelines</span>, <span className="text-charcoal font-bold">multi-agent orchestration</span>, and enterprise integrations across Azure, Power Platform, and Copilot Studio. At KPMG Brazil's Tax Transformation team, my work cut execution time by <span className="text-charcoal font-bold">30–80%</span> across tax and compliance workflows. As <span className="text-charcoal font-bold">co-founder of Revisa Master</span>, I built and operate the production multi-agent platform my family's income runs on.
             </p>
-            <button
-              onClick={() => navigate('/about')}
-              className="group inline-flex items-center gap-3 text-charcoal font-black uppercase tracking-widest text-[10px] md:text-xs py-3 hover:text-indigo transition-colors"
+            <Link
+              to="/about"
+              className="group inline-flex items-center gap-3 text-charcoal font-black uppercase tracking-widest text-xs py-3 hover:text-indigo transition-colors"
             >
               <span>Read my full story</span>
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </button>
+            </Link>
           </motion.div>
 
           {/* 4 trait cards — horizontal row */}
@@ -258,9 +272,9 @@ const Home: React.FC = () => {
             ].map((trait, i) => (
               <div key={i} className="relative p-5 md:p-6 bg-charcoal border border-charcoal/80 rounded-2xl hover:border-white/20 transition-all group overflow-hidden">
                 <BorderBeam color={trait.hex} duration={5} />
-                <trait.icon className={`text-${trait.color} mb-3 md:mb-4 group-hover:scale-110 transition-transform`} size={24} />
+                <trait.icon className={`${accentText[trait.color]} mb-3 md:mb-4 group-hover:scale-110 transition-transform`} size={24} />
                 <h4 className="text-sm md:text-base font-bold mb-1 md:mb-2 text-white leading-snug">{trait.title}</h4>
-                <p className="text-white/40 text-xs leading-relaxed">{trait.desc}</p>
+                <p className="text-white/60 text-xs leading-relaxed">{trait.desc}</p>
               </div>
             ))}
           </motion.div>
@@ -280,45 +294,46 @@ const Home: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mb-16 md:mb-24"
         >
-          <span className="text-teal font-black uppercase tracking-[0.4em] text-[10px] md:text-xs mb-4 md:mb-6 block">Discovery Protocol</span>
-          <h2 className="text-3xl md:text-6xl font-black mb-6 md:mb-8 leading-tight text-white">Get to know my journey</h2>
+          <h2 className="text-3xl md:text-6xl font-black mb-6 md:mb-8 leading-tight text-white">Explore the work</h2>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8 md:gap-10">
           {portals.map((portal) => (
-            <motion.div
+            <MotionLink
+              to={portal.path}
               key={portal.id}
               layoutId={portal.id}
-              onClick={() => navigate(portal.path)}
+              data-umami-event="portal-open"
+              data-umami-event-portal={portal.id}
               whileHover={{ y: -10, scale: 1.01 }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
-              className={`group relative cursor-pointer overflow-hidden rounded-[1.75rem] md:rounded-[2.5rem] bg-white/[0.03] border border-white/10 aspect-[4/3] md:aspect-[1.3/1] p-5 md:p-12 flex flex-col justify-end transition-colors hover:border-${portal.twColor}/40 backdrop-blur-sm`}
+              className={`group relative cursor-pointer overflow-hidden rounded-[1.75rem] md:rounded-[2.5rem] bg-white/[0.03] border border-white/10 aspect-[4/3] md:aspect-[1.3/1] p-5 md:p-12 flex flex-col justify-end transition-colors ${portalClasses[portal.twColor].hoverBorder} backdrop-blur-sm`}
             >
               <BorderBeam color={portal.color} duration={6} />
               <portal.Background color={portal.color} />
 
-              <div className={`absolute inset-0 bg-gradient-to-tr from-${portal.twColor}/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700`} />
+              <div className={`absolute inset-0 bg-gradient-to-tr ${portalClasses[portal.twColor].gradientFrom} via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700`} />
 
               <div className="relative z-10 w-full min-w-0">
                 <div className="flex items-center gap-3 md:gap-6 mb-3 md:mb-6 min-w-0">
                   <motion.div
                     whileHover={{ scale: 1.1, rotate: 5 }}
-                    className={`w-10 h-10 md:w-16 md:h-16 rounded-lg md:rounded-2xl bg-${portal.twColor}/10 flex items-center justify-center border border-${portal.twColor}/20 backdrop-blur-xl group-hover:bg-${portal.twColor}/20 group-hover:shadow-2xl group-hover:shadow-${portal.twColor}/20 transition-all flex-shrink-0`}
+                    className={`w-10 h-10 md:w-16 md:h-16 rounded-lg md:rounded-2xl flex items-center justify-center border backdrop-blur-xl group-hover:shadow-2xl transition-all flex-shrink-0 ${portalClasses[portal.twColor].iconBox}`}
                   >
-                    <portal.icon className={`text-${portal.twColor}`} size={20} />
+                    <portal.icon className={portalClasses[portal.twColor].text} size={20} />
                   </motion.div>
                   <h3 className="text-xl md:text-5xl font-black tracking-tight leading-tight text-white truncate">{portal.title}</h3>
                 </div>
 
                 <p className="text-white/50 text-xs md:text-lg mb-5 md:mb-10 max-w-sm font-medium leading-relaxed">{portal.sub}</p>
 
-                <div className="flex items-center gap-3 md:gap-4 font-black uppercase tracking-widest text-[9px] md:text-xs group-hover:gap-6 transition-all text-white">
+                <div className="flex items-center gap-3 md:gap-4 font-black uppercase tracking-widest text-xs group-hover:gap-6 transition-all text-white">
                   <span>Open</span>
-                  <div className={`w-6 md:w-10 h-[1px] bg-${portal.twColor}`} />
-                  <ArrowRight size={16} className={`text-${portal.twColor}`} />
+                  <div className={`w-6 md:w-10 h-[1px] ${portalClasses[portal.twColor].line}`} />
+                  <ArrowRight size={16} className={portalClasses[portal.twColor].text} />
                 </div>
               </div>
-            </motion.div>
+            </MotionLink>
           ))}
         </div>
       </section>
