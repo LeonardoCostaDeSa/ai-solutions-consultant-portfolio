@@ -12,9 +12,9 @@ RUN npm ci
 # Copy source code
 COPY . .
 
-# Build argument for API key (passed at build time)
-ARG GEMINI_API_KEY=""
-ENV GEMINI_API_KEY=$GEMINI_API_KEY
+# Umami website ID (injected into index.html when present)
+ARG VITE_UMAMI_WEBSITE_ID=""
+ENV VITE_UMAMI_WEBSITE_ID=$VITE_UMAMI_WEBSITE_ID
 
 # Build the application
 RUN npm run build

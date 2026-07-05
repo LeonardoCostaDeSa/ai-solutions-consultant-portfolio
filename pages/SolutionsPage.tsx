@@ -7,6 +7,7 @@ import { Solution } from '../types';
 import BorderBeam from '../components/BorderBeam';
 import Navbar from '../components/Navbar';
 import Seo from '../components/Seo';
+import { track } from '../lib/analytics';
 
 const SolutionsPage: React.FC = () => {
   const [filter, setFilter] = useState<'all' | 'engineering' | 'AI Adoption'>('all');
@@ -61,7 +62,7 @@ const SolutionsPage: React.FC = () => {
               {(['all', 'engineering', 'AI Adoption'] as const).map((type) => (
                 <button
                   key={type}
-                  onClick={() => setFilter(type)}
+                  onClick={() => { setFilter(type); track('case-filter', { filter: type }); }}
                   className={`relative isolate px-3 md:px-4 py-1.5 rounded-full text-[9px] md:text-[10px] font-black uppercase tracking-[0.18em] transition-all flex items-center gap-1 md:gap-1.5 whitespace-nowrap ${
                     filter === type ? 'text-white' : 'text-charcoal/80 hover:text-charcoal'
                   }`}
@@ -93,7 +94,7 @@ const SolutionsPage: React.FC = () => {
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   exit={{ opacity: 0, scale: 0.95 }}
-                  onClick={() => setSelectedSolution(sol)}
+                  onClick={() => { setSelectedSolution(sol); track('project-open', { project: sol.id }); }}
                   whileHover={{ y: -8 }}
                   className="group relative cursor-pointer bg-charcoal rounded-[2rem] overflow-hidden hover:shadow-2xl hover:shadow-charcoal/20 transition-all duration-500"
                 >

@@ -86,6 +86,8 @@ const Hero: React.FC = () => {
         <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
           <motion.a
             href="mailto:leonardo@leonardosa.pro"
+            data-umami-event="contact-click"
+            data-umami-event-location="hero"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.5 }}

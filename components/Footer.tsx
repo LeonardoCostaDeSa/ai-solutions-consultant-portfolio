@@ -24,8 +24,9 @@ const Footer: React.FC = () => {
           Building GenAI where reliability matters? Let's talk.
         </motion.h2>
         
-        <motion.a 
+        <motion.a
           href="mailto:leonardo@leonardosa.pro"
+          data-umami-event="email-click"
           className="text-2xl sm:text-4xl md:text-6xl font-bold text-white relative inline-block group break-all"
           initial={{ opacity: 0, scale: 0.95 }}
           whileInView={{ opacity: 1, scale: 1 }}
@@ -37,14 +38,17 @@ const Footer: React.FC = () => {
 
         <div className="flex justify-center gap-8 mt-16">
           {[
-            { Icon: Linkedin, href: "https://www.linkedin.com/in/leonardocostadesa/" },
-            { Icon: Github, href: "https://github.com/leonardocostadesa" },
+            { Icon: Linkedin, href: "https://www.linkedin.com/in/leonardocostadesa/", event: "outbound-linkedin", label: "LinkedIn profile" },
+            { Icon: Github, href: "https://github.com/leonardocostadesa", event: "outbound-github", label: "GitHub profile" },
           ].map((social, idx) => (
             <motion.a
               key={idx}
               href={social.href}
               target="_blank"
               rel="noopener noreferrer"
+              aria-label={social.label}
+              data-umami-event={social.event}
+              data-umami-event-location="footer"
               whileHover={{ scale: 1.2, rotate: 5 }}
               whileTap={{ scale: 0.9 }}
               className="p-3 bg-white/10 rounded-full text-white hover:bg-white/20 transition-colors"

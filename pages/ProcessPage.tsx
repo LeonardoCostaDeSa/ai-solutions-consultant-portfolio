@@ -461,6 +461,8 @@ const ProcessPage: React.FC = () => {
               href="https://doi.org/10.5281/zenodo.19930775"
               target="_blank"
               rel="noopener noreferrer"
+              data-umami-event="paper-click"
+              data-umami-event-location="resume"
               className="group mt-6 flex items-start justify-between gap-6 p-6 bg-indigo/5 border border-indigo/20 hover:border-indigo/50 rounded-3xl transition-all"
             >
               <div>

@@ -261,6 +261,8 @@ const AboutPage: React.FC = () => {
                   href="https://doi.org/10.5281/zenodo.19930775"
                   target="_blank"
                   rel="noopener noreferrer"
+                  data-umami-event="paper-click"
+                  data-umami-event-location="about"
                   className="text-white font-bold underline decoration-indigo decoration-2 underline-offset-4 hover:text-indigo transition-colors"
                 >
                   peer-reviewed paper on multi-agent system architecture
@@ -316,6 +318,8 @@ const AboutPage: React.FC = () => {
           <div className="flex flex-wrap items-center justify-center gap-4">
             <a
               href="mailto:leonardo@leonardosa.pro"
+              data-umami-event="contact-click"
+              data-umami-event-location="about-cta"
               className="inline-flex items-center gap-3 px-8 py-4 bg-indigo hover:bg-indigo/90 text-white rounded-full font-black text-sm uppercase tracking-widest transition-all shadow-lg shadow-indigo/30 active:scale-95"
             >
               <Mail size={16} />
@@ -325,6 +329,8 @@ const AboutPage: React.FC = () => {
               href="https://www.linkedin.com/in/leonardocostadesa/"
               target="_blank"
               rel="noopener noreferrer"
+              data-umami-event="outbound-linkedin"
+              data-umami-event-location="about-cta"
               className="inline-flex items-center gap-3 px-8 py-4 bg-transparent border border-white/20 hover:border-white text-white rounded-full font-black text-sm uppercase tracking-widest transition-all active:scale-95"
             >
               <Linkedin size={16} />

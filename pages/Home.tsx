@@ -167,6 +167,8 @@ const Home: React.FC = () => {
             <div className="flex-1 h-[1px] bg-white/5" />
             <a
               href="mailto:leonardo@leonardosa.pro"
+              data-umami-event="contact-click"
+              data-umami-event-location="home-metrics"
               className="flex items-center gap-2 px-5 py-2 bg-indigo hover:bg-indigo/90 text-white rounded-full font-black text-xs uppercase tracking-widest transition-all shadow-md shadow-indigo/30 active:scale-95"
             >
               <span>Let's talk</span>
@@ -301,6 +303,8 @@ const Home: React.FC = () => {
               to={portal.path}
               key={portal.id}
               layoutId={portal.id}
+              data-umami-event="portal-open"
+              data-umami-event-portal={portal.id}
               whileHover={{ y: -10, scale: 1.01 }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
               className={`group relative cursor-pointer overflow-hidden rounded-[1.75rem] md:rounded-[2.5rem] bg-white/[0.03] border border-white/10 aspect-[4/3] md:aspect-[1.3/1] p-5 md:p-12 flex flex-col justify-end transition-colors ${portalClasses[portal.twColor].hoverBorder} backdrop-blur-sm`}
