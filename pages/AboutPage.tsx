@@ -45,17 +45,17 @@ const trajectory = [
     ],
   },
   {
-    period: '2024 – 2025',
-    role: 'Software Engineer',
-    company: 'Caju GameLabs',
+    period: '2021 – 2023',
+    role: 'Full Stack Developer',
+    company: 'Garden São Paulo',
     icon: Code,
     color: 'teal',
     hex: '#06B6D4',
-    desc: 'Technical lead for a 3-person Unity/C# team building 2D games. Owned architecture, code review, and delivery cadence end-to-end.',
+    desc: "Built the company's digital foundation end-to-end — its first institutional website, CRM integrations, and operational automation for commercial and administrative processes.",
     highlights: [
-      'Enforced OOP architecture so the codebase could scale beyond founders',
-      'Implemented Scrum/Trello workflow — raised sprint velocity ~25%',
-      'Cross-functional collaboration with design and playtesting',
+      "Developed the company's first institutional website and digital-presence strategy",
+      'Automated quotation generation and inventory-control workflows',
+      'Built customer-service automation supporting 120%+ revenue growth in the period',
     ],
   },
   {
@@ -254,7 +254,7 @@ const AboutPage: React.FC = () => {
               </span>
               <p className="text-sm md:text-base text-white/70 leading-relaxed">
                 I'm driven by depth: when something interests me, I go all the way in. That's how I graduated{' '}
-                <span className="text-white font-bold">top of my cohort at the University of São Paulo</span> and earned a{' '}
+                <span className="text-white font-bold">top of my cohort at the University of São Paulo (9.2/10 GPA)</span> and earned a{' '}
                 <span className="text-white font-bold">merit scholarship to Université Lumière Lyon 2</span> in France. When I chose
                 technology, I brought the same standard — a full systems degree finished with an 8.8/10 GPA, a promotion at KPMG, and a{' '}
                 <a

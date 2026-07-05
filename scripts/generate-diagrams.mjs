@@ -76,40 +76,47 @@ function arrowSvg(x1, x2, y, accent) {
 }
 
 for (const d of diagrams) {
+  // 16:10 to match the card crop. No title/subtitle: the card already shows
+  // the project title below and the category badge on top — a title here only
+  // collides with the badge. The flow + metric carry the meaning.
   const W = 1600;
   const H = 1000;
   const n = d.nodes.length;
-  const gap = 56;
-  const margin = 80;
+  const gap = 52;
+  const margin = 90;
   const boxW = (W - margin * 2 - gap * (n - 1)) / n;
-  const boxH = 230;
-  const boxY = 470;
+  const boxH = 260;
+  const boxY = 300;
+  const rowMid = boxY + boxH / 2;
 
-  const fontSize = n >= 5 ? 28 : 34;
+  const fontSize = n >= 5 ? 30 : 36;
   let body = '';
   d.nodes.forEach((node, i) => {
     const x = margin + i * (boxW + gap);
     body += nodeSvg(node.split('\n'), x, boxY, boxW, boxH, d.accent, fontSize);
     if (i < n - 1) {
-      body += arrowSvg(x + boxW + 6, x + boxW + gap - 6, boxY + boxH / 2, d.accent);
+      body += arrowSvg(x + boxW + 4, x + boxW + gap - 4, rowMid, d.accent);
     }
   });
 
+  // Metric chip centered under the flow
+  const chipW = d.metric.length * 20 + 120;
+  const chipX = (W - chipW) / 2;
+  const chipY = 700;
+
   const svg = `<svg width="${W}" height="${H}" viewBox="0 0 ${W} ${H}" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <radialGradient id="g" cx="20%" cy="0%" r="80%">
-      <stop offset="0%" stop-color="${d.accent}" stop-opacity="0.14"/>
+    <radialGradient id="g" cx="50%" cy="30%" r="75%">
+      <stop offset="0%" stop-color="${d.accent}" stop-opacity="0.16"/>
       <stop offset="100%" stop-color="${d.accent}" stop-opacity="0"/>
     </radialGradient>
   </defs>
   <rect width="${W}" height="${H}" fill="#16161a"/>
   <rect width="${W}" height="${H}" fill="url(#g)"/>
-  <text x="${margin}" y="200" font-family="Segoe UI, Arial, sans-serif" font-size="44" font-weight="800" letter-spacing="8" fill="${d.accent}">${esc(d.title)}</text>
-  <text x="${margin}" y="272" font-family="Segoe UI, Arial, sans-serif" font-size="36" font-weight="500" fill="#9CA3AF">${esc(d.subtitle)}</text>
   ${body}
-  <rect x="${margin}" y="820" width="${d.metric.length * 19 + 90}" height="76" rx="38" fill="${d.accent}" fill-opacity="0.12" stroke="${d.accent}" stroke-opacity="0.5" stroke-width="2"/>
-  <circle cx="${margin + 42}" cy="858" r="9" fill="${d.accent}"/>
-  <text x="${margin + 72}" y="871" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700" fill="#E5E7EB">${esc(d.metric)}</text>
+  <rect x="${chipX}" y="${chipY}" width="${chipW}" height="84" rx="42" fill="${d.accent}" fill-opacity="0.12" stroke="${d.accent}" stroke-opacity="0.5" stroke-width="2"/>
+  <circle cx="${chipX + 48}" cy="${chipY + 42}" r="10" fill="${d.accent}"/>
+  <text x="${chipX + 78}" y="${chipY + 55}" font-family="Segoe UI, Arial, sans-serif" font-size="38" font-weight="700" fill="#F3F4F6">${esc(d.metric)}</text>
 </svg>`;
 
   const out = path.join(outDir, `${d.id}.svg`);

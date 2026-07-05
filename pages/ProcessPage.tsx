@@ -47,16 +47,17 @@ const experience = [
     ]
   },
   {
-    company: "Caju GameLabs",
-    role: "Software Engineer",
-    period: "Jul 2024 – Apr 2025",
+    company: "Garden São Paulo",
+    role: "Full Stack Developer",
+    period: "Dec 2021 – Mar 2023",
     tag: null,
     accentColor: "teal",
     accentHex: "#06B6D4",
-    desc: "Led a team of three developers building 2D games in Unity/C#. Applied OOP principles for modular architecture.",
+    desc: "Built the company's digital foundation: first institutional website, CRM integrations, and operational automation for commercial and administrative processes.",
     highlights: [
-      "Managed task assignments and delivery schedules for a 3-person dev team",
-      "Improved sprint velocity by ~25% through Scrum/Trello implementation"
+      "Developed the company's first institutional website and digital-presence strategy",
+      "Automated quotation generation and inventory-control workflows",
+      "Customer-service automation supporting 120%+ revenue growth in the period"
     ]
   }
 ];
@@ -72,7 +73,7 @@ const education = [
     school: "University of São Paulo",
     degree: "BA in Linguistics, Portuguese & French",
     period: "2017 – 2022",
-    desc: "Graduated with highest GPA. Published academic article \"The Critique of Reading.\" Awarded merit scholarship for academic exchange."
+    desc: "Graduated top of cohort with a 9.2/10 GPA. Published academic article \"The Critique of Reading.\" Awarded merit scholarship for academic exchange."
   }
 ];
 
