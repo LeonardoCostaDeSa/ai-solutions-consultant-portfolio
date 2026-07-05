@@ -40,7 +40,7 @@ const ScrollImageTransition: React.FC = () => {
         <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-transparent to-charcoal z-10 opacity-60" />
         
         <img
-          src="/img/foto%20de%20perfil.webp"
+          src="/img/profile.webp"
           alt="Leonardo de Sá"
           className="w-full h-full object-cover grayscale brightness-90 hover:grayscale-0 transition-all duration-700"
         />

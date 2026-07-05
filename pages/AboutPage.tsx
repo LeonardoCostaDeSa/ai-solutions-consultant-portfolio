@@ -111,7 +111,7 @@ const AboutPage: React.FC = () => {
             <div className="shrink-0">
               <div className="w-32 h-32 md:w-44 md:h-44 rounded-full overflow-hidden border-2 border-indigo shadow-2xl shadow-indigo/30 mb-4">
                 <img
-                  src="/img/foto%20de%20perfil.webp"
+                  src="/img/profile.webp"
                   alt="Leonardo de Sá"
                   className="w-full h-full object-cover"
                 />

@@ -209,7 +209,7 @@ const Home: React.FC = () => {
             <div className="flex items-center gap-4 mb-6 md:mb-8">
               <div className="w-14 h-14 md:w-16 md:h-16 rounded-full overflow-hidden border-2 border-indigo shadow-lg shadow-indigo/20 flex-shrink-0">
                 <img
-                  src="/img/foto%20de%20perfil.webp"
+                  src="/img/profile.webp"
                   alt="Leonardo de Sá"
                   className="w-full h-full object-cover"
                 />
