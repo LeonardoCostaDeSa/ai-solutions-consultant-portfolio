@@ -71,6 +71,36 @@ const NodesSVG = ({ color }: { color: string }) => (
 
 const MotionLink = motion.create(Link);
 
+// Static class lookup — build-time Tailwind can't see interpolated class names
+const accentText: Record<string, string> = {
+  indigo: 'text-indigo',
+  teal: 'text-teal',
+  coral: 'text-coral',
+};
+
+const portalClasses: Record<string, {
+  hoverBorder: string;
+  gradientFrom: string;
+  iconBox: string;
+  text: string;
+  line: string;
+}> = {
+  coral: {
+    hoverBorder: 'hover:border-coral/40',
+    gradientFrom: 'from-coral/10',
+    iconBox: 'bg-coral/10 border-coral/20 group-hover:bg-coral/20 group-hover:shadow-coral/20',
+    text: 'text-coral',
+    line: 'bg-coral',
+  },
+  teal: {
+    hoverBorder: 'hover:border-teal/40',
+    gradientFrom: 'from-teal/10',
+    iconBox: 'bg-teal/10 border-teal/20 group-hover:bg-teal/20 group-hover:shadow-teal/20',
+    text: 'text-teal',
+    line: 'bg-teal',
+  },
+};
+
 const Home: React.FC = () => {
   const location = useLocation();
 
@@ -153,7 +183,7 @@ const Home: React.FC = () => {
                 transition={{ delay: i * 0.08 }}
                 className="p-6 md:p-8 border border-white/5 rounded-2xl md:rounded-3xl bg-white/[0.02] hover:bg-white/[0.04] transition-colors group"
               >
-                <div className={`text-3xl md:text-5xl font-black mb-2 text-${stat.color} group-hover:scale-105 transition-transform inline-block`}>{stat.value}</div>
+                <div className={`text-3xl md:text-5xl font-black mb-2 ${accentText[stat.color]} group-hover:scale-105 transition-transform inline-block`}>{stat.value}</div>
                 <div className="text-white font-bold text-sm mb-1">{stat.label}</div>
                 <div className="text-white/30 text-xs leading-relaxed">{stat.sub}</div>
               </motion.div>
@@ -230,7 +260,7 @@ const Home: React.FC = () => {
             ].map((trait, i) => (
               <div key={i} className="relative p-5 md:p-6 bg-charcoal border border-charcoal/80 rounded-2xl hover:border-white/20 transition-all group overflow-hidden">
                 <BorderBeam color={trait.hex} duration={5} />
-                <trait.icon className={`text-${trait.color} mb-3 md:mb-4 group-hover:scale-110 transition-transform`} size={24} />
+                <trait.icon className={`${accentText[trait.color]} mb-3 md:mb-4 group-hover:scale-110 transition-transform`} size={24} />
                 <h4 className="text-sm md:text-base font-bold mb-1 md:mb-2 text-white leading-snug">{trait.title}</h4>
                 <p className="text-white/40 text-xs leading-relaxed">{trait.desc}</p>
               </div>
@@ -263,30 +293,30 @@ const Home: React.FC = () => {
               layoutId={portal.id}
               whileHover={{ y: -10, scale: 1.01 }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
-              className={`group relative cursor-pointer overflow-hidden rounded-[1.75rem] md:rounded-[2.5rem] bg-white/[0.03] border border-white/10 aspect-[4/3] md:aspect-[1.3/1] p-5 md:p-12 flex flex-col justify-end transition-colors hover:border-${portal.twColor}/40 backdrop-blur-sm`}
+              className={`group relative cursor-pointer overflow-hidden rounded-[1.75rem] md:rounded-[2.5rem] bg-white/[0.03] border border-white/10 aspect-[4/3] md:aspect-[1.3/1] p-5 md:p-12 flex flex-col justify-end transition-colors ${portalClasses[portal.twColor].hoverBorder} backdrop-blur-sm`}
             >
               <BorderBeam color={portal.color} duration={6} />
               <portal.Background color={portal.color} />
 
-              <div className={`absolute inset-0 bg-gradient-to-tr from-${portal.twColor}/10 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700`} />
+              <div className={`absolute inset-0 bg-gradient-to-tr ${portalClasses[portal.twColor].gradientFrom} via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700`} />
 
               <div className="relative z-10 w-full min-w-0">
                 <div className="flex items-center gap-3 md:gap-6 mb-3 md:mb-6 min-w-0">
                   <motion.div
                     whileHover={{ scale: 1.1, rotate: 5 }}
-                    className={`w-10 h-10 md:w-16 md:h-16 rounded-lg md:rounded-2xl bg-${portal.twColor}/10 flex items-center justify-center border border-${portal.twColor}/20 backdrop-blur-xl group-hover:bg-${portal.twColor}/20 group-hover:shadow-2xl group-hover:shadow-${portal.twColor}/20 transition-all flex-shrink-0`}
+                    className={`w-10 h-10 md:w-16 md:h-16 rounded-lg md:rounded-2xl flex items-center justify-center border backdrop-blur-xl group-hover:shadow-2xl transition-all flex-shrink-0 ${portalClasses[portal.twColor].iconBox}`}
                   >
-                    <portal.icon className={`text-${portal.twColor}`} size={20} />
+                    <portal.icon className={portalClasses[portal.twColor].text} size={20} />
                   </motion.div>
                   <h3 className="text-xl md:text-5xl font-black tracking-tight leading-tight text-white truncate">{portal.title}</h3>
                 </div>
 
                 <p className="text-white/50 text-xs md:text-lg mb-5 md:mb-10 max-w-sm font-medium leading-relaxed">{portal.sub}</p>
 
-                <div className="flex items-center gap-3 md:gap-4 font-black uppercase tracking-widest text-[9px] md:text-xs group-hover:gap-6 transition-all text-white">
+                <div className="flex items-center gap-3 md:gap-4 font-black uppercase tracking-widest text-xs group-hover:gap-6 transition-all text-white">
                   <span>Open</span>
-                  <div className={`w-6 md:w-10 h-[1px] bg-${portal.twColor}`} />
-                  <ArrowRight size={16} className={`text-${portal.twColor}`} />
+                  <div className={`w-6 md:w-10 h-[1px] ${portalClasses[portal.twColor].line}`} />
+                  <ArrowRight size={16} className={portalClasses[portal.twColor].text} />
                 </div>
               </div>
             </MotionLink>

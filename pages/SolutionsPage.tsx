@@ -199,7 +199,7 @@ const SolutionsPage: React.FC = () => {
                   {selectedSolution.title}
                 </h2>
 
-                <div className="prose prose-invert max-w-none mb-12 shrink-0">
+                <div className="max-w-none mb-12 shrink-0">
                   <p className="text-white/60 leading-relaxed text-lg md:text-xl font-medium italic border-l-4 border-white/10 pl-6">
                     "{selectedSolution.quote}"
                   </p>

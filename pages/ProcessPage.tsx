@@ -126,9 +126,29 @@ const navItems = [
 
 // --- COMPONENTS ---
 
+// Static class lookup — build-time Tailwind can't see interpolated class names
+const sectionLabelClasses: Record<string, { text: string; box: string }> = {
+  white: { text: 'text-white/40', box: 'bg-white/10 border-white/20' },
+  indigo: { text: 'text-indigo', box: 'bg-indigo/10 border-indigo/20' },
+  teal: { text: 'text-teal', box: 'bg-teal/10 border-teal/20' },
+  coral: { text: 'text-coral', box: 'bg-coral/10 border-coral/20' },
+};
+
+const accentText: Record<string, string> = {
+  indigo: 'text-indigo',
+  teal: 'text-teal',
+  coral: 'text-coral',
+};
+
+const accentHoverText: Record<string, string> = {
+  indigo: 'group-hover:text-indigo',
+  teal: 'group-hover:text-teal',
+  coral: 'group-hover:text-coral',
+};
+
 const SectionLabel: React.FC<{ icon: any, label: string, color?: string }> = ({ icon: Icon, label, color = "white" }) => (
-  <div className={`flex items-center gap-3 mb-8 text-${color === 'white' ? 'white/40' : color}`}>
-    <div className={`p-2 rounded-lg bg-${color === 'white' ? 'white' : color}/10 border border-${color === 'white' ? 'white' : color}/20`}>
+  <div className={`flex items-center gap-3 mb-8 ${sectionLabelClasses[color].text}`}>
+    <div className={`p-2 rounded-lg border ${sectionLabelClasses[color].box}`}>
       <Icon size={16} />
     </div>
     <span className="font-black uppercase tracking-[0.2em] text-xs">{label}</span>
@@ -313,7 +333,7 @@ const ProcessPage: React.FC = () => {
                 {/* Subtle accent line on the left edge */}
                 <div className="absolute left-0 top-8 bottom-8 w-[3px] rounded-r" style={{ backgroundColor: accent.hex }} />
 
-                <h3 className={`text-xl font-black text-white mb-2 group-hover:text-${accent.name} transition-colors`}>{edu.school}</h3>
+                <h3 className={`text-xl font-black text-white mb-2 ${accentHoverText[accent.name]} transition-colors`}>{edu.school}</h3>
                 <p className="text-white/60 font-bold text-sm mb-4">{edu.degree}</p>
                 <div
                   className="text-xs font-black uppercase tracking-widest mb-6 inline-block px-3 py-1 rounded-lg"
@@ -396,7 +416,7 @@ const ProcessPage: React.FC = () => {
                 {/* Subtle accent line at the top */}
                 <div className="absolute top-0 left-6 right-6 h-[2px] rounded-b" style={{ backgroundColor: hex }} />
 
-                <h4 className={`text-${skillGroup.color} font-black uppercase tracking-widest text-xs mb-4 pb-4 border-b border-white/10`}>
+                <h4 className={`${accentText[skillGroup.color]} font-black uppercase tracking-widest text-xs mb-4 pb-4 border-b border-white/10`}>
                   {skillGroup.category}
                 </h4>
                 <div className="flex flex-wrap gap-2">
