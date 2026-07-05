@@ -1,0 +1,38 @@
+<svg width="1600" height="1000" viewBox="0 0 1600 1000" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <radialGradient id="g" cx="20%" cy="0%" r="80%">
+      <stop offset="0%" stop-color="#F97316" stop-opacity="0.14"/>
+      <stop offset="100%" stop-color="#F97316" stop-opacity="0"/>
+    </radialGradient>
+  </defs>
+  <rect width="1600" height="1000" fill="#16161a"/>
+  <rect width="1600" height="1000" fill="url(#g)"/>
+  <text x="80" y="200" font-family="Segoe UI, Arial, sans-serif" font-size="44" font-weight="800" letter-spacing="8" fill="#F97316">AI TRAINING FOR ALL</text>
+  <text x="80" y="272" font-family="Segoe UI, Arial, sans-serif" font-size="36" font-weight="500" fill="#9CA3AF">Hybrid enablement across the Tax practice</text>
+  
+  <rect x="80" y="470" width="318" height="230" rx="24" fill="#FFFFFF" fill-opacity="0.04" stroke="#F97316" stroke-opacity="0.45" stroke-width="2.5"/>
+  <rect x="80" y="470" width="318" height="6" rx="3" fill="#F97316" fill-opacity="0.8"/>
+  <text x="239" y="575" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="600" fill="#E5E7EB">Shared AI</text>
+<text x="239" y="619" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="600" fill="#E5E7EB">vocabulary</text>
+  <line x1="404" y1="585" x2="432" y2="585" stroke="#F97316" stroke-width="3" stroke-opacity="0.7"/>
+  <path d="M 432 575 L 448 585 L 432 595 Z" fill="#F97316" fill-opacity="0.9"/>
+  <rect x="454" y="470" width="318" height="230" rx="24" fill="#FFFFFF" fill-opacity="0.04" stroke="#F97316" stroke-opacity="0.45" stroke-width="2.5"/>
+  <rect x="454" y="470" width="318" height="6" rx="3" fill="#F97316" fill-opacity="0.8"/>
+  <text x="613" y="575" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="600" fill="#E5E7EB">CARTS prompting</text>
+<text x="613" y="619" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="600" fill="#E5E7EB">framework</text>
+  <line x1="778" y1="585" x2="806" y2="585" stroke="#F97316" stroke-width="3" stroke-opacity="0.7"/>
+  <path d="M 806 575 L 822 585 L 806 595 Z" fill="#F97316" fill-opacity="0.9"/>
+  <rect x="828" y="470" width="318" height="230" rx="24" fill="#FFFFFF" fill-opacity="0.04" stroke="#F97316" stroke-opacity="0.45" stroke-width="2.5"/>
+  <rect x="828" y="470" width="318" height="6" rx="3" fill="#F97316" fill-opacity="0.8"/>
+  <text x="987" y="575" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="600" fill="#E5E7EB">Hands-on</text>
+<text x="987" y="619" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="600" fill="#E5E7EB">business cases</text>
+  <line x1="1152" y1="585" x2="1180" y2="585" stroke="#F97316" stroke-width="3" stroke-opacity="0.7"/>
+  <path d="M 1180 575 L 1196 585 L 1180 595 Z" fill="#F97316" fill-opacity="0.9"/>
+  <rect x="1202" y="470" width="318" height="230" rx="24" fill="#FFFFFF" fill-opacity="0.04" stroke="#F97316" stroke-opacity="0.45" stroke-width="2.5"/>
+  <rect x="1202" y="470" width="318" height="6" rx="3" fill="#F97316" fill-opacity="0.8"/>
+  <text x="1361" y="575" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="600" fill="#E5E7EB">Enterprise</text>
+<text x="1361" y="619" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="600" fill="#E5E7EB">capability</text>
+  <rect x="80" y="820" width="660" height="76" rx="38" fill="#F97316" fill-opacity="0.12" stroke="#F97316" stroke-opacity="0.5" stroke-width="2"/>
+  <circle cx="122" cy="858" r="9" fill="#F97316"/>
+  <text x="152" y="871" font-family="Segoe UI, Arial, sans-serif" font-size="34" font-weight="700" fill="#E5E7EB">1,600+ professionals upskilled</text>
+</svg>

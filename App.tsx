@@ -3,9 +3,6 @@ import React, { useEffect } from 'react';
 import { Navigate, Outlet, useLocation } from 'react-router-dom';
 import type { RouteRecord } from 'vite-react-ssg';
 import Home from './pages/Home';
-import ProcessPage from './pages/ProcessPage';
-import SolutionsPage from './pages/SolutionsPage';
-import AboutPage from './pages/AboutPage';
 import Footer from './components/Footer';
 
 // Scroll to top on route change
@@ -35,9 +32,9 @@ export const routes: RouteRecord[] = [
     element: <Layout />,
     children: [
       { index: true, element: <Home /> },
-      { path: 'about', element: <AboutPage /> },
-      { path: 'process', element: <ProcessPage /> },
-      { path: 'solutions', element: <SolutionsPage /> },
+      { path: 'about', lazy: async () => ({ Component: (await import('./pages/AboutPage')).default }) },
+      { path: 'process', lazy: async () => ({ Component: (await import('./pages/ProcessPage')).default }) },
+      { path: 'solutions', lazy: async () => ({ Component: (await import('./pages/SolutionsPage')).default }) },
       { path: '*', element: <Navigate to="/" replace /> },
     ],
   },

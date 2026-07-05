@@ -102,7 +102,13 @@ const SolutionsPage: React.FC = () => {
                 <div className="aspect-[16/10] relative overflow-hidden">
                   <motion.img
                     src={sol.image}
-                    alt={sol.title}
+                    srcSet={sol.imageSrcSet}
+                    sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                    alt={`${sol.title} — solution overview`}
+                    width={960}
+                    height={600}
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-full object-cover grayscale group-hover:grayscale-0 transition-all duration-1000 group-hover:scale-105"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-charcoal via-transparent to-transparent opacity-60" />
@@ -186,7 +192,17 @@ const SolutionsPage: React.FC = () => {
               </button>
 
               <div className="w-full md:w-[40%] overflow-hidden h-48 md:h-auto relative shrink-0">
-                <img src={selectedSolution.image} alt="" className="w-full h-full object-cover" />
+                <img
+                  src={selectedSolution.image}
+                  srcSet={selectedSolution.imageSrcSet}
+                  sizes="(min-width: 768px) 40vw, 100vw"
+                  alt=""
+                  width={960}
+                  height={600}
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full h-full object-cover"
+                />
                 <div className="absolute inset-0 bg-gradient-to-r from-transparent via-[#1a1a1a]/50 to-[#1a1a1a] hidden md:block" />
                 <div className="absolute inset-0 bg-gradient-to-t from-[#1a1a1a] via-transparent to-transparent md:hidden" />
               </div>

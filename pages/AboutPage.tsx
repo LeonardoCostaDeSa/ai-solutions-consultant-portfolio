@@ -118,6 +118,9 @@ const AboutPage: React.FC = () => {
                 <img
                   src="/img/profile.webp"
                   alt="Leonardo de Sá"
+                  width={256}
+                  height={256}
+                  decoding="async"
                   className="w-full h-full object-cover"
                 />
               </div>

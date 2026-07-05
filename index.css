@@ -1,3 +1,4 @@
+@import "@fontsource-variable/inter";
 @import "tailwindcss";
 
 @theme {
@@ -6,7 +7,7 @@
   --color-indigo: #4F46E5;
   --color-teal: #06B6D4;
   --color-coral: #F97316;
-  --font-sans: "Inter", sans-serif;
+  --font-sans: "Inter Variable", "Inter", sans-serif;
 }
 
 html,

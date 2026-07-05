@@ -16,6 +16,7 @@
     "react-router-dom": "^6.30.4"
   },
   "devDependencies": {
+    "@fontsource-variable/inter": "^5.2.8",
     "@tailwindcss/vite": "^4.3.2",
     "@types/node": "^22.14.0",
     "@vitejs/plugin-react": "^5.0.0",

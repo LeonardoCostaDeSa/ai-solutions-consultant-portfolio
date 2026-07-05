@@ -42,6 +42,10 @@ const ScrollImageTransition: React.FC = () => {
         <img
           src="/img/profile.webp"
           alt="Leonardo de Sá"
+          width={512}
+          height={640}
+          loading="lazy"
+          decoding="async"
           className="w-full h-full object-cover grayscale brightness-90 hover:grayscale-0 transition-all duration-700"
         />
 
