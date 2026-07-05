@@ -1,36 +1,17 @@
 <svg width="1600" height="1000" viewBox="0 0 1600 1000" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <radialGradient id="g" cx="50%" cy="30%" r="75%">
-      <stop offset="0%" stop-color="#F97316" stop-opacity="0.16"/>
+    <radialGradient id="g" cx="22%" cy="18%" r="90%">
+      <stop offset="0%" stop-color="#F97316" stop-opacity="0.20"/>
       <stop offset="100%" stop-color="#F97316" stop-opacity="0"/>
     </radialGradient>
   </defs>
   <rect width="1600" height="1000" fill="#16161a"/>
   <rect width="1600" height="1000" fill="url(#g)"/>
-  
-  <rect x="90" y="300" width="316" height="260" rx="24" fill="#FFFFFF" fill-opacity="0.04" stroke="#F97316" stroke-opacity="0.45" stroke-width="2.5"/>
-  <rect x="90" y="300" width="316" height="6" rx="3" fill="#F97316" fill-opacity="0.8"/>
-  <text x="248" y="419" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="36" font-weight="600" fill="#E5E7EB">As-is process</text>
-<text x="248" y="465" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="36" font-weight="600" fill="#E5E7EB">mapping</text>
-  <line x1="410" y1="430" x2="438" y2="430" stroke="#F97316" stroke-width="3" stroke-opacity="0.7"/>
-  <path d="M 438 420 L 454 430 L 438 440 Z" fill="#F97316" fill-opacity="0.9"/>
-  <rect x="458" y="300" width="316" height="260" rx="24" fill="#FFFFFF" fill-opacity="0.04" stroke="#F97316" stroke-opacity="0.45" stroke-width="2.5"/>
-  <rect x="458" y="300" width="316" height="6" rx="3" fill="#F97316" fill-opacity="0.8"/>
-  <text x="616" y="419" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="36" font-weight="600" fill="#E5E7EB">Impact × Effort</text>
-<text x="616" y="465" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="36" font-weight="600" fill="#E5E7EB">prioritization</text>
-  <line x1="778" y1="430" x2="806" y2="430" stroke="#F97316" stroke-width="3" stroke-opacity="0.7"/>
-  <path d="M 806 420 L 822 430 L 806 440 Z" fill="#F97316" fill-opacity="0.9"/>
-  <rect x="826" y="300" width="316" height="260" rx="24" fill="#FFFFFF" fill-opacity="0.04" stroke="#F97316" stroke-opacity="0.45" stroke-width="2.5"/>
-  <rect x="826" y="300" width="316" height="6" rx="3" fill="#F97316" fill-opacity="0.8"/>
-  <text x="984" y="419" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="36" font-weight="600" fill="#E5E7EB">Concrete</text>
-<text x="984" y="465" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="36" font-weight="600" fill="#E5E7EB">use cases</text>
-  <line x1="1146" y1="430" x2="1174" y2="430" stroke="#F97316" stroke-width="3" stroke-opacity="0.7"/>
-  <path d="M 1174 420 L 1190 430 L 1174 440 Z" fill="#F97316" fill-opacity="0.9"/>
-  <rect x="1194" y="300" width="316" height="260" rx="24" fill="#FFFFFF" fill-opacity="0.04" stroke="#F97316" stroke-opacity="0.45" stroke-width="2.5"/>
-  <rect x="1194" y="300" width="316" height="6" rx="3" fill="#F97316" fill-opacity="0.8"/>
-  <text x="1352" y="419" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="36" font-weight="600" fill="#E5E7EB">Deployed</text>
-<text x="1352" y="465" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="36" font-weight="600" fill="#E5E7EB">solutions</text>
-  <rect x="500" y="700" width="600" height="84" rx="42" fill="#F97316" fill-opacity="0.12" stroke="#F97316" stroke-opacity="0.5" stroke-width="2"/>
-  <circle cx="548" cy="742" r="10" fill="#F97316"/>
-  <text x="578" y="755" font-family="Segoe UI, Arial, sans-serif" font-size="38" font-weight="700" fill="#F3F4F6">6+ solutions in 12 hours</text>
+  <rect x="0" y="0" width="1600" height="8" fill="#F97316" fill-opacity="0.85"/>
+
+  <text x="110" y="250" font-family="Segoe UI, Arial, sans-serif" font-size="42" font-weight="800" letter-spacing="10" fill="#F97316">AI OPPORTUNITY MAPPING</text>
+
+  <text x="104" y="600" font-family="Segoe UI, Arial, sans-serif" font-size="300" font-weight="800" letter-spacing="-6" fill="#F8F9FA">6+</text>
+
+  <text x="110" y="720" font-family="Segoe UI, Arial, sans-serif" font-size="48" font-weight="500" fill="#C4C7CE">deployable solutions in a 12-hour workshop</text>
 </svg>

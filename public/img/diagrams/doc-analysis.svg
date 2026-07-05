@@ -1,42 +1,17 @@
 <svg width="1600" height="1000" viewBox="0 0 1600 1000" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <radialGradient id="g" cx="50%" cy="30%" r="75%">
-      <stop offset="0%" stop-color="#06B6D4" stop-opacity="0.16"/>
+    <radialGradient id="g" cx="22%" cy="18%" r="90%">
+      <stop offset="0%" stop-color="#06B6D4" stop-opacity="0.20"/>
       <stop offset="100%" stop-color="#06B6D4" stop-opacity="0"/>
     </radialGradient>
   </defs>
   <rect width="1600" height="1000" fill="#16161a"/>
   <rect width="1600" height="1000" fill="url(#g)"/>
-  
-  <rect x="90" y="300" width="242.4" height="260" rx="24" fill="#FFFFFF" fill-opacity="0.04" stroke="#06B6D4" stroke-opacity="0.45" stroke-width="2.5"/>
-  <rect x="90" y="300" width="242.4" height="6" rx="3" fill="#06B6D4" fill-opacity="0.8"/>
-  <text x="211.2" y="422" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="600" fill="#E5E7EB">50,000</text>
-<text x="211.2" y="462" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="600" fill="#E5E7EB">scanned docs</text>
-  <line x1="336.4" y1="430" x2="364.4" y2="430" stroke="#06B6D4" stroke-width="3" stroke-opacity="0.7"/>
-  <path d="M 364.4 420 L 380.4 430 L 364.4 440 Z" fill="#06B6D4" fill-opacity="0.9"/>
-  <rect x="384.4" y="300" width="242.4" height="260" rx="24" fill="#FFFFFF" fill-opacity="0.04" stroke="#06B6D4" stroke-opacity="0.45" stroke-width="2.5"/>
-  <rect x="384.4" y="300" width="242.4" height="6" rx="3" fill="#06B6D4" fill-opacity="0.8"/>
-  <text x="505.59999999999997" y="422" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="600" fill="#E5E7EB">Python</text>
-<text x="505.59999999999997" y="462" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="600" fill="#E5E7EB">page splitter</text>
-  <line x1="630.8" y1="430" x2="658.8" y2="430" stroke="#06B6D4" stroke-width="3" stroke-opacity="0.7"/>
-  <path d="M 658.8 420 L 674.8 430 L 658.8 440 Z" fill="#06B6D4" fill-opacity="0.9"/>
-  <rect x="678.8" y="300" width="242.4" height="260" rx="24" fill="#FFFFFF" fill-opacity="0.04" stroke="#06B6D4" stroke-opacity="0.45" stroke-width="2.5"/>
-  <rect x="678.8" y="300" width="242.4" height="6" rx="3" fill="#06B6D4" fill-opacity="0.8"/>
-  <text x="800" y="422" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="600" fill="#E5E7EB">SharePoint</text>
-<text x="800" y="462" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="600" fill="#E5E7EB">queue</text>
-  <line x1="925.1999999999999" y1="430" x2="953.1999999999999" y2="430" stroke="#06B6D4" stroke-width="3" stroke-opacity="0.7"/>
-  <path d="M 953.1999999999999 420 L 969.1999999999999 430 L 953.1999999999999 440 Z" fill="#06B6D4" fill-opacity="0.9"/>
-  <rect x="973.1999999999999" y="300" width="242.4" height="260" rx="24" fill="#FFFFFF" fill-opacity="0.04" stroke="#06B6D4" stroke-opacity="0.45" stroke-width="2.5"/>
-  <rect x="973.1999999999999" y="300" width="242.4" height="6" rx="3" fill="#06B6D4" fill-opacity="0.8"/>
-  <text x="1094.3999999999999" y="422" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="600" fill="#E5E7EB">Power Automate</text>
-<text x="1094.3999999999999" y="462" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="600" fill="#E5E7EB">+ AI Builder</text>
-  <line x1="1219.6" y1="430" x2="1247.6" y2="430" stroke="#06B6D4" stroke-width="3" stroke-opacity="0.7"/>
-  <path d="M 1247.6 420 L 1263.6 430 L 1247.6 440 Z" fill="#06B6D4" fill-opacity="0.9"/>
-  <rect x="1267.6" y="300" width="242.4" height="260" rx="24" fill="#FFFFFF" fill-opacity="0.04" stroke="#06B6D4" stroke-opacity="0.45" stroke-width="2.5"/>
-  <rect x="1267.6" y="300" width="242.4" height="6" rx="3" fill="#06B6D4" fill-opacity="0.8"/>
-  <text x="1388.8" y="422" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="600" fill="#E5E7EB">Page-level</text>
-<text x="1388.8" y="462" text-anchor="middle" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="600" fill="#E5E7EB">evidence sheet</text>
-  <rect x="420" y="700" width="760" height="84" rx="42" fill="#06B6D4" fill-opacity="0.12" stroke="#06B6D4" stroke-opacity="0.5" stroke-width="2"/>
-  <circle cx="468" cy="742" r="10" fill="#06B6D4"/>
-  <text x="498" y="755" font-family="Segoe UI, Arial, sans-serif" font-size="38" font-weight="700" fill="#F3F4F6">6 hours · 98% validated accuracy</text>
+  <rect x="0" y="0" width="1600" height="8" fill="#06B6D4" fill-opacity="0.85"/>
+
+  <text x="110" y="250" font-family="Segoe UI, Arial, sans-serif" font-size="42" font-weight="800" letter-spacing="10" fill="#06B6D4">DOCUMENT ANALYSIS</text>
+
+  <text x="104" y="600" font-family="Segoe UI, Arial, sans-serif" font-size="300" font-weight="800" letter-spacing="-6" fill="#F8F9FA">50,000</text>
+
+  <text x="110" y="720" font-family="Segoe UI, Arial, sans-serif" font-size="48" font-weight="500" fill="#C4C7CE">documents analyzed in 6 hours · 98% validated</text>
 </svg>
