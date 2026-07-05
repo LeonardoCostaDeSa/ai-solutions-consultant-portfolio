@@ -97,12 +97,12 @@ const SolutionsPage: React.FC = () => {
           <div className="flex flex-col md:flex-row md:items-center gap-4 mb-10 md:mb-14">
             <span className="text-charcoal/40 font-black uppercase tracking-[0.4em] text-xs">Case Studies</span>
             <div className="hidden md:block flex-1 h-[1px] bg-charcoal/10" />
-            <div className="flex bg-charcoal/10 p-1 rounded-full border border-charcoal/15 self-start md:self-auto isolate">
+            <div className="flex bg-charcoal/10 p-1 rounded-full border border-charcoal/15 self-start md:self-auto isolate max-w-full overflow-x-auto no-scrollbar">
               {(['all', 'engineering', 'AI Adoption'] as const).map((type) => (
                 <button
                   key={type}
                   onClick={() => { setFilter(type); track('case-filter', { filter: type }); }}
-                  className={`relative isolate px-3 md:px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-[0.18em] transition-all flex items-center gap-1 md:gap-1.5 whitespace-nowrap ${
+                  className={`relative isolate px-3 md:px-4 py-1.5 rounded-full text-xs font-black uppercase tracking-wider md:tracking-[0.18em] transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 ${
                     filter === type ? 'text-white' : 'text-charcoal/80 hover:text-charcoal'
                   }`}
                 >

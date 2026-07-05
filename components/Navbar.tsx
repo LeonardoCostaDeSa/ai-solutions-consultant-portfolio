@@ -28,9 +28,12 @@ const Navbar: React.FC = () => {
         <Link
           to="/"
           onClick={handleLogoClick}
-          className="text-white font-black tracking-tighter text-sm md:text-lg shrink-0"
+          aria-label="Leonardo Sá — home"
+          className="text-white font-black tracking-tighter text-base md:text-lg shrink-0"
         >
-          LEONARDO<span className="text-indigo">.SA</span>
+          {/* Compact monogram on mobile, full wordmark from sm up */}
+          <span className="sm:hidden">L<span className="text-indigo">S</span></span>
+          <span className="hidden sm:inline">LEONARDO<span className="text-indigo">.SA</span></span>
         </Link>
         <div className="flex gap-2.5 md:gap-6 items-center">
           <Link to="/about" className={linkClass(location.pathname === '/about') + ' hidden sm:block'}>

@@ -102,13 +102,13 @@ const volunteering = [
     desc: "Guided an early-career AI researcher in healthcare technology through KPMG's affiliated program. Conducted 3-session structured mentorship covering career planning, values mapping, and professional branding."
   },
   {
-    org: "ETEC de Itaquera",
+    org: "ETEC de Itaquera — Itaquera State Technical School",
     role: "Film Club Project Lead",
     period: "Mar – Dec 2019",
     desc: "Led a project empowering high school students to create and manage film clubs. Provided training in film curation, event organization, critical discussion facilitation, and promotional campaigns."
   },
   {
-    org: "FFLCH-USP",
+    org: "FFLCH-USP — School of Philosophy, Languages and Human Sciences, University of São Paulo",
     role: "Volunteer Portuguese Teacher",
     period: "Mar – Dec 2018",
     desc: "Taught Portuguese to students preparing for university entrance exams at USP's community prep course. Developed lesson plans, provided individualized guidance, and created supplementary materials."
