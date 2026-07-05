@@ -8,6 +8,12 @@
     <meta name="description" content="AI Engineer building production GenAI systems — RAG pipelines, multi-agent orchestration, and enterprise integrations. Currently at KPMG Brazil." />
     <link rel="icon" type="image/png" href="/img/logo-ls.png" />
     <link rel="apple-touch-icon" href="/img/logo-ls.png" />
+    <script>
+      // Back-compat: redirect legacy hash URLs (/#/about) to clean URLs (/about)
+      if (location.hash.startsWith('#/')) {
+        location.replace(location.hash.slice(1) + location.search);
+      }
+    </script>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>

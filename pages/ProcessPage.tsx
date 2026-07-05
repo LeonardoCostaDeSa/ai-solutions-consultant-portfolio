@@ -1,20 +1,16 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { 
-  ArrowLeft, 
-  Download, 
-  Briefcase, 
-  GraduationCap, 
-  Globe, 
-  Cpu, 
-  Award, 
-  Languages, 
+import {
+  Briefcase,
+  GraduationCap,
+  Globe,
+  Cpu,
+  Award,
+  Languages,
   HeartHandshake,
-  CheckCircle2,
-  ExternalLink
+  CheckCircle2
 } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
 import BorderBeam from '../components/BorderBeam';
 import Navbar from '../components/Navbar';
 
@@ -139,7 +135,6 @@ const SectionLabel: React.FC<{ icon: any, label: string, color?: string }> = ({ 
 );
 
 const ProcessPage: React.FC = () => {
-  const navigate = useNavigate();
   const [activeSection, setActiveSection] = useState('intro');
 
   // Scroll Spy Logic
@@ -232,18 +227,9 @@ const ProcessPage: React.FC = () => {
                 Resume
               </h1>
               <p className="text-xl text-white/40 max-w-xl leading-relaxed">
-                This page traces my professional path — from linguistics to AI engineering. If you need a concise version for your records, download my CV below.
+                This page traces my professional path — from linguistics to AI engineering.
               </p>
             </div>
-            <a
-              href="https://drive.google.com/uc?export=download&id=1IVVvZKFooBo1a3HLQJvSaMILzIhP7oZL"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="group flex items-center gap-3 px-8 py-4 bg-indigo hover:bg-indigo/90 text-white rounded-full font-bold transition-all shadow-lg shadow-indigo/20 active:scale-95 whitespace-nowrap"
-            >
-              <Download size={18} />
-              <span>Download CV</span>
-            </a>
           </div>
         </motion.div>
 

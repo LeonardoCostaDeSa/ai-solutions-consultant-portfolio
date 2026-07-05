@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   ArrowRight,
   BrainCircuit,
@@ -92,8 +92,6 @@ const principles = [
 ];
 
 const AboutPage: React.FC = () => {
-  const navigate = useNavigate();
-
   return (
     <div className="bg-charcoal min-h-screen text-offwhite pb-24 overflow-x-clip">
       <Navbar />
@@ -300,20 +298,20 @@ const AboutPage: React.FC = () => {
               <Linkedin size={16} />
               <span>Hire Me</span>
             </a>
-            <button
-              onClick={() => navigate('/process')}
+            <Link
+              to="/process"
               className="inline-flex items-center gap-3 px-8 py-4 bg-transparent border border-white/20 hover:border-white text-white rounded-full font-black text-sm uppercase tracking-widest transition-all active:scale-95"
             >
               <FileText size={16} />
               <span>Resume</span>
-            </button>
-            <button
-              onClick={() => navigate('/solutions')}
+            </Link>
+            <Link
+              to="/solutions"
               className="inline-flex items-center gap-3 px-8 py-4 bg-transparent border border-white/20 hover:border-white text-white rounded-full font-black text-sm uppercase tracking-widest transition-all active:scale-95"
             >
               <span>Projects</span>
               <ArrowRight size={16} />
-            </button>
+            </Link>
           </div>
         </div>
       </section>

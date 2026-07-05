@@ -1,6 +1,6 @@
 
 import React, { useEffect } from 'react';
-import { HashRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Routes, Route, Navigate, useLocation } from 'react-router-dom';
 import { AnimatePresence } from 'framer-motion';
 import Home from './pages/Home';
 import ProcessPage from './pages/ProcessPage';
@@ -27,6 +27,7 @@ const AnimatedRoutes = () => {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/process" element={<ProcessPage />} />
         <Route path="/solutions" element={<SolutionsPage />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
       </Routes>
     </AnimatePresence>
   );
@@ -34,7 +35,7 @@ const AnimatedRoutes = () => {
 
 const App: React.FC = () => {
   return (
-    <HashRouter>
+    <BrowserRouter>
       <ScrollToTop />
       <div className="font-sans antialiased text-offwhite selection:bg-indigo selection:text-white overflow-x-clip">
         <main className="min-h-screen overflow-x-clip">
@@ -42,7 +43,7 @@ const App: React.FC = () => {
         </main>
         <Footer />
       </div>
-    </HashRouter>
+    </BrowserRouter>
   );
 };
 

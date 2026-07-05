@@ -1,12 +1,13 @@
 
 import React, { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
-import { useNavigate } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import DataStreams from './DataStreams';
+
+const MotionLink = motion.create(Link);
 
 const Hero: React.FC = () => {
   const [complete, setComplete] = useState(false);
-  const navigate = useNavigate();
   const text = "Bridging messy human problems with intelligent, structured systems.";
   const [displayText, setDisplayText] = useState("");
   
@@ -140,7 +141,8 @@ const Hero: React.FC = () => {
             Who am I?
           </motion.button>
 
-          <motion.button
+          <MotionLink
+            to="/process"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.7 }}
@@ -148,13 +150,13 @@ const Hero: React.FC = () => {
               boxShadow: "0 0 30px rgba(79,70,229,0.5)",
               borderColor: "rgba(79,70,229,1)"
             }}
-            onClick={() => navigate('/process')}
-            className={buttonClass}
+            className={buttonClass + ' text-center'}
           >
             Resume
-          </motion.button>
+          </MotionLink>
 
-          <motion.button
+          <MotionLink
+            to="/solutions"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.8 }}
@@ -162,11 +164,10 @@ const Hero: React.FC = () => {
               boxShadow: "0 0 30px rgba(79,70,229,0.5)",
               borderColor: "rgba(79,70,229,1)"
             }}
-            onClick={() => navigate('/solutions')}
-            className={buttonClass}
+            className={buttonClass + ' text-center'}
           >
             Projects
-          </motion.button>
+          </MotionLink>
 
           <motion.a
             href="https://www.linkedin.com/in/leonardocostadesa/"

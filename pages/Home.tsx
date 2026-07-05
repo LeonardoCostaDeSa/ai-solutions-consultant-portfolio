@@ -1,7 +1,7 @@
 
 import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence, useInView } from 'framer-motion';
-import { useNavigate, useLocation } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import { 
   GitPullRequest, 
   Boxes, 
@@ -78,8 +78,9 @@ const NodesSVG = ({ color }: { color: string }) => (
   </svg>
 );
 
+const MotionLink = motion.create(Link);
+
 const Home: React.FC = () => {
-  const navigate = useNavigate();
   const location = useLocation();
   const aboutRef = useRef(null);
   const isAboutInView = useInView(aboutRef, { amount: 0.3, once: false });
@@ -233,13 +234,13 @@ const Home: React.FC = () => {
             <p className="text-charcoal/70 text-lg md:text-2xl font-medium leading-relaxed mb-8">
               I design and ship production GenAI systems in regulated environments — <span className="text-charcoal font-bold">RAG pipelines</span>, multi-agent orchestration with <span className="text-charcoal font-bold">CrewAI</span>, and enterprise integrations across Azure, Power Platform, and Copilot Studio. At KPMG Brazil's Tax Transformation team, my work cuts execution time by <span className="text-charcoal font-bold">30–80%</span> across tax and compliance workflows.
             </p>
-            <button
-              onClick={() => navigate('/about')}
+            <Link
+              to="/about"
               className="group inline-flex items-center gap-3 text-charcoal font-black uppercase tracking-widest text-[10px] md:text-xs py-3 hover:text-indigo transition-colors"
             >
               <span>Read my full story</span>
               <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </button>
+            </Link>
           </motion.div>
 
           {/* 4 trait cards — horizontal row */}
@@ -286,10 +287,10 @@ const Home: React.FC = () => {
 
         <div className="grid md:grid-cols-2 gap-8 md:gap-10">
           {portals.map((portal) => (
-            <motion.div
+            <MotionLink
+              to={portal.path}
               key={portal.id}
               layoutId={portal.id}
-              onClick={() => navigate(portal.path)}
               whileHover={{ y: -10, scale: 1.01 }}
               transition={{ type: "spring", stiffness: 300, damping: 25 }}
               className={`group relative cursor-pointer overflow-hidden rounded-[1.75rem] md:rounded-[2.5rem] bg-white/[0.03] border border-white/10 aspect-[4/3] md:aspect-[1.3/1] p-5 md:p-12 flex flex-col justify-end transition-colors hover:border-${portal.twColor}/40 backdrop-blur-sm`}
@@ -318,7 +319,7 @@ const Home: React.FC = () => {
                   <ArrowRight size={16} className={`text-${portal.twColor}`} />
                 </div>
               </div>
-            </motion.div>
+            </MotionLink>
           ))}
         </div>
       </section>
