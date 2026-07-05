@@ -43,12 +43,10 @@ const Navbar: React.FC = () => {
             Resume
           </Link>
           <a
-            href="https://www.linkedin.com/in/leonardocostadesa/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-[9px] md:text-xs font-black uppercase tracking-widest px-3 md:px-5 py-2 md:py-2.5 bg-indigo rounded-full text-white hover:bg-indigo/80 transition-all shadow-lg shadow-indigo/20 whitespace-nowrap"
+            href="mailto:leonardo@leonardosa.pro"
+            className="text-[10px] md:text-xs font-black uppercase tracking-widest px-3 md:px-5 py-2 md:py-2.5 bg-indigo rounded-full text-white hover:bg-indigo/80 transition-all shadow-lg shadow-indigo/20 whitespace-nowrap"
           >
-            Hire Me
+            Let's talk
           </a>
         </div>
       </div>

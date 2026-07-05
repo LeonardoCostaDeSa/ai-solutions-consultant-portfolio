@@ -1,7 +1,7 @@
 
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Linkedin, Github, Twitter } from 'lucide-react';
+import { Linkedin, Github } from 'lucide-react';
 
 const Footer: React.FC = () => {
   return (
@@ -16,12 +16,12 @@ const Footer: React.FC = () => {
       </div>
 
       <div className="max-w-4xl mx-auto text-center relative z-10">
-        <motion.h2 
+        <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
-          className="text-white/60 text-sm font-semibold tracking-widest uppercase mb-4"
+          className="text-white/70 text-sm font-semibold tracking-widest uppercase mb-4"
         >
-          Ready to scale?
+          Building GenAI where reliability matters? Let's talk.
         </motion.h2>
         
         <motion.a 
@@ -54,8 +54,11 @@ const Footer: React.FC = () => {
           ))}
         </div>
 
-        <p className="mt-20 text-white/40 text-sm font-medium">
-          &copy; {new Date().getFullYear()} AI Solutions Consultant. Built for the future.
+        <p className="mt-16 text-white/70 text-sm font-medium">
+          Madrid, Spain · from August 2026 · English / French / Portuguese / Spanish
+        </p>
+        <p className="mt-4 text-white/40 text-sm font-medium">
+          &copy; {new Date().getFullYear()} Leonardo Costa de Sá
         </p>
       </div>
     </footer>

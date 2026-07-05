@@ -9,7 +9,8 @@ import {
   Award,
   Languages,
   HeartHandshake,
-  CheckCircle2
+  CheckCircle2,
+  ExternalLink
 } from 'lucide-react';
 import BorderBeam from '../components/BorderBeam';
 import Navbar from '../components/Navbar';
@@ -18,12 +19,12 @@ import Navbar from '../components/Navbar';
 const experience = [
   {
     company: "KPMG Brazil",
-    role: "AI Engineer",
+    role: "AI Solutions Consultant → AI Engineer",
     period: "May 2025 – Present",
-    tag: "Current",
+    tag: "Promoted",
     accentColor: "indigo",
     accentHex: "#4F46E5",
-    desc: "Designing production-oriented GenAI workflows in a highly regulated tax/compliance environment — with focus on RAG, multi-agent orchestration, traceability, auditability, and secure AI adoption.",
+    desc: "Designing production GenAI workflows in a highly regulated tax/compliance environment — RAG, multi-agent orchestration, traceability, auditability, and secure AI adoption. Joined as an AI solutions consultant; promoted to AI Engineer.",
     highlights: [
       "Built a legal/tax semantic search engine with 94% validated accuracy using agentic orchestration",
       "Delivered 30–80% execution-time reductions across AI and automation initiatives",
@@ -32,16 +33,16 @@ const experience = [
   },
   {
     company: "Revisa Master",
-    role: "Software Engineer (AI-Focused)",
-    period: "Feb 2024 – Present",
-    tag: "Side Project",
+    role: "Co-founder & AI Engineer",
+    period: "2023 – Present",
+    tag: "Founder",
     accentColor: "coral",
     accentHex: "#F97316",
-    desc: "Designing and implementing GenAI systems for academic consulting workflows — focused on reliability, explainability, structured evaluation, and controlled data exposure.",
+    desc: "Academic-services company where I own engineering end-to-end: a production multi-agent review platform (Python, Django, CrewAI, PostgreSQL/pgvector, Celery, Docker) with Langfuse tracing and Sentry monitoring in production.",
     highlights: [
-      "Built a multi-agent academic analysis system using Python, Django, CrewAI, and PostgreSQL/pgvector",
-      "Reduced first-pass academic document analysis from ~6 hours to ~15 minutes",
-      "Automated PDF diagnostic report generation across 5 evaluation pillars with citation grounding"
+      "Cut first-pass expert document analysis from ~6 hours to ~15 minutes",
+      "Built the funnels and landing pages behind ~90% monthly revenue growth in one quarter",
+      "Automated PDF diagnostic reports across 5 evaluation pillars with citation grounding"
     ]
   },
   {
@@ -64,7 +65,7 @@ const education = [
     school: "Faculty of Technology of Praia Grande",
     degree: "Systems Analysis & Development",
     period: "2023 – 2026",
-    desc: "Programming logic, data structures, databases, operating systems, and web development."
+    desc: "Completed with a final GPA of 8.8/10. Programming logic, data structures, databases, operating systems, and web development."
   },
   {
     school: "University of São Paulo",
@@ -114,13 +115,13 @@ const volunteering = [
 
 // --- NAVIGATION SECTIONS ---
 const navItems = [
-  { id: 'intro', label: 'Discovery' },
-  { id: 'experience', label: 'Trajectory' },
-  { id: 'education', label: 'Foundation' },
-  { id: 'global', label: 'Global' },
-  { id: 'skills', label: 'Arsenal' },
+  { id: 'intro', label: 'Overview' },
+  { id: 'experience', label: 'Experience' },
+  { id: 'education', label: 'Education' },
+  { id: 'global', label: 'International' },
+  { id: 'skills', label: 'Skills' },
   { id: 'credentials', label: 'Credentials' },
-  { id: 'impact', label: 'Impact' },
+  { id: 'impact', label: 'Volunteering' },
 ];
 
 // --- COMPONENTS ---
@@ -220,7 +221,6 @@ const ProcessPage: React.FC = () => {
           animate={{ opacity: 1, y: 0 }}
           className="mb-24 border-b border-white/10 pb-16"
         >
-          <span className="text-indigo font-black uppercase tracking-[0.4em] text-[10px] mb-6 block">Discovery Protocol</span>
           <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
             <div className="max-w-2xl">
               <h1 className="text-6xl md:text-8xl font-black mb-6 leading-[0.9] tracking-tighter">
@@ -235,7 +235,7 @@ const ProcessPage: React.FC = () => {
 
         {/* SECTION 2: EXPERIENCE */}
         <section id="experience" className="mb-24 scroll-mt-32">
-          <SectionLabel icon={Briefcase} label="Trajectory // Experience" color="indigo" />
+          <SectionLabel icon={Briefcase} label="Experience" color="indigo" />
 
           <div className="space-y-6">
             {experience.map((job, idx) => (
@@ -297,7 +297,7 @@ const ProcessPage: React.FC = () => {
           {/* Full-width light background */}
           <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-screen bg-offwhite -z-10" />
 
-          <SectionLabel icon={GraduationCap} label="Foundation // Education" color="teal" />
+          <SectionLabel icon={GraduationCap} label="Education" color="teal" />
 
           <div className="grid md:grid-cols-2 gap-6">
             {education.map((edu, idx) => {
@@ -331,7 +331,7 @@ const ProcessPage: React.FC = () => {
 
         {/* SECTION 4: INTERNATIONAL */}
         <section id="global" className="pt-20 md:pt-28 mb-24 scroll-mt-32">
-          <SectionLabel icon={Globe} label="Global // Exchange" color="white" />
+          <SectionLabel icon={Globe} label="International Experience" color="white" />
           
           <motion.div 
             initial={{ opacity: 0, scale: 0.95 }}
@@ -379,7 +379,7 @@ const ProcessPage: React.FC = () => {
         <section id="skills" className="relative isolate scroll-mt-32 py-20 md:py-28 mb-0">
           <div className="absolute inset-y-0 left-1/2 -translate-x-1/2 w-screen bg-offwhite -z-10" />
 
-          <SectionLabel icon={Cpu} label="Arsenal // Skills" color="coral" />
+          <SectionLabel icon={Cpu} label="Skills" color="coral" />
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {skills.map((skillGroup, idx) => {
@@ -414,7 +414,7 @@ const ProcessPage: React.FC = () => {
         {/* SECTION 6 & 7: CERTS & LANGUAGES */}
         <div id="credentials" className="grid md:grid-cols-12 gap-10 pt-20 md:pt-28 mb-24 scroll-mt-32">
           <section className="md:col-span-8">
-            <SectionLabel icon={CheckCircle2} label="Credentials // Certifications" color="indigo" />
+            <SectionLabel icon={CheckCircle2} label="Certifications & Publications" color="indigo" />
             <div className="bg-white/[0.02] border border-white/10 rounded-3xl overflow-hidden">
               <div className="grid grid-cols-12 px-6 py-4 border-b border-white/10 bg-white/[0.02] text-[10px] font-black uppercase tracking-widest text-white/30">
                 <div className="col-span-6">Course</div>
@@ -429,10 +429,31 @@ const ProcessPage: React.FC = () => {
                 </div>
               ))}
             </div>
+
+            {/* Publication */}
+            <a
+              href="https://doi.org/10.5281/zenodo.19930775"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="group mt-6 flex items-start justify-between gap-6 p-6 bg-indigo/5 border border-indigo/20 hover:border-indigo/50 rounded-3xl transition-all"
+            >
+              <div>
+                <div className="text-indigo font-black uppercase tracking-widest text-xs mb-2">
+                  Peer-reviewed publication · 2026
+                </div>
+                <h3 className="text-white font-bold text-sm md:text-base leading-snug mb-1">
+                  "As arquiteturas distribuídas e integração de agentes inteligentes" — distributed architectures and intelligent-agent integration
+                </h3>
+                <p className="text-white/50 text-xs leading-relaxed">
+                  Multi-agent systems, LLM integration and the Model Context Protocol. Revista Processando o Saber (eISSN 2179-5150), Vol. 18, n. 01 — the same architecture I operate in production.
+                </p>
+              </div>
+              <ExternalLink size={18} className="text-white/30 group-hover:text-indigo transition-colors shrink-0 mt-1" />
+            </a>
           </section>
           
           <section className="md:col-span-4">
-            <SectionLabel icon={Languages} label="Fluency // Languages" color="teal" />
+            <SectionLabel icon={Languages} label="Languages" color="teal" />
             <div className="space-y-4">
               {[
                 { lang: "Portuguese", level: "Native", code: "PT" },
@@ -456,7 +477,7 @@ const ProcessPage: React.FC = () => {
 
         {/* SECTION 8: VOLUNTEERING */}
         <section id="impact" className="mb-24 scroll-mt-32">
-          <SectionLabel icon={HeartHandshake} label="Impact // Volunteering" color="coral" />
+          <SectionLabel icon={HeartHandshake} label="Volunteering" color="coral" />
           
           <div className="grid md:grid-cols-3 gap-6">
             {volunteering.map((vol, idx) => (

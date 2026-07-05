@@ -1,15 +1,13 @@
 
 import React, { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { ArrowRight, X, Target, Zap, ChevronRight, Activity, Layers, Brain, Lightbulb, Users } from 'lucide-react';
-import { useNavigate } from 'react-router-dom';
+import { ArrowRight, X, Target, Zap, ChevronRight, Layers, Brain, Lightbulb, Users } from 'lucide-react';
 import { solutions } from '../data/content';
 import { Solution } from '../types';
 import BorderBeam from '../components/BorderBeam';
 import Navbar from '../components/Navbar';
 
 const SolutionsPage: React.FC = () => {
-  const navigate = useNavigate();
   const [filter, setFilter] = useState<'all' | 'engineering' | 'AI Adoption'>('all');
   const [selectedSolution, setSelectedSolution] = useState<Solution | null>(null);
 
@@ -34,17 +32,13 @@ const SolutionsPage: React.FC = () => {
           className="flex flex-col md:flex-row md:items-end justify-between gap-8"
         >
           <div className="max-w-2xl">
-            <span className="text-coral font-black uppercase tracking-[0.4em] text-[10px] mb-6 block">Operational Portfolio // 2024-2025</span>
+            <span className="text-coral font-black uppercase tracking-[0.4em] text-xs mb-6 block">Case studies · 2024–2026</span>
             <h1 className="text-5xl md:text-7xl font-black mb-8 leading-tight tracking-tighter">
-              Deployment <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-coral to-indigo italic">Gallery.</span>
+              Selected <br /> <span className="text-transparent bg-clip-text bg-gradient-to-r from-coral to-indigo italic">work.</span>
             </h1>
-            <p className="text-xl text-white/40 font-medium leading-relaxed">
-              Curated architectural systems and strategic frameworks. Each node represents a successful conversion of ambiguity into structured value.
+            <p className="text-xl text-white/60 font-medium leading-relaxed">
+              Production systems and adoption programs with validated metrics — built for environments where errors are expensive.
             </p>
-          </div>
-          <div className="flex items-center gap-6 text-white/20 font-black text-xs uppercase tracking-widest">
-            <Activity size={16} className="text-coral animate-pulse" />
-            <span>Systems Online</span>
           </div>
         </motion.div>
       </div>

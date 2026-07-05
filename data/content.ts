@@ -64,13 +64,13 @@ export const solutions: Solution[] = [
     quote: "High-quality academic evaluation is not intuition — it’s structure. Once expert judgment is made explicit, it can be scaled.",
     context: "Academic consulting teams spend a disproportionate amount of time on first-level readings: understanding a client’s paper, diagnosing structural/methodological issues, and assessing quality before deep revision begins.",
     problem: "This initial diagnostic phase was time-consuming, costly, and highly dependent on senior reviewers’ availability. The problem wasn’t writing alone — it was the lack of a fast, structured, and repeatable way to apply academic judgment at scale.",
-    solution: "A multi-agent academic analysis system structured around the 5 pillars of academic writing (Clarity, Methodology, Relevance, Technical Quality, Norms). Each pillar is implemented as a specialized AI agent that produces structured evaluations. A Redactor agent then consolidates all analyses into a single, standardized diagnostic report exported as a branded PDF.",
-    role: "Translated tacit academic evaluation criteria into explicit, modular AI agents. Designed and implemented the multi-agent orchestration and backend architecture (Python/Django/CrewAI).",
+    solution: "A production multi-agent analysis system structured around the 5 pillars of academic writing (Clarity, Methodology, Relevance, Technical Quality, Norms). Each pillar is implemented as a specialized AI agent that produces structured evaluations. A Redactor agent then consolidates all analyses into a single, standardized diagnostic report exported as a branded PDF. Runs in production with Langfuse tracing, Sentry monitoring, and automated health checks.",
+    role: "Co-founder and sole engineer. Translated tacit academic evaluation criteria into explicit, modular AI agents. Designed, implemented and operate the multi-agent orchestration and backend architecture (Python/Django/CrewAI/PostgreSQL/pgvector/Celery/Docker) — a system my own business depends on daily.",
     insight: "Reduced analysis time by ~80%. High-quality academic evaluation is not intuition—it is structure. By codifying tacit expert criteria into 5 distinct agents, we proved that complex intellectual critique can be scaled without sacrificing rigor.",
     highlights: [
       "5 specialized agents mirroring academic evaluation",
       "Automated PDF diagnostic report generation",
-      "Scalable architecture replacing manual triage"
+      "In production with Langfuse tracing and Sentry monitoring"
     ]
   },
   {

@@ -1,24 +1,15 @@
 
-import React, { useState, useEffect, useRef } from 'react';
-import { motion, AnimatePresence, useInView } from 'framer-motion';
+import React, { useEffect } from 'react';
+import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
-import { 
-  GitPullRequest, 
-  Boxes, 
-  ArrowRight, 
-  User, 
-  Terminal, 
-  Code, 
-  Play, 
-  Video, 
-  X, 
+import {
+  ArrowRight,
+  Code,
   FileText,
   Briefcase,
-Shrink,
-Brain,
-BrainCircuit,
-Scale3d,
-ChartNoAxesColumnIncreasing
+  Shrink,
+  BrainCircuit,
+  ChartNoAxesColumnIncreasing
 } from 'lucide-react';
 import Hero from '../components/Hero';
 import Navbar from '../components/Navbar';
@@ -82,23 +73,6 @@ const MotionLink = motion.create(Link);
 
 const Home: React.FC = () => {
   const location = useLocation();
-  const aboutRef = useRef(null);
-  const isAboutInView = useInView(aboutRef, { amount: 0.3, once: false });
-
-  const [popupState, setPopupState] = useState<'hidden' | 'visible' | 'minimized'>('hidden');
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const [hasTriggeredOnce, setHasTriggeredOnce] = useState(false);
-
-  useEffect(() => {
-    let timer: any;
-    if (isAboutInView && !hasTriggeredOnce) {
-      timer = setTimeout(() => {
-        setPopupState('visible');
-        setHasTriggeredOnce(true);
-      }, 1500);
-    }
-    return () => clearTimeout(timer);
-  }, [isAboutInView, hasTriggeredOnce]);
 
   // Handle "About" clicks from other pages
   useEffect(() => {
@@ -114,7 +88,7 @@ const Home: React.FC = () => {
     {
       id: 'projects',
       title: 'Projects',
-      sub: 'Explore architectural deployments, agentic systems, and technical solutions.',
+      sub: 'Case studies with validated metrics — from regulated document intelligence to production multi-agent platforms.',
       color: '#F97316', // coral
       twColor: 'coral',
       icon: Briefcase,
@@ -124,7 +98,7 @@ const Home: React.FC = () => {
     {
       id: 'resume',
       title: 'Resume',
-      sub: 'Trace my chronological journey and the methodology behind my success.',
+      sub: 'Experience, education, skills and credentials — the full track record in one page.',
       color: '#06B6D4', // teal
       twColor: 'teal',
       icon: FileText,
@@ -153,15 +127,13 @@ const Home: React.FC = () => {
             viewport={{ once: true }}
             className="flex items-center gap-4 mb-10 md:mb-14"
           >
-            <span className="text-white/20 font-black uppercase tracking-[0.4em] text-[10px]">Impact Metrics</span>
+            <span className="text-white/40 font-black uppercase tracking-[0.4em] text-xs">Measured impact</span>
             <div className="flex-1 h-[1px] bg-white/5" />
             <a
-              href="https://www.linkedin.com/in/leonardocostadesa/"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-2 px-5 py-2 bg-indigo hover:bg-indigo/90 text-white rounded-full font-black text-[11px] uppercase tracking-widest transition-all shadow-md shadow-indigo/30 active:scale-95"
+              href="mailto:leonardo@leonardosa.pro"
+              className="flex items-center gap-2 px-5 py-2 bg-indigo hover:bg-indigo/90 text-white rounded-full font-black text-xs uppercase tracking-widest transition-all shadow-md shadow-indigo/30 active:scale-95"
             >
-              <span>Hire Me</span>
+              <span>Let's talk</span>
               <ArrowRight size={13} />
             </a>
           </motion.div>
@@ -192,7 +164,6 @@ const Home: React.FC = () => {
 
       <section
         id="about"
-        ref={aboutRef}
         className="relative bg-offwhite"
       >
         {/* Top edge: hard cut from dark to light */}
@@ -232,7 +203,7 @@ const Home: React.FC = () => {
             className="max-w-3xl mb-12 md:mb-16"
           >
             <p className="text-charcoal/70 text-lg md:text-2xl font-medium leading-relaxed mb-8">
-              I design and ship production GenAI systems in regulated environments — <span className="text-charcoal font-bold">RAG pipelines</span>, multi-agent orchestration with <span className="text-charcoal font-bold">CrewAI</span>, and enterprise integrations across Azure, Power Platform, and Copilot Studio. At KPMG Brazil's Tax Transformation team, my work cuts execution time by <span className="text-charcoal font-bold">30–80%</span> across tax and compliance workflows.
+              I design, ship and operate production GenAI systems in regulated environments — <span className="text-charcoal font-bold">RAG pipelines</span>, <span className="text-charcoal font-bold">multi-agent orchestration</span>, and enterprise integrations across Azure, Power Platform, and Copilot Studio. At KPMG Brazil's Tax Transformation team, my work cut execution time by <span className="text-charcoal font-bold">30–80%</span> across tax and compliance workflows. As <span className="text-charcoal font-bold">co-founder of Revisa Master</span>, I built and operate the production multi-agent platform my family's income runs on.
             </p>
             <Link
               to="/about"
@@ -281,8 +252,7 @@ const Home: React.FC = () => {
           viewport={{ once: true }}
           className="text-center mb-16 md:mb-24"
         >
-          <span className="text-teal font-black uppercase tracking-[0.4em] text-[10px] md:text-xs mb-4 md:mb-6 block">Discovery Protocol</span>
-          <h2 className="text-3xl md:text-6xl font-black mb-6 md:mb-8 leading-tight text-white">Get to know my journey</h2>
+          <h2 className="text-3xl md:text-6xl font-black mb-6 md:mb-8 leading-tight text-white">Explore the work</h2>
         </motion.div>
 
         <div className="grid md:grid-cols-2 gap-8 md:gap-10">

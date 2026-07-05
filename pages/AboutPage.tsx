@@ -8,7 +8,8 @@ import {
   Bot,
   GraduationCap,
   FileText,
-  Wrench,
+  Award,
+  Mail,
   Linkedin,
 } from 'lucide-react';
 import Navbar from '../components/Navbar';
@@ -16,16 +17,30 @@ import Navbar from '../components/Navbar';
 const trajectory = [
   {
     period: '2025 – Present',
-    role: 'AI Engineer',
+    role: 'AI Solutions Consultant → AI Engineer',
     company: 'KPMG Brazil — Tax Transformation',
     icon: BrainCircuit,
     color: 'indigo',
     hex: '#4F46E5',
-    desc: 'I design and ship production GenAI systems in regulated tax and compliance environments. Stack: Python, Django REST, CrewAI, RAG architecture, Azure App Service, OpenAI APIs, Microsoft Copilot Studio, Power Platform.',
+    desc: 'Joined as an AI solutions consultant and was promoted to AI Engineer. I design and ship production GenAI systems in regulated tax and compliance environments, where traceability, DLP and auditability are the entry ticket — governance is part of the architecture.',
     highlights: [
       'Built a legal/tax semantic search engine with 94% validated accuracy using agentic orchestration',
       '30–80% execution-time reductions across AI and automation initiatives',
       '1,600+ professionals trained on responsible AI adoption',
+    ],
+  },
+  {
+    period: '2023 – Present',
+    role: 'Co-founder & AI Engineer',
+    company: 'Revisa Master',
+    icon: Bot,
+    color: 'coral',
+    hex: '#F97316',
+    desc: 'The academic-services company where I am the entire engineering department. I built our production multi-agent review platform end-to-end — Django, PostgreSQL/pgvector, Celery, Docker — with Langfuse tracing and Sentry in production. Nothing teaches production reliability like operating a system your household depends on.',
+    highlights: [
+      'Cut a six-hour expert review task to fifteen minutes with a 5-pillar multi-agent system',
+      'Built the funnels and landing pages behind ~90% monthly revenue growth in one quarter',
+      'Full production observability: Langfuse tracing, Sentry, automated health monitoring',
     ],
   },
   {
@@ -43,27 +58,13 @@ const trajectory = [
     ],
   },
   {
-    period: '2024 – Present',
-    role: 'Software Engineer (AI-Focused)',
-    company: 'Revisa Master — Side Project',
-    icon: Bot,
-    color: 'coral',
-    hex: '#F97316',
-    desc: 'GenAI side project for academic consulting workflows. Stack: Python, Django, CrewAI, PostgreSQL/pgvector, scoped retrieval, validation layers.',
-    highlights: [
-      'Multi-agent academic analysis system around 5 evaluation pillars',
-      'Reduced first-pass document analysis from ~6 hours to ~15 minutes',
-      'Automated PDF report generation with citation grounding',
-    ],
-  },
-  {
-    period: '2023 – 2026 (in progress)',
-    role: 'Technologist Degree',
+    period: '2023 – 2026',
+    role: 'Technologist Degree — completed',
     company: 'Faculty of Technology of Praia Grande — Systems Analysis & Development',
     icon: GraduationCap,
     color: 'indigo',
     hex: '#4F46E5',
-    desc: 'Technology-focused degree covering software engineering, systems architecture, databases, and applied AI — the theoretical foundation under the practical work.',
+    desc: 'Full technology degree covering software engineering, systems architecture, databases, and applied AI — completed with a final GPA of 8.8/10. The theoretical foundation under the practical work.',
     highlights: [
       'Programming logic, data structures, and algorithms',
       'Database design, SQL, and systems architecture',
@@ -131,7 +132,10 @@ const AboutPage: React.FC = () => {
                 </span>
               </h1>
               <p className="text-base md:text-xl text-white/60 leading-relaxed max-w-xl">
-                I build production GenAI systems for regulated environments — RAG pipelines, multi-agent orchestration, enterprise integrations — with the engineering rigor that compliance demands.
+                I design, ship and operate production GenAI systems for regulated environments — RAG pipelines, multi-agent orchestration, enterprise integrations — with the engineering rigor that compliance demands.
+              </p>
+              <p className="mt-6 text-xs md:text-sm text-white/40 font-bold uppercase tracking-widest">
+                Madrid, Spain · from August 2026 · EN / FR / PT / ES
               </p>
             </div>
           </motion.div>
@@ -226,21 +230,33 @@ const AboutPage: React.FC = () => {
               The shift from "interesting prototype" to "system that runs in production for regulated workflows" lives entirely in the engineering: data pipelines that don't break, retrieval that's auditable, agents whose handoffs are traceable, validation layers that catch what the model gets wrong, and governance baked in instead of bolted on.
             </p>
             <p>
-              That's why I lean on the engineering background. A side project in CrewAI, a 3-person Unity team, a tech degree in progress — none of it is glamorous, but it's where the discipline comes from. The AI part is what gets the headlines; the engineering is what makes it ship.
+              That's why I lean on the engineering background. A production multi-agent platform I co-founded and operate, a 3-person Unity team I led, a systems degree finished with an 8.8/10 GPA — none of it is glamorous, but it's where the discipline comes from. The AI part is what gets the headlines; the engineering is what makes it ship.
             </p>
           </div>
 
-          {/* Linguistics mention — small footnote-style block */}
+          {/* The pattern of depth — excellence arc */}
           <div className="mt-12 md:mt-16 pt-8 border-t border-white/10 flex items-start gap-4">
             <div className="w-10 h-10 rounded-lg bg-white/5 border border-white/10 flex items-center justify-center flex-shrink-0">
-              <Wrench size={16} className="text-white/40" />
+              <Award size={16} className="text-white/60" />
             </div>
             <div>
-              <span className="text-[10px] font-black uppercase tracking-widest text-white/40 block mb-2">
-                A useful side input
+              <span className="text-xs font-black uppercase tracking-widest text-white/60 block mb-2">
+                Where the pattern started
               </span>
-              <p className="text-sm md:text-base text-white/50 leading-relaxed">
-                Before engineering I studied <span className="text-white/70 font-bold">Linguistics &amp; French at USP</span> (highest GPA in cohort, exchange at University Lumière Lyon 2). It's not the main story — but the systems-thinking habit it built quietly informs how I architect prompts, evaluate agent outputs, and reason about ambiguity in language. A useful side input, not the headline.
+              <p className="text-sm md:text-base text-white/70 leading-relaxed">
+                I'm driven by depth: when something interests me, I go all the way in. That's how I graduated{' '}
+                <span className="text-white font-bold">top of my cohort at the University of São Paulo</span> and earned a{' '}
+                <span className="text-white font-bold">merit scholarship to Université Lumière Lyon 2</span> in France. When I chose
+                technology, I brought the same standard — a full systems degree finished with an 8.8/10 GPA, a promotion at KPMG, and a{' '}
+                <a
+                  href="https://doi.org/10.5281/zenodo.19930775"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-white font-bold underline decoration-indigo decoration-2 underline-offset-4 hover:text-indigo transition-colors"
+                >
+                  peer-reviewed paper on multi-agent system architecture
+                </a>
+                {' '}— the same architecture I run in production. Different fields, same pattern.
               </p>
             </div>
           </div>
@@ -290,13 +306,20 @@ const AboutPage: React.FC = () => {
           </p>
           <div className="flex flex-wrap items-center justify-center gap-4">
             <a
+              href="mailto:leonardo@leonardosa.pro"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-indigo hover:bg-indigo/90 text-white rounded-full font-black text-sm uppercase tracking-widest transition-all shadow-lg shadow-indigo/30 active:scale-95"
+            >
+              <Mail size={16} />
+              <span>Let's talk</span>
+            </a>
+            <a
               href="https://www.linkedin.com/in/leonardocostadesa/"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-indigo hover:bg-indigo/90 text-white rounded-full font-black text-sm uppercase tracking-widest transition-all shadow-lg shadow-indigo/30 active:scale-95"
+              className="inline-flex items-center gap-3 px-8 py-4 bg-transparent border border-white/20 hover:border-white text-white rounded-full font-black text-sm uppercase tracking-widest transition-all active:scale-95"
             >
               <Linkedin size={16} />
-              <span>Hire Me</span>
+              <span>LinkedIn</span>
             </a>
             <Link
               to="/process"
