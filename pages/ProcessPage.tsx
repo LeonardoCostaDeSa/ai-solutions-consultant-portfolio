@@ -39,7 +39,7 @@ const experience = [
     tag: "Founder",
     accentColor: "coral",
     accentHex: "#F97316",
-    desc: "Academic-services company where I own engineering end-to-end: a production multi-agent review platform (Python, Django, CrewAI, PostgreSQL/pgvector, Celery, Docker) with Langfuse tracing and Sentry monitoring in production.",
+    desc: "Academic-services company where I own engineering end-to-end: a production multi-agent review platform (Python, Django, CrewAI, ChromaDB, Celery, Docker) with Langfuse tracing and Sentry monitoring in production.",
     highlights: [
       "Cut first-pass expert document analysis from ~6 hours to ~15 minutes",
       "Built the funnels and landing pages behind ~90% monthly revenue growth in one quarter",
