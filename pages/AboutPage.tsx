@@ -37,7 +37,7 @@ const trajectory = [
     icon: Bot,
     color: 'coral',
     hex: '#F97316',
-    desc: 'The academic-services company where I am the entire engineering department. I built our production multi-agent review platform end-to-end — Django, PostgreSQL/pgvector, Celery, Docker — with Langfuse tracing and Sentry in production. Nothing teaches production reliability like operating a system your household depends on.',
+    desc: 'The academic-services company where I am the entire engineering department. I built our production multi-agent review platform end-to-end — Django, ChromaDB, Celery, Docker — with Langfuse tracing and Sentry in production. Nothing teaches production reliability like operating a system your household depends on.',
     highlights: [
       'Cut a six-hour expert review task to fifteen minutes with a 5-pillar multi-agent system',
       'Built the funnels and landing pages behind ~90% monthly revenue growth in one quarter',

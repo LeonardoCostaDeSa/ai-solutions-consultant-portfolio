@@ -68,20 +68,58 @@ export const solutions: Solution[] = [
     tagline: 'A six-hour expert review, delivered in fifteen minutes — in production, every day.',
     title: 'Revisa Express',
     category: 'engineering',
-    techTags: ['Python', 'Django', 'CrewAI', 'Postgres'],
+    techTags: ['Python', 'Django', 'CrewAI', 'ChromaDB'],
     impactMetric: '80% Less Analysis Time',
     painPoint: 'Senior reviewers stuck on first-pass diagnosis instead of high-value work.',
     quote: "High-quality academic evaluation is not intuition — it’s structure. Once expert judgment is made explicit, it can be scaled.",
     context: "Academic consulting teams spend a disproportionate amount of time on first-level readings: understanding a client’s paper, diagnosing structural/methodological issues, and assessing quality before deep revision begins.",
     problem: "This initial diagnostic phase was time-consuming, costly, and highly dependent on senior reviewers’ availability. The problem wasn’t writing alone — it was the lack of a fast, structured, and repeatable way to apply academic judgment at scale.",
-    solution: "A production multi-agent analysis system structured around the 5 pillars of academic writing (Clarity, Methodology, Relevance, Technical Quality, Norms). Each pillar is implemented as a specialized AI agent that produces structured evaluations. A Redactor agent then consolidates all analyses into a single, standardized diagnostic report exported as a branded PDF. Runs in production with Langfuse tracing, Sentry monitoring, and automated health checks.",
-    role: "Co-founder and sole engineer. Translated tacit academic evaluation criteria into explicit, modular AI agents. Designed, implemented and operate the multi-agent orchestration and backend architecture (Python/Django/CrewAI/PostgreSQL/pgvector/Celery/Docker) — a system my own business depends on daily.",
-    insight: "Reduced analysis time by ~80%. High-quality academic evaluation is not intuition—it is structure. By codifying tacit expert criteria into 5 distinct agents, we proved that complex intellectual critique can be scaled without sacrificing rigor.",
+    solution: "A cheap triage pass screens every upload before the expensive pipeline runs. Five pillar agents (clarity, methodology, relevance, technical quality, norms) then evaluate the manuscript against a 52-question rubric grounded in a ChromaDB knowledge base of writing references — never the student's own text, which is extracted as plain text and never embedded. A writer agent drafts the consolidated report, a copy-editing pass corrects it under a drift guard, and a validator agent audits it before publication. Output is a branded PDF via WeasyPrint. Runs in production with end-to-end Langfuse tracing.",
+    role: "Co-founder and sole engineer. Translated tacit academic evaluation criteria into explicit, modular AI agents. Designed, implemented and operate the multi-agent orchestration and backend architecture (Python/Django/CrewAI/ChromaDB/Celery/Docker) — a system my own business depends on daily.",
+    insight: "Real production average: ~13.7 minutes per report at ~$1.78 in model cost, with zero failed LLM calls across 210 traced calls. High-quality academic evaluation isn't intuition, it's structure — codify the tacit rubric into agents with clear contracts, and rigor scales without becoming a bottleneck.",
     highlights: [
-      "5 specialized agents mirroring academic evaluation",
-      "Automated PDF diagnostic report generation",
-      "In production with Langfuse tracing and Sentry monitoring"
-    ]
+      "8-agent pipeline — 5 pillar reviewers, a writer, a copy editor and a validator",
+      "RAG grounded in a curated knowledge base, not the student's own text",
+      "Zero failed LLM calls across 210 traced production calls"
+    ],
+    constraints: [
+      "Runs on a 2 vCPU / 8GB production VPS — the worker deliberately caps at concurrency=1 so one analysis's agent fan-out never competes with a concurrent user's pipeline for memory.",
+      "The student's manuscript is never embedded or indexed — only extracted as text, cached briefly, and passed inline inside a sanitized prompt envelope. What's indexed is the reference knowledge base: writing norms, the grading rubric, style guidelines.",
+      "Every finding in the final report has to trace back to one of the 52 rubric questions — no agent output is accepted as an unattributed claim.",
+    ],
+    architecture: {
+      overview: "A cheap triage pass (a low-cost model) screens every upload before the expensive pipeline commits, rejecting non-academic or malformed submissions early. Five pillar agents then evaluate the manuscript against a 52-question rubric — clarity & alignment, methodological rigor, relevance & contribution, technical writing, and norms & structure — each grounded in a ChromaDB knowledge base of academic-writing references. A sixth agent checks alignment against the submission brief when one is attached. A writer agent consolidates every finding into a six-section report; a copy-editing pass corrects it under a drift guard that discards the correction if it changes the report's length by more than 25%; a validator agent audits the final report before it's allowed to publish.\n\nOrchestration is a single sequential Celery chain, not a parallel fan-out — deliberately. The five pillars have no API-side reason to stay sequential now that the account runs on higher-tier rate limits, but the production VPS has 2 vCPUs, and the CrewAI + LiteLLM + ChromaDB import cost alone is heavy enough that raising intra-analysis concurrency would risk memory contention with a concurrent user's pipeline. The constraint is protected at the infrastructure layer, not worked around at the prompt layer.",
+      decisions: [
+        {
+          title: "Sequential, not parallel, agent execution",
+          choice: "A single Celery chain() — the five pillar agents run one after another, not as a parallel group.",
+          alternatives: ["Parallel fan-out via Celery group/chord", "An explicit graph (e.g. LangGraph) with a fan-in node"],
+          rationale: "The real constraint isn't API rate limits — the account has since moved to a tier with headroom to run pillars concurrently. It's the 2 vCPU production VPS: every Celery execution carries a heavy CrewAI + LiteLLM + ChromaDB import, and raising concurrency inside one analysis would risk contending for memory with a second user's analysis. Concurrency stays capped at 1 until the VPS is resized — a deliberate trade-off, not an oversight.",
+        },
+        {
+          title: "RAG indexes the rubric, not the student's work",
+          choice: "ChromaDB stores the reference knowledge base — writing norms, the grading rubric, style guidelines. The manuscript is extracted as plain text, cached briefly, and passed inline inside a sanitized prompt envelope.",
+          rationale: "Embedding a student's unpublished academic work would be a data-handling liability with no upside — the agents don't need semantic retrieval over the student's own text, they need to look up institutional grading criteria and apply it to what's in front of them.",
+        },
+        {
+          title: "Eight narrow agents, not one long prompt",
+          choice: "Five pillar-specific reviewers plus a writer, a copy editor and a validator — each with its own role, backstory and temperature.",
+          alternatives: ["One large prompt covering every evaluation criterion"],
+          rationale: "The grading rubric has 52 discrete questions, and every finding in the final report has to trace back to the one that raised it — that granularity doesn't survive collapsing into a single prompt. Splitting by pillar also lets each agent run at the temperature its task needs (a deterministic 0.0 for norms-checking, a looser 0.3 for clarity feedback) and isolates failure: one pillar erroring doesn't take down the other four.",
+        },
+      ],
+      tradeoffs: [
+        "Migrated model providers in production (Anthropic → OpenAI) without touching business logic — an LLM abstraction layer keeps the provider behind an environment variable, so the switch that solved a hard rate-limit ceiling was a config change, not a rewrite.",
+        "Consciously pinned to an older CrewAI release rather than force an upgrade — the next major version needs a dependency bump that isn't compatible with the rest of the stack yet. Tracked as deliberate technical debt, not an oversight.",
+        "No explicit graph orchestration, even though the pipeline now has a conditional branch and a fan-in step that a graph would model more natively than a linear chain — the original role/goal/backstory abstraction fit the pipeline when it was simpler, and hasn't been revisited since it grew.",
+      ],
+    },
+    results: [
+      { metric: '13.7 min', label: 'average pipeline duration', detail: 'measured across production traces, not a target' },
+      { metric: '$1.78', label: 'average cost per analysis', detail: 'median $1.92 · Langfuse-traced' },
+      { metric: '0 / 210', label: 'failed LLM calls', detail: 'zero errors across every traced call in production' },
+      { metric: '52', label: 'rubric questions', detail: 'every report finding traces back to one' },
+    ],
   },
   {
     id: 'saving-time',
