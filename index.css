@@ -31,7 +31,21 @@ body {
   background-color: #121212;
   color: #F8F9FA;
   margin: 0;
-  overflow-x: hidden;
+  /* clip, not hidden: hidden can turn body into the sticky containing block
+     and break position: sticky pinning in some engines */
+  overflow-x: clip;
+}
+
+/* Subtle motion on dashed diagram edges (feedback loops) */
+@media (prefers-reduced-motion: no-preference) {
+  .flow-edge[stroke-dasharray] {
+    animation: flow-dash 1.6s linear infinite;
+  }
+}
+@keyframes flow-dash {
+  to {
+    stroke-dashoffset: -18;
+  }
 }
 
 /* Custom scrollbar */
