@@ -5,6 +5,7 @@ import { MotionConfig } from 'framer-motion';
 import type { RouteRecord } from 'vite-react-ssg';
 import Home from './pages/Home';
 import Footer from './components/Footer';
+import { solutions } from './data/content';
 
 // Scroll to top on route change
 const ScrollToTop = () => {
@@ -42,6 +43,11 @@ export const routes: RouteRecord[] = [
       { path: 'about', lazy: async () => ({ Component: (await import('./pages/AboutPage')).default }) },
       { path: 'process', lazy: async () => ({ Component: (await import('./pages/ProcessPage')).default }) },
       { path: 'solutions', lazy: async () => ({ Component: (await import('./pages/SolutionsPage')).default }) },
+      {
+        path: 'solutions/:slug',
+        lazy: async () => ({ Component: (await import('./pages/CaseStudyPage')).default }),
+        getStaticPaths: () => solutions.map((s) => `/solutions/${s.slug}`),
+      },
       { path: '*', element: <Navigate to="/" replace /> },
     ],
   },
