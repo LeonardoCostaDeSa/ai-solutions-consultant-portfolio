@@ -9,6 +9,13 @@
          copy would duplicate the per-route tags in the prerendered HTML. -->
     <link rel="icon" type="image/png" href="/img/logo-ls.png" />
     <link rel="apple-touch-icon" href="/img/logo-ls.png" />
+    <noscript>
+      <!-- Entrance animations serialize their initial hidden state into the
+           pre-rendered HTML; without JS nothing would ever animate in. -->
+      <style>
+        [style*="opacity: 0"], [style*="opacity:0"] { opacity: 1 !important; transform: none !important; }
+      </style>
+    </noscript>
     <script>
       // Back-compat: redirect legacy hash URLs (/#/about) to clean URLs (/about)
       if (location.hash.startsWith('#/')) {

@@ -21,11 +21,11 @@ const experience = [
   {
     company: "KPMG Brazil",
     role: "AI Solutions Consultant → AI Engineer",
-    period: "May 2025 – Present",
+    period: "May 2025 – Jun 2026",
     tag: "Promoted",
     accentColor: "indigo",
     accentHex: "#4F46E5",
-    desc: "Designing production GenAI workflows in a highly regulated tax/compliance environment — RAG, multi-agent orchestration, traceability, auditability, and secure AI adoption. Joined as an AI solutions consultant; promoted to AI Engineer.",
+    desc: "Designed production GenAI workflows in a highly regulated tax/compliance environment — RAG, multi-agent orchestration, traceability, auditability, and secure AI adoption. Joined as an AI solutions consultant; promoted to AI Engineer.",
     highlights: [
       "Built a legal/tax semantic search engine with 94% validated accuracy using agentic orchestration",
       "Delivered 30–80% execution-time reductions across AI and automation initiatives",
