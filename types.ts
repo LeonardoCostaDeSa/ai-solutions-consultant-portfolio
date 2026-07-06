@@ -59,9 +59,6 @@ export interface Solution {
   archetype: EnvironmentArchetype;
   /** One-line impact statement for heroes. */
   tagline: string;
-  image: string;
-  /** Optional responsive srcset for raster images (diagram SVGs don't need one) */
-  imageSrcSet?: string;
   quote: string;
   context: string;
   problem: string;
