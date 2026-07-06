@@ -21,10 +21,10 @@ Languages: English (fluent), French (fluent), Portuguese (native), Spanish (inte
 
 ## Experience
 
-- **KPMG Brazil — Tax Transformation** (2025–present). Joined as AI Solutions Consultant,
-  promoted to AI Engineer. Built LLM document-intelligence pipelines reaching 94% validated
-  accuracy with corporate tax professionals; delivered 30–80% execution-time reductions;
-  trained 1,600+ professionals in responsible AI adoption.
+- **KPMG Brazil — Tax Transformation** (May 2025 – Jun 2026). Joined as AI Solutions
+  Consultant, promoted to AI Engineer. Built LLM document-intelligence pipelines reaching
+  94% validated accuracy with corporate tax professionals; delivered 30–80% execution-time
+  reductions; trained 1,600+ professionals in responsible AI adoption.
 - **Revisa Master — Co-founder & AI Engineer** (2023–present). Academic-services company
   where I own engineering end-to-end: production multi-agent review platform (Django,
   PostgreSQL/pgvector, Celery, Docker, Langfuse, Sentry) that cut a six-hour expert task

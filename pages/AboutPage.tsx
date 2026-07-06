@@ -17,13 +17,13 @@ import Seo from '../components/Seo';
 
 const trajectory = [
   {
-    period: '2025 – Present',
+    period: '2025 – 2026',
     role: 'AI Solutions Consultant → AI Engineer',
     company: 'KPMG Brazil — Tax Transformation',
     icon: BrainCircuit,
     color: 'indigo',
     hex: '#4F46E5',
-    desc: 'Joined as an AI solutions consultant and was promoted to AI Engineer. I design and ship production GenAI systems in regulated tax and compliance environments, where traceability, DLP and auditability are the entry ticket — governance is part of the architecture.',
+    desc: 'Joined as an AI solutions consultant and was promoted to AI Engineer. I designed and shipped production GenAI systems in regulated tax and compliance environments, where traceability, DLP and auditability are the entry ticket — governance is part of the architecture.',
     highlights: [
       'Built a legal/tax semantic search engine with 94% validated accuracy using agentic orchestration',
       '30–80% execution-time reductions across AI and automation initiatives',
