@@ -54,11 +54,21 @@ interface Placed extends FlowNode {
 }
 
 function layout(nodes: FlowNode[], vertical: boolean): { placed: Placed[]; width: number; height: number } {
-  const placed = nodes.map((n) => {
-    const col = vertical ? n.row : n.col;
-    const row = vertical ? n.col : n.row;
-    return { ...n, x: PAD + col * (NODE_W + GAP_X), y: PAD + row * (NODE_H + GAP_Y) };
-  });
+  if (vertical) {
+    // A literal row/col swap only narrows the diagram when the original
+    // column range is wider than the row range. It fails silently on grids
+    // like Revisa's 5-agent fan-out, where both ranges span 0-4 — swapping
+    // produces the exact same bounding box, unreadable on a phone. Instead,
+    // stack every node in one column, ordered by its logical position
+    // (col first, since edges flow left-to-right = early-to-late), so mobile
+    // is always exactly one node wide regardless of the source topology.
+    const ordered = [...nodes].sort((a, b) => a.col - b.col || a.row - b.row);
+    const placed = ordered.map((n, i) => ({ ...n, x: PAD, y: PAD + i * (NODE_H + GAP_Y) }));
+    const width = NODE_W + PAD * 2;
+    const height = Math.max(...placed.map((p) => p.y + NODE_H)) + PAD;
+    return { placed, width, height };
+  }
+  const placed = nodes.map((n) => ({ ...n, x: PAD + n.col * (NODE_W + GAP_X), y: PAD + n.row * (NODE_H + GAP_Y) }));
   const width = Math.max(...placed.map((p) => p.x + NODE_W)) + PAD;
   const height = Math.max(...placed.map((p) => p.y + NODE_H)) + PAD;
   return { placed, width, height };
@@ -191,14 +201,46 @@ const DiagramSvg: React.FC<{ data: FlowDiagramData; palette: ProjectPalette; ver
   );
 };
 
+// role="img" treats its content as a single leaf node — screen readers announce
+// only the aria-label and never descend into children, even if they aren't
+// aria-hidden. So the flow's actual content (nodes + connections) is exposed
+// as a plain sr-only list, as a SIBLING of the role="img" box, not inside it.
+function describeFlow(data: FlowDiagramData): { id: string; text: string }[] {
+  const labelById = new Map(data.nodes.map((n) => [n.id, n.label]));
+  const outgoing = new Map<string, FlowEdge[]>();
+  data.edges.forEach((e) => outgoing.set(e.from, [...(outgoing.get(e.from) ?? []), e]));
+
+  return [...data.nodes]
+    .sort((a, b) => a.col - b.col || a.row - b.row)
+    .map((n) => {
+      const next = (outgoing.get(n.id) ?? [])
+        .map((e) => {
+          const target = labelById.get(e.to) ?? e.to;
+          const suffix = e.label ? ` (${e.label})` : '';
+          return e.kind === 'feedback' ? `feeds back to ${target}${suffix}` : `${target}${suffix}`;
+        })
+        .join(', then ');
+      const parts = [`${n.label}${n.sublabel ? `, ${n.sublabel}` : ''} — ${n.kind}.`];
+      if (next) parts.push(`Leads to: ${next}.`);
+      return { id: n.id, text: parts.join(' ') };
+    });
+}
+
 const FlowDiagram: React.FC<FlowDiagramProps> = ({ data, palette, className = '' }) => (
-  <div role="img" aria-label={data.title} className={className}>
-    <div className="hidden md:block" aria-hidden="true">
-      <DiagramSvg data={data} palette={palette} vertical={false} />
+  <div className={className}>
+    <div role="img" aria-label={data.title}>
+      <div className="hidden md:block" aria-hidden="true">
+        <DiagramSvg data={data} palette={palette} vertical={false} />
+      </div>
+      <div className="md:hidden" aria-hidden="true">
+        <DiagramSvg data={data} palette={palette} vertical />
+      </div>
     </div>
-    <div className="md:hidden" aria-hidden="true">
-      <DiagramSvg data={data} palette={palette} vertical />
-    </div>
+    <ol className="sr-only">
+      {describeFlow(data).map((step) => (
+        <li key={step.id}>{step.text}</li>
+      ))}
+    </ol>
   </div>
 );
 
