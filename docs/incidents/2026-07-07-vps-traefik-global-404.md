@@ -34,9 +34,24 @@ Then Docker and Traefik were restarted. Public canaries returned healthy status 
 - Portfolio deploy fails if local Traefik smoke tests do not pass.
 - Public edge canaries run on a schedule through GitHub Actions.
 - The canaries check multiple independent domains so a Traefik/router failure shows up as a correlated edge failure, not as an app-only issue.
+- KVM1 Docker-related packages are held to prevent unattended Docker/containerd/Compose upgrades.
+- KVM2 was assessed read-only and documented. No package versions, holds, daemon config, or Traefik state were changed on KVM2.
+
+## KVM2 Assessment
+
+KVM2 (`2.25.142.214` / `srv1711602`) was checked read-only after the KVM1 incident.
+
+- Docker: `29.5.2`
+- Docker API: server `1.54`, minimum `1.40`
+- Traefik: `v3.6.17`
+- Recent Traefik Docker provider errors: none observed
+- Active routed host: `relatorio.revisamaster.com`
+
+KVM2 is not currently affected by the exact Docker API / Traefik provider failure seen on KVM1. It remains a latent-risk host because Docker is on version 29 and unattended upgrades are enabled.
 
 ## Follow-Up
 
 - Add any newly deployed VPS domains to `scripts/check-edge-canaries.mjs`.
 - Treat simultaneous canary failures across unrelated domains as an edge incident first.
 - Review Docker and Traefik release notes before unattended Docker major upgrades on the VPS.
+- Keep `docs/ops/vps-edge-inventory.md` and `docs/runbooks/vps-edge-incident.md` current after any approved edge change.
