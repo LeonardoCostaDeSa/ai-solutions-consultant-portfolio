@@ -52,15 +52,21 @@ const args = new Set(process.argv.slice(2));
 const shouldApply = args.has("--apply");
 const shouldListOnly = args.has("--list");
 const shouldPlanOnly = args.has("--plan") || (!shouldApply && !shouldListOnly);
+const shouldSetInterval = args.has("--set-interval");
 
 function usage() {
   console.log(`Usage:
   node scripts/uptimerobot-sync.mjs --plan
   node scripts/uptimerobot-sync.mjs --list
   node scripts/uptimerobot-sync.mjs --apply
+  node scripts/uptimerobot-sync.mjs --apply --set-interval
 
 Environment:
   UPTIMEROBOT_API_KEY  Main API key for --apply; read-only key is enough for --list.
+
+Notes:
+  --apply creates missing monitors using your plan's default interval.
+  --set-interval also sends the desired interval. Some plans reject that setting.
 `);
 }
 
@@ -146,13 +152,18 @@ function findExistingMonitor(existingMonitors, desired) {
 }
 
 async function createMonitor(apiKey, desired) {
-  return postForm("newMonitor", {
+  const fields = {
     api_key: apiKey,
     friendly_name: desired.friendlyName,
     url: desired.url,
     type: String(desired.type),
-    interval: String(desired.interval),
-  });
+  };
+
+  if (shouldSetInterval) {
+    fields.interval = String(desired.interval);
+  }
+
+  return postForm("newMonitor", fields);
 }
 
 function printPlan() {
@@ -161,6 +172,7 @@ function printPlan() {
     console.log(`- ${monitor.friendlyName}: ${monitor.url} every ${monitor.interval}s`);
   }
   console.log("\nThis was a plan-only run. Use --list to compare with UptimeRobot or --apply to create missing monitors.");
+  console.log("By default, --apply lets UptimeRobot choose the interval allowed by your plan.");
 }
 
 if (shouldPlanOnly) {
