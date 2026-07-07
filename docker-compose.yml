@@ -7,6 +7,7 @@ services:
       - traefik-public
     labels:
       - "traefik.enable=true"
+      - "traefik.docker.network=traefik-public"
       - "traefik.http.routers.portfolio.rule=Host(`leonardosa.pro`) || Host(`www.leonardosa.pro`)"
       - "traefik.http.routers.portfolio.entrypoints=websecure"
       - "traefik.http.routers.portfolio.tls.certresolver=letsencrypt"
