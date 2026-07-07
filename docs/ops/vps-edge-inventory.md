@@ -81,3 +81,27 @@ For both hosts:
   - recent Traefik Docker provider logs
   - public and direct-origin smoke tests
 - After any approved edge update, verify public canaries and direct-origin smokes before leaving the maintenance window.
+
+## UptimeRobot Sync
+
+The desired UptimeRobot monitor list is maintained in `scripts/uptimerobot-sync.mjs`.
+
+Use a local environment variable. Never commit API keys.
+
+```powershell
+$env:UPTIMEROBOT_API_KEY = "..."
+node scripts/uptimerobot-sync.mjs --plan
+node scripts/uptimerobot-sync.mjs --list
+node scripts/uptimerobot-sync.mjs --apply
+```
+
+Modes:
+
+- `--plan`: print desired monitors only; no API call.
+- `--list`: compare desired monitors with existing UptimeRobot monitors.
+- `--apply`: create missing monitors. Existing monitors are not deleted.
+
+The initial desired monitor set covers:
+
+- KVM1: Portfolio, Express LP health, RevisaMaster, Garden, R2D, N8N
+- KVM2: RM Express landing page
