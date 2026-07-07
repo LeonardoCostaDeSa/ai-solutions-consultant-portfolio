@@ -1,0 +1,27 @@
+name: Edge Canary
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "*/30 * * * *"
+  push:
+    branches:
+      - main
+    paths:
+      - ".github/workflows/edge-canary.yml"
+      - "scripts/check-edge-canaries.mjs"
+
+permissions:
+  contents: read
+
+jobs:
+  public-edge:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Check public edge canaries
+        run: node scripts/check-edge-canaries.mjs
