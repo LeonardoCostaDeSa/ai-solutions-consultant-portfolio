@@ -1,50 +1,59 @@
 #!/usr/bin/env node
 
-const API_BASE = "https://api.uptimerobot.com/v2";
+const API_V2_BASE = "https://api.uptimerobot.com/v2";
+const API_V3_BASE = "https://api.uptimerobot.com/v3";
 const DEFAULT_INTERVAL_SECONDS = 300;
+const DEFAULT_TIMEOUT_SECONDS = 30;
 
 const desiredMonitors = [
   {
     friendlyName: "KVM1 - Portfolio",
     url: "https://leonardosa.pro/",
-    type: 1,
+    type: "HTTP",
     interval: DEFAULT_INTERVAL_SECONDS,
+    timeout: DEFAULT_TIMEOUT_SECONDS,
   },
   {
     friendlyName: "KVM1 - Express LP health",
     url: "https://express.revisamaster.com/api/health",
-    type: 1,
+    type: "HTTP",
     interval: DEFAULT_INTERVAL_SECONDS,
+    timeout: DEFAULT_TIMEOUT_SECONDS,
   },
   {
     friendlyName: "KVM1 - RevisaMaster",
     url: "https://revisamaster.com/",
-    type: 1,
+    type: "HTTP",
     interval: DEFAULT_INTERVAL_SECONDS,
+    timeout: DEFAULT_TIMEOUT_SECONDS,
   },
   {
     friendlyName: "KVM1 - Garden",
     url: "https://garden.leonardosa.pro/",
-    type: 1,
+    type: "HTTP",
     interval: DEFAULT_INTERVAL_SECONDS,
+    timeout: DEFAULT_TIMEOUT_SECONDS,
   },
   {
     friendlyName: "KVM1 - R2D",
     url: "https://formacaodelideranca.leonardosa.pro/",
-    type: 1,
+    type: "HTTP",
     interval: DEFAULT_INTERVAL_SECONDS,
+    timeout: DEFAULT_TIMEOUT_SECONDS,
   },
   {
     friendlyName: "KVM1 - N8N",
     url: "https://n8n.leonardosa.pro/",
-    type: 1,
+    type: "HTTP",
     interval: DEFAULT_INTERVAL_SECONDS,
+    timeout: DEFAULT_TIMEOUT_SECONDS,
   },
   {
     friendlyName: "KVM2 - RM Express",
     url: "https://relatorio.revisamaster.com/",
-    type: 1,
+    type: "HTTP",
     interval: DEFAULT_INTERVAL_SECONDS,
+    timeout: DEFAULT_TIMEOUT_SECONDS,
   },
 ];
 
@@ -52,21 +61,19 @@ const args = new Set(process.argv.slice(2));
 const shouldApply = args.has("--apply");
 const shouldListOnly = args.has("--list");
 const shouldPlanOnly = args.has("--plan") || (!shouldApply && !shouldListOnly);
-const shouldSetInterval = args.has("--set-interval");
 
 function usage() {
   console.log(`Usage:
   node scripts/uptimerobot-sync.mjs --plan
   node scripts/uptimerobot-sync.mjs --list
   node scripts/uptimerobot-sync.mjs --apply
-  node scripts/uptimerobot-sync.mjs --apply --set-interval
 
 Environment:
   UPTIMEROBOT_API_KEY  Main API key for --apply; read-only key is enough for --list.
 
 Notes:
-  --apply creates missing monitors using your plan's default interval.
-  --set-interval also sends the desired interval. Some plans reject that setting.
+  --apply creates missing HTTP monitors through UptimeRobot API v3.
+  Desired monitors use a 300s interval and 30s timeout, which match the free plan.
 `);
 }
 
@@ -89,7 +96,7 @@ async function postForm(endpoint, fields) {
     ...fields,
   });
 
-  const response = await fetch(`${API_BASE}/${endpoint}`, {
+  const response = await fetch(`${API_V2_BASE}/${endpoint}`, {
     method: "POST",
     headers: {
       "content-type": "application/x-www-form-urlencoded",
@@ -108,6 +115,35 @@ async function postForm(endpoint, fields) {
   if (!response.ok || payload.stat !== "ok") {
     const message = payload.error?.message || payload.error?.type || text;
     throw new Error(`UptimeRobot ${endpoint} failed: ${message}`);
+  }
+
+  return payload;
+}
+
+async function postJsonV3(endpoint, apiKey, fields) {
+  const response = await fetch(`${API_V3_BASE}/${endpoint}`, {
+    method: "POST",
+    headers: {
+      accept: "application/json",
+      authorization: `Bearer ${apiKey}`,
+      "content-type": "application/json",
+    },
+    body: JSON.stringify(fields),
+  });
+
+  const text = await response.text();
+  let payload;
+  try {
+    payload = text ? JSON.parse(text) : {};
+  } catch {
+    throw new Error(`UptimeRobot v3 ${endpoint} returned non-JSON response: ${text.slice(0, 300)}`);
+  }
+
+  if (!response.ok) {
+    const message = Array.isArray(payload.message)
+      ? payload.message.join("; ")
+      : payload.message || payload.error || text;
+    throw new Error(`UptimeRobot v3 ${endpoint} failed: ${message}`);
   }
 
   return payload;
@@ -153,26 +189,26 @@ function findExistingMonitor(existingMonitors, desired) {
 
 async function createMonitor(apiKey, desired) {
   const fields = {
-    api_key: apiKey,
-    friendly_name: desired.friendlyName,
+    friendlyName: desired.friendlyName,
     url: desired.url,
-    type: String(desired.type),
+    type: desired.type,
+    interval: desired.interval,
+    timeout: desired.timeout,
+    keywordType: null,
+    authType: "NONE",
+    httpMethodType: "HEAD",
   };
 
-  if (shouldSetInterval) {
-    fields.interval = String(desired.interval);
-  }
-
-  return postForm("newMonitor", fields);
+  return postJsonV3("monitors", apiKey, fields);
 }
 
 function printPlan() {
   console.log("Desired UptimeRobot monitors:");
   for (const monitor of desiredMonitors) {
-    console.log(`- ${monitor.friendlyName}: ${monitor.url} every ${monitor.interval}s`);
+    console.log(`- ${monitor.friendlyName}: ${monitor.url} every ${monitor.interval}s, timeout ${monitor.timeout}s`);
   }
   console.log("\nThis was a plan-only run. Use --list to compare with UptimeRobot or --apply to create missing monitors.");
-  console.log("By default, --apply lets UptimeRobot choose the interval allowed by your plan.");
+  console.log("--apply creates missing monitors through UptimeRobot API v3.");
 }
 
 if (shouldPlanOnly) {
