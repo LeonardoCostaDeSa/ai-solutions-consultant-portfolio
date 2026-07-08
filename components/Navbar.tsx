@@ -1,21 +1,31 @@
 
-import React from 'react';
-import { motion } from 'framer-motion';
+import React, { useEffect, useState } from 'react';
+import { AnimatePresence, motion } from 'framer-motion';
+import { Menu, X } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
 const Navbar: React.FC = () => {
   const location = useLocation();
   const isHome = location.pathname === '/';
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [location.pathname]);
 
   const handleLogoClick = (e: React.MouseEvent) => {
     if (isHome) {
       e.preventDefault();
       window.scrollTo({ top: 0, behavior: 'smooth' });
+      setIsMobileMenuOpen(false);
     }
   };
 
   const linkClass = (active: boolean) =>
     `text-xs font-black uppercase tracking-widest transition-colors whitespace-nowrap ${active ? 'text-white' : 'text-white/60 hover:text-white'}`;
+
+  const mobileLinkClass = (active: boolean) =>
+    `block rounded-md px-4 py-3 text-sm font-black uppercase tracking-widest transition-colors ${active ? 'bg-white/10 text-white' : 'text-white/70 hover:bg-white/5 hover:text-white'}`;
 
   return (
     <motion.nav
@@ -35,8 +45,8 @@ const Navbar: React.FC = () => {
           <span className="sm:hidden">L<span className="text-indigo">S</span></span>
           <span className="hidden sm:inline">LEONARDO<span className="text-indigo">.SA</span></span>
         </Link>
-        <div className="flex gap-2.5 md:gap-6 items-center">
-          <Link to="/about" className={linkClass(location.pathname === '/about') + ' hidden sm:block'}>
+        <div className="hidden sm:flex gap-2.5 md:gap-6 items-center">
+          <Link to="/about" className={linkClass(location.pathname === '/about')}>
             About
           </Link>
           <Link to="/solutions" className={linkClass(location.pathname === '/solutions')}>
@@ -54,7 +64,48 @@ const Navbar: React.FC = () => {
             Let's talk
           </a>
         </div>
+        <button
+          type="button"
+          aria-label={isMobileMenuOpen ? 'Close menu' : 'Open menu'}
+          aria-expanded={isMobileMenuOpen}
+          aria-controls="mobile-navigation"
+          onClick={() => setIsMobileMenuOpen((open) => !open)}
+          className="sm:hidden inline-flex h-10 w-10 items-center justify-center rounded-full bg-white/10 text-white hover:bg-white/15 transition-colors"
+        >
+          {isMobileMenuOpen ? <X size={18} aria-hidden="true" /> : <Menu size={18} aria-hidden="true" />}
+        </button>
       </div>
+
+      <AnimatePresence>
+        {isMobileMenuOpen && (
+          <motion.div
+            id="mobile-navigation"
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -8 }}
+            transition={{ duration: 0.18, ease: [0.16, 1, 0.3, 1] }}
+            className="sm:hidden max-w-5xl mx-auto mt-2 rounded-2xl border border-white/10 bg-charcoal/95 backdrop-blur-xl p-2 shadow-2xl"
+          >
+            <Link to="/about" className={mobileLinkClass(location.pathname === '/about')}>
+              About
+            </Link>
+            <Link to="/solutions" className={mobileLinkClass(location.pathname === '/solutions')}>
+              Projects
+            </Link>
+            <Link to="/process" className={mobileLinkClass(location.pathname === '/process')}>
+              Resume
+            </Link>
+            <a
+              href="mailto:leonardo@leonardosa.pro"
+              data-umami-event="contact-click"
+              data-umami-event-location="mobile-navbar"
+              className="mt-1 flex items-center justify-center rounded-md bg-indigo px-4 py-3 text-sm font-black uppercase tracking-widest text-white shadow-lg shadow-indigo/20 hover:bg-indigo/80 transition-colors"
+            >
+              Let's talk
+            </a>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </motion.nav>
   );
 };
