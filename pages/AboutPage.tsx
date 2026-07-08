@@ -239,7 +239,7 @@ const AboutPage: React.FC = () => {
               A demo is easy. A system that runs every day for a regulated team is hard. The difference is engineering: pipelines that don't break, answers you can audit, and checks that catch the model's mistakes before a client sees them.
             </p>
             <p>
-              That discipline came from practice. I co-founded a platform and I keep it running in production. I led a 3-person game team. I finished a systems degree with an 8.8/10 GPA. The AI gets the headlines. The engineering makes it ship.
+              That discipline came from practice. I co-founded a platform and I keep it running in production. I built a company's website, CRM integrations and automations, end to end. I finished a systems degree with an 8.8/10 GPA. The AI gets the headlines. The engineering makes it ship.
             </p>
           </div>
 
