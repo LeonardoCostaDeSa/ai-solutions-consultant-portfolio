@@ -45,7 +45,7 @@ Languages: English (fluent), French (fluent), Portuguese (native), Spanish (inte
   handwritten to born-digital) for an $8 billion lawsuit. 98% accuracy, validated by
   KPMG lawyers on a 10% sample. Three AI tools had failed before it; a custom OCR model
   handled the hard documents. Its output became key evidence in the case. The manual
-  alternative: 5 consultants for 10 days, covering only a sample.
+  alternative: 5 consultants for 10 days per 500-document batch, initial questions only.
   https://leonardosa.pro/solutions/document-analysis-automation
 - **KBSE — Knowledge Base Search Engine** (Python, CrewAI, RAG, Azure): a search engine
   for legal and tax questions. Four agents: retrieve, consolidate, validate, answer.
