@@ -46,7 +46,7 @@ const CaseStudyPage: React.FC = () => {
       <Navbar />
 
       {/* HERO — full-bleed environment */}
-      <header className="relative min-h-[88vh] flex items-end overflow-hidden">
+      <header className="relative min-h-screen flex items-end overflow-hidden">
         <ProjectEnvironment seed={solution.id} palette={palette} archetype={solution.archetype} variant="hero" />
         <div className="relative z-10 max-w-5xl mx-auto w-full px-6 pb-20 pt-40">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
