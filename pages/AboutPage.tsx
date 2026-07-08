@@ -37,7 +37,7 @@ const trajectory = [
     icon: Bot,
     color: 'coral',
     hex: '#F97316',
-    desc: 'Revisa Master reviews academic manuscripts. I co-founded it, and I am its entire engineering department. I built the review platform end to end and I keep it running. Nothing teaches production reliability like operating a system your household depends on.',
+    desc: 'Revisa Master reviews academic manuscripts. I co-founded it, and I am its entire engineering department. I built the review platform end to end and I keep it running. I answer for its uptime, its costs and its output quality — there is no one else to escalate to.',
     highlights: [
       'A review that took an expert six hours now takes fifteen minutes',
       'Built the funnels and landing pages behind ~90% revenue growth in one quarter',

@@ -245,7 +245,7 @@ const Home: React.FC = () => {
             className="max-w-3xl mb-12 md:mb-16"
           >
             <p className="text-charcoal/70 text-lg md:text-2xl font-medium leading-relaxed mb-8">
-              I build AI systems and run them in production. At KPMG Brazil, my systems cut task time by <span className="text-charcoal font-bold">30–80%</span> on tax and compliance work. At <span className="text-charcoal font-bold">Revisa Master</span>, the company I co-founded, I built the review platform that my family's income runs on. It works every day, because it has to.
+              I build AI systems and run them in production. At KPMG Brazil, my systems cut task time by <span className="text-charcoal font-bold">30–80%</span> on tax and compliance work. At <span className="text-charcoal font-bold">Revisa Master</span>, the company I co-founded, I built the entire review platform and I run it in production. Paying customers use it every day.
             </p>
             <Link
               to="/about"

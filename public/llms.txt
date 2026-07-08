@@ -42,7 +42,7 @@ Languages: English (fluent), French (fluent), Portuguese (native), Spanish (inte
   https://leonardosa.pro/solutions/revisa-master-express
 - **Document Analysis Automation** (Python, Power Automate, AI Builder, Copilot Studio):
   a pipeline that read 50,000 scanned documents (1958–present) in 6 hours with 98%
-  business-validated accuracy, for an $8B legal dispute. The manual alternative: 5
+  business-validated accuracy, for an $8 billion lawsuit. The manual alternative: 5
   consultants for 10 days, covering only a sample.
   https://leonardosa.pro/solutions/document-analysis-automation
 - **KBSE — Knowledge Base Search Engine** (Python, CrewAI, RAG, Azure): a search engine
