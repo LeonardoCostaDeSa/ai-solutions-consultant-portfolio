@@ -10,7 +10,8 @@ import {
   Languages,
   HeartHandshake,
   CheckCircle2,
-  ExternalLink
+  ExternalLink,
+  ArrowDown
 } from 'lucide-react';
 import BorderBeam from '../components/BorderBeam';
 import Navbar from '../components/Navbar';
@@ -239,26 +240,43 @@ const ProcessPage: React.FC = () => {
         <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-white/5 to-transparent -z-10" />
       </div>
 
-      <div className="max-w-5xl mx-auto px-6 pt-20">
-        
-        {/* SECTION 1: HEADER */}
-        <motion.div
-          id="intro"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-24 border-b border-white/10 pb-16"
-        >
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
-            <div className="max-w-2xl">
-              <h1 className="text-6xl md:text-8xl font-black mb-6 leading-[0.9] tracking-tighter">
-                Resume
-              </h1>
-              <p className="text-xl text-white/60 max-w-xl leading-relaxed">
-                This page traces my professional path — from linguistics to AI engineering.
-              </p>
+      {/* SECTION 1: HERO */}
+      <header id="intro" className="relative min-h-screen flex items-center px-6 py-24 overflow-hidden">
+        <div className="absolute inset-0 -z-10 opacity-40" aria-hidden="true">
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                'radial-gradient(90% 70% at 20% 0%, rgba(79,70,229,0.25) 0%, transparent 60%), radial-gradient(70% 60% at 90% 100%, rgba(249,115,22,0.14) 0%, transparent 60%)',
+            }}
+          />
+        </div>
+
+        <div className="max-w-6xl mx-auto w-full">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <span className="text-coral font-black uppercase tracking-[0.4em] text-xs mb-6 block">
+              Career · 2021–2026
+            </span>
+            <h1 className="text-6xl md:text-8xl font-black leading-[0.95] tracking-tighter mb-8">
+              Resume<span className="text-transparent bg-clip-text bg-gradient-to-r from-coral via-indigo to-teal">.</span>
+            </h1>
+            <p className="text-lg md:text-2xl text-white/60 font-medium leading-relaxed max-w-2xl mb-12">
+              The roles, systems and credentials behind my production AI work:
+              regulated teams, shipped platforms and measurable results.
+            </p>
+            <div className="flex items-center gap-3 text-white/40 text-xs font-black uppercase tracking-widest">
+              <ArrowDown size={14} className="animate-bounce" />
+              <span>Scroll</span>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
+      </header>
+
+      <div className="max-w-5xl mx-auto px-6 pt-16 md:pt-24">
 
         {/* SECTION 2: EXPERIENCE */}
         <section id="experience" className="mb-24 scroll-mt-32">
