@@ -130,8 +130,8 @@ const AboutPage: React.FC = () => {
               </span>
             </div>
 
-            {/* Headline */}
-            <div className="flex-1">
+            {/* Headline — centered on mobile (stacked under the photo), left-aligned from md up */}
+            <div className="flex-1 text-center md:text-left">
               <span className="text-teal font-black uppercase tracking-[0.4em] text-xs mb-4 md:mb-6 block">
                 AI Engineer · Production Systems
               </span>
@@ -141,7 +141,7 @@ const AboutPage: React.FC = () => {
                   that ships.
                 </span>
               </h1>
-              <p className="text-base md:text-xl text-white/60 leading-relaxed max-w-xl">
+              <p className="text-base md:text-xl text-white/60 leading-relaxed max-w-xl mx-auto md:mx-0">
                 I build AI systems for teams that answer to regulators. I ship them, I run them, and I stand behind what they output.
               </p>
               <p className="mt-6 text-xs md:text-sm text-white/60 font-bold uppercase tracking-widest">
