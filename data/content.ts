@@ -228,7 +228,7 @@ export const solutions: Solution[] = [
     order: 2,
     palette: { base: '#161638', glow: '#818CF8', accent: '#4F46E5', ambient: '#12122a' },
     archetype: 'vault',
-    tagline: 'The evidence for an $8 billion lawsuit sat in 50,000 scanned documents. My pipeline read every page in six hours.',
+    tagline: "An $8 billion lawsuit's evidence sat in 50,000 scanned documents. My pipeline read every page in six hours.",
     title: 'Document Analysis Automation',
     category: 'engineering',
     techTags: ['Copilot Studio', 'Power Automate', 'AI Builder', 'Python'],
