@@ -53,19 +53,24 @@ Languages: English (fluent), French (fluent), Portuguese (native), Spanish (inte
   its original source. 94% validated accuracy and 99% user-rated relevance, measured with
   Legal and Corporate teams over ~3 months (feedback stored in Supabase).
   https://leonardosa.pro/solutions/knowledge-base-search-engine
-- **Saving Time App**: an offline-first consulting app. AI turns audio notes into
-  client-ready session reports. Zero manual reporting.
-  https://leonardosa.pro/solutions/saving-time-app
 - **Tax Reform Delivery Model**: redesigned KPMG's delivery model into six phases with
-  AI built into each one; task time dropped 30–80% on covered workflows.
+  AI agents embedded where information piled up. Tax Transformation leadership presented
+  30-60% efficiency gains on covered activities.
   https://leonardosa.pro/solutions/tax-reform-delivery-model
-- **AI Opportunity Mapping**: a 12-hour workshop where teams mapped their own work and
-  produced six deployable solutions. https://leonardosa.pro/solutions/ai-opportunity-mapping
-- **AI Training for ALL**: trained 1,600+ tax professionals with concepts, hands-on
-  challenges and CARTS, a prompt-writing framework I created.
+- **Saving Time App**: an offline-first consulting app for Revisa Master consultants.
+  AI turns audio into session summaries and next steps, then updates the client record
+  from a mobile SQLite workflow with daily sync.
+  https://leonardosa.pro/solutions/saving-time-app
+- **AI Workflow Workshop**: a 12-hour hands-on workshop where Legal, Corporate, SALT
+  and Tax Transformation teams mapped real work before designing agents, prompts,
+  prototypes and solution specs.
+  https://leonardosa.pro/solutions/ai-opportunity-mapping
+- **AI Training for ALL**: trained 1,600+ tax professionals through real business
+  problems, hybrid exercises and quarterly themes. Reached 8,000 aggregate training hours.
   https://leonardosa.pro/solutions/ai-training-for-all
-- **Lei do Bem Form Analysis**: R&D tax-incentive review went from sample-based to full
-  coverage — every form reviewed, not a sample.
+- **Lei do Bem Form Analysis**: MVP review assistant for R&D tax-incentive forms.
+  Checked project, service, staff, material and third-party descriptions against Ministry
+  standards while keeping consultants in the loop; saved roughly three hours per form.
   https://leonardosa.pro/solutions/lei-do-bem-form-analysis
 
 ## Credentials

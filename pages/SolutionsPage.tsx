@@ -9,7 +9,7 @@ import FeaturedProjectSection from '../components/journey/FeaturedProjectSection
 import SecondaryProjectIndex from '../components/journey/SecondaryProjectIndex';
 
 /**
- * The projects journey. A quiet dark intro, then three full-viewport chapters
+ * The projects journey. A quiet dark intro, then four full-viewport chapters
  * — each scroll carries the visitor into that project's environment — and an
  * editorial index of the remaining work. Beauty as evidence of care.
  */
@@ -51,7 +51,7 @@ const SolutionsPage: React.FC = () => {
               </span>
             </h1>
             <p className="text-lg md:text-2xl text-white/60 font-medium leading-relaxed max-w-2xl mb-12">
-              Eight projects with real, measured results. The first three are the ones
+              Eight projects with real, measured results. The first four are the ones
               I'm proudest of — scroll to walk through them.
             </p>
             <div className="flex items-center gap-3 text-white/40 text-xs font-black uppercase tracking-widest">
