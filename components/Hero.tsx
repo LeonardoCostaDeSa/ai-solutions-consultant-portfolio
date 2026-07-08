@@ -79,8 +79,8 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.35 }}
           className="text-base md:text-xl text-white/70 leading-relaxed max-w-3xl mx-auto mb-12"
         >
-          Production GenAI for regulated, document-heavy operations — tax, legal, compliance,
-          education — with the evaluation, observability and audit trails that make it trustworthy.
+          I build AI systems for tax, legal, compliance and education teams.
+          Every system I ship can show where its answers come from — and proves it with audit trails.
         </motion.p>
 
         <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">

@@ -25,11 +25,11 @@ const experience = [
     tag: "Promoted",
     accentColor: "indigo",
     accentHex: "#4F46E5",
-    desc: "Designed production GenAI workflows in a highly regulated tax/compliance environment — RAG, multi-agent orchestration, traceability, auditability, and secure AI adoption. Joined as an AI solutions consultant; promoted to AI Engineer.",
+    desc: "I built AI systems for tax and compliance teams. Every system kept records of what it did, because regulators demand it. I joined as an AI solutions consultant and was promoted to AI Engineer.",
     highlights: [
-      "Built a legal/tax semantic search engine with 94% validated accuracy using agentic orchestration",
-      "Delivered 30–80% execution-time reductions across AI and automation initiatives",
-      "Trained 1,600+ professionals on responsible AI adoption across KPMG's Tax practice"
+      "Built a search engine for legal and tax questions — tax professionals validated 94% of its answers",
+      "Cut task time by 30–80% on the workflows I automated",
+      "Trained 1,600+ professionals across KPMG's Tax practice to use AI in their daily work"
     ]
   },
   {
@@ -39,11 +39,11 @@ const experience = [
     tag: "Founder",
     accentColor: "coral",
     accentHex: "#F97316",
-    desc: "Academic-services company where I own engineering end-to-end: a production multi-agent review platform (Python, Django, CrewAI, ChromaDB, Celery, Docker) with Langfuse tracing and Sentry monitoring in production.",
+    desc: "Revisa Master reviews academic manuscripts. I co-founded it and I own its engineering end to end: I built the review platform and I keep it running in production. Stack: Python, Django, CrewAI, ChromaDB, Celery, Docker.",
     highlights: [
-      "Cut first-pass expert document analysis from ~6 hours to ~15 minutes",
-      "Built the funnels and landing pages behind ~90% monthly revenue growth in one quarter",
-      "Automated PDF diagnostic reports across 5 evaluation pillars with citation grounding"
+      "A review that took an expert six hours now takes fifteen minutes",
+      "Built the funnels and landing pages behind ~90% revenue growth in one quarter",
+      "The system writes a PDF report and cites the rubric question behind every finding"
     ]
   },
   {
@@ -99,19 +99,19 @@ const volunteering = [
     org: "Instituto Joule",
     role: "Career Mentor",
     period: "Sep – Oct 2025",
-    desc: "Guided an early-career AI researcher in healthcare technology through KPMG's affiliated program. Conducted 3-session structured mentorship covering career planning, values mapping, and professional branding."
+    desc: "I mentored an early-career AI researcher in healthcare technology, through KPMG's affiliated program. We met for three sessions and worked on career planning, values and personal brand."
   },
   {
     org: "ETEC de Itaquera — Itaquera State Technical School",
     role: "Film Club Project Lead",
     period: "Mar – Dec 2019",
-    desc: "Led a project empowering high school students to create and manage film clubs. Provided training in film curation, event organization, critical discussion facilitation, and promotional campaigns."
+    desc: "I taught high-school students how to start and run their own film clubs: how to pick films, organize screenings, lead discussions and promote the events."
   },
   {
     org: "FFLCH-USP — School of Philosophy, Languages and Human Sciences, University of São Paulo",
     role: "Volunteer Portuguese Teacher",
     period: "Mar – Dec 2018",
-    desc: "Taught Portuguese to students preparing for university entrance exams at USP's community prep course. Developed lesson plans, provided individualized guidance, and created supplementary materials."
+    desc: "I taught Portuguese at USP's community prep course, for students preparing for university entrance exams. I wrote the lesson plans and the extra materials, and I coached students one on one."
   }
 ];
 
@@ -202,7 +202,7 @@ const ProcessPage: React.FC = () => {
     <div className="bg-charcoal min-h-screen text-offwhite selection:bg-indigo selection:text-white pb-32 overflow-x-clip">
       <Seo
         title="Resume — Leonardo Sá · AI Engineer"
-        description="AI Engineer at KPMG Brazil (promoted from AI Solutions Consultant), co-founder of Revisa Master. Systems Analysis & Development (GPA 8.8/10), BA Linguistics at USP, peer-reviewed author on multi-agent architecture."
+        description="AI Engineer at KPMG Brazil and co-founder of Revisa Master. Two degrees, a promotion, and a peer-reviewed paper on multi-agent architecture."
         path="/process"
       />
       {/* Background Elements */}
@@ -474,7 +474,7 @@ const ProcessPage: React.FC = () => {
                   "As arquiteturas distribuídas e integração de agentes inteligentes" — distributed architectures and intelligent-agent integration
                 </h3>
                 <p className="text-white/50 text-xs leading-relaxed">
-                  Multi-agent systems, LLM integration and the Model Context Protocol. Revista Processando o Saber (eISSN 2179-5150), Vol. 18, n. 01 — the same architecture I operate in production.
+                  The paper covers multi-agent systems, LLM integration and the Model Context Protocol. I run this same architecture in production. Published in Revista Processando o Saber (eISSN 2179-5150), Vol. 18, n. 01.
                 </p>
               </div>
               <ExternalLink size={18} className="text-white/30 group-hover:text-indigo transition-colors shrink-0 mt-1" />

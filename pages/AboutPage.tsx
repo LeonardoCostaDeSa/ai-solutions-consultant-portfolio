@@ -23,11 +23,11 @@ const trajectory = [
     icon: BrainCircuit,
     color: 'indigo',
     hex: '#4F46E5',
-    desc: 'Joined as an AI solutions consultant and was promoted to AI Engineer. I designed and shipped production GenAI systems in regulated tax and compliance environments, where traceability, DLP and auditability are the entry ticket — governance is part of the architecture.',
+    desc: 'I joined as an AI solutions consultant and was promoted to AI Engineer. I built AI systems for tax and compliance teams. In that world, every system must keep records of what it did and protect client data — so I build that in from the start.',
     highlights: [
-      'Built a legal/tax semantic search engine with 94% validated accuracy using agentic orchestration',
-      '30–80% execution-time reductions across AI and automation initiatives',
-      '1,600+ professionals trained on responsible AI adoption',
+      'Built a search engine for legal and tax questions — tax professionals validated 94% of its answers',
+      'Cut task time by 30–80% on the workflows I automated',
+      'Trained 1,600+ professionals to use AI in their daily work',
     ],
   },
   {
@@ -37,11 +37,11 @@ const trajectory = [
     icon: Bot,
     color: 'coral',
     hex: '#F97316',
-    desc: 'The academic-services company where I am the entire engineering department. I built our production multi-agent review platform end-to-end — Django, ChromaDB, Celery, Docker — with Langfuse tracing and Sentry in production. Nothing teaches production reliability like operating a system your household depends on.',
+    desc: 'Revisa Master reviews academic manuscripts. I co-founded it, and I am its entire engineering department. I built the review platform end to end and I keep it running. Nothing teaches production reliability like operating a system your household depends on.',
     highlights: [
-      'Cut a six-hour expert review task to fifteen minutes with a 5-pillar multi-agent system',
-      'Built the funnels and landing pages behind ~90% monthly revenue growth in one quarter',
-      'Full production observability: Langfuse tracing, Sentry, automated health monitoring',
+      'A review that took an expert six hours now takes fifteen minutes',
+      'Built the funnels and landing pages behind ~90% revenue growth in one quarter',
+      'Every AI call is traced in production, so I can see what the system did and why',
     ],
   },
   {
@@ -81,15 +81,15 @@ const principles = [
   },
   {
     title: 'Ship to learn',
-    desc: 'Prototypes are cheap; running systems generate signal. The fastest path to a great system is a deployed one — then iterate fast.',
+    desc: 'A prototype proves an idea. A running system teaches you what is actually true. So I deploy early and iterate fast.',
   },
   {
     title: 'Multi-agent by default',
-    desc: 'Decompose complex reasoning into specialized agents with clear contracts. Easier to test, debug, evolve, and explain.',
+    desc: 'I split big problems into small agents. Each agent has one job. That makes the system easier to test, debug and explain.',
   },
   {
     title: 'Build for adoption',
-    desc: 'A deployed system nobody uses is a failed system. Enablement ships alongside the code, not as a phase after it.',
+    desc: 'A system nobody uses is a failed system. I teach the team while I build — not after.',
   },
 ];
 
@@ -98,7 +98,7 @@ const AboutPage: React.FC = () => {
     <div className="bg-charcoal min-h-screen text-offwhite pb-24 overflow-x-clip">
       <Seo
         title="About — Leonardo Sá · AI Engineer"
-        description="From top-of-cohort linguist at USP to AI Engineer at KPMG and co-founder of a production multi-agent platform. Engineering AI that ships — with traceability, observability and governance built in."
+        description="I started as a top-of-cohort linguist at USP. Today I am an AI engineer and co-founder, and my systems run in production every day."
         path="/about"
       />
       <Navbar />
@@ -141,7 +141,7 @@ const AboutPage: React.FC = () => {
                 </span>
               </h1>
               <p className="text-base md:text-xl text-white/60 leading-relaxed max-w-xl">
-                I design, ship and operate production GenAI systems for regulated environments — RAG pipelines, multi-agent orchestration, enterprise integrations — with the engineering rigor that compliance demands.
+                I build AI systems for teams that answer to regulators. I ship them, I run them, and I stand behind what they output.
               </p>
               <p className="mt-6 text-xs md:text-sm text-white/60 font-bold uppercase tracking-widest">
                 Madrid, Spain · from August 2026 · EN / FR / PT / ES
@@ -161,10 +161,10 @@ const AboutPage: React.FC = () => {
               Engineering Trajectory
             </span>
             <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-charcoal leading-tight">
-              Tech-first, end-to-end.
+              Where I've worked.
             </h2>
             <p className="text-charcoal/60 max-w-2xl mt-4 md:mt-6 text-base md:text-lg leading-relaxed">
-              My professional path is built on engineering — production AI work today, stacked on real software experience and a technology degree underneath.
+              I work on production AI today. Before that: software engineering and a technology degree.
             </p>
           </div>
 
@@ -236,10 +236,10 @@ const AboutPage: React.FC = () => {
           </h2>
           <div className="space-y-6 text-base md:text-lg text-white/70 leading-relaxed">
             <p>
-              The shift from "interesting prototype" to "system that runs in production for regulated workflows" lives entirely in the engineering: data pipelines that don't break, retrieval that's auditable, agents whose handoffs are traceable, validation layers that catch what the model gets wrong, and governance baked in instead of bolted on.
+              A demo is easy. A system that runs every day for a regulated team is hard. The difference is engineering: pipelines that don't break, answers you can audit, and checks that catch the model's mistakes before a client sees them.
             </p>
             <p>
-              That's why I lean on the engineering background. A production multi-agent platform I co-founded and operate, a 3-person Unity team I led, a systems degree finished with an 8.8/10 GPA — none of it is glamorous, but it's where the discipline comes from. The AI part is what gets the headlines; the engineering is what makes it ship.
+              That discipline came from practice. I co-founded a platform and I keep it running in production. I led a 3-person game team. I finished a systems degree with an 8.8/10 GPA. The AI gets the headlines. The engineering makes it ship.
             </p>
           </div>
 
@@ -253,10 +253,10 @@ const AboutPage: React.FC = () => {
                 Where the pattern started
               </span>
               <p className="text-sm md:text-base text-white/70 leading-relaxed">
-                I'm driven by depth: when something interests me, I go all the way in. That's how I graduated{' '}
-                <span className="text-white font-bold">top of my cohort at the University of São Paulo (9.2/10 GPA)</span> and earned a{' '}
-                <span className="text-white font-bold">merit scholarship to Université Lumière Lyon 2</span> in France. When I chose
-                technology, I brought the same standard — a full systems degree finished with an 8.8/10 GPA, a promotion at KPMG, and a{' '}
+                When something interests me, I go all the way in. In linguistics, that meant graduating{' '}
+                <span className="text-white font-bold">top of my cohort at the University of São Paulo (9.2/10 GPA)</span> and earning a{' '}
+                <span className="text-white font-bold">merit scholarship to Université Lumière Lyon 2</span> in France. In technology, it means
+                a systems degree finished with an 8.8/10 GPA, a promotion at KPMG, and a{' '}
                 <a
                   href="https://doi.org/10.5281/zenodo.19930775"
                   target="_blank"
@@ -265,9 +265,9 @@ const AboutPage: React.FC = () => {
                   data-umami-event-location="about"
                   className="text-white font-bold underline decoration-indigo decoration-2 underline-offset-4 hover:text-indigo transition-colors"
                 >
-                  peer-reviewed paper on multi-agent system architecture
+                  peer-reviewed paper on multi-agent architecture
                 </a>
-                {' '}— the same architecture I run in production. Different fields, same pattern.
+                {' '}— the same architecture I run in production. I changed fields. The standard stayed.
               </p>
             </div>
           </div>

@@ -1,8 +1,8 @@
 # Leonardo Costa de Sá — AI Engineer
 
-> Production GenAI for regulated and document-heavy operations. I design, ship and
-> operate GenAI systems where errors are expensive — tax, legal, compliance, education —
-> with evaluation, observability and audit trails built in.
+> I design, ship and operate GenAI systems where errors are expensive.
+> I build AI systems for tax, legal, compliance and education teams. Every system
+> I ship can show where its answers come from, and proves it with audit trails.
 
 Site: https://leonardosa.pro
 Contact: leonardo@leonardosa.pro
@@ -13,57 +13,62 @@ Languages: English (fluent), French (fluent), Portuguese (native), Spanish (inte
 
 ## What I do
 
-- LLM document-intelligence pipelines (RAG on Azure OpenAI, Python) with validated accuracy
-- Multi-agent orchestration (CrewAI/LangChain) with retrieval, validation and citation grounding
+- Document-intelligence pipelines (RAG on Azure OpenAI, Python) with validated accuracy
+- Multi-agent systems (CrewAI/LangChain) whose agents check their answers and cite sources
 - Enterprise AI integration: Microsoft Copilot Studio, Power Platform, Azure
 - AI adoption programs: training, opportunity mapping, AI-enabled delivery models
-- Production discipline: Langfuse tracing, Sentry, DLP-aware design, auditability
+- Production discipline: every AI call traced (Langfuse), errors monitored (Sentry), audit trails built in
 
 ## Experience
 
 - **KPMG Brazil — Tax Transformation** (May 2025 – Jun 2026). Joined as AI Solutions
-  Consultant, promoted to AI Engineer. Built LLM document-intelligence pipelines reaching
-  94% validated accuracy with corporate tax professionals; delivered 30–80% execution-time
-  reductions; trained 1,600+ professionals in responsible AI adoption.
-- **Revisa Master — Co-founder & AI Engineer** (2023–present). Academic-services company
-  where I own engineering end-to-end: production multi-agent review platform (Django,
-  ChromaDB, Celery, Docker, Langfuse, Sentry) that cut a six-hour expert task
-  to fifteen minutes. Built the funnels behind ~90% monthly revenue growth in one quarter.
-- **Caju GameLabs — Software Engineer** (2024–2025). Led a 3-person Unity/C# team.
+  Consultant, promoted to AI Engineer. Built a search engine for legal and tax questions —
+  tax professionals validated 94% of its answers. Cut task time by 30–80% on the workflows
+  I automated. Trained 1,600+ professionals to use AI in their daily work.
+- **Revisa Master — Co-founder & AI Engineer** (2023–present). Revisa Master reviews
+  academic manuscripts. I co-founded it and I am its entire engineering department.
+  I built the review platform (Django, ChromaDB, Celery, Docker, Langfuse, Sentry) and
+  I keep it running in production. A review that took an expert six hours now takes
+  fifteen minutes. I also built the funnels behind ~90% revenue growth in one quarter.
+- **Garden São Paulo — Full Stack Developer** (2021–2023). Built the company's first
+  institutional website, CRM integrations and operational automation, supporting 120%+
+  revenue growth in the period.
 
 ## Selected case studies (each has a dedicated page)
 
-- **Revisa Express** (Python, Django, CrewAI, ChromaDB): production multi-agent academic
-  review system structured around 5 evaluation pillars; cut first-pass expert analysis
-  from ~6 hours to ~15 minutes; runs with Langfuse tracing and Sentry monitoring.
+- **Revisa Express** (Python, Django, CrewAI, ChromaDB): 8-agent review pipeline in
+  production. Five pillar reviewers, a writer, a copy editor and a validator. A report
+  takes ~13.7 minutes and costs ~$1.78; zero failed LLM calls across 210 traced calls.
   https://leonardosa.pro/solutions/revisa-master-express
 - **Document Analysis Automation** (Python, Power Automate, AI Builder, Copilot Studio):
-  end-to-end pipeline that analyzed 50,000 scanned documents (1958–present) in 6 hours
-  with 98% business-validated accuracy for an $8B legal dispute — replacing a sample-only
-  manual review estimated at 5 consultants × 10 days.
+  a pipeline that read 50,000 scanned documents (1958–present) in 6 hours with 98%
+  business-validated accuracy, for an $8B legal dispute. The manual alternative: 5
+  consultants for 10 days, covering only a sample.
   https://leonardosa.pro/solutions/document-analysis-automation
-- **KBSE — Knowledge Base Search Engine** (Python, CrewAI, RAG, Azure): multi-agent
-  semantic search for legal/tax knowledge bases. Decomposed reasoning into retrieval,
-  consolidation, validation and answer generation with explicit citations. 94% validated
-  answer accuracy. https://leonardosa.pro/solutions/knowledge-base-search-engine
-- **Saving Time App**: offline-first consulting app — AI transcription/summarization,
-  zero manual reporting. https://leonardosa.pro/solutions/saving-time-app
-- **Tax Reform Delivery Model** (service design + AI accelerators): redesigned KPMG's
-  delivery model into a 6-phase AI-enabled lifecycle; 30–80% efficiency gains.
+- **KBSE — Knowledge Base Search Engine** (Python, CrewAI, RAG, Azure): a search engine
+  for legal and tax questions. Four agents: retrieve, consolidate, validate, answer.
+  Every answer cites the exact legal text behind it. 94% validated accuracy.
+  https://leonardosa.pro/solutions/knowledge-base-search-engine
+- **Saving Time App**: an offline-first consulting app. AI turns audio notes into
+  client-ready session reports. Zero manual reporting.
+  https://leonardosa.pro/solutions/saving-time-app
+- **Tax Reform Delivery Model**: redesigned KPMG's delivery model into six phases with
+  AI built into each one; task time dropped 30–80% on covered workflows.
   https://leonardosa.pro/solutions/tax-reform-delivery-model
-- **AI Opportunity Mapping**: 12-hour workshop producing 6+ deployable solutions.
-  https://leonardosa.pro/solutions/ai-opportunity-mapping
-- **AI Training for ALL**: designed and delivered AI enablement for 1,600+ tax
-  professionals (CARTS prompting framework, hands-on business cases).
+- **AI Opportunity Mapping**: a 12-hour workshop where teams mapped their own work and
+  produced six deployable solutions. https://leonardosa.pro/solutions/ai-opportunity-mapping
+- **AI Training for ALL**: trained 1,600+ tax professionals with concepts, hands-on
+  challenges and CARTS, a prompt-writing framework I created.
   https://leonardosa.pro/solutions/ai-training-for-all
-- **Lei do Bem Form Analysis**: R&D tax-incentive review from sample-based to full
-  coverage. https://leonardosa.pro/solutions/lei-do-bem-form-analysis
+- **Lei do Bem Form Analysis**: R&D tax-incentive review went from sample-based to full
+  coverage — every form reviewed, not a sample.
+  https://leonardosa.pro/solutions/lei-do-bem-form-analysis
 
 ## Credentials
 
 - Technologist degree, Systems Analysis & Development — final GPA 8.8/10 (2023–2026)
-- BA in Linguistics, University of São Paulo — top of cohort; merit-scholarship exchange
-  at Université Lumière Lyon 2, France
+- BA in Linguistics, University of São Paulo — top of cohort (9.2/10 GPA); merit-scholarship
+  exchange at Université Lumière Lyon 2, France
 - Peer-reviewed paper: "As arquiteturas distribuídas e integração de agentes inteligentes"
   (distributed architectures and intelligent-agent integration — multi-agent systems, LLM
   integration, Model Context Protocol), Revista Processando o Saber, eISSN 2179-5150,
@@ -73,5 +78,5 @@ Languages: English (fluent), French (fluent), Portuguese (native), Spanish (inte
 
 - https://leonardosa.pro/ — overview and impact metrics
 - https://leonardosa.pro/about — story, trajectory, principles
-- https://leonardosa.pro/solutions — case studies with validated metrics
+- https://leonardosa.pro/solutions — case studies with real, measured results
 - https://leonardosa.pro/process — full resume: experience, education, skills, credentials

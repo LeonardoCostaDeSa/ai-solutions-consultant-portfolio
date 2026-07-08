@@ -46,16 +46,16 @@ export const solutions: Solution[] = [
     techTags: ['Python', 'CrewAI', 'RAG', 'Azure'],
     impactMetric: '94% Answer Accuracy',
     painPoint: 'Legal teams couldn\'t trust AI answers — no citations, no audit trail.',
-    quote: "In regulated environments, accuracy alone is insufficient — trust emerges from traceability. Designing AI systems that can justify themselves is what turns experimentation into adoption.",
-    context: "Corporate tax and legal teams operate on massive, fragmented knowledge bases: legislation, regulatory guidance, internal memos, and technical opinions spread across dozens of documents.",
-    problem: "Traditional keyword search fails in this context — it lacks semantic understanding, provides no reasoning trace, and offers poor traceability. The core challenge was retrieving accurate legal-tax answers while preserving explainability and source traceability — not just 'what is the answer,' but where it comes from and why it is valid.",
-    solution: "KBSE is a web-based multi-agent semantic search engine built with Python and CrewAI. Instead of relying on a single LLM response, the system decomposes reasoning into specialized stages: semantic retrieval from a vector store, cross-document consolidation, validation/auditing of retrieved excerpts, and final answer generation with explicit citations. Every response includes the synthesized answer and the exact legal text used as evidence.",
-    role: "Led the solution architecture and reasoning design. Implemented the multi-agent workflow using CrewAI (retrieval, consolidation, validation, redaction) and designed the RAG pipeline with citation validation logic.",
-    insight: "Achieved 94% accuracy in validation tests. In regulated sectors, trust is not about magic; it is about traceability. By validating every output against source documents, we turned 'hallucination risks' into an auditable compliance asset.",
+    quote: "The legal team only started trusting the system when every answer showed the exact law it came from.",
+    context: "Corporate tax and legal teams work with huge, scattered knowledge bases. Legislation, regulatory guidance, internal memos and technical opinions live across dozens of documents.",
+    problem: "Keyword search can't handle this. It doesn't understand meaning, and it can't show where an answer came from. The team needed accurate answers to legal and tax questions — with the source and the reasoning attached to each one.",
+    solution: "KBSE is a search engine built with Python and CrewAI. It splits the work into four stages, each with its own agent. The first retrieves relevant passages from a vector store — a database that searches by meaning, not keywords. The second consolidates findings across documents. The third validates and audits the retrieved excerpts. The fourth writes the final answer with explicit citations. Every response shows the answer and the exact legal text behind it.",
+    role: "I led the solution architecture and the reasoning design. I implemented the multi-agent workflow with CrewAI and built the retrieval pipeline with citation validation.",
+    insight: "The system reached 94% accuracy in validation tests. The bigger lesson: the legal team adopted it because every answer could be checked against its source. An answer you can verify is useful. An answer you can't verify is a risk.",
     highlights: [
-      "Multi-agent reasoning decomposition (Retrieval -> Audit)",
-      "Vector-based RAG with explicit citation trails",
-      "Sequential validation to eliminate hallucinations"
+      "Four agents: retrieve, consolidate, validate, answer",
+      "Every answer cites the exact legal text behind it",
+      "A validation stage audits every excerpt before the answer is written"
     ]
   },
   {
@@ -71,47 +71,47 @@ export const solutions: Solution[] = [
     techTags: ['Python', 'Django', 'CrewAI', 'ChromaDB'],
     impactMetric: '80% Less Analysis Time',
     painPoint: 'Senior reviewers stuck on first-pass diagnosis instead of high-value work.',
-    quote: "High-quality academic evaluation is not intuition — it’s structure. Once expert judgment is made explicit, it can be scaled.",
-    context: "Academic consulting teams spend a disproportionate amount of time on first-level readings: understanding a client’s paper, diagnosing structural/methodological issues, and assessing quality before deep revision begins.",
-    problem: "This initial diagnostic phase was time-consuming, costly, and highly dependent on senior reviewers’ availability. The problem wasn’t writing alone — it was the lack of a fast, structured, and repeatable way to apply academic judgment at scale.",
-    solution: "A cheap triage pass screens every upload before the expensive pipeline runs. Five pillar agents (clarity, methodology, relevance, technical quality, norms) then evaluate the manuscript against a 52-question rubric grounded in a ChromaDB knowledge base of writing references — never the student's own text, which is extracted as plain text and never embedded. A writer agent drafts the consolidated report, a copy-editing pass corrects it under a drift guard, and a validator agent audits it before publication. Output is a branded PDF via WeasyPrint. Runs in production with end-to-end Langfuse tracing.",
-    role: "Co-founder and sole engineer. Translated tacit academic evaluation criteria into explicit, modular AI agents. Designed, implemented and operate the multi-agent orchestration and backend architecture (Python/Django/CrewAI/ChromaDB/Celery/Docker) — a system my own business depends on daily.",
-    insight: "Real production average: ~13.7 minutes per report at ~$1.78 in model cost, with zero failed LLM calls across 210 traced calls. High-quality academic evaluation isn't intuition, it's structure — codify the tacit rubric into agents with clear contracts, and rigor scales without becoming a bottleneck.",
+    quote: "We wrote down every question our best reviewer asks. Then we taught each one to an agent.",
+    context: "Academic consulting teams lose a lot of time on first readings. Before any deep revision starts, a senior reviewer has to read the paper, diagnose its problems and judge its quality.",
+    problem: "That first diagnosis was slow and expensive, and it depended on senior reviewers being available. The team didn't lack skill. It lacked a fast, repeatable way to apply expert judgment at scale.",
+    solution: "A cheap triage model screens every upload first, so the expensive pipeline only runs on valid submissions. Then five agents review the manuscript, one per quality pillar: clarity, methodology, relevance, technical writing, and norms. Each agent works from a 52-question rubric and a knowledge base of writing references. The student's own text is never stored in that base. A writer agent drafts the report, a copy-editing pass corrects it, and a validator audits it before publication. The result is a branded PDF. Every AI call is traced in production.",
+    role: "I co-founded the company and I am its only engineer. I turned our best reviewer's tacit criteria into explicit agents. I built the orchestration and the backend (Python, Django, CrewAI, ChromaDB, Celery, Docker), and I operate the system my own business depends on.",
+    insight: "In production, a report takes about 13.7 minutes and costs about $1.78 in model usage. Across 210 traced calls, zero failed. The lesson: write down what your expert actually checks. Once the rubric is explicit, agents can apply it — and rigor stops being a bottleneck.",
     highlights: [
-      "8-agent pipeline — 5 pillar reviewers, a writer, a copy editor and a validator",
-      "RAG grounded in a curated knowledge base, not the student's own text",
+      "8 agents: 5 pillar reviewers, a writer, a copy editor and a validator",
+      "The knowledge base holds the rubric — never the student's text",
       "Zero failed LLM calls across 210 traced production calls"
     ],
     constraints: [
-      "Runs on a 2 vCPU / 8GB production VPS — the worker deliberately caps at concurrency=1 so one analysis's agent fan-out never competes with a concurrent user's pipeline for memory.",
-      "The student's manuscript is never embedded or indexed — only extracted as text, cached briefly, and passed inline inside a sanitized prompt envelope. What's indexed is the reference knowledge base: writing norms, the grading rubric, style guidelines.",
-      "Every finding in the final report has to trace back to one of the 52 rubric questions — no agent output is accepted as an unattributed claim.",
+      "The system runs on a small server (2 vCPUs / 8GB). The worker handles one analysis at a time, on purpose: two heavy pipelines at once could run the server out of memory.",
+      "The student's manuscript is never embedded or indexed. It is extracted as plain text, cached briefly, and passed inside a sanitized prompt. Only the reference material is indexed: writing norms, the rubric, style guides.",
+      "Every finding in the report must trace back to one of the 52 rubric questions. No unattributed claims.",
     ],
     architecture: {
-      overview: "A cheap triage pass (a low-cost model) screens every upload before the expensive pipeline commits, rejecting non-academic or malformed submissions early. Five pillar agents then evaluate the manuscript against a 52-question rubric — clarity & alignment, methodological rigor, relevance & contribution, technical writing, and norms & structure — each grounded in a ChromaDB knowledge base of academic-writing references. A sixth agent checks alignment against the submission brief when one is attached. A writer agent consolidates every finding into a six-section report; a copy-editing pass corrects it under a drift guard that discards the correction if it changes the report's length by more than 25%; a validator agent audits the final report before it's allowed to publish.\n\nOrchestration is a single sequential Celery chain, not a parallel fan-out — deliberately. The five pillars have no API-side reason to stay sequential now that the account runs on higher-tier rate limits, but the production VPS has 2 vCPUs, and the CrewAI + LiteLLM + ChromaDB import cost alone is heavy enough that raising intra-analysis concurrency would risk memory contention with a concurrent user's pipeline. The constraint is protected at the infrastructure layer, not worked around at the prompt layer.",
+      overview: "A cheap triage model screens every upload before the expensive pipeline commits. It rejects non-academic or broken files early.\n\nFive pillar agents then review the manuscript against a 52-question rubric. The pillars: clarity, methodology, relevance, technical writing, and norms. Each agent looks up its criteria in a ChromaDB knowledge base of academic-writing references. A sixth agent checks the paper against the submission brief, when one is attached. A writer agent consolidates every finding into a six-section report. A copy-editing pass then corrects the text under a drift guard: if the correction changes the report's length by more than 25%, the system throws the correction away. Finally, a validator agent audits the report before it can publish.\n\nThe agents run in a single sequential Celery chain — one task after another, never in parallel. This is deliberate. The API rate limits would allow parallel pillars now. The production server would not: it has 2 vCPUs, and each pipeline run imports CrewAI, LiteLLM and ChromaDB, which is heavy. Two analyses running their agents at once could exhaust memory. I protect that limit at the infrastructure layer, not with prompt workarounds.",
       decisions: [
         {
           title: "Sequential, not parallel, agent execution",
-          choice: "A single Celery chain() — the five pillar agents run one after another, not as a parallel group.",
+          choice: "One Celery chain. The five pillar agents run one after another, never as a parallel group.",
           alternatives: ["Parallel fan-out via Celery group/chord", "An explicit graph (e.g. LangGraph) with a fan-in node"],
-          rationale: "The real constraint isn't API rate limits — the account has since moved to a tier with headroom to run pillars concurrently. It's the 2 vCPU production VPS: every Celery execution carries a heavy CrewAI + LiteLLM + ChromaDB import, and raising concurrency inside one analysis would risk contending for memory with a second user's analysis. Concurrency stays capped at 1 until the VPS is resized — a deliberate trade-off, not an oversight.",
+          rationale: "Rate limits are not the constraint anymore — the account tier could handle parallel pillars. The server is the constraint. It has 2 vCPUs, and every pipeline run imports CrewAI, LiteLLM and ChromaDB, which is heavy. Parallel agents inside one analysis could starve a second user's analysis of memory. So concurrency stays at 1 until the server grows. A chosen trade-off, not an oversight.",
         },
         {
           title: "RAG indexes the rubric, not the student's work",
-          choice: "ChromaDB stores the reference knowledge base — writing norms, the grading rubric, style guidelines. The manuscript is extracted as plain text, cached briefly, and passed inline inside a sanitized prompt envelope.",
-          rationale: "Embedding a student's unpublished academic work would be a data-handling liability with no upside — the agents don't need semantic retrieval over the student's own text, they need to look up institutional grading criteria and apply it to what's in front of them.",
+          choice: "ChromaDB stores only the reference material: writing norms, the grading rubric, style guides. The manuscript is extracted as plain text, cached briefly, and passed inside a sanitized prompt.",
+          rationale: "Embedding a student's unpublished work would create a data-handling liability with no benefit. The agents don't need to search the student's text. They need to look up the grading criteria and apply them to the text in front of them.",
         },
         {
           title: "Eight narrow agents, not one long prompt",
-          choice: "Five pillar-specific reviewers plus a writer, a copy editor and a validator — each with its own role, backstory and temperature.",
+          choice: "Five pillar reviewers plus a writer, a copy editor and a validator. Each agent has its own role and its own temperature.",
           alternatives: ["One large prompt covering every evaluation criterion"],
-          rationale: "The grading rubric has 52 discrete questions, and every finding in the final report has to trace back to the one that raised it — that granularity doesn't survive collapsing into a single prompt. Splitting by pillar also lets each agent run at the temperature its task needs (a deterministic 0.0 for norms-checking, a looser 0.3 for clarity feedback) and isolates failure: one pillar erroring doesn't take down the other four.",
+          rationale: "The rubric has 52 discrete questions, and every finding must trace back to one of them. That granularity dies inside a single giant prompt. Separate agents also get the right temperature per task: a strict 0.0 for norms-checking, a looser 0.3 for clarity feedback. And failure stays contained — one pillar can error without taking down the other four.",
         },
       ],
       tradeoffs: [
-        "Migrated model providers in production (Anthropic → OpenAI) without touching business logic — an LLM abstraction layer keeps the provider behind an environment variable, so the switch that solved a hard rate-limit ceiling was a config change, not a rewrite.",
-        "Consciously pinned to an older CrewAI release rather than force an upgrade — the next major version needs a dependency bump that isn't compatible with the rest of the stack yet. Tracked as deliberate technical debt, not an oversight.",
-        "No explicit graph orchestration, even though the pipeline now has a conditional branch and a fan-in step that a graph would model more natively than a linear chain — the original role/goal/backstory abstraction fit the pipeline when it was simpler, and hasn't been revisited since it grew.",
+        "I migrated model providers in production (Anthropic → OpenAI) without touching business logic. An abstraction layer keeps the provider behind an environment variable, so the switch was a config change, not a rewrite.",
+        "I kept CrewAI pinned to an older version on purpose. The next major version needs dependencies the rest of the stack can't use yet. This is tracked, deliberate technical debt.",
+        "The pipeline has no explicit graph orchestration, even though it now has a conditional branch and a fan-in step that a graph would model better. The current abstraction fit the pipeline when it was simpler. Revisiting it is on the list.",
       ],
     },
     results: [
@@ -134,16 +134,16 @@ export const solutions: Solution[] = [
     techTags: ['React Native', 'OpenAI API', 'SQLite'],
     impactMetric: 'Zero Manual Reporting',
     painPoint: 'Consulting value lost in the gap between doing the work and documenting it.',
-    quote: "In consulting, value isn’t just delivered — it’s tracked and remembered. Systems that preserve context are what turn sessions into progress.",
-    context: "Consulting work lives in conversations: meetings, sessions, calls. But what reaches clients is often fragmented, delayed, or inconsistently documented.",
-    problem: "Consultants faced manual time tracking, inconsistent documentation, and limited client visibility into progress. This created unnecessary administrative overhead and reduced transparency.",
-    solution: "A mobile-first consulting support app based on 'capture once, reuse everywhere'. Consultants track time and record audio notes directly in the app. Audio is automatically transcribed and summarized using AI to generate a standardized session report (changes made, time spent, next steps). It follows an offline-first architecture for reliability.",
-    role: "Designed the end-to-end workflow, implemented AI-assisted transcription and structured summarization, and built the mobile application architecture and local persistence layer.",
-    insight: "Eliminated 100% of manual reporting. Value in consulting is often lost in the gap between doing and documenting. By automating the capture layer, we recovered billable focus and ensured zero information loss.",
+    quote: "Consultants were losing billable hours writing reports. Now the app writes the report while they talk.",
+    context: "Consulting work happens in conversations: meetings, sessions, calls. What reaches the client afterwards is often fragmented, late, or inconsistent.",
+    problem: "Consultants tracked time by hand and wrote reports by hand. Documentation quality varied by person, and clients had little visibility into progress.",
+    solution: "A mobile app built on one idea: capture once, reuse everywhere. The consultant tracks time and records audio notes in the app. AI transcribes and summarizes the audio into a standard session report: what changed, time spent, next steps. The app works offline first, so nothing is lost without a connection.",
+    role: "I designed the workflow end to end. I built the mobile architecture, the local storage layer, and the AI transcription and summarization.",
+    insight: "Manual reporting dropped to zero. The report now writes itself at the moment the work happens, so nothing gets lost between doing and documenting.",
     highlights: [
-      "Offline-first mobile architecture",
-      "Auto-transcription & structured summarization",
-      "Automated client-facing report generation"
+      "Works offline first — nothing is lost without a connection",
+      "AI turns audio notes into a standard session report",
+      "Client-ready reports with zero manual writing"
     ]
   },
   {
@@ -159,16 +159,16 @@ export const solutions: Solution[] = [
     techTags: ['Service Design', 'AI Personas', 'Ops'],
     impactMetric: 'Scalable AI Adoption',
     painPoint: 'Brazil\'s biggest tax reform vs. a delivery model that wouldn\'t scale.',
-    quote: "AI creates value in consulting only when it is embedded into the delivery model. Without structure, intelligence doesn’t scale.",
-    context: "Brazil’s Tax Reform represents one of the most complex regulatory transformations in history, creating an exponential increase in client demand for KPMG.",
-    problem: "The existing delivery approach was not designed to scale under this pressure. Teams needed to deliver complex projects with efficiency and consistency, while effectively adopting AI as an accelerator, not a parallel experiment.",
-    solution: "Redesigned the Service Delivery Model (SDM) into six structured phases (Business Context, Kick-off, Pre-Workshop, Workshops, Impact Matrix, Action Plan). To operationalize this, I created role-based AI accelerators (personas, prompt banks, templates) embedded directly into consultants' workflows for each phase.",
-    role: "Redesigned the end-to-end Service Delivery Model. Translated consulting methodology into structured, AI-enabled workflows. Developed AI accelerators and authored practical execution manuals.",
-    insight: "Drove 30-80% efficiency gains in specific workflow tasks. AI alone does not solve scale; process does. By embedding AI into a rigid 6-phase delivery model, we turned a regulatory crisis into a standardized, repeatable operation.",
+    quote: "We put the AI inside each step of the delivery process. That's when the teams actually used it.",
+    context: "Brazil's Tax Reform is one of the most complex regulatory changes in the country's history. Client demand at KPMG grew exponentially.",
+    problem: "The existing delivery model could not scale under that pressure. Teams needed to deliver complex projects fast and consistently — and adopt AI as part of the work, not as a side experiment.",
+    solution: "I redesigned the Service Delivery Model into six phases: Business Context, Kick-off, Pre-Workshop, Workshops, Impact Matrix, and Action Plan. Then I built AI accelerators for each role in each phase: personas, prompt banks and templates that sit inside the consultant's normal workflow.",
+    role: "I redesigned the delivery model end to end. I translated the consulting methodology into AI-enabled workflows, built the accelerators, and wrote the execution manuals.",
+    insight: "Task time dropped 30–80% on the workflows the model covered. Delivery became repeatable under crisis-level demand — because the AI lived inside the process, not beside it.",
     highlights: [
-      "6-phase AI-enabled delivery lifecycle",
-      "Role-based AI personas (e.g., Impact Analyst)",
-      "Standardized prompt banks & execution templates"
+      "Six delivery phases, each with AI built in",
+      "AI personas per role — for example, an Impact Analyst",
+      "Standard prompt banks and execution templates"
     ]
   },
   {
@@ -184,16 +184,16 @@ export const solutions: Solution[] = [
     techTags: ['Facilitation', 'Miro', 'Process Mapping'],
     impactMetric: '6+ Deployed Solutions',
     painPoint: 'Tax teams knew AI existed but couldn\'t translate it into their daily work.',
-    quote: "AI adoption doesn’t start with tools — it starts with shared understanding. When people map their own work, automation stops being threatening and starts being obvious.",
-    context: "Corporate Tax teams dealt with highly regulated, repetitive activities but faced challenges translating AI potential into practical, day-to-day solutions.",
-    problem: "There was a clear gap between knowing AI exists and using it meaningfully. Delivery models evolved organically, limiting visibility on automation opportunities.",
-    solution: "Designed and delivered an immersive, 12-hour hands-on workshop. Teams collaboratively mapped 'as-is' delivery models, identified opportunities using Impact x Effort analysis, and generated implementable solutions (AI personas, templates, workflows).",
-    role: "Co-designed workshop methodology and facilitation flow. Guided teams in mapping delivery models and translating abstract AI concepts into concrete use cases aligned with Corporate Tax reality.",
-    insight: "Produced 6+ deployable solutions in 12 hours. Adoption doesn't happen in lectures; it happens in the trenches. When teams map their own friction points, they identify high-impact automation opportunities that top-down strategy misses.",
+    quote: "When the teams mapped their own work, they found the automation opportunities themselves.",
+    context: "Corporate Tax teams do highly regulated, repetitive work. They knew AI existed. Turning that into day-to-day solutions was the hard part.",
+    problem: "There was a gap between knowing about AI and using it well. The delivery models had grown organically over the years, so nobody could see the automation opportunities clearly.",
+    solution: "I co-designed and delivered a hands-on, 12-hour workshop. The teams mapped how their delivery actually works today. Then they scored each opportunity by impact and effort, and turned the best ones into concrete solutions: AI personas, templates and workflows.",
+    role: "I co-designed the methodology and the facilitation flow. I guided the teams while they mapped their work, and I helped translate abstract AI ideas into concrete Corporate Tax use cases.",
+    insight: "The workshop produced six deployable solutions in 12 hours. The teams found the opportunities in their own maps — which is exactly why they adopted the results.",
     highlights: [
-      "Collaborative 'As-Is' vs 'To-Be' mapping",
-      "Impact x Effort prioritization matrix",
-      "Translation of abstract needs to technical specs"
+      "Teams mapped their current work, then designed the future version",
+      "Every opportunity scored by impact and effort",
+      "Abstract needs turned into buildable specs"
     ]
   },
   {
@@ -209,16 +209,16 @@ export const solutions: Solution[] = [
     techTags: ['Education', 'Change Mgmt', 'CARTS'],
     impactMetric: '1,600+ Professionals',
     painPoint: '1,600 professionals, fragmented AI literacy, no shared vocabulary.',
-    quote: "AI adoption at scale is not about teaching tools — it’s about reshaping how people think about their work.",
-    context: "As AI capabilities expanded within KPMG, the Tax area faced uneven knowledge, fragmented adoption, and usage disconnected from real business problems.",
-    problem: "Without a unified approach, AI risked being underutilized or misused. The challenge was capability building at scale to ensure the entire practice could apply AI responsibly.",
-    solution: "A large-scale, hybrid enablement program combining conceptual grounding, hands-on challenges, and real business applications. Structured around how work actually happens in Tax, covering opportunity identification, prompt engineering (CARTS framework), and solution architecture.",
-    role: "Led the end-to-end design of the training program. Defined the pedagogical structure, challenges, and learning journey. Created all core content, frameworks, and exercises.",
-    insight: "Upskilled ~1,600 professionals. The bottleneck was not technology, but literacy. By establishing a shared 'AI vocabulary' and architectural understanding, we shifted the firm from isolated experiments to enterprise-grade capability.",
+    quote: "We didn't teach a tool. We taught 1,600 people to see their own work differently.",
+    context: "AI use inside KPMG's Tax practice was growing unevenly. Knowledge varied a lot from person to person, and much of the usage was disconnected from real business problems.",
+    problem: "Without a shared foundation, AI risked being underused or misused. The challenge was to build real capability across the entire practice — 1,600 people — not just among a few enthusiasts.",
+    solution: "I designed a hybrid training program: concepts, hands-on challenges, and real business applications. It was structured around how Tax work actually happens. People learned to spot automation opportunities, to write effective prompts with CARTS — a prompt-writing framework I created — and to understand how AI solutions are put together.",
+    role: "I led the program design end to end: the pedagogical structure, the challenges, the learning journey, and all the core content and exercises.",
+    insight: "About 1,600 professionals went through the program. The real bottleneck was literacy. Once everyone shared a vocabulary, isolated experiments turned into a firm-wide capability.",
     highlights: [
-      "Hybrid pedagogical model (Concepts + Hands-on)",
-      "CARTS framework for professional prompting",
-      "Real business cases transformed into workflows"
+      "Concepts plus hands-on challenges — not lectures alone",
+      "CARTS: a prompt-writing framework I created for professionals",
+      "Real business cases turned into working workflows"
     ]
   },
   {
@@ -234,16 +234,16 @@ export const solutions: Solution[] = [
     techTags: ['Copilot Studio', 'Power Automate', 'AI Builder', 'Python'],
     impactMetric: '50,000 Docs in 6 Hours',
     painPoint: 'An $8B legal case riding on 50,000 docs — sample-only review wasn\'t enough.',
-    quote: "When the stakes are measured in billions, AI must do more than assist — it must deliver certainty at scale. Turning 50,000 legacy documents into structured evidence is where automation meets accountability.",
-    context: "A major legal dispute worth $8 billion was running in parallel between the US and Brazil. The case involved retroactive tax exemptions with significant financial impact for the end client. The analysis required searching through 50,000 scanned documents — dating back to 1958 — of various types (board minutes, commercial registry records) for terms indicating profit and dividend distributions to shareholders.",
-    problem: "The initial estimate required a team of 5 consultants working for 10 days, and even then, only a sample-based review would be feasible. The volume, variety, and age of documents made comprehensive manual analysis impractical, leaving critical evidence potentially undiscovered.",
-    solution: "Built an end-to-end automation pipeline: a Python script split documents into individual pages (dramatically improving analysis quality), which were then routed to a SharePoint processing folder. A Power Automate flow orchestrated the analysis using AI Builder and Copilot Studio. The deliverable was a spreadsheet with one row per page, including a column indicating whether the page mentioned dividends.",
-    role: "Called in after multiple failed attempts by the business team to solve this with existing AI platforms. Designed the full solution architecture: Python page-splitting script, SharePoint integration, Power Automate orchestration with AI Builder and Copilot Studio. Delivered the end-to-end pipeline that produced auditable, page-level results.",
-    insight: "Processed 50,000 documents in 6 hours with 98% accuracy (validated by the business team's sample audit). What would have taken 5 consultants 10 days — and still only covered a sample — became a complete, page-level analysis. The key was decomposing documents into pages before AI processing, which dramatically improved granularity and accuracy.",
+    quote: "The case was worth $8 billion. Sampling wasn't good enough — we read every page.",
+    context: "An $8 billion legal dispute was running in two countries at once, the US and Brazil. It involved retroactive tax exemptions. The evidence lived in 50,000 scanned documents going back to 1958: board minutes, commercial registry records and more. The task was to find every mention of profit or dividend distributions to shareholders.",
+    problem: "The manual estimate was 5 consultants working for 10 days. Even then, they could only review a sample. Critical evidence could stay buried.",
+    solution: "I built a pipeline that reads everything. A Python script splits each document into individual pages — this one step made the AI's analysis far more accurate. The pages flow into SharePoint. From there, Power Automate orchestrates the analysis with AI Builder and Copilot Studio. The output is a spreadsheet with one row per page and a column that says whether the page mentions dividends.",
+    role: "The business team had already tried to solve this with existing AI platforms, and failed. I was called in after that. I designed the full architecture and delivered the pipeline end to end, with auditable page-level results.",
+    insight: "The pipeline read 50,000 documents in 6 hours with 98% accuracy, validated by the business team's own audit. The key decision was splitting documents into pages before the AI ran. Smaller inputs, much better accuracy.",
     highlights: [
-      "50,000 documents analyzed in 6 hours",
-      "+400 hours of manual work saved",
-      "98% accuracy validated by business team"
+      "50,000 documents read in 6 hours",
+      "Over 400 hours of manual work saved",
+      "98% accuracy, validated by the business team's audit"
     ]
   },
   {
@@ -259,18 +259,18 @@ export const solutions: Solution[] = [
     techTags: ['Copilot Studio', 'Power Automate', 'Power Apps'],
     impactMetric: 'From Sample to Full Analysis',
     painPoint: 'R&D tax forms reviewed by sample — overlooked inconsistencies meant client losses.',
-    quote: "When regulatory complexity meets limited capacity, AI doesn't replace expertise — it extends its reach. Turning sample-based review into full-scope analysis is how you protect clients at scale.",
-    context: "The project supports the analysis of Lei do Bem (Brazil's R&D tax incentive law) forms linked to Research, Development, and Innovation (RD&I) initiatives. These forms are lengthy, highly detailed, and require specialized technical evaluation — covering innovative projects, R&D staffing, material procurement, and third-party service contracts.",
-    problem: "With growing form volume and the Ministry of Science and Technology adopting AI to support responses, a significant bottleneck emerged. The small, highly specialized review team could only perform sample-based analysis rather than comprehensive review, increasing the risk of financial losses from undetected inconsistencies.",
-    solution: "Designed and developed an automation solution using Copilot Studio and Power Automate to transform the review process from sample-based to full-scope analysis. The system enables faster, more consistent evaluation of every submitted form, reducing risk and expanding the team's review capacity across the entire client portfolio.",
-    role: "Acted as the solution developer, participating in both requirements analysis with the business team and the design and development of the automation. Delivered end-to-end, connecting business understanding with technical implementation.",
-    insight: "Transformed a bottleneck into a scalable process. By automating what was previously a manual, sample-based review, we enabled full-form analysis — giving consultants complete visibility into client submissions and significantly reducing the risk of financial impact from overlooked inconsistencies.",
+    quote: "The team could only check a sample of each batch. Now they check everything.",
+    context: "Lei do Bem is Brazil's R&D tax incentive law. Companies file long, detailed forms about their innovation projects, R&D staffing, materials and contracts. KPMG's specialists review those forms.",
+    problem: "The volume of forms kept growing. The review team didn't. The specialists could only review a sample of the forms — and every unchecked form was a financial risk for the client.",
+    solution: "I designed and built an automation with Copilot Studio and Power Automate. It reviews every form, not a sample. The evaluation became faster and more consistent, and the team's capacity now covers the entire client portfolio.",
+    role: "I was the solution developer. I sat with the business team to gather requirements, then designed and built the automation. I delivered it end to end.",
+    insight: "The bottleneck became a scalable process. Consultants now see every form a client submits, and the risk of a missed inconsistency dropped sharply.",
     highlights: [
-      "Transformed sample-based into full-form analysis",
-      "Reduced operational bottlenecks in specialized review",
-      "Expanded consultant visibility over entire client scope",
-      "Mitigated financial risks from analysis gaps",
-      "End-to-end delivery connecting business and technical layers"
+      "Every form reviewed — not a sample",
+      "Fewer bottlenecks in the specialist review",
+      "Consultants see the full client portfolio",
+      "Lower risk of missed inconsistencies",
+      "Delivered end to end, from requirements to production"
     ]
   }
 ];

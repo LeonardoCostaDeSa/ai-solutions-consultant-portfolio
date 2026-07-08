@@ -23,7 +23,7 @@ const SolutionsPage: React.FC = () => {
     <div className="bg-charcoal min-h-screen text-offwhite overflow-x-clip">
       <Seo
         title="Case Studies — Leonardo Sá · AI Engineer"
-        description="Production GenAI case studies with validated metrics: a production multi-agent review platform, 50,000 documents analyzed in 6 hours, 94% accuracy legal/tax search, and AI adoption at 1,600+ scale."
+        description="Eight AI projects with real, measured results. A review platform in production, 50,000 documents read in 6 hours, and a search engine with 94% validated accuracy."
         path="/solutions"
       />
       <Navbar />
@@ -51,8 +51,8 @@ const SolutionsPage: React.FC = () => {
               </span>
             </h1>
             <p className="text-lg md:text-2xl text-white/60 font-medium leading-relaxed max-w-2xl mb-12">
-              Production systems and adoption programs with validated metrics — built for environments
-              where errors are expensive. Three of them, up close.
+              Eight projects with real, measured results. The first three are the ones
+              I'm proudest of — scroll to walk through them.
             </p>
             <div className="flex items-center gap-3 text-white/40 text-xs font-black uppercase tracking-widest">
               <ArrowDown size={14} className="animate-bounce" />

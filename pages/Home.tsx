@@ -119,7 +119,7 @@ const Home: React.FC = () => {
     {
       id: 'projects',
       title: 'Projects',
-      sub: 'Case studies with validated metrics — from regulated document intelligence to production multi-agent platforms.',
+      sub: 'Case studies with real numbers. See how each system works.',
       color: '#F97316', // coral
       twColor: 'coral',
       icon: Briefcase,
@@ -129,7 +129,7 @@ const Home: React.FC = () => {
     {
       id: 'resume',
       title: 'Resume',
-      sub: 'Experience, education, skills and credentials — the full track record in one page.',
+      sub: 'Experience, education, skills and credentials. The full track record in one page.',
       color: '#06B6D4', // teal
       twColor: 'teal',
       icon: FileText,
@@ -142,7 +142,7 @@ const Home: React.FC = () => {
     <div className="bg-charcoal min-h-screen relative overflow-x-clip">
       <Seo
         title="Leonardo Sá — AI Engineer · Production GenAI"
-        description="AI Engineer designing, shipping and operating production GenAI systems for regulated, document-heavy operations — RAG, multi-agent orchestration, enterprise integrations. 94% validated accuracy; 50,000 documents analyzed in 6 hours."
+        description="I build AI systems for tax, legal, compliance and education teams. My systems reached 94% validated accuracy and read 50,000 documents in 6 hours."
         path="/"
       />
       <Navbar />
@@ -178,10 +178,10 @@ const Home: React.FC = () => {
 
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {[
-              { value: '1,600+', label: 'Professionals trained', sub: 'on responsible AI adoption', color: 'indigo' },
-              { value: '50,000', label: 'Docs analyzed', sub: 'in 6 hours — from sample to full', color: 'teal' },
-              { value: '30–80%', label: 'Efficiency gains', sub: 'across AI workflow automation', color: 'coral' },
-              { value: '94%', label: 'Validated accuracy', sub: 'on regulated AI systems', color: 'indigo' },
+              { value: '1,600+', label: 'Professionals trained', sub: 'to use AI in their daily work', color: 'indigo' },
+              { value: '50,000', label: 'Documents read', sub: 'in 6 hours — every page, not a sample', color: 'teal' },
+              { value: '30–80%', label: 'Less task time', sub: 'on the tax workflows I automated', color: 'coral' },
+              { value: '94%', label: 'Answer accuracy', sub: 'validated by tax professionals', color: 'indigo' },
             ].map((stat, i) => (
               <motion.div
                 key={i}
@@ -245,7 +245,7 @@ const Home: React.FC = () => {
             className="max-w-3xl mb-12 md:mb-16"
           >
             <p className="text-charcoal/70 text-lg md:text-2xl font-medium leading-relaxed mb-8">
-              I design, ship and operate production GenAI systems in regulated environments — <span className="text-charcoal font-bold">RAG pipelines</span>, <span className="text-charcoal font-bold">multi-agent orchestration</span>, and enterprise integrations across Azure, Power Platform, and Copilot Studio. At KPMG Brazil's Tax Transformation team, my work cut execution time by <span className="text-charcoal font-bold">30–80%</span> across tax and compliance workflows. As <span className="text-charcoal font-bold">co-founder of Revisa Master</span>, I built and operate the production multi-agent platform my family's income runs on.
+              I build AI systems and run them in production. At KPMG Brazil, my systems cut task time by <span className="text-charcoal font-bold">30–80%</span> on tax and compliance work. At <span className="text-charcoal font-bold">Revisa Master</span>, the company I co-founded, I built the review platform that my family's income runs on. It works every day, because it has to.
             </p>
             <Link
               to="/about"
@@ -265,10 +265,10 @@ const Home: React.FC = () => {
             className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5"
           >
             {[
-              { title: 'Process Architecture', desc: 'Mapping messy workflows into reliable system logic.', icon: Shrink, color: 'teal', hex: '#06B6D4' },
-              { title: 'Multi-Agent Systems', desc: 'CrewAI orchestration with retrieval, validation, citations.', icon: Code, color: 'indigo', hex: '#4F46E5' },
-              { title: 'AI Adoption', desc: 'Training teams to ship AI in their real work — not slide decks.', icon: BrainCircuit, color: 'coral', hex: '#F97316' },
-              { title: 'Production Delivery', desc: 'POC to production with traceability and governance.', icon: ChartNoAxesColumnIncreasing, color: 'teal', hex: '#06B6D4' }
+              { title: 'Process Architecture', desc: 'I turn messy processes into systems that run on their own.', icon: Shrink, color: 'teal', hex: '#06B6D4' },
+              { title: 'Multi-Agent Systems', desc: 'I build AI agents that check their answers and cite their sources.', icon: Code, color: 'indigo', hex: '#4F46E5' },
+              { title: 'AI Adoption', desc: 'I train teams to use AI in their real work — not in slide decks.', icon: BrainCircuit, color: 'coral', hex: '#F97316' },
+              { title: 'Production Delivery', desc: 'I take prototypes to production. They hold up.', icon: ChartNoAxesColumnIncreasing, color: 'teal', hex: '#06B6D4' }
             ].map((trait, i) => (
               <div key={i} className="relative p-5 md:p-6 bg-charcoal border border-charcoal/80 rounded-2xl hover:border-white/20 transition-all group overflow-hidden">
                 <BorderBeam color={trait.hex} duration={5} />

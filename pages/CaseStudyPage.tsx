@@ -94,6 +94,16 @@ const CaseStudyPage: React.FC = () => {
           )}
         </section>
 
+        {/* PULL QUOTE */}
+        <section className="max-w-4xl mx-auto px-6 py-8 md:py-12">
+          <blockquote
+            className="text-2xl md:text-4xl font-black tracking-tight leading-snug text-center"
+            style={{ color: palette.glow }}
+          >
+            “{solution.quote}”
+          </blockquote>
+        </section>
+
         {/* ARCHITECTURE */}
         <section className="relative py-20 md:py-28 overflow-hidden">
           <div className="absolute inset-0 opacity-60">
@@ -242,7 +252,7 @@ const CaseStudyPage: React.FC = () => {
         {/* CTA */}
         <section className="max-w-3xl mx-auto px-6 pb-24 md:pb-32 text-center">
           <h2 className="text-2xl md:text-4xl font-black tracking-tighter mb-4">
-            Building something where reliability matters?
+            Building AI that has to work every time?
           </h2>
           <p className="text-white/60 mb-8">I design, ship and operate systems like this one.</p>
           <a
