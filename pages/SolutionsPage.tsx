@@ -23,7 +23,7 @@ const SolutionsPage: React.FC = () => {
     <div className="bg-charcoal min-h-screen text-offwhite overflow-x-clip">
       <Seo
         title="Case Studies — Leonardo Sá · AI Engineer"
-        description="Eight AI projects with real, measured results. A review platform in production, 50,000 documents read in 6 hours, and a search engine with 94% validated accuracy."
+        description="Eight AI projects with real, measured results. A review platform in production, every page of 50,000 legal documents read, and a search engine with 94% validated accuracy."
         path="/solutions"
       />
       <Navbar />

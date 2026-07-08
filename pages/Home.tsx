@@ -142,7 +142,7 @@ const Home: React.FC = () => {
     <div className="bg-charcoal min-h-screen relative overflow-x-clip">
       <Seo
         title="Leonardo Sá — AI Engineer · Production GenAI"
-        description="I build AI systems for tax, legal, compliance and education teams. My systems reached 94% validated accuracy and read 50,000 documents in 6 hours."
+        description="I build AI systems for tax, legal, compliance and education teams. My systems reached 94% validated accuracy and read every page of 50,000 legal documents."
         path="/"
       />
       <Navbar />
@@ -179,7 +179,7 @@ const Home: React.FC = () => {
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">
             {[
               { value: '1,600+', label: 'Professionals trained', sub: 'to use AI in their daily work', color: 'indigo' },
-              { value: '50,000', label: 'Documents read', sub: 'in 6 hours — every page, not a sample', color: 'teal' },
+              { value: '50,000', label: 'Documents read', sub: 'every page of an $8B lawsuit — not a sample', color: 'teal' },
               { value: '30–80%', label: 'Less task time', sub: 'on the tax workflows I automated', color: 'coral' },
               { value: '94%', label: 'Answer accuracy', sub: 'validated by tax professionals', color: 'indigo' },
             ].map((stat, i) => (

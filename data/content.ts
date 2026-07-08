@@ -228,22 +228,60 @@ export const solutions: Solution[] = [
     order: 2,
     palette: { base: '#161638', glow: '#818CF8', accent: '#4F46E5', ambient: '#12122a' },
     archetype: 'vault',
-    tagline: "An $8 billion lawsuit's evidence sat in 50,000 scanned documents. My pipeline read every page in six hours.",
+    tagline: "An $8 billion lawsuit's evidence sat in 50,000 scanned documents. My pipeline read every page — and lawyers validated what it found.",
     title: 'Document Analysis Automation',
     category: 'engineering',
-    techTags: ['Copilot Studio', 'Power Automate', 'AI Builder', 'Python'],
-    impactMetric: '50,000 Docs in 6 Hours',
+    techTags: ['Python', 'Power Automate', 'AI Builder', 'Azure Document Intelligence'],
+    impactMetric: 'Every Page of 50,000+ Docs',
     painPoint: 'An $8 billion lawsuit depended on what was inside 50,000 old documents. Nobody could read them all by hand.',
-    quote: "The case was worth $8 billion. Sampling wasn't good enough — we read every page.",
-    context: "An $8 billion lawsuit was running in two countries at once, the US and Brazil. It involved retroactive tax exemptions. The evidence lived in 50,000 scanned documents going back to 1958: board minutes, commercial registry records and more. The task was to find every mention of profit or dividend distributions to shareholders.",
-    problem: "The manual estimate was 5 consultants working for 10 days. Even then, they could only review a sample. Critical evidence could stay buried.",
-    solution: "I built a pipeline that reads everything. A Python script splits each document into individual pages — this one step made the AI's analysis far more accurate. The pages flow into SharePoint. From there, Power Automate orchestrates the analysis with AI Builder and Copilot Studio. The output is a spreadsheet with one row per page and a column that says whether the page mentions dividends.",
-    role: "The business team had already tried to solve this with existing AI platforms, and failed. I was called in after that. I designed the full architecture and delivered the pipeline end to end, with auditable page-level results.",
-    insight: "The pipeline read 50,000 documents in 6 hours with 98% accuracy, validated by the business team's own audit. The key decision was splitting documents into pages before the AI ran. Smaller inputs, much better accuracy.",
+    quote: "Three AI tools had already failed on these documents. The problem wasn't reasoning — it was reading.",
+    context: "An $8 billion lawsuit was running in two countries at once, the US and Brazil. It involved retroactive tax exemptions. The evidence lived in more than 50,000 documents going back to 1958 — each between 3 and 600 pages. Some were handwritten. Some were typed on typewriters. Some were printed and scanned. Only the newest were born digital. The task: find every mention of profit or dividend distributions to shareholders.",
+    problem: "Reading everything by hand was off the table. The estimate was 5 consultants for 10 days — and even that covered only a sample. Three AI tools had already been tried: an internal LLM chat, Microsoft Copilot, and a batch document tool. All three failed for the same reason: their OCR could not read the old documents. When the text extraction fails, no language model can save the answer. The project then came to the Tax AI team.",
+    solution: "I built a pipeline that reads everything, in four stages. First, a Python script splits every document into single pages and tracks each one, so no page can be silently skipped. Second, each page goes through OCR. Clean pages use the standard OCR; the hard ones — handwriting, typewriter text, degraded scans — go to a custom model I trained on Azure Document Intelligence. Third, a chain of prompts interprets each page, looks for evidence and structures what it finds. Each prompt has one job, like a small agent. Power Automate orchestrates the whole flow. The output is a spreadsheet with one row per page and a column that says whether the page mentions dividends.",
+    role: "Three tools had failed before I was called in. I designed the full architecture and built every stage: the Python pre-processing, the Power Automate flow, the prompt chain, and the custom OCR model. I also worked directly with KPMG's lawyers to define how the results would be validated.",
+    insight: "The pipeline read every page of more than 50,000 documents with 98% accuracy — validated by KPMG lawyers on a 10% sample. Its output became one of the main pieces of evidence used in the case. Two decisions made the difference: split documents into single pages so nothing gets skipped, and fix the reading layer first — the tools that failed before failed at OCR, not at reasoning.",
     highlights: [
-      "50,000 documents read in 6 hours",
-      "Over 400 hours of manual work saved",
-      "98% accuracy, validated by the business team's audit"
+      "Every page of 50,000+ documents read — no sampling",
+      "98% accuracy, validated by KPMG lawyers on a 10% sample",
+      "Custom OCR model for handwriting, typewriter text and old scans"
+    ],
+    constraints: [
+      "Legal context: the output had to survive scrutiny from lawyers on both sides. 'Mostly right' was not an option — every page's result had to be auditable.",
+      "The documents spanned seven decades of formats: handwritten, typewritten, printed-and-scanned, born-digital. One OCR setup could not read them all.",
+      "Scale: more than 50,000 documents, 3 to 600 pages each. Any manual step in the middle would break the pipeline.",
+    ],
+    architecture: {
+      overview: "The pipeline has four stages.\n\nPre-processing: a Python script splits every document into individual pages and tracks each one, so nothing is silently dropped. Reading: standard OCR (AI Builder) handles the clean pages; the difficult ones — handwriting, typewriter text, degraded scans — go to a custom model trained on Azure Document Intelligence. Interpretation: a chain of prompts processes each page. One prompt interprets the content. One looks for evidence of dividend or profit distributions. One structures the finding into the output format. Each prompt has a single job, like a small agent, which makes failures easy to locate. Delivery: Power Automate orchestrates the flow end to end and writes the result — one row per page, with the evidence flag.\n\nWhy page-level? Because accuracy collapses when a model reads a 600-page document at once. Small inputs made the reading accurate and made every error traceable to a single page.",
+      decisions: [
+        {
+          title: "Split everything into single pages",
+          choice: "A Python script breaks every document into one-page units before anything else runs.",
+          alternatives: ["Process whole documents", "Chunk by sections"],
+          rationale: "Two reasons. Accuracy: a model reading one page at a time misses far less than a model reading a 600-page file. Auditability: when a lawyer questions a result, the answer points to one page, not to a whole document. Tracking pages individually also guarantees coverage — no page can be silently skipped.",
+        },
+        {
+          title: "Train a custom OCR model for the hard documents",
+          choice: "Standard OCR for clean pages. A custom Azure Document Intelligence model for handwriting, typewriter text and degraded scans.",
+          alternatives: ["One generic OCR for everything — the approach the failed tools used"],
+          rationale: "The three tools that failed before all failed at the same stage: reading. They reasoned fine over text they could extract, but they could not extract text from the old documents. Fixing the reading layer was the whole game. A dedicated model for the difficult formats raised extraction quality enough for the rest of the pipeline to work.",
+        },
+        {
+          title: "A chain of single-purpose prompts, not one big prompt",
+          choice: "Separate prompts to interpret, find evidence and structure the output — orchestrated like a small agent flow.",
+          alternatives: ["One prompt doing everything"],
+          rationale: "In a legal context, you need to know where a mistake happened. With one giant prompt, a wrong answer is a black box. With a chain, each step's output is visible — an error is traceable to the step that produced it, and fixable without touching the rest.",
+        },
+      ],
+      tradeoffs: [
+        "Power Automate orchestrates the flow instead of a pure-code pipeline. Inside KPMG's Microsoft stack, it was the fastest path to production and kept the flow readable for non-engineers — at the cost of less flexibility than code.",
+        "The custom OCR model took training effort that a generic OCR would not need. The three failed attempts had already proven the generic route did not work on these documents. The effort was the price of accuracy.",
+      ],
+    },
+    results: [
+      { metric: '50,000+', label: 'documents read', detail: 'every page — 3 to 600 pages per document, no sampling' },
+      { metric: '98%', label: 'validated accuracy', detail: 'checked by KPMG lawyers on a 10% sample' },
+      { metric: '3', label: 'tools had failed before', detail: 'all defeated by the OCR on the old documents' },
+      { metric: 'Key evidence', label: 'in the lawsuit', detail: "the pipeline's output was used throughout the case" },
     ]
   },
   {

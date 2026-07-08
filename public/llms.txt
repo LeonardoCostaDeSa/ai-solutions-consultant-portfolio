@@ -40,10 +40,12 @@ Languages: English (fluent), French (fluent), Portuguese (native), Spanish (inte
   production. Five pillar reviewers, a writer, a copy editor and a validator. A report
   takes ~13.7 minutes and costs ~$1.78; zero failed LLM calls across 210 traced calls.
   https://leonardosa.pro/solutions/revisa-master-express
-- **Document Analysis Automation** (Python, Power Automate, AI Builder, Copilot Studio):
-  a pipeline that read 50,000 scanned documents (1958–present) in 6 hours with 98%
-  business-validated accuracy, for an $8 billion lawsuit. The manual alternative: 5
-  consultants for 10 days, covering only a sample.
+- **Document Analysis Automation** (Python, Power Automate, AI Builder, Azure Document
+  Intelligence): a pipeline that read every page of 50,000+ documents (1958–present,
+  handwritten to born-digital) for an $8 billion lawsuit. 98% accuracy, validated by
+  KPMG lawyers on a 10% sample. Three AI tools had failed before it; a custom OCR model
+  handled the hard documents. Its output became key evidence in the case. The manual
+  alternative: 5 consultants for 10 days, covering only a sample.
   https://leonardosa.pro/solutions/document-analysis-automation
 - **KBSE — Knowledge Base Search Engine** (Python, CrewAI, RAG, Azure): a search engine
   for legal and tax questions. Four agents: retrieve, consolidate, validate, answer.

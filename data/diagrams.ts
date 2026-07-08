@@ -45,21 +45,22 @@ export const diagrams: Record<string, FlowDiagramData> = {
   },
 
   'doc-analysis': {
-    title: 'Document Analysis — end-to-end automation pipeline',
+    title: 'Document Analysis — page-level pipeline, orchestrated in Power Automate',
     nodes: [
-      { id: 'docs', label: '50,000 docs', sublabel: 'scanned · 1958–present', kind: 'input', col: 0, row: 0 },
-      { id: 'splitter', label: 'Page splitter', sublabel: 'Python', kind: 'process', col: 1, row: 0 },
-      { id: 'queue', label: 'SharePoint', sublabel: 'processing queue', kind: 'store', col: 2, row: 0 },
-      { id: 'orchestrator', label: 'Power Automate', sublabel: 'orchestration', kind: 'process', col: 3, row: 0 },
-      { id: 'ai', label: 'AI Builder', sublabel: '+ Copilot Studio', kind: 'agent', col: 4, row: 0 },
-      { id: 'sheet', label: 'Evidence sheet', sublabel: 'one row per page', kind: 'output', col: 5, row: 0 },
+      { id: 'docs', label: '50,000+ docs', sublabel: '1958–present · 3–600 pages', kind: 'input', col: 0, row: 1 },
+      { id: 'splitter', label: 'Page splitter', sublabel: 'Python · tracks every page', kind: 'process', col: 1, row: 1 },
+      { id: 'ocr', label: 'Standard OCR', sublabel: 'AI Builder', kind: 'process', col: 2, row: 0 },
+      { id: 'di', label: 'Custom OCR model', sublabel: 'Azure Document Intelligence', kind: 'agent', col: 2, row: 2 },
+      { id: 'prompts', label: 'Prompt chain', sublabel: 'interpret · find · structure', kind: 'agent', col: 3, row: 1 },
+      { id: 'sheet', label: 'Evidence sheet', sublabel: 'one row per page', kind: 'output', col: 4, row: 1 },
     ],
     edges: [
       { from: 'docs', to: 'splitter' },
-      { from: 'splitter', to: 'queue', label: 'pages' },
-      { from: 'queue', to: 'orchestrator' },
-      { from: 'orchestrator', to: 'ai' },
-      { from: 'ai', to: 'sheet' },
+      { from: 'splitter', to: 'ocr', label: 'clean pages' },
+      { from: 'splitter', to: 'di', label: 'hard pages' },
+      { from: 'ocr', to: 'prompts' },
+      { from: 'di', to: 'prompts' },
+      { from: 'prompts', to: 'sheet' },
     ],
   },
 
