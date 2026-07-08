@@ -29,7 +29,7 @@ const SolutionsPage: React.FC = () => {
       <Navbar />
 
       {/* INTRO */}
-      <header className="relative min-h-screen flex items-end px-6 pb-16 md:pb-24 pt-40 overflow-hidden">
+      <header className="relative min-h-screen flex items-center px-6 py-24 overflow-hidden">
         <div className="absolute inset-0 -z-10 opacity-40" aria-hidden="true">
           <div
             className="absolute inset-0"
