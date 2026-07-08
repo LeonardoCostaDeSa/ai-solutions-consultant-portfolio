@@ -104,8 +104,8 @@ const AboutPage: React.FC = () => {
       <Navbar />
 
       {/* HERO */}
-      <section className="pt-32 md:pt-40 pb-16 md:pb-24 px-6">
-        <div className="max-w-5xl mx-auto">
+      <section className="min-h-screen flex items-center pt-32 md:pt-40 pb-16 md:pb-24 px-6">
+        <div className="max-w-5xl mx-auto w-full">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -113,7 +113,7 @@ const AboutPage: React.FC = () => {
             className="flex flex-col md:flex-row md:items-end gap-8 md:gap-16"
           >
             {/* Photo + label */}
-            <div className="shrink-0">
+            <div className="shrink-0 flex flex-col items-center">
               <div className="w-32 h-32 md:w-44 md:h-44 rounded-full overflow-hidden border-2 border-indigo shadow-2xl shadow-indigo/30 mb-4">
                 <img
                   src="/img/profile.webp"
@@ -124,7 +124,8 @@ const AboutPage: React.FC = () => {
                   className="w-full h-full object-cover"
                 />
               </div>
-              <span className="text-indigo font-black uppercase tracking-[0.4em] text-xs block">
+              {/* tracking adds trailing space on the last letter — indent-only padding rebalances the optical center */}
+              <span className="text-indigo font-black uppercase tracking-[0.4em] text-xs block text-center pl-[0.4em]">
                 Leonardo Sá
               </span>
             </div>
