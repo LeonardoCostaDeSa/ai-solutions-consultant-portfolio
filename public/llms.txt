@@ -22,8 +22,8 @@ Languages: English (fluent), French (fluent), Portuguese (native), Spanish (inte
 ## Experience
 
 - **KPMG Brazil — Tax Transformation** (May 2025 – Jun 2026). Joined as AI Solutions
-  Consultant, promoted to AI Engineer. Built a search engine for legal and tax questions —
-  tax professionals validated 94% of its answers. Cut task time by 30–80% on the workflows
+  Consultant, promoted to AI Engineer. Helped build a legal search engine — Legal and
+  Corporate teams validated 94% of its answers. Cut task time by 30–80% on the workflows
   I automated. Trained 1,600+ professionals to use AI in their daily work.
 - **Revisa Master — Co-founder & AI Engineer** (2023–present). Revisa Master reviews
   academic manuscripts. I co-founded it and I am its entire engineering department.
@@ -47,9 +47,11 @@ Languages: English (fluent), French (fluent), Portuguese (native), Spanish (inte
   handled the hard documents. Its output became key evidence in the case. The manual
   alternative: 5 consultants for 10 days per 500-document batch, initial questions only.
   https://leonardosa.pro/solutions/document-analysis-automation
-- **KBSE — Knowledge Base Search Engine** (Python, CrewAI, RAG, Azure): a search engine
-  for legal and tax questions. Four agents: retrieve, consolidate, validate, answer.
-  Every answer cites the exact legal text behind it. 94% validated accuracy.
+- **KBSE — Knowledge Base Search Engine** (Python, Django, CrewAI, ChromaDB, Azure OpenAI):
+  a RAG search engine for legal and regulatory questions, built in 2024 when models were
+  far weaker. Four stages: retrieve, consolidate, validate, answer. Every answer links to
+  its original source. 94% validated accuracy and 99% user-rated relevance, measured with
+  Legal and Corporate teams over ~3 months (feedback stored in Supabase).
   https://leonardosa.pro/solutions/knowledge-base-search-engine
 - **Saving Time App**: an offline-first consulting app. AI turns audio notes into
   client-ready session reports. Zero manual reporting.

@@ -40,23 +40,61 @@ export const solutions: Solution[] = [
     order: 3,
     palette: { base: '#0c2830', glow: '#67E8F9', accent: '#06B6D4', ambient: '#0a1a1e' },
     archetype: 'archive',
-    tagline: 'A search engine that answers legal and tax questions — and shows the exact law behind every answer.',
+    tagline: 'A search engine that answers legal and regulatory questions — and links every answer to its original source.',
     title: 'KBSE: Knowledge Base Search Engine',
     category: 'engineering',
-    techTags: ['Python', 'CrewAI', 'RAG', 'Azure'],
+    techTags: ['Python', 'Django', 'CrewAI', 'ChromaDB', 'Azure OpenAI'],
     impactMetric: '94% Answer Accuracy',
-    painPoint: 'Legal teams couldn\'t trust AI answers — no citations, no audit trail.',
+    painPoint: "In 2024, AI chatbots answered legal questions with confidence — and no sources. Legal teams couldn't trust them.",
     quote: "The legal team only started trusting the system when every answer showed the exact law it came from.",
-    context: "Corporate tax and legal teams work with huge, scattered knowledge bases. Legislation, regulatory guidance, internal memos and technical opinions live across dozens of documents.",
-    problem: "Keyword search can't handle this. It doesn't understand meaning, and it can't show where an answer came from. The team needed accurate answers to legal and tax questions — with the source and the reasoning attached to each one.",
-    solution: "KBSE is a search engine built with Python and CrewAI. It splits the work into four stages, each with its own agent. The first retrieves relevant passages from a vector store — a database that searches by meaning, not keywords. The second consolidates findings across documents. The third validates and audits the retrieved excerpts. The fourth writes the final answer with explicit citations. Every response shows the answer and the exact legal text behind it.",
-    role: "I led the solution architecture and the reasoning design. I implemented the multi-agent workflow with CrewAI and built the retrieval pipeline with citation validation.",
-    insight: "The system reached 94% accuracy in validation tests. The bigger lesson: the legal team adopted it because every answer could be checked against its source. An answer you can verify is useful. An answer you can't verify is a risk.",
+    context: "KPMG's Legal and Corporate teams needed to consult legislation and internal legal knowledge. This was 2024: generative models were still weak at precise information retrieval. And in a legal context, a wrong reference can compromise real analyses and decisions.",
+    problem: "Conversational models of the time had low precision when searching large document bases. A confident answer with a wrong legal reference is worse than no answer. The teams needed more than answers. They needed the applicable legislation, a contextual interpretation, references to case law when relevant — and a direct link to the original source, so anyone could verify the answer in one click.",
+    solution: "KBSE is a search engine built on RAG — retrieval-augmented generation: the model answers from retrieved documents, not from memory. The pipeline has four stages. Retrieval finds the most relevant documents by vector search. Consolidation organizes and combines the retrieved evidence. Validation checks the consistency of that evidence before any text is generated. The answer stage then writes the response: the applicable legislation, an interpretation in context, case-law references when they apply, and a direct link to the source. Users rated the answers, and that feedback — stored in Supabase — drove three months of refinement.",
+    role: "This was a team project. I worked on the RAG architecture, implemented the retrieval, consolidation and answer pipeline, and helped structure the vector base (ChromaDB with Azure OpenAI embeddings). I also sat with the Legal and Corporate teams through the validation rounds.",
+    insight: "After about three months of testing with Legal and Corporate professionals, the system reached 94% validated answer accuracy — and 99% of its answers were rated relevant by the users. The lesson from building RAG in 2024: when the model is weak, the architecture has to carry the precision. Retrieval, consolidation and validation did the work the model couldn't.",
     highlights: [
-      "Four agents: retrieve, consolidate, validate, answer",
-      "Every answer cites the exact legal text behind it",
-      "A validation stage audits every excerpt before the answer is written"
-    ]
+      "Every answer links to the original legal source",
+      "94% validated accuracy · 99% user-rated relevance",
+      "Built in 2024, when models were far weaker — the architecture carried the precision"
+    ],
+    constraints: [
+      "2024 models: generative AI was still unreliable at precise retrieval. The architecture had to compensate for the model, not lean on it.",
+      "Legal domain: a wrong legal reference can compromise analyses and decisions. Traceability was a requirement, not a feature.",
+      "Every answer had to be verifiable by the user: applicable legislation, interpretation, case-law references, and a direct link to the source.",
+    ],
+    architecture: {
+      overview: "Four stages, each with one job.\n\nRetrieval finds the most relevant documents by vector search — ChromaDB stores the embeddings, generated with Azure OpenAI. Consolidation organizes and merges the evidence retrieved across documents. Validation checks the consistency of that evidence before any answer is written. The answer stage generates the final response with its legal grounding: the applicable legislation, an interpretation in context, case-law and regulatory references when relevant, and a direct link to the original source.\n\nUser feedback closed the loop. Every rating was stored in Supabase and reviewed during the three-month validation with the Legal and Corporate teams. The pipeline was refined against real usage, not against a benchmark.",
+      decisions: [
+        {
+          title: "Validate before generating",
+          choice: "A validation stage checks the consistency of the retrieved evidence before the answer is written.",
+          alternatives: ["Generate directly from retrieval — standard RAG"],
+          rationale: "In 2024, the model was the weak link. Letting it write from unchecked excerpts meant confident answers built on wrong evidence. Checking the evidence first cost latency — and paid for it in trust.",
+        },
+        {
+          title: "Link to the source, don't just cite it",
+          choice: "Every answer carries a direct link to the original document, next to the legislation and the interpretation.",
+          alternatives: ["Textual citations only"],
+          rationale: "A citation asks the user to trust the system. A link lets the user check. For a legal team, verifying an answer in one click is what turned the tool from a curiosity into something they actually used.",
+        },
+        {
+          title: "Measure with users, not benchmarks",
+          choice: "About three months of evaluation with the Legal and Corporate teams, rating real answers. Feedback stored in Supabase.",
+          alternatives: ["Offline benchmark evaluation"],
+          rationale: "The teams' real questions were the distribution that mattered — no benchmark reproduced them. Rating live answers for three months produced two honest numbers: 94% validated accuracy and 99% rated relevance. Numbers earned that way hold up.",
+        },
+      ],
+      tradeoffs: [
+        "The validation stage adds latency to every query. In a legal context, a slower correct answer beats a fast wrong one — the trade was deliberate.",
+        "Built with 2024 models, so the pipeline carries heavy scaffolding. Newer models would need less of it. The traceability layer — sources, links, validation — stays valuable no matter how good the model gets.",
+      ],
+    },
+    results: [
+      { metric: '94%', label: 'validated answer accuracy', detail: 'measured with the business teams during validation' },
+      { metric: '99%', label: 'answers rated relevant', detail: 'by Legal and Corporate users over ~3 months' },
+      { metric: '3 months', label: 'of user validation', detail: 'every rating stored in Supabase and reviewed' },
+      { metric: '1 click', label: 'to the original source', detail: 'every answer links to the document behind it' },
+    ],
   },
   {
     id: 'revisa',

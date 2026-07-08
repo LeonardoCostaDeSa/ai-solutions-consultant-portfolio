@@ -181,7 +181,7 @@ const Home: React.FC = () => {
               { value: '1,600+', label: 'Professionals trained', sub: 'to use AI in their daily work', color: 'indigo' },
               { value: '50,000', label: 'Documents read', sub: 'every page of an $8B lawsuit — not a sample', color: 'teal' },
               { value: '30–80%', label: 'Less task time', sub: 'on the tax workflows I automated', color: 'coral' },
-              { value: '94%', label: 'Answer accuracy', sub: 'validated by tax professionals', color: 'indigo' },
+              { value: '94%', label: 'Answer accuracy', sub: 'validated by Legal and Corporate teams', color: 'indigo' },
             ].map((stat, i) => (
               <motion.div
                 key={i}

@@ -65,14 +65,15 @@ export const diagrams: Record<string, FlowDiagramData> = {
   },
 
   kbse: {
-    title: 'KBSE — multi-agent semantic search with citation validation',
+    title: 'KBSE — four-stage RAG pipeline with source-linked answers',
     nodes: [
       { id: 'question', label: 'Legal question', kind: 'input', col: 0, row: 0 },
-      { id: 'retrieval', label: 'Semantic retrieval', sublabel: 'agent', kind: 'agent', col: 1, row: 0 },
-      { id: 'vstore', label: 'Vector store', sublabel: 'legislation · memos', kind: 'store', col: 1, row: 1 },
-      { id: 'consolidation', label: 'Consolidation', sublabel: 'cross-document agent', kind: 'agent', col: 2, row: 0 },
-      { id: 'validation', label: 'Validation / audit', sublabel: 'agent', kind: 'agent', col: 3, row: 0 },
-      { id: 'answer', label: 'Answer', sublabel: 'with explicit citations', kind: 'output', col: 4, row: 0 },
+      { id: 'retrieval', label: 'Retrieval', sublabel: 'vector search', kind: 'agent', col: 1, row: 0 },
+      { id: 'vstore', label: 'ChromaDB', sublabel: 'Azure OpenAI embeddings', kind: 'store', col: 1, row: 1 },
+      { id: 'consolidation', label: 'Consolidation', sublabel: 'merge evidence', kind: 'agent', col: 2, row: 0 },
+      { id: 'validation', label: 'Validation', sublabel: 'consistency check', kind: 'agent', col: 3, row: 0 },
+      { id: 'answer', label: 'Answer', sublabel: 'legislation · source links', kind: 'output', col: 4, row: 0 },
+      { id: 'feedback', label: 'User feedback', sublabel: 'Supabase', kind: 'store', col: 5, row: 1 },
     ],
     edges: [
       { from: 'question', to: 'retrieval' },
@@ -81,6 +82,7 @@ export const diagrams: Record<string, FlowDiagramData> = {
       { from: 'consolidation', to: 'validation' },
       { from: 'validation', to: 'answer' },
       { from: 'validation', to: 'retrieval', label: 're-query', kind: 'feedback' },
+      { from: 'answer', to: 'feedback', label: 'ratings', kind: 'feedback' },
     ],
   },
 };

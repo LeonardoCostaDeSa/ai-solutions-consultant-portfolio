@@ -25,7 +25,7 @@ const trajectory = [
     hex: '#4F46E5',
     desc: 'I joined as an AI solutions consultant and was promoted to AI Engineer. I built AI systems for tax and compliance teams. In that world, every system must keep records of what it did and protect client data — so I build that in from the start.',
     highlights: [
-      'Built a search engine for legal and tax questions — tax professionals validated 94% of its answers',
+      'Helped build a legal search engine — Legal and Corporate teams validated 94% of its answers',
       'Cut task time by 30–80% on the workflows I automated',
       'Trained 1,600+ professionals to use AI in their daily work',
     ],

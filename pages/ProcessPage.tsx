@@ -27,7 +27,7 @@ const experience = [
     accentHex: "#4F46E5",
     desc: "I built AI systems for tax and compliance teams. Every system kept records of what it did, because regulators demand it. I joined as an AI solutions consultant and was promoted to AI Engineer.",
     highlights: [
-      "Built a search engine for legal and tax questions — tax professionals validated 94% of its answers",
+      "Helped build a legal search engine — Legal and Corporate teams validated 94% of its answers",
       "Cut task time by 30–80% on the workflows I automated",
       "Trained 1,600+ professionals across KPMG's Tax practice to use AI in their daily work"
     ]
