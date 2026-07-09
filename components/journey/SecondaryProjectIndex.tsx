@@ -49,7 +49,8 @@ const SecondaryProjectIndex: React.FC<SecondaryProjectIndexProps> = ({ solutions
                   <span className="block text-xl md:text-2xl font-black text-white leading-tight group-hover:underline decoration-2 underline-offset-4" style={{ textDecorationColor: sol.palette.accent }}>
                     {sol.title}
                   </span>
-                  <span className="block text-sm text-white/60 leading-relaxed mt-1.5 max-w-xl">{sol.painPoint}</span>
+                  <span className="block text-sm md:text-base text-white/70 leading-relaxed mt-2 max-w-2xl">{sol.tagline}</span>
+                  <span className="block text-xs md:text-sm text-white/45 leading-relaxed mt-2 max-w-2xl">{sol.painPoint}</span>
                 </span>
 
                 <span

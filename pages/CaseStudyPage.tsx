@@ -46,7 +46,7 @@ const CaseStudyPage: React.FC = () => {
       <Navbar />
 
       {/* HERO — full-bleed environment */}
-      <header className="relative min-h-[88vh] flex items-end overflow-hidden">
+      <header className="relative min-h-screen flex items-end overflow-hidden">
         <ProjectEnvironment seed={solution.id} palette={palette} archetype={solution.archetype} variant="hero" />
         <div className="relative z-10 max-w-5xl mx-auto w-full px-6 pb-20 pt-40">
           <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }}>
@@ -92,6 +92,16 @@ const CaseStudyPage: React.FC = () => {
               ))}
             </ul>
           )}
+        </section>
+
+        {/* PULL QUOTE */}
+        <section className="max-w-4xl mx-auto px-6 py-8 md:py-12">
+          <blockquote
+            className="text-2xl md:text-4xl font-black tracking-tight leading-snug text-center"
+            style={{ color: palette.glow }}
+          >
+            “{solution.quote}”
+          </blockquote>
         </section>
 
         {/* ARCHITECTURE */}
@@ -242,7 +252,7 @@ const CaseStudyPage: React.FC = () => {
         {/* CTA */}
         <section className="max-w-3xl mx-auto px-6 pb-24 md:pb-32 text-center">
           <h2 className="text-2xl md:text-4xl font-black tracking-tighter mb-4">
-            Building something where reliability matters?
+            Building AI that has to work every time?
           </h2>
           <p className="text-white/60 mb-8">I design, ship and operate systems like this one.</p>
           <a

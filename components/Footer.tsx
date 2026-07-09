@@ -21,7 +21,7 @@ const Footer: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           className="text-white/70 text-sm font-semibold tracking-widest uppercase mb-4"
         >
-          Building GenAI where reliability matters? Let's talk.
+          Building AI that has to work every time? Let's talk.
         </motion.h2>
         
         <motion.a

@@ -10,7 +10,8 @@ import {
   Languages,
   HeartHandshake,
   CheckCircle2,
-  ExternalLink
+  ExternalLink,
+  ArrowDown
 } from 'lucide-react';
 import BorderBeam from '../components/BorderBeam';
 import Navbar from '../components/Navbar';
@@ -25,11 +26,11 @@ const experience = [
     tag: "Promoted",
     accentColor: "indigo",
     accentHex: "#4F46E5",
-    desc: "Designed production GenAI workflows in a highly regulated tax/compliance environment — RAG, multi-agent orchestration, traceability, auditability, and secure AI adoption. Joined as an AI solutions consultant; promoted to AI Engineer.",
+    desc: "I built AI systems for tax and compliance teams. Every system kept records of what it did, because regulators demand it. I joined as an AI solutions consultant and was promoted to AI Engineer.",
     highlights: [
-      "Built a legal/tax semantic search engine with 94% validated accuracy using agentic orchestration",
-      "Delivered 30–80% execution-time reductions across AI and automation initiatives",
-      "Trained 1,600+ professionals on responsible AI adoption across KPMG's Tax practice"
+      "Helped build a legal search engine — Legal and Corporate teams validated 94% of its answers",
+      "Cut task time by 30–80% on the workflows I automated",
+      "Trained 1,600+ professionals across KPMG's Tax practice to use AI in their daily work"
     ]
   },
   {
@@ -39,11 +40,11 @@ const experience = [
     tag: "Founder",
     accentColor: "coral",
     accentHex: "#F97316",
-    desc: "Academic-services company where I own engineering end-to-end: a production multi-agent review platform (Python, Django, CrewAI, ChromaDB, Celery, Docker) with Langfuse tracing and Sentry monitoring in production.",
+    desc: "Revisa Master reviews academic manuscripts. I co-founded it and I own its engineering end to end: I built the review platform and I keep it running in production. Stack: Python, Django, CrewAI, ChromaDB, Celery, Docker.",
     highlights: [
-      "Cut first-pass expert document analysis from ~6 hours to ~15 minutes",
-      "Built the funnels and landing pages behind ~90% monthly revenue growth in one quarter",
-      "Automated PDF diagnostic reports across 5 evaluation pillars with citation grounding"
+      "A review that took an expert six hours now takes fifteen minutes",
+      "Built the funnels and landing pages behind ~90% revenue growth in one quarter",
+      "The system writes a PDF report and cites the rubric question behind every finding"
     ]
   },
   {
@@ -99,19 +100,19 @@ const volunteering = [
     org: "Instituto Joule",
     role: "Career Mentor",
     period: "Sep – Oct 2025",
-    desc: "Guided an early-career AI researcher in healthcare technology through KPMG's affiliated program. Conducted 3-session structured mentorship covering career planning, values mapping, and professional branding."
+    desc: "I mentored an early-career AI researcher in healthcare technology, through KPMG's affiliated program. We met for three sessions and worked on career planning, values and personal brand."
   },
   {
     org: "ETEC de Itaquera — Itaquera State Technical School",
     role: "Film Club Project Lead",
     period: "Mar – Dec 2019",
-    desc: "Led a project empowering high school students to create and manage film clubs. Provided training in film curation, event organization, critical discussion facilitation, and promotional campaigns."
+    desc: "I taught high-school students how to start and run their own film clubs: how to pick films, organize screenings, lead discussions and promote the events."
   },
   {
     org: "FFLCH-USP — School of Philosophy, Languages and Human Sciences, University of São Paulo",
     role: "Volunteer Portuguese Teacher",
     period: "Mar – Dec 2018",
-    desc: "Taught Portuguese to students preparing for university entrance exams at USP's community prep course. Developed lesson plans, provided individualized guidance, and created supplementary materials."
+    desc: "I taught Portuguese at USP's community prep course, for students preparing for university entrance exams. I wrote the lesson plans and the extra materials, and I coached students one on one."
   }
 ];
 
@@ -202,7 +203,7 @@ const ProcessPage: React.FC = () => {
     <div className="bg-charcoal min-h-screen text-offwhite selection:bg-indigo selection:text-white pb-32 overflow-x-clip">
       <Seo
         title="Resume — Leonardo Sá · AI Engineer"
-        description="AI Engineer at KPMG Brazil (promoted from AI Solutions Consultant), co-founder of Revisa Master. Systems Analysis & Development (GPA 8.8/10), BA Linguistics at USP, peer-reviewed author on multi-agent architecture."
+        description="AI Engineer at KPMG Brazil and co-founder of Revisa Master. Two degrees, a promotion, and a peer-reviewed paper on multi-agent architecture."
         path="/process"
       />
       {/* Background Elements */}
@@ -239,26 +240,43 @@ const ProcessPage: React.FC = () => {
         <div className="absolute left-0 top-0 bottom-0 w-[1px] bg-gradient-to-b from-transparent via-white/5 to-transparent -z-10" />
       </div>
 
-      <div className="max-w-5xl mx-auto px-6 pt-20">
-        
-        {/* SECTION 1: HEADER */}
-        <motion.div
-          id="intro"
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="mb-24 border-b border-white/10 pb-16"
-        >
-          <div className="flex flex-col md:flex-row md:items-end justify-between gap-8">
-            <div className="max-w-2xl">
-              <h1 className="text-6xl md:text-8xl font-black mb-6 leading-[0.9] tracking-tighter">
-                Resume
-              </h1>
-              <p className="text-xl text-white/60 max-w-xl leading-relaxed">
-                This page traces my professional path — from linguistics to AI engineering.
-              </p>
+      {/* SECTION 1: HERO */}
+      <header id="intro" className="relative min-h-screen flex items-center px-6 py-24 overflow-hidden">
+        <div className="absolute inset-0 -z-10 opacity-40" aria-hidden="true">
+          <div
+            className="absolute inset-0"
+            style={{
+              background:
+                'radial-gradient(90% 70% at 20% 0%, rgba(79,70,229,0.25) 0%, transparent 60%), radial-gradient(70% 60% at 90% 100%, rgba(249,115,22,0.14) 0%, transparent 60%)',
+            }}
+          />
+        </div>
+
+        <div className="max-w-6xl mx-auto w-full">
+          <motion.div
+            initial={{ opacity: 0, y: 24 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <span className="text-coral font-black uppercase tracking-[0.4em] text-xs mb-6 block">
+              Career · 2021–2026
+            </span>
+            <h1 className="text-6xl md:text-8xl font-black leading-[0.95] tracking-tighter mb-8">
+              Resume<span className="text-transparent bg-clip-text bg-gradient-to-r from-coral via-indigo to-teal">.</span>
+            </h1>
+            <p className="text-lg md:text-2xl text-white/60 font-medium leading-relaxed max-w-2xl mb-12">
+              The roles, systems and credentials behind my production AI work:
+              regulated teams, shipped platforms and measurable results.
+            </p>
+            <div className="flex items-center gap-3 text-white/40 text-xs font-black uppercase tracking-widest">
+              <ArrowDown size={14} className="animate-bounce" />
+              <span>Scroll</span>
             </div>
-          </div>
-        </motion.div>
+          </motion.div>
+        </div>
+      </header>
+
+      <div className="max-w-5xl mx-auto px-6 pt-16 md:pt-24">
 
         {/* SECTION 2: EXPERIENCE */}
         <section id="experience" className="mb-24 scroll-mt-32">
@@ -474,7 +492,7 @@ const ProcessPage: React.FC = () => {
                   "As arquiteturas distribuídas e integração de agentes inteligentes" — distributed architectures and intelligent-agent integration
                 </h3>
                 <p className="text-white/50 text-xs leading-relaxed">
-                  Multi-agent systems, LLM integration and the Model Context Protocol. Revista Processando o Saber (eISSN 2179-5150), Vol. 18, n. 01 — the same architecture I operate in production.
+                  The paper covers multi-agent systems, LLM integration and the Model Context Protocol. I run this same architecture in production. Published in Revista Processando o Saber (eISSN 2179-5150), Vol. 18, n. 01.
                 </p>
               </div>
               <ExternalLink size={18} className="text-white/30 group-hover:text-indigo transition-colors shrink-0 mt-1" />
