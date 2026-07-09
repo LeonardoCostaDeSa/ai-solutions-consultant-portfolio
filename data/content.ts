@@ -182,6 +182,17 @@ export const solutions: Solution[] = [
       "Production beta used by Revisa Master consultants",
       "SQLite mobile store with daily sync to reduce VPS load",
       "Session summaries and next steps generated from audio"
+    ],
+    constraints: [
+      "The client buys hours, so the record had to explain the value of the work without forcing consultants into a second reporting workflow.",
+      "The app had to work well on mobile and avoid pressuring a small VPS with constant writes.",
+      "The output had to be useful for the client and for internal revenue tracking, not just a pretty AI summary."
+    ],
+    results: [
+      { metric: 'Beta', label: 'in production', detail: 'used by Revisa Master consultants after client demands' },
+      { metric: '1/day', label: 'database sync', detail: 'SQLite on mobile, daily sync to reduce VPS load' },
+      { metric: 'Audio to record', label: 'session summary', detail: 'summary and next steps update the client database' },
+      { metric: 'Higher trust', label: 'client relationship', detail: 'clearer explanation of what happened inside contracted hours' },
     ]
   },
   {
@@ -270,6 +281,17 @@ export const solutions: Solution[] = [
       "Legal, Corporate, SALT and Tax Transformation work cells",
       "12-hour hands-on format with real processes",
       "Prototypes, agents and specs from mapped workflows"
+    ],
+    constraints: [
+      "The workshop could not be a lecture. People needed to work on their own processes, otherwise the adoption would stay abstract.",
+      "The room had two opposite problems: people afraid they knew nothing about AI and people convinced a single prompt solved the whole workflow.",
+      "Some outputs became real projects, but the confidential solutions themselves could not be named publicly."
+    ],
+    results: [
+      { metric: '12h', label: 'hands-on format', detail: 'icebreaker, exposition, process mapping, group dynamics and discussion' },
+      { metric: '4', label: 'work cells', detail: 'Legal, Corporate, SALT and Tax Transformation' },
+      { metric: '6+', label: 'solution directions', detail: 'agents, prompts, prototypes and specs from real workflows' },
+      { metric: 'Two groups', label: 'changed behavior', detail: 'confidence for beginners, more rigor for prompt-first users' },
     ]
   },
   {
@@ -295,6 +317,17 @@ export const solutions: Solution[] = [
       "8,000 aggregate training hours",
       "Quarterly themes: prompts, agents and opportunity mapping",
       "Hybrid event design for online and in-person participants"
+    ],
+    constraints: [
+      "The program had to work for 1,600 people with very different AI maturity levels.",
+      "Hybrid delivery meant online participants needed active facilitation, not passive attendance.",
+      "Exercises had to come from real business problems collected before the event, or the training would feel generic."
+    ],
+    results: [
+      { metric: '1,600+', label: 'professionals reached', detail: 'online and in-person participants across Tax' },
+      { metric: '8,000', label: 'training hours', detail: 'aggregate hours achieved before I left the program' },
+      { metric: 'Quarterly', label: 'program rhythm', detail: 'themes included prompts, agents and opportunity mapping' },
+      { metric: 'Real cases', label: 'hands-on exercises', detail: 'built from pre-event forms submitted by participants' },
     ]
   },
   {
@@ -383,6 +416,17 @@ export const solutions: Solution[] = [
       "~3 hours saved per form",
       "Human-in-the-loop review for a critical tax step",
       "Checked project, service, staff, material and third-party descriptions"
+    ],
+    constraints: [
+      "Exact client and form volumes cannot be disclosed.",
+      "The review was a critical tax step, so consultants still had to validate every correction before anything went to the client.",
+      "The MVP was delivered to support the workflow, but it was not presented as a fully finished production automation."
+    ],
+    results: [
+      { metric: '~3h', label: 'saved per form', detail: 'estimated time saved for each collaborator reviewing a form' },
+      { metric: 'MVP', label: 'review assistant', detail: 'delivered in Copilot Studio and Power Automate' },
+      { metric: '5 fields', label: 'quality checks', detail: 'projects, services, staff, materials and third-party contracting' },
+      { metric: 'Human review', label: 'kept in control', detail: 'consultants still made the final judgment on a critical step' },
     ]
   }
 ];
