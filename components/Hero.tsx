@@ -56,7 +56,7 @@ const Hero: React.FC = () => {
         >
           <span className="w-8 h-[1px] bg-indigo" />
           <span className="text-xs font-black uppercase tracking-[0.4em] text-white/60">
-            AI Engineer
+            AI Transformation Specialist
           </span>
           <span className="w-8 h-[1px] bg-indigo" />
         </motion.div>
@@ -67,9 +67,9 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.2 }}
           className="text-4xl md:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight text-white mb-8"
         >
-          I design, ship and operate GenAI systems{' '}
+          I redesign how work gets done with AI,{' '}
           <span className="text-indigo" style={{ textShadow: '0 0 20px rgba(79,70,229,0.4)' }}>
-            where errors are expensive.
+            and make sure teams adopt it.
           </span>
         </motion.h1>
 
@@ -79,8 +79,8 @@ const Hero: React.FC = () => {
           transition={{ duration: 0.8, delay: 0.35 }}
           className="text-base md:text-xl text-white/70 leading-relaxed max-w-3xl mx-auto mb-12"
         >
-          I build AI systems for tax, legal, compliance and education teams.
-          Every system I ship can show where its answers come from — and proves it with audit trails.
+          From the first conversation with leadership to daily use: I map the process, decide where AI earns its place,
+          implement it and train the people who use it.
         </motion.p>
 
         <div className="flex flex-wrap items-center justify-center gap-4 md:gap-6">
@@ -151,9 +151,9 @@ const Hero: React.FC = () => {
         >
           <span>KPMG</span>
           <span className="w-1 h-1 rounded-full bg-white/20" />
-          <span>University of São Paulo</span>
+          <span>MasterTech</span>
           <span className="w-1 h-1 rounded-full bg-white/20" />
-          <span>Université Lumière Lyon 2</span>
+          <span>University of São Paulo</span>
           <span className="w-1 h-1 rounded-full bg-white/20" />
           <span>Peer-reviewed author</span>
         </motion.div>
