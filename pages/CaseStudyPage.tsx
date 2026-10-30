@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { Link, Navigate, useParams } from 'react-router-dom';
 import { ArrowLeft, ArrowRight, Mail, Target } from 'lucide-react';
 import { solutions } from '../data/content';
+import type { Solution } from '../types';
 import { diagrams } from '../data/diagrams';
 import Navbar from '../components/Navbar';
 import Seo from '../components/Seo';
@@ -20,6 +21,13 @@ const SectionHeading: React.FC<{ label: string; accent: string }> = ({ label, ac
   </div>
 );
 
+// Adoption cases are programs, not systems: their sections read as an approach, not an architecture.
+const sectionLabels: Record<Solution['category'], { architecture: string; decisions: string; role: string; stack: string }> = {
+  engineering: { architecture: 'How it works', decisions: 'Decisions & Trade-offs', role: 'My contribution', stack: 'Tools' },
+  'Process Transformation': { architecture: 'How it works', decisions: 'Decisions & Trade-offs', role: 'My contribution', stack: 'Tools' },
+  'AI Adoption': { architecture: 'Approach', decisions: 'Key decisions', role: 'My contribution', stack: 'Tools & formats' },
+};
+
 const CaseStudyPage: React.FC = () => {
   const { slug } = useParams<{ slug: string }>();
   const solution = solutions.find((s) => s.slug === slug);
@@ -29,6 +37,7 @@ const CaseStudyPage: React.FC = () => {
   }
 
   const { palette } = solution;
+  const labels = sectionLabels[solution.category];
   const diagram = diagrams[solution.id];
 
   const ordered = [...solutions].sort((a, b) => a.order - b.order);
@@ -40,7 +49,7 @@ const CaseStudyPage: React.FC = () => {
     <div className="bg-charcoal min-h-screen text-offwhite overflow-x-clip">
       <Seo
         title={`${solution.title} — Case Study · Leonardo Sá`}
-        description={`${solution.painPoint} ${solution.impactMetric}. A production case study by Leonardo Sá, AI Engineer.`}
+        description={`${solution.painPoint} ${solution.impactMetric}. A case study by Leonardo Sá, AI Transformation Specialist.`}
         path={`/solutions/${solution.slug}`}
       />
       <Navbar />
@@ -113,7 +122,7 @@ const CaseStudyPage: React.FC = () => {
             />
           </div>
           <div className="relative max-w-5xl mx-auto px-6">
-            <SectionHeading label="Architecture" accent={palette.accent} />
+            <SectionHeading label={labels.architecture} accent={palette.accent} />
             <p className="text-white/80 text-base md:text-lg leading-relaxed max-w-3xl mb-14 whitespace-pre-line">
               {solution.architecture?.overview ?? solution.solution}
             </p>
@@ -132,7 +141,7 @@ const CaseStudyPage: React.FC = () => {
         {/* DECISIONS & TRADE-OFFS — only when interview content exists */}
         {solution.architecture && solution.architecture.decisions.length > 0 && (
           <section className="max-w-5xl mx-auto px-6 py-20 md:py-28">
-            <SectionHeading label="Decisions & Trade-offs" accent={palette.accent} />
+            <SectionHeading label={labels.decisions} accent={palette.accent} />
             <div className="grid md:grid-cols-2 gap-5">
               {solution.architecture.decisions.map((d, i) => (
                 <div key={i} className="p-7 rounded-2xl border border-white/10 bg-white/[0.02]">
@@ -164,7 +173,7 @@ const CaseStudyPage: React.FC = () => {
 
         {/* MY ROLE */}
         <section className="max-w-3xl mx-auto px-6 py-20 md:py-28">
-          <SectionHeading label="My Role" accent={palette.accent} />
+          <SectionHeading label={labels.role} accent={palette.accent} />
           <p className="text-white/80 text-base md:text-lg leading-relaxed">{solution.role}</p>
         </section>
 
@@ -209,7 +218,7 @@ const CaseStudyPage: React.FC = () => {
 
         {/* STACK */}
         <section className="max-w-5xl mx-auto px-6 py-16 md:py-20">
-          <SectionHeading label="Stack" accent={palette.accent} />
+          <SectionHeading label={labels.stack} accent={palette.accent} />
           <div className="flex flex-wrap gap-3">
             {solution.techTags.map((tag) => (
               <span
@@ -252,9 +261,9 @@ const CaseStudyPage: React.FC = () => {
         {/* CTA */}
         <section className="max-w-3xl mx-auto px-6 pb-24 md:pb-32 text-center">
           <h2 className="text-2xl md:text-4xl font-black tracking-tighter mb-4">
-            Building AI that has to work every time?
+            Rethinking how your team works with AI?
           </h2>
-          <p className="text-white/60 mb-8">I design, ship and operate systems like this one.</p>
+          <p className="text-white/60 mb-8">I map the work, implement what fits and train the people who use it.</p>
           <a
             href="mailto:leonardo@leonardosa.pro"
             data-umami-event="contact-click"

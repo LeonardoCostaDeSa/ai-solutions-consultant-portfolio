@@ -64,6 +64,25 @@ export const diagrams: Record<string, FlowDiagramData> = {
     ],
   },
 
+  garden: {
+    title: 'Garden São Paulo — one commercial journey, from lead to invoice',
+    nodes: [
+      { id: 'landing', label: 'Landing page', kind: 'input', col: 0, row: 0 },
+      { id: 'whatsapp', label: 'WhatsApp', kind: 'input', col: 0, row: 1 },
+      { id: 'email', label: 'Email', kind: 'input', col: 0, row: 2 },
+      { id: 'crm', label: 'Custom CRM', sublabel: 'every lead in one place', kind: 'store', col: 1, row: 1 },
+      { id: 'invoicing', label: 'Invoicing', sublabel: 'integrated', kind: 'output', col: 2, row: 0 },
+      { id: 'agents', label: 'AI agents', sublabel: 'via MCP · quotes & admin', kind: 'agent', col: 2, row: 2 },
+    ],
+    edges: [
+      { from: 'landing', to: 'crm' },
+      { from: 'whatsapp', to: 'crm' },
+      { from: 'email', to: 'crm' },
+      { from: 'crm', to: 'invoicing' },
+      { from: 'crm', to: 'agents' },
+    ],
+  },
+
   kbse: {
     title: 'KBSE — four-stage RAG pipeline with source-linked answers',
     nodes: [

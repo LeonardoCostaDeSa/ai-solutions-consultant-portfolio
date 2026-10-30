@@ -22,8 +22,8 @@ const SolutionsPage: React.FC = () => {
   return (
     <div className="bg-charcoal min-h-screen text-offwhite overflow-x-clip">
       <Seo
-        title="Case Studies — Leonardo Sá · AI Engineer"
-        description="Eight AI projects with real, measured results. A review platform in production, every page of 50,000 legal documents read, and a search engine with 94% validated accuracy."
+        title="Case Studies — Leonardo Sá · AI Transformation Specialist"
+        description="AI transformation and adoption projects with measured results: a delivery model for Brazil's Tax Reform, AI training for 1,600+ professionals, and every page of 50,000 legal documents analyzed."
         path="/solutions"
       />
       <Navbar />
@@ -51,7 +51,7 @@ const SolutionsPage: React.FC = () => {
               </span>
             </h1>
             <p className="text-lg md:text-2xl text-white/60 font-medium leading-relaxed max-w-2xl mb-12">
-              Eight projects with real, measured results. The first four are the ones
+              Nine projects with real, measured results. The first four are the ones
               I'm proudest of — scroll to walk through them.
             </p>
             <div className="flex items-center gap-3 text-white/40 text-xs font-black uppercase tracking-widest">

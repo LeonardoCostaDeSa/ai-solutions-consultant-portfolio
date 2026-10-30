@@ -26,15 +26,15 @@ const svg = `
 
   <text x="80" y="130" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="800" letter-spacing="6" fill="#9CA3AF">LEONARDO COSTA DE SÁ</text>
 
-  <text x="80" y="255" font-family="Segoe UI, Arial, sans-serif" font-size="76" font-weight="800" fill="#FFFFFF">AI Engineer</text>
-  <text x="80" y="340" font-family="Segoe UI, Arial, sans-serif" font-size="42" font-weight="600" fill="#E5E7EB">Production GenAI systems</text>
-  <text x="80" y="396" font-family="Segoe UI, Arial, sans-serif" font-size="42" font-weight="600" fill="#818CF8">where errors are expensive.</text>
+  <text x="80" y="255" font-family="Segoe UI, Arial, sans-serif" font-size="60" font-weight="800" fill="#FFFFFF">AI Transformation Specialist</text>
+  <text x="80" y="340" font-family="Segoe UI, Arial, sans-serif" font-size="42" font-weight="600" fill="#E5E7EB">I redesign how work gets done with AI,</text>
+  <text x="80" y="396" font-family="Segoe UI, Arial, sans-serif" font-size="42" font-weight="600" fill="#818CF8">and make sure teams adopt it.</text>
 
   <line x1="80" y1="452" x2="1120" y2="452" stroke="#FFFFFF" stroke-opacity="0.12" stroke-width="2"/>
 
-  <text x="80" y="516" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="700" fill="#06B6D4">94% validated accuracy</text>
-  <text x="470" y="516" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="700" fill="#F97316">50,000 docs in 6 hours</text>
-  <text x="855" y="516" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="700" fill="#818CF8">1,600+ trained</text>
+  <text x="80" y="516" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="700" fill="#06B6D4">1,600+ trained</text>
+  <text x="380" y="516" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="700" fill="#F97316">50,000 docs analyzed</text>
+  <text x="780" y="516" font-family="Segoe UI, Arial, sans-serif" font-size="30" font-weight="700" fill="#818CF8">30–60% less effort</text>
 
   <text x="80" y="575" font-family="Segoe UI, Arial, sans-serif" font-size="26" font-weight="600" fill="#9CA3AF">leonardosa.pro</text>
 </svg>`;

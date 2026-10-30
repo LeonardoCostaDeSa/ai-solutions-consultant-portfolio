@@ -20,45 +20,80 @@ import Seo from '../components/Seo';
 // --- DATA ---
 const experience = [
   {
-    company: "KPMG Brazil",
-    role: "AI Solutions Consultant → AI Engineer",
-    period: "May 2025 – Jun 2026",
-    tag: "Promoted",
+    company: "MasterTech",
+    role: "Founder — AI Transformation",
+    period: "Jul 2026 – Present",
+    tag: "Founder",
     accentColor: "indigo",
     accentHex: "#4F46E5",
-    desc: "I built AI systems for tax and compliance teams. Every system kept records of what it did, because regulators demand it. I joined as an AI solutions consultant and was promoted to AI Engineer.",
+    desc: "I work with leadership and teams to understand the operation, redesign processes, implement AI where it adds value and train the people who use it.",
     highlights: [
-      "Helped build a legal search engine — Legal and Corporate teams validated 94% of its answers",
-      "Cut task time by 30–80% on the workflows I automated",
-      "Trained 1,600+ professionals across KPMG's Tax practice to use AI in their daily work"
+      "For a landscaping company, connected the commercial journey (landing page, WhatsApp, email and a custom CRM with invoicing). Every lead is now captured, and the CEO's repetitive quotation and admin work dropped by an estimated 70%."
+    ]
+  },
+  {
+    company: "KPMG Brazil — Tax Transformation",
+    role: "AI Solutions Consultant → AI Solutions Consultant (Mid-level)",
+    period: "May 2025 – May 2026",
+    tag: "Promoted",
+    accentColor: "coral",
+    accentHex: "#F97316",
+    desc: "I joined to find where AI could change tax and legal work, and was promoted to AI Solutions Consultant (Mid-level) to lead solution delivery and adoption. I worked between partners, business specialists and technology, from business plan to daily use.",
+    highlights: [
+      "Built the business plan, approvals and IT environment for a Legal document-analysis solution; lawyers validated 98% accuracy on a 10% sample of 50,000+ documents",
+      "Trained 1,600+ professionals across KPMG's Tax practice to use AI in their daily work",
+      "Helped turn the Tax Reform methodology into an AI-enabled delivery model (30–60% less effort on covered activities)"
     ]
   },
   {
     company: "Revisa Master",
-    role: "Co-founder & AI Engineer",
-    period: "2023 – Present",
-    tag: "Founder",
-    accentColor: "coral",
-    accentHex: "#F97316",
-    desc: "Revisa Master reviews academic manuscripts. I co-founded it and I own its engineering end to end: I built the review platform and I keep it running in production. Stack: Python, Django, CrewAI, ChromaDB, Celery, Docker.",
+    role: "Co-founder — AI & Business Transformation",
+    period: "Dec 2023 – Present",
+    tag: "Co-founder",
+    accentColor: "teal",
+    accentHex: "#06B6D4",
+    desc: "Revisa Master provides academic review and consulting for graduate students. I lead how the business uses AI and technology, part-time.",
     highlights: [
-      "A review that took an expert six hours now takes fifteen minutes",
+      "Turned the senior reviewer's criteria into a review service: a six-hour first review now takes about fifteen minutes",
       "Built the funnels and landing pages behind ~90% revenue growth in one quarter",
-      "The system writes a PDF report and cites the rubric question behind every finding"
+      "Turned consultants' audio notes into client-ready session records"
+    ]
+  },
+  {
+    company: "Legislative Assembly of São Paulo",
+    role: "Content Strategy & Analytics",
+    period: "Mar 2023 – Jul 2024",
+    tag: null,
+    accentColor: "indigo",
+    accentHex: "#4F46E5",
+    desc: "Developed and executed a data-driven digital content strategy for a high-visibility public institution.",
+    highlights: [
+      "Grew the audience by 27K followers in 12 months"
     ]
   },
   {
     company: "Garden São Paulo",
-    role: "Full Stack Developer",
+    role: "Web and Operations Developer",
     period: "Dec 2021 – Mar 2023",
+    tag: null,
+    accentColor: "coral",
+    accentHex: "#F97316",
+    desc: "Built the company's digital foundation: first website, digital presence, CRM integrations and automation of commercial and administrative work.",
+    highlights: [
+      "Led the digital presence strategy, supporting 120%+ revenue growth in the period",
+      "Automated quotation generation, inventory control and customer service"
+    ]
+  },
+  {
+    company: "SFC Consultoria",
+    role: "Digital Communication Strategist",
+    period: "Feb 2020 – Oct 2020",
     tag: null,
     accentColor: "teal",
     accentHex: "#06B6D4",
-    desc: "Built the company's digital foundation: first institutional website, CRM integrations, and operational automation for commercial and administrative processes.",
+    desc: "Digital marketing for info-product launches in spirituality, immigration, motherhood and personal development.",
     highlights: [
-      "Developed the company's first institutional website and digital-presence strategy",
-      "Automated quotation generation and inventory-control workflows",
-      "Customer-service automation supporting 120%+ revenue growth in the period"
+      "Copy and content strategy for social media, websites, blogs and email marketing"
     ]
   }
 ];
@@ -79,12 +114,11 @@ const education = [
 ];
 
 const skills = [
-  { category: "AI & Automation", items: ["Multi-Agent Systems", "RPA", "Digital Transformation"], color: "indigo" },
-  { category: "Cloud & Platforms", items: ["Azure", "Power Automate", "Copilot Studio"], color: "teal" },
-  { category: "Programming", items: ["Python (Django/FastAPI)", "JavaScript (React, Next, Node)"], color: "coral" },
-  { category: "Data Engineering", items: ["SQL / MySQL", "Data Modeling", "Pandas / NumPy", "Visualization"], color: "indigo" },
-  { category: "DevOps", items: ["Git / GitHub", "Docker", "Linux / Ubuntu", "API REST"], color: "teal" },
-  { category: "Soft Skills", items: ["Communication", "Critical Thinking", "Problem Solving", "Leadership"], color: "coral" }
+  { category: "Transformation & Adoption", items: ["Process Mapping (BPMN)", "Requirements Analysis", "Change Management", "AI Training & Facilitation", "Stakeholder Management"], color: "indigo" },
+  { category: "AI & Automation", items: ["Generative AI", "Multi-Agent Systems", "RAG", "Power Automate", "Copilot Studio"], color: "teal" },
+  { category: "Digital Marketing", items: ["Content Strategy", "Copywriting", "Email Marketing (ActiveCampaign)", "Google Analytics"], color: "coral" },
+  { category: "Technical Foundation", items: ["Python", "SQL", "REST APIs", "Docker", "Git"], color: "indigo" },
+  { category: "Soft Skills", items: ["Communication", "Critical Thinking", "Problem Solving", "Leadership"], color: "teal" }
 ];
 
 const certs = [
@@ -202,8 +236,8 @@ const ProcessPage: React.FC = () => {
   return (
     <div className="bg-charcoal min-h-screen text-offwhite selection:bg-indigo selection:text-white pb-32 overflow-x-clip">
       <Seo
-        title="Resume — Leonardo Sá · AI Engineer"
-        description="AI Engineer at KPMG Brazil and co-founder of Revisa Master. Two degrees, a promotion, and a peer-reviewed paper on multi-agent architecture."
+        title="Resume — Leonardo Sá · AI Transformation Specialist"
+        description="AI Transformation Specialist. Founder of MasterTech, ex-KPMG Tax Transformation, co-founder of Revisa Master. Two degrees and a peer-reviewed paper."
         path="/process"
       />
       {/* Background Elements */}
@@ -259,14 +293,14 @@ const ProcessPage: React.FC = () => {
             transition={{ duration: 0.8 }}
           >
             <span className="text-coral font-black uppercase tracking-[0.4em] text-xs mb-6 block">
-              Career · 2021–2026
+              Career · 2020–2026
             </span>
             <h1 className="text-6xl md:text-8xl font-black leading-[0.95] tracking-tighter mb-8">
               Resume<span className="text-transparent bg-clip-text bg-gradient-to-r from-coral via-indigo to-teal">.</span>
             </h1>
             <p className="text-lg md:text-2xl text-white/60 font-medium leading-relaxed max-w-2xl mb-12">
-              The roles, systems and credentials behind my production AI work:
-              regulated teams, shipped platforms and measurable results.
+              The roles, projects and credentials behind my work in process
+              transformation and AI adoption.
             </p>
             <div className="flex items-center gap-3 text-white/40 text-xs font-black uppercase tracking-widest">
               <ArrowDown size={14} className="animate-bounce" />
@@ -506,7 +540,7 @@ const ProcessPage: React.FC = () => {
                 { lang: "Portuguese", level: "Native", code: "PT" },
                 { lang: "English", level: "Fluent", code: "EN" },
                 { lang: "French", level: "Fluent", code: "FR" },
-                { lang: "Spanish", level: "Intermediate", code: "ES" }
+                { lang: "Spanish", level: "Professional working", code: "ES" }
               ].map((l, idx) => (
                 <div key={idx} className="flex items-center justify-between p-4 bg-white/[0.02] border border-white/10 rounded-2xl">
                   <div className="flex items-center gap-3">

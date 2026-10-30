@@ -1,76 +1,90 @@
-# Leonardo Costa de Sá — AI Engineer
+# Leonardo Costa de Sá — AI Transformation Specialist
 
-> I design, ship and operate GenAI systems where errors are expensive.
-> I build AI systems for tax, legal, compliance and education teams. Every system
-> I ship can show where its answers come from, and proves it with audit trails.
+> I redesign how work gets done with AI, and make sure teams adopt it.
+> From the first conversation with leadership to daily use: I map the process, decide
+> where AI earns its place, implement it and train the people who use it.
 
 Site: https://leonardosa.pro
 Contact: leonardo@leonardosa.pro
 LinkedIn: https://www.linkedin.com/in/leonardocostadesa/
 GitHub: https://github.com/leonardocostadesa
-Location: Madrid, Spain (from August 2026) · CET
-Languages: English (fluent), French (fluent), Portuguese (native), Spanish (intermediate)
+Location: Madrid, Spain · CET
+Languages: English (fluent), French (fluent), Portuguese (native), Spanish (professional working)
 
 ## What I do
 
-- Document-intelligence pipelines (RAG on Azure OpenAI, Python) with validated accuracy
-- Multi-agent systems (CrewAI/LangChain) whose agents check their answers and cite sources
-- Enterprise AI integration: Microsoft Copilot Studio, Power Platform, Azure
+- Process discovery and redesign: mapping how work gets done and where AI fits
 - AI adoption programs: training, opportunity mapping, AI-enabled delivery models
-- Production discipline: every AI call traced (Langfuse), errors monitored (Sentry), audit trails built in
+- Implementation with AI: document intelligence, multi-agent workflows, Copilot Studio and Power Platform
+- Digital marketing and content strategy background
 
 ## Experience
 
-- **KPMG Brazil — Tax Transformation** (May 2025 – Jun 2026). Joined as AI Solutions
-  Consultant, promoted to AI Engineer. Helped build a legal search engine — Legal and
-  Corporate teams validated 94% of its answers. Cut task time by 30–80% on the workflows
-  I automated. Trained 1,600+ professionals to use AI in their daily work.
-- **Revisa Master — Co-founder & AI Engineer** (2023–present). Revisa Master reviews
-  academic manuscripts. I co-founded it and I am its entire engineering department.
-  I built the review platform (Django, ChromaDB, Celery, Docker, Langfuse, Sentry) and
-  I keep it running in production. A review that took an expert six hours now takes
-  fifteen minutes. I also built the funnels behind ~90% revenue growth in one quarter.
-- **Garden São Paulo — Full Stack Developer** (2021–2023). Built the company's first
-  institutional website, CRM integrations and operational automation, supporting 120%+
-  revenue growth in the period.
+- **MasterTech — Founder, AI Transformation** (Jul 2026 – present). I work with leadership
+  and teams to understand the operation, redesign processes, implement AI where it adds
+  value and train the people who use it. For a landscaping company, connected the
+  commercial journey (landing page, WhatsApp, email and a custom CRM with invoicing):
+  every lead is now captured, and the CEO estimates 70% less repetitive quotation and
+  admin work.
+- **KPMG Brazil — Tax Transformation** (May 2025 – May 2026). AI Solutions Consultant,
+  promoted to AI Solutions Consultant (Mid-level) to lead solution delivery and adoption.
+  Built the business plan, approvals and IT environment for a Legal document-analysis
+  solution; lawyers validated 98% accuracy on a 10% sample of 50,000+ documents. Trained
+  1,600+ professionals to use AI in their daily work. Helped turn the Tax Reform
+  methodology into an AI-enabled delivery model (30–60% less effort on covered activities).
+- **Revisa Master — Co-founder, AI & Business Transformation** (Dec 2023 – present,
+  part-time). Academic review and consulting for graduate students. I lead how the
+  business uses AI and technology. Turned the senior reviewer's criteria into a review
+  service: a six-hour first review now takes about fifteen minutes. Built the funnels
+  and landing pages behind ~90% revenue growth in one quarter.
+- **Legislative Assembly of São Paulo — Content Strategy & Analytics** (Mar 2023 – Jul 2024).
+  Data-driven digital content strategy for a public institution; grew the audience by
+  27K followers in 12 months.
+- **Garden São Paulo — Web and Operations Developer** (Dec 2021 – Mar 2023). Built the
+  company's first website, digital presence, CRM integrations and automation of
+  commercial and administrative work, supporting 120%+ revenue growth in the period.
+- **SFC Consultoria — Digital Communication Strategist** (Feb 2020 – Oct 2020). Copy and
+  content strategy for info-product launches.
 
 ## Selected case studies (each has a dedicated page)
 
-- **Revisa Express** (Python, Django, CrewAI, ChromaDB): 8-agent review pipeline in
-  production. Five pillar reviewers, a writer, a copy editor and a validator. A report
-  takes ~13.7 minutes and costs ~$1.78; zero failed LLM calls across 210 traced calls.
-  https://leonardosa.pro/solutions/revisa-master-express
-- **Document Analysis Automation** (Python, Power Automate, AI Builder, Azure Document
-  Intelligence): a pipeline that read every page of 50,000+ documents (1958–present,
-  handwritten to born-digital) for an $8 billion lawsuit. 98% accuracy, validated by
-  KPMG lawyers on a 10% sample. Three AI tools had failed before it; a custom OCR model
-  handled the hard documents. Its output became key evidence in the case. The manual
-  alternative: 5 consultants for 10 days per 500-document batch, initial questions only.
-  https://leonardosa.pro/solutions/document-analysis-automation
-- **KBSE — Knowledge Base Search Engine** (Python, Django, CrewAI, ChromaDB, Azure OpenAI):
-  a RAG search engine for legal and regulatory questions, built in 2024 when models were
-  far weaker. Four stages: retrieve, consolidate, validate, answer. Every answer links to
-  its original source. 94% validated accuracy and 99% user-rated relevance, measured with
-  Legal and Corporate teams over ~3 months (feedback stored in Supabase).
-  https://leonardosa.pro/solutions/knowledge-base-search-engine
 - **Tax Reform Delivery Model**: redesigned KPMG's delivery model into six phases with
   AI agents embedded where information piled up. Tax Transformation leadership presented
-  30-60% efficiency gains on covered activities.
+  30–60% efficiency gains on covered activities.
   https://leonardosa.pro/solutions/tax-reform-delivery-model
-- **Saving Time App**: an offline-first consulting app for Revisa Master consultants.
-  AI turns audio into session summaries and next steps, then updates the client record
-  from a mobile SQLite workflow with daily sync.
-  https://leonardosa.pro/solutions/saving-time-app
+- **Document Analysis Automation** (Python, Power Automate, AI Builder, Azure Document
+  Intelligence): a pipeline that analyzed every page of 50,000+ documents (1958–present,
+  handwritten to born-digital) for an $8 billion lawsuit. 98% accuracy, validated by
+  KPMG lawyers on a 10% sample. Three AI tools had failed before it. I also built the
+  business plan, secured approval from partners and Legal, and negotiated the IT
+  environment. Its output became key evidence in the case.
+  https://leonardosa.pro/solutions/document-analysis-automation
+- **AI Training for ALL**: trained 1,600+ tax professionals through real business
+  problems, hybrid exercises and quarterly themes. 8,000 aggregate participant hours.
+  https://leonardosa.pro/solutions/ai-training-for-all
+- **Revisa Express** (Python, Django, CrewAI, pgvector): turned an expert reviewer's
+  criteria into an 8-agent review service. A structured first review takes ~13.7
+  minutes and costs ~$1.78, with expert review still in the loop.
+  https://leonardosa.pro/solutions/revisa-master-express
 - **AI Workflow Workshop**: a 12-hour hands-on workshop where Legal, Corporate, SALT
   and Tax Transformation teams mapped real work before designing agents, prompts,
   prototypes and solution specs.
   https://leonardosa.pro/solutions/ai-opportunity-mapping
-- **AI Training for ALL**: trained 1,600+ tax professionals through real business
-  problems, hybrid exercises and quarterly themes. Reached 8,000 aggregate training hours.
-  https://leonardosa.pro/solutions/ai-training-for-all
+- **Garden São Paulo: Commercial Workflow and CRM** (MasterTech): connected a landscaping
+  company's commercial journey into one custom CRM with invoicing and AI-agent access
+  via MCP. Every lead captured; ~70% less repetitive admin work (CEO's estimate).
+  https://leonardosa.pro/solutions/garden-commercial-workflow
+- **KBSE — Knowledge Base Search Engine** (team project; Python, Django, CrewAI, ChromaDB,
+  Azure OpenAI): a RAG search engine for legal and regulatory questions, built in 2024.
+  Every answer links to its original source. 94% validated accuracy and 99% user-rated
+  relevance, measured with Legal and Corporate teams over ~3 months.
+  https://leonardosa.pro/solutions/knowledge-base-search-engine
+- **Saving Time App**: an app for Revisa Master consultants. AI turns audio notes into
+  session summaries and next steps, then updates the client record.
+  https://leonardosa.pro/solutions/saving-time-app
 - **Lei do Bem Form Analysis**: MVP review assistant for R&D tax-incentive forms.
-  Checked project, service, staff, material and third-party descriptions against Ministry
-  standards while keeping consultants in the loop; saved roughly three hours per form.
+  Checked descriptions against Ministry standards while keeping consultants in the loop;
+  saved roughly three hours per form.
   https://leonardosa.pro/solutions/lei-do-bem-form-analysis
 
 ## Credentials

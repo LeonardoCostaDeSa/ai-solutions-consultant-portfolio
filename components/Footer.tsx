@@ -21,7 +21,7 @@ const Footer: React.FC = () => {
           whileInView={{ opacity: 1, y: 0 }}
           className="text-white/70 text-sm font-semibold tracking-widest uppercase mb-4"
         >
-          Building AI that has to work every time? Let's talk.
+          Rethinking how your team works with AI? Let's talk.
         </motion.h2>
         
         <motion.a
@@ -59,7 +59,7 @@ const Footer: React.FC = () => {
         </div>
 
         <p className="mt-16 text-white/70 text-sm font-medium">
-          Madrid, Spain · from August 2026 · English / French / Portuguese / Spanish
+          Madrid, Spain · English / French / Portuguese / Spanish
         </p>
         <p className="mt-4 text-white/40 text-sm font-medium">
           &copy; {new Date().getFullYear()} Leonardo Costa de Sá

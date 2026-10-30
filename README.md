@@ -1,6 +1,6 @@
 # leonardosa.pro
 
-Personal portfolio of **Leonardo Costa de Sá** — AI Engineer building production GenAI systems for regulated and document-heavy environments.
+Personal portfolio of **Leonardo Costa de Sá** — AI Transformation Specialist: process redesign and AI adoption, with hands-on implementation.
 
 **Live site:** [leonardosa.pro](https://leonardosa.pro)
 

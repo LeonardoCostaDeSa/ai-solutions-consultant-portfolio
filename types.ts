@@ -47,7 +47,7 @@ export interface Solution {
   /** SEO slug for the dedicated page URL: /solutions/<slug>. */
   slug: string;
   title: string;
-  category: 'engineering' | 'AI Adoption';
+  category: 'engineering' | 'AI Adoption' | 'Process Transformation';
   techTags: string[];
   impactMetric: string;
   painPoint: string;
