@@ -4,9 +4,11 @@ import { Link } from 'react-router-dom';
 import {
   ArrowRight,
   BrainCircuit,
-  Code,
   Bot,
-  GraduationCap,
+  Compass,
+  Landmark,
+  Sprout,
+  Megaphone,
   FileText,
   Award,
   Mail,
@@ -17,79 +19,100 @@ import Seo from '../components/Seo';
 
 const trajectory = [
   {
-    period: '2025 – 2026',
-    role: 'AI Solutions Consultant → AI Engineer',
-    company: 'KPMG Brazil — Tax Transformation',
-    icon: BrainCircuit,
+    period: '2026 – Present',
+    role: 'Founder — AI Transformation',
+    company: 'MasterTech',
+    icon: Compass,
     color: 'indigo',
     hex: '#4F46E5',
-    desc: 'I joined as an AI solutions consultant and was promoted to AI Engineer. I built AI systems for tax and compliance teams. In that world, every system must keep records of what it did and protect client data — so I build that in from the start.',
+    desc: 'I work with leadership and teams to understand the operation, redesign processes, implement AI where it adds value and train the people who use it.',
     highlights: [
-      'Helped build a legal search engine — Legal and Corporate teams validated 94% of its answers',
-      'Cut task time by 30–80% on the workflows I automated',
+      "For a landscaping company, connected the commercial journey (landing page, WhatsApp, email and a custom CRM with invoicing). Every lead is now captured, and the CEO's repetitive quotation and admin work dropped by an estimated 70%.",
+    ],
+  },
+  {
+    period: '2025 – 2026',
+    role: 'AI Solutions Consultant → AI Solutions Consultant (Mid-level)',
+    company: 'KPMG Brazil — Tax Transformation',
+    icon: BrainCircuit,
+    color: 'coral',
+    hex: '#F97316',
+    desc: 'I joined to find where AI could change tax and legal work, and was promoted to lead solution delivery and adoption. I worked between partners, business specialists and technology, from business plan to daily use.',
+    highlights: [
+      'Built the business plan, approvals and IT environment for a Legal document-analysis solution; lawyers validated 98% accuracy on a 10% sample of 50,000+ documents',
       'Trained 1,600+ professionals to use AI in their daily work',
+      'Helped turn the Tax Reform methodology into an AI-enabled delivery model (30–60% less effort on covered activities)',
     ],
   },
   {
     period: '2023 – Present',
-    role: 'Co-founder & AI Engineer',
+    role: 'Co-founder — AI & Business Transformation',
     company: 'Revisa Master',
     icon: Bot,
-    color: 'coral',
-    hex: '#F97316',
-    desc: 'Revisa Master reviews academic manuscripts. I co-founded it, and I am its entire engineering department. I built the review platform end to end and I keep it running. I answer for its uptime, its costs and its output quality — there is no one else to escalate to.',
+    color: 'teal',
+    hex: '#06B6D4',
+    desc: 'Revisa Master provides academic review and consulting for graduate students. I lead how the business uses AI and technology.',
     highlights: [
-      'A review that took an expert six hours now takes fifteen minutes',
+      "Turned the senior reviewer's criteria into a review service: a six-hour first review now takes about fifteen minutes",
       'Built the funnels and landing pages behind ~90% revenue growth in one quarter',
-      'Every AI call is traced in production, so I can see what the system did and why',
+      "Turned consultants' audio notes into client-ready session records",
+    ],
+  },
+  {
+    period: '2023 – 2024',
+    role: 'Content Strategy & Analytics',
+    company: 'Legislative Assembly of São Paulo',
+    icon: Landmark,
+    color: 'indigo',
+    hex: '#4F46E5',
+    desc: 'Developed and executed a data-driven digital content strategy for a high-visibility public institution.',
+    highlights: [
+      'Grew the audience by 27K followers in 12 months',
     ],
   },
   {
     period: '2021 – 2023',
-    role: 'Full Stack Developer',
+    role: 'Web and Operations Developer',
     company: 'Garden São Paulo',
-    icon: Code,
-    color: 'teal',
-    hex: '#06B6D4',
-    desc: "Built the company's digital foundation end-to-end — its first institutional website, CRM integrations, and operational automation for commercial and administrative processes.",
+    icon: Sprout,
+    color: 'coral',
+    hex: '#F97316',
+    desc: "Built the company's digital foundation: first website, digital presence, CRM integrations and automation of commercial and administrative work.",
     highlights: [
-      "Developed the company's first institutional website and digital-presence strategy",
-      'Automated quotation generation and inventory-control workflows',
-      'Built customer-service automation supporting 120%+ revenue growth in the period',
+      'Led the digital presence strategy, supporting 120%+ revenue growth in the period',
+      'Automated quotation generation, inventory control and customer service',
     ],
   },
   {
-    period: '2023 – 2026',
-    role: 'Technologist Degree — completed',
-    company: 'Faculty of Technology of Praia Grande — Systems Analysis & Development',
-    icon: GraduationCap,
-    color: 'indigo',
-    hex: '#4F46E5',
-    desc: 'Full technology degree covering software engineering, systems architecture, databases, and applied AI — completed with a final GPA of 8.8/10. The theoretical foundation under the practical work.',
+    period: '2020',
+    role: 'Digital Communication Strategist',
+    company: 'SFC Consultoria',
+    icon: Megaphone,
+    color: 'teal',
+    hex: '#06B6D4',
+    desc: 'Digital marketing for info-product launches in spirituality, immigration, motherhood and personal development.',
     highlights: [
-      'Programming logic, data structures, and algorithms',
-      'Database design, SQL, and systems architecture',
-      'Web development, APIs, and applied AI',
+      'Copy and content strategy for social media, websites, blogs and email marketing',
     ],
   },
 ];
 
 const principles = [
   {
-    title: 'Production-first',
-    desc: 'I architect for the live system, not the demo. The work that survives contact with real users is the work that matters.',
+    title: 'Process before tools',
+    desc: 'I map how work actually gets done before choosing any technology.',
   },
   {
-    title: 'Ship to learn',
-    desc: 'A prototype proves an idea. A running system teaches you what is actually true. So I deploy early and iterate fast.',
-  },
-  {
-    title: 'Multi-agent by default',
-    desc: 'I split big problems into small agents. Each agent has one job. That makes the system easier to test, debug and explain.',
+    title: 'Proportional solutions',
+    desc: "Sometimes the answer is an AI agent; sometimes it's a better form or a clearer rule. The solution should fit the problem.",
   },
   {
     title: 'Build for adoption',
     desc: 'A system nobody uses is a failed system. I teach the team while I build — not after.',
+  },
+  {
+    title: 'Agree on what success looks like',
+    desc: "Before starting, I agree with the business on how we'll know it worked: time saved, errors caught, people using it.",
   },
 ];
 
@@ -97,8 +120,8 @@ const AboutPage: React.FC = () => {
   return (
     <div className="bg-charcoal min-h-screen text-offwhite pb-24 overflow-x-clip">
       <Seo
-        title="About — Leonardo Sá · AI Engineer"
-        description="I started as a top-of-cohort linguist at USP. Today I am an AI engineer and co-founder, and my systems run in production every day."
+        title="About — Leonardo Sá · AI Transformation Specialist"
+        description="Six years helping companies and institutions change how they work: first through digital marketing, now through process transformation and AI."
         path="/about"
       />
       <Navbar />
@@ -133,19 +156,19 @@ const AboutPage: React.FC = () => {
             {/* Headline — centered on mobile (stacked under the photo), left-aligned from md up */}
             <div className="flex-1 text-center md:text-left">
               <span className="text-teal font-black uppercase tracking-[0.4em] text-xs mb-4 md:mb-6 block">
-                AI Engineer · Production Systems
+                AI Transformation · Process & Adoption
               </span>
               <h1 className="text-4xl md:text-7xl font-black leading-[1.05] tracking-tighter mb-6">
-                Engineering AI<br />
+                Changing how work gets done,<br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-indigo via-teal to-coral italic">
-                  that ships.
+                  with AI.
                 </span>
               </h1>
               <p className="text-base md:text-xl text-white/60 leading-relaxed max-w-xl mx-auto md:mx-0">
-                I build AI systems for teams that answer to regulators. I ship them, I run them, and I stand behind what they output.
+                For more than six years, I've helped companies and institutions grow and change how they work: first through digital marketing and, since 2023, through process transformation and AI.
               </p>
               <p className="mt-6 text-xs md:text-sm text-white/60 font-bold uppercase tracking-widest">
-                Madrid, Spain · from August 2026 · EN / FR / PT / ES
+                Madrid, Spain · EN / FR / PT / ES
               </p>
             </div>
           </motion.div>
@@ -159,13 +182,13 @@ const AboutPage: React.FC = () => {
         <div className="max-w-5xl mx-auto">
           <div className="mb-12 md:mb-16">
             <span className="text-indigo font-black uppercase tracking-[0.4em] text-xs mb-4 block">
-              Engineering Trajectory
+              Trajectory
             </span>
             <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-charcoal leading-tight">
               Where I've worked.
             </h2>
             <p className="text-charcoal/60 max-w-2xl mt-4 md:mt-6 text-base md:text-lg leading-relaxed">
-              I work on production AI today. Before that: software engineering and a technology degree.
+              From digital marketing to AI transformation.
             </p>
           </div>
 
@@ -226,21 +249,21 @@ const AboutPage: React.FC = () => {
         </div>
       </section>
 
-      {/* WHY THE TECH FOUNDATION MATTERS */}
+      {/* WHY THE MIX MATTERS */}
       <section className="py-20 md:py-28 px-6">
         <div className="max-w-3xl mx-auto">
           <span className="text-coral font-black uppercase tracking-[0.4em] text-xs mb-4 block">
-            Why the foundation matters
+            Why the mix matters
           </span>
           <h2 className="text-3xl md:text-5xl font-black tracking-tighter mb-8 leading-tight">
-            Building production AI is engineering work — not prompting.
+            Transformation fails in two places. I've worked on both.
           </h2>
           <div className="space-y-6 text-base md:text-lg text-white/70 leading-relaxed">
             <p>
-              A demo is easy. A system that runs every day for a regulated team is hard. The difference is engineering: pipelines that don't break, answers you can audit, and checks that catch the model's mistakes before a client sees them.
+              AI projects fail when the solution doesn't fit how people actually work, or when it never gets properly built and adopted. My path covers both sides.
             </p>
             <p>
-              That discipline came from practice. I co-founded a platform and I keep it running in production. I built a company's website, CRM integrations and automations, end to end. I finished a systems degree with an 8.8/10 GPA. The AI gets the headlines. The engineering makes it ship.
+              In digital marketing and content, I learned how people read, decide and change habits. In technology, I earned a systems degree and built and ran real platforms. At KPMG, I brought the two together: business plans, implementation and training at scale.
             </p>
           </div>
 
@@ -257,7 +280,7 @@ const AboutPage: React.FC = () => {
                 When something interests me, I go all the way in. In linguistics, that meant graduating{' '}
                 <span className="text-white font-bold">top of my cohort at the University of São Paulo (9.2/10 GPA)</span> and earning a{' '}
                 <span className="text-white font-bold">merit scholarship to Université Lumière Lyon 2</span> in France. In technology, it means
-                a systems degree finished with an 8.8/10 GPA, a promotion at KPMG, and a{' '}
+                a systems degree finished with an 8.8/10 GPA, a promotion at KPMG Tax Transformation, and a{' '}
                 <a
                   href="https://doi.org/10.5281/zenodo.19930775"
                   target="_blank"
@@ -285,7 +308,7 @@ const AboutPage: React.FC = () => {
               How I work
             </span>
             <h2 className="text-3xl md:text-5xl font-black tracking-tighter text-charcoal leading-tight">
-              Four principles I won't compromise on.
+              How I work.
             </h2>
           </div>
 
@@ -311,7 +334,7 @@ const AboutPage: React.FC = () => {
       <section className="py-16 md:py-24 px-6">
         <div className="max-w-3xl mx-auto text-center">
           <h2 className="text-3xl md:text-5xl font-black tracking-tighter mb-4 leading-tight">
-            Need someone who ships production AI?
+            Rethinking how your team works with AI?
           </h2>
           <p className="text-white/50 mb-10 text-base md:text-lg">
             Let's talk.
