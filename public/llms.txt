@@ -39,12 +39,14 @@ Languages: English (fluent), French (fluent), Portuguese (native), Spanish (prof
   and landing pages behind ~90% revenue growth in one quarter.
 - **Legislative Assembly of São Paulo — Content Strategy & Analytics** (Mar 2023 – Jul 2024).
   Data-driven digital content strategy for a public institution; grew the audience by
-  27K followers in 12 months.
+  27K followers in 12 months, using audience analytics to decide formats, topics and
+  publishing cadence.
 - **Garden São Paulo — Web and Operations Developer** (Dec 2021 – Mar 2023). Built the
   company's first website, digital presence, CRM integrations and automation of
   commercial and administrative work, supporting 120%+ revenue growth in the period.
-- **SFC Consultoria — Digital Communication Strategist** (Feb 2020 – Oct 2020). Copy and
-  content strategy for info-product launches.
+- **SFC Consultoria — Digital Communication Strategist** (Feb 2020 – Oct 2020). Copy,
+  content strategy and launch planning for info-product launches across multiple
+  clients and niches.
 
 ## Selected case studies (each has a dedicated page)
 
