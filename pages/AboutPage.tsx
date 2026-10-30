@@ -27,7 +27,9 @@ const trajectory = [
     hex: '#4F46E5',
     desc: 'I work with leadership and teams to understand the operation, redesign processes, implement AI where it adds value and train the people who use it.',
     highlights: [
-      "For a landscaping company, connected the commercial journey (landing page, WhatsApp, email and a custom CRM with invoicing). Every lead is now captured, and the CEO's repetitive quotation and admin work dropped by an estimated 70%.",
+      'Garden São Paulo (landscaping): mapped goals and pain points with the CEO',
+      'Connected the commercial journey (marketing, landing page, WhatsApp, email and CRM) and built a custom CRM with invoicing integration and AI-agent access via MCP',
+      "Every lead is now captured, and the CEO's repetitive quotation and admin work dropped by an estimated 70%",
     ],
   },
   {
@@ -68,6 +70,7 @@ const trajectory = [
     desc: 'Developed and executed a data-driven digital content strategy for a high-visibility public institution.',
     highlights: [
       'Grew the audience by 27K followers in 12 months',
+      'Used audience analytics to decide formats, topics and publishing cadence',
     ],
   },
   {
@@ -79,8 +82,9 @@ const trajectory = [
     hex: '#F97316',
     desc: "Built the company's digital foundation: first website, digital presence, CRM integrations and automation of commercial and administrative work.",
     highlights: [
-      'Led the digital presence strategy, supporting 120%+ revenue growth in the period',
-      'Automated quotation generation, inventory control and customer service',
+      'Built the first institutional website, contributed to the visual identity and led the digital presence strategy, supporting 120%+ revenue growth during the period',
+      'Organized digital channels and content focused on customer acquisition and brand positioning',
+      'Automated quotation generation, inventory control and customer-service workflows, and integrated the CRM',
     ],
   },
   {
@@ -92,7 +96,9 @@ const trajectory = [
     hex: '#06B6D4',
     desc: 'Digital marketing for info-product launches in spirituality, immigration, motherhood and personal development.',
     highlights: [
-      'Copy and content strategy for social media, websites, blogs and email marketing',
+      'Wrote copy and planned content strategy for social media, websites, blogs and email marketing',
+      'Took part in launch planning and execution across multiple clients and niches',
+      'Worked with ActiveCampaign, Google Analytics and Trello',
     ],
   },
 ];
