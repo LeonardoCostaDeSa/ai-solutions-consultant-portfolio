@@ -428,5 +428,41 @@ export const solutions: Solution[] = [
       { metric: '5 fields', label: 'quality checks', detail: 'projects, services, staff, materials and third-party contracting' },
       { metric: 'Human review', label: 'kept in control', detail: 'consultants still made the final judgment on a critical step' },
     ]
+  },
+  {
+    id: 'garden',
+    slug: 'garden-commercial-workflow',
+    featured: false,
+    order: 6,
+    palette: { base: '#1a2408', glow: '#BEF264', accent: '#84CC16', ambient: '#12180a' },
+    archetype: 'field',
+    tagline: "A landscaping company's CEO was the bottleneck for every quote. We connected the commercial journey end to end.",
+    title: 'Garden São Paulo: Commercial Workflow and CRM',
+    category: 'Process Transformation',
+    techTags: ['Process Mapping', 'Custom CRM', 'WhatsApp', 'MCP'],
+    impactMetric: '~70% Less Admin Work',
+    painPoint: 'Leads arrived through several channels, and every quote and admin task waited on the CEO.',
+    quote: "The bottleneck wasn't the channels. It was that every lead and every quote had to pass through one person.",
+    context: "Garden São Paulo is a landscaping company in São Paulo (gardensaopaulo.com). I built its first website years earlier, as its web and operations developer. In 2026 it became MasterTech's first case.",
+    problem: "Leads arrived through the website, WhatsApp and email, with no single place to see them all. Quotation and admin work depended on the CEO, so the commercial flow moved only as fast as one person could answer. Another tool on top would not fix that: the journey itself needed one path.",
+    solution: "We started with interviews with the CEO to define the goals. Then we connected the commercial journey end to end: the landing page, WhatsApp and email now feed one custom CRM. The CRM is integrated with invoicing, and AI agents can access it through MCP (Model Context Protocol) to support the repetitive quotation and admin work.",
+    role: "Through MasterTech, in October 2026, I ran discovery with the CEO, redesigned the commercial process and implemented the connected journey and the custom CRM.",
+    insight: "Every lead is now captured in one place, and the CEO estimates that repetitive quotation and admin work dropped by about 70%. The order mattered: first make sure every lead lands in the same place, then bring AI into the work around it.",
+    highlights: [
+      "Every lead captured across landing page, WhatsApp and email",
+      "~70% less repetitive quotation and admin work for the CEO (CEO's estimate)",
+      "Custom CRM with invoicing integration and AI-agent access via MCP"
+    ],
+    constraints: [
+      "Quotation and admin work depended on one person, so the new process had to take repetitive work off the CEO without taking away control over quotes.",
+      "Customers already reached the company through several channels. The redesign had to keep all of them and bring them into one flow.",
+      "The 70% figure is the CEO's own estimate, not a measured time study."
+    ],
+    results: [
+      { metric: 'Every lead', label: 'captured', detail: 'landing page, WhatsApp and email feed one CRM' },
+      { metric: '~70%', label: 'less repetitive admin work', detail: "the CEO's estimate for quotation and admin tasks" },
+      { metric: '1 CRM', label: 'from lead to invoice', detail: 'custom CRM integrated with invoicing' },
+      { metric: 'MCP', label: 'AI-agent access', detail: 'agents work on CRM data through the Model Context Protocol' },
+    ]
   }
 ];
