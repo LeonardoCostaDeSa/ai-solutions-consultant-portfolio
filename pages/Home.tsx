@@ -4,19 +4,18 @@ import { motion } from 'framer-motion';
 import { Link, useLocation } from 'react-router-dom';
 import {
   ArrowRight,
-  Code,
   FileText,
   Briefcase,
+  Search,
   Shrink,
-  BrainCircuit,
-  ChartNoAxesColumnIncreasing
+  Rocket,
+  BrainCircuit
 } from 'lucide-react';
 import Hero from '../components/Hero';
 import Navbar from '../components/Navbar';
 import Seo from '../components/Seo';
 import DataStreams from '../components/DataStreams';
 import BorderBeam from '../components/BorderBeam';
-import TechCarousel from '../components/TechCarousel';
 import ScrollImageTransition from '../components/ScrollImageTransition';
 
 const KnotSVG = ({ color }: { color: string }) => (
@@ -119,7 +118,7 @@ const Home: React.FC = () => {
     {
       id: 'projects',
       title: 'Projects',
-      sub: 'Case studies with real numbers. See how each system works.',
+      sub: 'Case studies with real numbers: what changed and how.',
       color: '#F97316', // coral
       twColor: 'coral',
       icon: Briefcase,
@@ -141,8 +140,8 @@ const Home: React.FC = () => {
   return (
     <div className="bg-charcoal min-h-screen relative overflow-x-clip">
       <Seo
-        title="Leonardo Sá — AI Engineer · Production GenAI"
-        description="I build AI systems for tax, legal, compliance and education teams. My systems reached 94% validated accuracy and read every page of 50,000 legal documents."
+        title="Leonardo Sá — AI Transformation Specialist"
+        description="I redesign processes and help teams adopt AI, from business plan to daily use. Founder of MasterTech, ex-KPMG Tax Transformation."
         path="/"
       />
       <Navbar />
@@ -180,8 +179,8 @@ const Home: React.FC = () => {
             {[
               { value: '1,600+', label: 'Professionals trained', sub: 'to use AI in their daily work', color: 'indigo' },
               { value: '50,000', label: 'Documents read', sub: 'every page of an $8B lawsuit — not a sample', color: 'teal' },
-              { value: '30–80%', label: 'Less task time', sub: 'on the tax workflows I automated', color: 'coral' },
-              { value: '94%', label: 'Answer accuracy', sub: 'validated by Legal and Corporate teams', color: 'indigo' },
+              { value: '30–60%', label: 'Less effort', sub: 'on activities covered by the Tax Reform delivery model', color: 'coral' },
+              { value: '6 h → 15 min', label: 'Expert first review', sub: 'at Revisa Master', color: 'indigo' },
             ].map((stat, i) => (
               <motion.div
                 key={i}
@@ -245,7 +244,7 @@ const Home: React.FC = () => {
             className="max-w-3xl mb-12 md:mb-16"
           >
             <p className="text-charcoal/70 text-lg md:text-2xl font-medium leading-relaxed mb-8">
-              I build AI systems and run them in production. At KPMG Brazil, my systems cut task time by <span className="text-charcoal font-bold">30–80%</span> on tax and compliance work. At <span className="text-charcoal font-bold">Revisa Master</span>, the company I co-founded, I built the entire review platform and I run it in production. Paying customers use it every day.
+              I work between business, people and technology. At <span className="text-charcoal font-bold">KPMG Brazil</span>, I took AI projects from business plan to adoption and trained <span className="text-charcoal font-bold">1,600+ professionals</span>. At <span className="text-charcoal font-bold">Revisa Master</span>, the company I co-founded, I turned expert criteria into a review service that cut a six-hour task to fifteen minutes. Today I do this work with other companies through <span className="text-charcoal font-bold">MasterTech</span>.
             </p>
             <Link
               to="/about"
@@ -265,10 +264,10 @@ const Home: React.FC = () => {
             className="grid grid-cols-2 md:grid-cols-4 gap-4 md:gap-5"
           >
             {[
-              { title: 'Process Architecture', desc: 'I turn messy processes into systems that run on their own.', icon: Shrink, color: 'teal', hex: '#06B6D4' },
-              { title: 'Multi-Agent Systems', desc: 'I build AI agents that check their answers and cite their sources.', icon: Code, color: 'indigo', hex: '#4F46E5' },
-              { title: 'AI Adoption', desc: 'I train teams to use AI in their real work — not in slide decks.', icon: BrainCircuit, color: 'coral', hex: '#F97316' },
-              { title: 'Production Delivery', desc: 'I take prototypes to production. They hold up.', icon: ChartNoAxesColumnIncreasing, color: 'teal', hex: '#06B6D4' }
+              { title: 'Discovery', desc: "I find where AI fits in the work, and where it doesn't.", icon: Search, color: 'teal', hex: '#06B6D4' },
+              { title: 'Process Redesign', desc: 'I turn messy workflows into clear, measurable processes.', icon: Shrink, color: 'indigo', hex: '#4F46E5' },
+              { title: 'Implementation', desc: 'I take solutions from pilot to daily use.', icon: Rocket, color: 'coral', hex: '#F97316' },
+              { title: 'AI Adoption', desc: 'I train teams to use AI in their real work.', icon: BrainCircuit, color: 'teal', hex: '#06B6D4' }
             ].map((trait, i) => (
               <div key={i} className="relative p-5 md:p-6 bg-charcoal border border-charcoal/80 rounded-2xl hover:border-white/20 transition-all group overflow-hidden">
                 <BorderBeam color={trait.hex} duration={5} />
@@ -284,8 +283,6 @@ const Home: React.FC = () => {
         <div className="w-full h-1 bg-gradient-to-r from-coral via-teal to-indigo" />
       </section>
 
-      <TechCarousel />
-      
       <section id="navigation" className="py-24 md:py-40 px-6 max-w-7xl mx-auto border-t border-white/5 relative">
         <motion.div 
           initial={{ opacity: 0, y: 40 }}
